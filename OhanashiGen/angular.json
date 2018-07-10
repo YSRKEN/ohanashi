@@ -117,7 +117,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "CalcGachaProbTool:build:production"
+              "browserTarget": "OhanashiGen:build:production"
             }
           }
         }
