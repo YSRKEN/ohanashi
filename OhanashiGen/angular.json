@@ -114,6 +114,11 @@
             "browserTarget": "OhanashiGen:build",
             "serverTarget": "OhanashiGen:server",
             "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "CalcGachaProbTool:build:production"
+            }
           }
         }
       }
