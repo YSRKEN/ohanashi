@@ -8,11 +8,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
