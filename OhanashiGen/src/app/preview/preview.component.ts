@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TalkData } from '../model/TalkData';
 import { SettingService } from '../setting.service';
 
@@ -8,6 +8,11 @@ import { SettingService } from '../setting.service';
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent implements OnInit {
+
+  /**
+   * タップ時の処理
+   */
+  @Output() changeForm: EventEmitter<TalkData> = new EventEmitter();
 
   /**
    * 会話一覧
@@ -38,6 +43,13 @@ export class PreviewComponent implements OnInit {
   select(id: number){
     if(this.setting.selectTalkId != id){
       this.setting.selectTalkId = id;
+      const talk = new TalkData();
+      const nowTalk = this.setting.talkList.filter(t => t.id == id)[0];
+      talk.id = nowTalk.id;
+      talk.message = nowTalk.message;
+      talk.name = nowTalk.name;
+      talk.url = nowTalk.url;
+      this.changeForm.emit(talk);
     }else{
       this.setting.selectTalkId = -1;
     }

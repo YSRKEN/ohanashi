@@ -26,4 +26,14 @@ export class MainComponent implements OnInit {
     this.setting.talkList.push(this.nowTalk);
     return;
   }
+
+  /**
+   * プレビュー欄をタップすると、画面上部が書き換わるようにする
+   */
+  changeForm(selectTalk: TalkData){
+    this.nowTalk.id = selectTalk.id;
+    this.nowTalk.message = selectTalk.message;
+    this.nowTalk.name = selectTalk.name;
+    this.nowTalk.url = selectTalk.url;
+  }
 }

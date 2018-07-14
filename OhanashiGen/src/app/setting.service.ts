@@ -14,7 +14,7 @@ export class SettingService {
   /**
    * 選択中の会話のID
    */
-  selectTalkId: number = 1;
+  selectTalkId: number = -1;
 
   constructor() {
     // サンプルデータを追加

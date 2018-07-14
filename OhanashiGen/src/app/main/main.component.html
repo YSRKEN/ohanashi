@@ -12,7 +12,8 @@
         </div>
         <div class="form-group">
             <label for="message">喋る内容</label>
-            <textarea class="form-control" id="message" name="message" placeholder="喋る内容" [(ngModel)]="nowTalk.message">
+            <textarea class="form-control text-justify" id="message" name="message" placeholder="喋る内容" [(ngModel)]="nowTalk.message"
+                style="height: 100px;">
             </textarea>
         </div>
         <div class="form-group">
@@ -26,6 +27,6 @@
         </div>
     </form>
     <div class="border p-3  my-3">
-        <app-preview></app-preview>
+        <app-preview (changeForm)="changeForm($event)"></app-preview>
     </div>
 </div>
