@@ -1,0 +1,11 @@
+<div class="talk-list">
+  <div *ngFor="let talk of talkList">
+    <div class="talk-block position-relative">
+      <img class="talk-face position-absolute" src={{talk.url}}>
+      <div class="talk-balloon position-absolute">
+        <p class="talk-name position-absolute">{{talk.name}}</p>
+        <pre class="talk-message position-absolute">{{talk.message}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
