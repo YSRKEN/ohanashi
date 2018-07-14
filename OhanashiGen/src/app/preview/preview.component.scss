@@ -1,0 +1,41 @@
+// CSSだけで吹き出し部分を作画する
+.talk-list{
+    width: 320px;
+    background-color: black;
+}
+.talk-block{
+    width: 320px;
+    height: 84px;
+}
+.talk-face{
+    left: 5px;
+    top: 4px;
+    width: 76px;
+}
+.talk-balloon{
+    right: 9px;
+    top: 4px;
+    width: 224px;
+    height: 76px;
+    color: white;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.talk-name{
+    left: 5px;
+    top: 4px;
+    color: #f33281;
+    background-color: white;
+    font: bold 14px/17.5px "Arial", sans-serif;
+}
+.talk-message{
+    left: 5px;
+    top: 19px;
+    width: 214px;
+    white-space: pre-wrap;
+    background-color: white;
+    font: bold 14px/17.5px "Arial", sans-serif;
+    word-break: break-all;
+}
