@@ -10,12 +10,14 @@ import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { PreviewComponent } from './preview/preview.component';
 import { SettingService } from './setting.service';
+import { TalkBoxComponent } from './talk-box/talk-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    PreviewComponent
+    PreviewComponent,
+    TalkBoxComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
