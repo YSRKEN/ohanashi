@@ -15,6 +15,18 @@
             <textarea class="form-control" id="message" name="message" placeholder="喋る内容" [(ngModel)]="nowTalk.message">
             </textarea>
         </div>
+        <div class="form-group">
+            <label>プレビュー</label>
+            <div class="talk-list">
+                <div class="talk-block position-relative">
+                    <img class="talk-face position-absolute" src={{nowTalk.url}}>
+                    <div class="talk-balloon position-absolute">
+                        <p class="talk-name position-absolute">{{nowTalk.name}}</p>
+                        <pre class="talk-message position-absolute">{{nowTalk.message}}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="d-flex">
             <button class="form-control btn-primary" (click)="addTalk()">追加</button>
             <button class="form-control btn-primary mx-3">変更</button>
