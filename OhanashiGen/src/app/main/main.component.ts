@@ -73,4 +73,44 @@ export class MainComponent implements OnInit {
     this.setting.talkList.splice(eraseIndex, 1);
     this.nowTalk.id = 0;
   }
+
+  /**
+   * 選択した会話を上に移動させる
+   */
+  upTalk(){
+    if(this.nowTalk.id == 0){
+      return;
+    }
+    const talkIndex = this.setting.talkList.findIndex(t => t.id == this.nowTalk.id);
+    if(talkIndex == 0){
+      return;
+    }
+    const newTalk = new TalkData();
+    newTalk.id = this.setting.talkList[talkIndex].id;
+    newTalk.message = this.setting.talkList[talkIndex].message;
+    newTalk.name = this.setting.talkList[talkIndex].name;
+    newTalk.url = this.setting.talkList[talkIndex].url;
+    this.setting.talkList.splice(talkIndex, 1);
+    this.setting.talkList.splice(talkIndex - 1, 0, newTalk);
+  }
+
+  /**
+   * 選択した会話を下に移動させる
+   */
+  downTalk(){
+    if(this.nowTalk.id == 0){
+      return;
+    }
+    const talkIndex = this.setting.talkList.findIndex(t => t.id == this.nowTalk.id);
+    if(talkIndex == this.setting.talkList.length - 1){
+      return;
+    }
+    const newTalk = new TalkData();
+    newTalk.id = this.setting.talkList[talkIndex].id;
+    newTalk.message = this.setting.talkList[talkIndex].message;
+    newTalk.name = this.setting.talkList[talkIndex].name;
+    newTalk.url = this.setting.talkList[talkIndex].url;
+    this.setting.talkList.splice(talkIndex, 1);
+    this.setting.talkList.splice(talkIndex + 1, 0, newTalk);
+  }
 }
