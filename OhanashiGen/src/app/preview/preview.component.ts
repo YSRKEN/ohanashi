@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TalkData } from '../model/TalkData';
+import { SettingService } from '../setting.service';
 
 @Component({
   selector: 'app-preview',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreviewComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * 会話一覧
+   */
+  talkList: TalkData[] = [];
+
+  constructor(private setting: SettingService) { }
 
   ngOnInit() {
+    this.talkList = this.setting.talkList;
+    console.log(this.talkList);
   }
-
 }

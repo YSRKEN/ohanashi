@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { PreviewComponent } from './preview/preview.component';
+import { SettingService } from './setting.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { PreviewComponent } from './preview/preview.component';
     RouterModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SettingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
