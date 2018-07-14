@@ -22,6 +22,11 @@ export class TalkBoxComponent implements OnInit {
    */
   @Input() message: string;
 
+  /**
+   * 選択されている場合はtrue
+   */
+  @Input() selected: string;
+
   constructor() { }
 
   ngOnInit() {

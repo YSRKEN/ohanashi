@@ -21,4 +21,13 @@ export class TalkData{
      * 表示する画像のURL
      */
     url: string = "";
+
+    /**
+     * 選択されているか？
+     */
+    selected: boolean = false;
+
+    get selected2(): string{
+        return this.selected ? "true" : "false";
+    }
 }

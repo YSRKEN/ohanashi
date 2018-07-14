@@ -17,7 +17,30 @@ export class PreviewComponent implements OnInit {
   constructor(private setting: SettingService) { }
 
   ngOnInit() {
-    this.talkList = this.setting.talkList;
-    console.log(this.talkList);
+    this.refreshSelectDraw();
+  }
+
+  /**
+   * 画面の内容を更新
+   */
+  refreshSelectDraw(){
+    const list = this.setting.talkList;
+    for(let i = 0; i < list.length; ++i){
+      list[i].selected = (this.setting.selectTalkId == list[i].id);
+    }
+    this.talkList = list;
+  }
+
+  /**
+   * 選択を切り替え
+   * @param id 選択された会話のID
+   */
+  select(id: number){
+    if(this.setting.selectTalkId != id){
+      this.setting.selectTalkId = id;
+    }else{
+      this.setting.selectTalkId = -1;
+    }
+    this.refreshSelectDraw();
   }
 }

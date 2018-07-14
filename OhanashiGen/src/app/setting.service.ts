@@ -11,6 +11,11 @@ export class SettingService {
    */
   talkList: TalkData[] = [];
 
+  /**
+   * 選択中の会話のID
+   */
+  selectTalkId: number = 1;
+
   constructor() {
     // サンプルデータを追加
     const data1: TalkData = new TalkData();
