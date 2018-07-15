@@ -37,6 +37,7 @@ export class MainComponent implements OnInit {
     this.nowTalk.id = newId;
     this.setting.talkList.push(this.nowTalk);
     this.nowTalk = new TalkData();
+    this.setting.saveSetting();
     return;
   }
 
@@ -62,6 +63,7 @@ export class MainComponent implements OnInit {
       selectTalk.message = this.nowTalk.message;
       selectTalk.name = this.nowTalk.name;
       selectTalk.url = this.nowTalk.url;
+      this.setting.saveSetting();
     }
   }
 
@@ -75,6 +77,7 @@ export class MainComponent implements OnInit {
     const eraseIndex = this.setting.talkList.findIndex(t => t.id == this.nowTalk.id);
     this.setting.talkList.splice(eraseIndex, 1);
     this.nowTalk.id = 0;
+    this.setting.saveSetting();
   }
 
   /**
@@ -95,6 +98,7 @@ export class MainComponent implements OnInit {
     newTalk.url = this.setting.talkList[talkIndex].url;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex - 1, 0, newTalk);
+    this.setting.saveSetting();
   }
 
   /**
@@ -115,12 +119,30 @@ export class MainComponent implements OnInit {
     newTalk.url = this.setting.talkList[talkIndex].url;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex + 1, 0, newTalk);
+    this.setting.saveSetting();
   }
 
   /**
    * プリセット画面に遷移
    */
-  moveSelectView(){
-    this.router.navigate(['/preset']);
+  async moveSelectView(){
+    await this.router.navigate(['/preset']);
+  }
+
+  /**
+   * プリセットデータで上書き
+   */
+  async setPreset(){
+    this.setting.saveDefaultSetting();
+    location.reload();
+  }
+
+  /**
+   * 全削除
+   */
+  async deleteAllTalk(){
+    this.setting.talkList = [];
+    this.setting.saveSetting();
+    location.reload();
   }
 }
