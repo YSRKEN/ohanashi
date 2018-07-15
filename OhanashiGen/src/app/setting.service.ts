@@ -16,6 +16,11 @@ export class SettingService {
    */
   selectTalkId: number = -1;
 
+  /**
+   * 設定したいURL
+   */
+  setUrl: string = "";
+
   constructor() {
     // サンプルデータを追加
     const data1: TalkData = new TalkData();

@@ -11,20 +11,24 @@ import { MainComponent } from './main/main.component';
 import { PreviewComponent } from './preview/preview.component';
 import { SettingService } from './setting.service';
 import { TalkBoxComponent } from './talk-box/talk-box.component';
+import { PresetComponent } from './preset/preset.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     PreviewComponent,
-    TalkBoxComponent
+    TalkBoxComponent,
+    PresetComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     RouterModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [SettingService],
   bootstrap: [AppComponent]

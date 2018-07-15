@@ -1,0 +1,7 @@
+<h1 class="text-center d-none d-sm-block my-3">キャラを選択</h1>
+<h2 class="text-center d-xs-block d-sm-none my-3">キャラを選択</h2>
+<div class="m-2 d-flex flex-wrap">
+  <div *ngFor="let url of urlList" class="mx-auto">
+    <img src={{url}} width="76px" height="76px" class="m-1" (click)="click(url)">
+  </div>
+</div>

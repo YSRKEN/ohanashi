@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TalkData } from '../model/TalkData';
 import { SettingService } from '../setting.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -13,9 +14,11 @@ export class MainComponent implements OnInit {
    */
   nowTalk: TalkData = new TalkData();
 
-  constructor(private setting: SettingService) { }
+  constructor(private setting: SettingService, private router: Router) { }
 
   ngOnInit() {
+    this.nowTalk.url = this.setting.setUrl;
+    this.setting.setUrl = "";
   }
 
   /**
@@ -112,5 +115,12 @@ export class MainComponent implements OnInit {
     newTalk.url = this.setting.talkList[talkIndex].url;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex + 1, 0, newTalk);
+  }
+
+  /**
+   * プリセット画面に遷移
+   */
+  moveSelectView(){
+    this.router.navigate(['/preset']);
   }
 }
