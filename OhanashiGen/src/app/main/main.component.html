@@ -8,7 +8,10 @@
         </div>
         <div class="form-group">
             <label for="url">URL</label>
-            <input type="text" class="form-control" id="url" name="url" placeholder="表示する画像のURL" [(ngModel)]="nowTalk.url">
+            <div class="d-flex">
+                <input type="text" class="form-control mr-3" id="url" name="url" placeholder="表示する画像のURL" [(ngModel)]="nowTalk.url">
+                <button class="form-control btn-secondary px-0" style="width: 100px;" (click)="moveSelectView()">選択...</button>
+            </div>
         </div>
         <div class="form-group">
             <label for="message">喋る内容</label>
@@ -22,14 +25,10 @@
         </div>
         <div class="d-flex">
             <button class="form-control btn-primary mr-3 px-0" (click)="addTalk()">追加</button>
-            <button class="form-control btn-primary mr-3 px-0"  (click)="editTalk()"
-                [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">変更</button>
-            <button class="form-control btn-primary mr-3 px-0" (click)="upTalk()"
-                [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">↑↑</button>
-            <button class="form-control btn-primary mr-3 px-0" (click)="downTalk()"
-                [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">↓↓</button>
-            <button class="form-control btn-primary px-0"  (click)="deleteTalk()"
-                [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">削除</button>
+            <button class="form-control btn-primary mr-3 px-0" (click)="editTalk()" [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">変更</button>
+            <button class="form-control btn-primary mr-3 px-0" (click)="upTalk()" [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">↑↑</button>
+            <button class="form-control btn-primary mr-3 px-0" (click)="downTalk()" [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">↓↓</button>
+            <button class="form-control btn-primary px-0" (click)="deleteTalk()" [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">削除</button>
         </div>
     </form>
     <div class="border p-3  my-3">
