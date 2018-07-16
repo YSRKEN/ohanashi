@@ -503,6 +503,29 @@
         ]
     },
     {
+        "name": "白石紬",
+        "images": [
+            "assets/images/tsumugi/tsumugi1.png",
+            "assets/images/tsumugi/tsumugi2.png",
+            "assets/images/tsumugi/tsumugi3.png",
+            "assets/images/tsumugi/tsumugi4.png",
+            "assets/images/tsumugi/tsumugi5.png",
+            "assets/images/tsumugi/tsumugi6.png"
+        ]
+    },
+    {
+        "name": "桜守歌織",
+        "images": [
+            "assets/images/kaori/kaori1.png",
+            "assets/images/kaori/kaori2.png",
+            "assets/images/kaori/kaori3.png",
+            "assets/images/kaori/kaori4.png",
+            "assets/images/kaori/kaori5.png",
+            "assets/images/kaori/kaori6.png",
+            "assets/images/kaori/kaori7.png"
+        ]
+    },
+    {
         "name": "音無小鳥",
         "images": [
             "assets/images/kotori/1100234b19f.png",
