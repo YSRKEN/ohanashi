@@ -64,6 +64,8 @@ export class PreviewComponent implements OnInit {
       this.changeForm.emit(talk);
     }else{
       this.setting.selectTalkId = -1;
+      const talk = new TalkData();
+      this.changeForm.emit(talk);
     }
     this.refreshSelectDraw();
   }
