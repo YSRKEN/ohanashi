@@ -539,6 +539,14 @@
         ]
     },
     {
+        "name": "青羽美咲",
+        "images": [
+            "assets/images/misaki/misaki1.png",
+            "assets/images/misaki/misaki2.png",
+            "assets/images/misaki/misaki3.png"
+        ]
+    },
+    {
         "name": "早坂そら",
         "images": [
             "assets/images/sora/2100994b563_0.png",
