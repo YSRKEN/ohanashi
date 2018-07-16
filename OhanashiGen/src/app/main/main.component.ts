@@ -58,6 +58,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.push(this.nowTalk);
     this.nowTalk = new TalkData();
     this.setting.saveSetting();
+    this.refreshFlg = "true";
   }
 
   /**
