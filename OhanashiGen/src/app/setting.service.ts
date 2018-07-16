@@ -29,7 +29,7 @@ export class SettingService {
   /**
    * デレポモードにするか？
    */
-  derepoFlg: boolean = false;
+  derepoFlg: boolean = true;
 
   constructor() {
     // サンプルデータを追加

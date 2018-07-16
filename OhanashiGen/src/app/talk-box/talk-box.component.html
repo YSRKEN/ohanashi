@@ -9,8 +9,12 @@
         </div>
     </div>
 </div>
-<ul class="border" [ngClass]="derepoFlg == 'true' ? 'd-block' : 'd-none'">
-    <li>{{url}}</li>
-    <li>{{name}}</li>
-    <li>{{message}}</li>
-</ul>
+<div class="derepo-block position-relative" [ngClass]="derepoFlg == 'true' ? selected == 'true' ? 'bg-skyblue d-block' : 'd-block' : 'd-none'">
+    <img class="derepo-face position-relative" src={{url}}>
+    <div class="derepo-name position-relative">{{name}}</div>
+    <div class="derepo-message position-relative">{{message}}</div>
+    <div class="derepo-fav-button position-relative"></div>
+    <div class="derepo-favs position-relative">2795</div>
+    <div class="derepo-date position-relative">06-12 11:45</div>
+    <div class="derepo-fav-star position-relative">★</div>
+</div>
