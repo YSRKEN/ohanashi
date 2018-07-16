@@ -15,6 +15,12 @@ export class PreviewComponent implements OnInit {
   @Output() changeForm: EventEmitter<TalkData> = new EventEmitter();
 
   /**
+   * 更新時の処理
+   */
+  @Output() refreshDraw: EventEmitter<any> = new EventEmitter();
+
+
+  /**
    * 会話一覧
    */
   talkList: {firstFlg: string, talk: TalkData}[] = [];
@@ -29,6 +35,13 @@ export class PreviewComponent implements OnInit {
    * デレポモードの場合はtrue
    */
   @Input() derepoFlg: string;
+
+  @Input() set refreshFlg(flg: string){
+    if(flg == "true"){
+      this.refreshSelectDraw();
+      this.refreshDraw.emit(null);
+    }
+  }
 
   /**
    * 画面の内容を更新
