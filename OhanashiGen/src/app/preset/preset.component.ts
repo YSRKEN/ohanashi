@@ -29,10 +29,23 @@ export class PresetComponent implements OnInit {
     });
   }
 
+  /**
+   * 画像をタップするとメイン画面に戻る
+   * @param name キャラ名
+   * @param url 画像URL
+   */
   click(name: string, url: string){
     this.setting.setName =name;
     this.setting.setUrl = url;
     this.router.navigate(['/']);
+  }
+
+  /**
+   * https://github.com/tjoskar/ng-lazyload-image/issues/197
+   */
+  workaround(){
+    window.scrollTo(window.scrollX, window.scrollY - 1);
+    window.scrollTo(window.scrollX, window.scrollY + 1);
   }
 }
 

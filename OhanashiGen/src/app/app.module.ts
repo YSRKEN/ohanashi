@@ -13,6 +13,7 @@ import { SettingService } from './setting.service';
 import { TalkBoxComponent } from './talk-box/talk-box.component';
 import { PresetComponent } from './preset/preset.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LazyLoadImageModule
   ],
   providers: [SettingService],
   bootstrap: [AppComponent]
