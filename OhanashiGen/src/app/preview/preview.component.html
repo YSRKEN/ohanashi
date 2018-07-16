@@ -1,4 +1,10 @@
-<div *ngFor="let talk of talkList">
-    <app-talk-box selected={{talk.selected2}} url={{talk.url}} name={{talk.name}} message={{talk.message}}
-        (click)="select(talk.id)"></app-talk-box>
+<div class="pb-4" [ngClass]="derepoFlg == 'true' ? 'derepo-bg' : ''">
+    <div *ngFor="let talkPair of talkList">
+        <app-talk-box selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}}
+            name={{talkPair.talk.name}} message={{talkPair.talk.message}}
+            favs={{talkPair.talk.favs}} date={{talkPair.talk.date}}
+            (click)="select(talkPair.talk.id)"
+            derepoFlg={{derepoFlg}}
+            firstFlg={{talkPair.firstFlg}}></app-talk-box>
+    </div>
 </div>

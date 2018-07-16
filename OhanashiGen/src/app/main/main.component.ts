@@ -14,6 +14,16 @@ export class MainComponent implements OnInit {
    */
   nowTalk: TalkData = new TalkData();
 
+  /**
+   * デレポモードにするか？
+   */
+  derepoFlg: boolean = false;
+
+  /**
+   * プレビューを更新する際は"true"にする
+   */
+  refreshFlg: string = "false";
+
   constructor(private setting: SettingService, private router: Router) { }
 
   ngOnInit() {
@@ -21,6 +31,14 @@ export class MainComponent implements OnInit {
     this.setting.setUrl = "";
     this.nowTalk.name = this.setting.setName;
     this.setting.setName = "";
+    this.derepoFlg = this.setting.derepoFlg;
+  }
+
+  /**
+   * デレポモードにするか？
+   */
+  get derepoFlg2(): string{
+      return this.derepoFlg ? "true" : "false";
   }
 
   /**
@@ -40,7 +58,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.push(this.nowTalk);
     this.nowTalk = new TalkData();
     this.setting.saveSetting();
-    return;
+    this.refreshFlg = "true";
   }
 
   /**
@@ -51,6 +69,8 @@ export class MainComponent implements OnInit {
     this.nowTalk.message = selectTalk.message;
     this.nowTalk.name = selectTalk.name;
     this.nowTalk.url = selectTalk.url;
+    this.nowTalk.favs = selectTalk.favs;
+    this.nowTalk.date = selectTalk.date;
   }
 
   /**
@@ -65,6 +85,8 @@ export class MainComponent implements OnInit {
       selectTalk.message = this.nowTalk.message;
       selectTalk.name = this.nowTalk.name;
       selectTalk.url = this.nowTalk.url;
+      selectTalk.favs = this.nowTalk.favs;
+      selectTalk.date = this.nowTalk.date;
       this.setting.saveSetting();
     }
   }
@@ -80,6 +102,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.splice(eraseIndex, 1);
     this.nowTalk.id = 0;
     this.setting.saveSetting();
+    this.refreshFlg = "true";
   }
 
   /**
@@ -98,9 +121,12 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.date = this.setting.talkList[talkIndex].date;
+    newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex - 1, 0, newTalk);
     this.setting.saveSetting();
+    this.refreshFlg = "true";
   }
 
   /**
@@ -119,9 +145,12 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.date = this.setting.talkList[talkIndex].date;
+    newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex + 1, 0, newTalk);
     this.setting.saveSetting();
+    this.refreshFlg = "true";
   }
 
   /**
@@ -136,7 +165,7 @@ export class MainComponent implements OnInit {
    */
   async setPreset(){
     this.setting.saveDefaultSetting();
-    location.reload();
+    this.refreshFlg = "true";
   }
 
   /**
@@ -145,6 +174,21 @@ export class MainComponent implements OnInit {
   async deleteAllTalk(){
     this.setting.talkList = [];
     this.setting.saveSetting();
-    location.reload();
+    this.refreshFlg = "true";
+  }
+
+  /**
+   * デレポフラグを変更
+   */
+  checkDerepoFlg(){
+    this.setting.derepoFlg = !this.derepoFlg;
+    this.setting.saveSetting();
+  }
+
+  /**
+   * 画面更新を止める
+   */
+  refreshDraw(){
+    setTimeout(() => this.refreshFlg = "false");
   }
 }

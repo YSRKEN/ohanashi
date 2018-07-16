@@ -26,6 +26,11 @@ export class SettingService {
    */
   setName: string = "";
 
+  /**
+   * デレポモードにするか？
+   */
+  derepoFlg: boolean = false;
+
   constructor() {
     // サンプルデータを追加
     if(window.localStorage.getItem("saveData") == null){
@@ -38,9 +43,15 @@ export class SettingService {
         temp.message = data.message;
         temp.name = data.name;
         temp.url = data.url;
+        temp.favs = data.favs;
+        temp.date = data.date;
         temp.selected = data.selected;
         this.talkList.push(temp);
       }
+    }
+    // デレポモードフラグを読み込み
+    if(window.localStorage.getItem("derepoFlg") != null){
+      this.derepoFlg = (window.localStorage.getItem("derepoFlg") == 'true');
     }
   }
 
@@ -56,6 +67,8 @@ export class SettingService {
       data.name = "田中琴葉";
       data.url = "assets/images/kotoha/1100aefcf25.png";
       data.selected = false;
+      data.favs = "9999+";
+      data.date = "07-17 09:00";
       this.talkList.push(data);
     }
     {
@@ -65,6 +78,8 @@ export class SettingService {
       data.name = "島原エレナ";
       data.url = "assets/images/elena/1100d030dd9.png";
       data.selected = false;
+      data.favs = "2243";
+      data.date = "07-17 09:03";
       this.talkList.push(data);
     }
     {
@@ -74,6 +89,8 @@ export class SettingService {
       data.name = "田中琴葉";
       data.url = "assets/images/kotoha/1100f374c0e.png";
       data.selected = false;
+      data.favs = "1214";
+      data.date = "07-17 09:04";
       this.talkList.push(data);
     }
     {
@@ -83,6 +100,8 @@ export class SettingService {
       data.name = "望月杏奈";
       data.url = "assets/images/anna/1100774c550.png";
       data.selected = false;
+      data.favs = "5627";
+      data.date = "07-17 09:20";
       this.talkList.push(data);
     }
     {
@@ -92,6 +111,8 @@ export class SettingService {
       data.name = "横山奈緒";
       data.url = "assets/images/nao/110032c8059.png";
       data.selected = false;
+      data.favs = "3304";
+      data.date = "01-17 09:30";
       this.talkList.push(data);
     }
     {
@@ -101,6 +122,8 @@ export class SettingService {
       data.name = "早坂そら";
       data.url = "assets/images/sora/2100994b563_1.png";
       data.selected = false;
+      data.favs = "1000";
+      data.date = "01-17 10:00";
       this.talkList.push(data);
     }
     this.saveSetting();
@@ -112,5 +135,6 @@ export class SettingService {
   saveSetting(){
     const output: string = JSON.stringify(this.talkList);
     window.localStorage.setItem("saveData", output);
+    window.localStorage.setItem("derepoFlg", this.derepoFlg ? 'true' : 'false');
   }
 }

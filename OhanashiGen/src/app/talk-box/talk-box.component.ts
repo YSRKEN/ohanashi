@@ -23,9 +23,29 @@ export class TalkBoxComponent implements OnInit {
   @Input() message: string;
 
   /**
+   * ファボ数
+   */
+  @Input() favs: string;
+
+  /**
+   * タイムスタンプ
+   */
+  @Input() date: string;
+
+  /**
    * 選択されている場合はtrue
    */
   @Input() selected: string;
+
+  /**
+   * デレポモードの場合はtrue
+   */
+  @Input() derepoFlg: string;
+
+  /**
+   * 先頭要素の場合はtrue
+   */
+  @Input() firstFlg: string;
 
   constructor() { }
 

@@ -9,6 +9,9 @@
 .bg-skyblue{
     background-color: skyblue !important;
 }
+.bg-white{
+    background-color: white !important;
+}
 .bg-default{
     background: url(/assets/images/background.png) repeat-y;
     width: 320px;
@@ -43,4 +46,85 @@
     background-color: white;
     font: bold 14px/17.5px "Arial", sans-serif;
     word-break: break-all;
+}
+.derepo-block-first{
+    top: 4px;
+    left: 17px;
+    width: 382px;
+    height: 92px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    border-bottom-style: dotted;
+    border-bottom-color: #808080;
+    border-bottom-width: 1px;
+}
+.derepo-block{
+    top: 4px;
+    left: 17px;
+    width: 382px;
+    height: 95px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+.derepo-face{
+    top: 13px;
+    left: 0px;
+    width: 42px;
+    height: 42px;
+}
+.derepo-name{
+    top: 11px;
+    left: 48px;
+    font: bold 14px/17.5px "Arial", sans-serif;
+}
+.derepo-message{
+    top: 32px;
+    left: 48px;
+    width: 238px;
+    font: 14px/17.5px "Arial", sans-serif;
+}
+.derepo-fav-star{
+    top: 15px;
+    left: 338px;
+    color: #959595;
+    font: bold 28px "Arial", sans-serif;
+    background-color: rgba(255,255,255,0.0);
+}
+.derepo-fav-button{
+    top: 17px;
+    left: 330px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #DBDBDB;
+    width: 45px;
+    height: 45px;
+    border-radius: 7px;
+    z-index: 0;
+    background-color: rgba(255,255,255,0.0);
+}
+.derepo-favs{
+    top: 46px;
+    left: 336px;
+    font: bold 14px "Arial", sans-serif;
+    z-index: 1;
+    width: 25px;
+    background-color: rgba(255, 255, 255, 0);
+}
+.derepo-date-first{
+    top: 65px;
+    left: 308px;
+    color: #959595;
+    font: bold 14px "Arial", sans-serif;
+    z-index: 2;
+    white-space: nowrap;
+    background-color: rgba(255,255,255,0.0);
+}
+.derepo-date{
+    top: 75px;
+    left: 308px;
+    color: #959595;
+    font: bold 14px "Arial", sans-serif;
+    z-index: 2;
+    white-space: nowrap;
+    background-color: rgba(255,255,255,0.0);
 }
