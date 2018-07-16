@@ -59,6 +59,8 @@ export class PreviewComponent implements OnInit {
       talk.message = nowTalk.message;
       talk.name = nowTalk.name;
       talk.url = nowTalk.url;
+      talk.favs = nowTalk.favs;
+      talk.date = nowTalk.date;
       this.changeForm.emit(talk);
     }else{
       this.setting.selectTalkId = -1;

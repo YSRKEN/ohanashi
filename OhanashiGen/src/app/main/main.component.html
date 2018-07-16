@@ -1,6 +1,6 @@
 <h1 class="text-center d-none d-sm-block my-3">おはなしジェネレーター</h1>
 <h2 class="text-center d-xs-block d-sm-none my-3">おはなしジェネレーター</h2>
-<p class="ml-3">バージョン：
+<p class="text-center ml-3">バージョン：
     <a href="https://github.com/YSRKEN/ohanashi">1.2.0</a>　作者：
     <a href="https://twitter.com/YSRKEN">@YSRKEN</a>
 </p>
@@ -8,8 +8,7 @@
     <form class="border p-3">
         <div class="form-group">
             <label for="name">キャラ名</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="キャラ名" [(ngModel)]="nowTalk.name"
-            maxlength='5'>
+            <input type="text" class="form-control" id="name" name="name" placeholder="キャラ名" [(ngModel)]="nowTalk.name" maxlength='5'>
         </div>
         <div class="form-group">
             <label for="url">URL</label>
@@ -25,15 +24,22 @@
             </textarea>
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="derepoFlg" name="derepoFlg" [(ngModel)]="derepoFlg"
-                (click)="checkDerepoFlg()">
+            <input type="checkbox" class="form-check-input" id="derepoFlg" name="derepoFlg" [(ngModel)]="derepoFlg" (click)="checkDerepoFlg()">
             <label class="form-check-label" for="derepoFlg">デレポモードにする</label>
+        </div>
+        <div class="form-group" [ngClass]="derepoFlg ? 'd-block' : 'd-none'">
+            <label for="favs">ファボ数</label>
+            <input type="text" class="form-control" id="favs" name="favs" placeholder="XXXX" [(ngModel)]="nowTalk.favs" maxlength='5'>
+        </div>
+        <div class="form-group" [ngClass]="derepoFlg ? 'd-block' : 'd-none'">
+            <label for="date">タイムスタンプ</label>
+            <input type="text" class="form-control" id="date" name="date" placeholder="MM-DD HH:MM" [(ngModel)]="nowTalk.date" maxlength='11'>
         </div>
         <div class="form-group">
             <label>プレビュー</label>
             <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
-                    <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}}
-                    derepoFlg={{derepoFlg2}}></app-talk-box>
+                <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}} derepoFlg={{derepoFlg2}}
+                favs={{nowTalk.favs}} date={{nowTalk.date}}></app-talk-box>
             </div>
         </div>
         <div class="d-flex">

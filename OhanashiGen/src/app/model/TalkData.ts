@@ -23,6 +23,16 @@ export class TalkData{
     url: string = "assets/images/producer_p_head/P-suite.png";
 
     /**
+     * ファボ数
+     */
+    favs: string = "1234";
+
+    /**
+     * タイムスタンプ
+     */
+    date: string = "01-02 03:04"
+
+    /**
      * 選択されているか？
      */
     selected: boolean = false;

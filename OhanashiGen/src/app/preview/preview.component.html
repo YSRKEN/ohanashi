@@ -2,6 +2,7 @@
     <div *ngFor="let talkPair of talkList">
         <app-talk-box selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}}
             name={{talkPair.talk.name}} message={{talkPair.talk.message}}
+            favs={{talkPair.talk.favs}} date={{talkPair.talk.date}}
             (click)="select(talkPair.talk.id)"
             derepoFlg={{derepoFlg}}
             firstFlg={{talkPair.firstFlg}}></app-talk-box>

@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.push(this.nowTalk);
     this.nowTalk = new TalkData();
     this.setting.saveSetting();
-    return;
+    location.reload();
   }
 
   /**
@@ -64,6 +64,8 @@ export class MainComponent implements OnInit {
     this.nowTalk.message = selectTalk.message;
     this.nowTalk.name = selectTalk.name;
     this.nowTalk.url = selectTalk.url;
+    this.nowTalk.favs = selectTalk.favs;
+    this.nowTalk.date = selectTalk.date;
   }
 
   /**
@@ -78,6 +80,8 @@ export class MainComponent implements OnInit {
       selectTalk.message = this.nowTalk.message;
       selectTalk.name = this.nowTalk.name;
       selectTalk.url = this.nowTalk.url;
+      selectTalk.favs = this.nowTalk.favs;
+      selectTalk.date = this.nowTalk.date;
       this.setting.saveSetting();
     }
   }
@@ -112,6 +116,8 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.date = this.setting.talkList[talkIndex].date;
+    newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex - 1, 0, newTalk);
     this.setting.saveSetting();
@@ -134,6 +140,8 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.date = this.setting.talkList[talkIndex].date;
+    newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex + 1, 0, newTalk);
     this.setting.saveSetting();
