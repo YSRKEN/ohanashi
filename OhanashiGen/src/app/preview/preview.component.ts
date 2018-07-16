@@ -15,9 +15,15 @@ export class PreviewComponent implements OnInit {
   @Output() changeForm: EventEmitter<TalkData> = new EventEmitter();
 
   /**
+   * 更新時の処理
+   */
+  @Output() refreshDraw: EventEmitter<any> = new EventEmitter();
+
+
+  /**
    * 会話一覧
    */
-  talkList: TalkData[] = [];
+  talkList: {firstFlg: string, talk: TalkData}[] = [];
 
   constructor(private setting: SettingService) { }
 
@@ -26,12 +32,29 @@ export class PreviewComponent implements OnInit {
   }
 
   /**
+   * デレポモードの場合はtrue
+   */
+  @Input() derepoFlg: string;
+
+  @Input() set refreshFlg(flg: string){
+    if(flg == "true"){
+      this.refreshSelectDraw();
+      this.refreshDraw.emit(null);
+    }
+  }
+
+  /**
    * 画面の内容を更新
    */
   refreshSelectDraw(){
-    const list = this.setting.talkList;
-    for(let i = 0; i < list.length; ++i){
-      list[i].selected = (this.setting.selectTalkId == list[i].id);
+    const list = [];
+    for(let i = 0; i < this.setting.talkList.length; ++i){
+      const temp = {firstFlg: "false", talk: this.setting.talkList[i]};
+      if(i == 0){
+        temp.firstFlg = "true";
+      }
+      temp.talk.selected = (this.setting.selectTalkId == this.setting.talkList[i].id);
+      list.push(temp);
     }
     this.talkList = list;
   }
@@ -49,9 +72,13 @@ export class PreviewComponent implements OnInit {
       talk.message = nowTalk.message;
       talk.name = nowTalk.name;
       talk.url = nowTalk.url;
+      talk.favs = nowTalk.favs;
+      talk.date = nowTalk.date;
       this.changeForm.emit(talk);
     }else{
       this.setting.selectTalkId = -1;
+      const talk = new TalkData();
+      this.changeForm.emit(talk);
     }
     this.refreshSelectDraw();
   }
