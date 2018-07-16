@@ -10,7 +10,7 @@
     </div>
 </div>
 <div [ngClass]="derepoFlg == 'true' ? 'd-block' : 'd-none'">
-    <div [ngClass]="selected == 'true' ? 'bg-skyblue' : ''">
+    <div [ngClass]="selected == 'true' ? 'bg-skyblue' : 'bg-white'">
         <div class="position-relative" [ngClass]="firstFlg == 'true' ? 'derepo-block-first' : 'derepo-block'">
             <img class="derepo-face position-absolute" src={{url}}>
             <div class="derepo-name position-absolute">{{name}}</div>
