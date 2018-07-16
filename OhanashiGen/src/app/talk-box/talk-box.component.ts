@@ -47,6 +47,13 @@ export class TalkBoxComponent implements OnInit {
    */
   @Input() firstFlg: string;
 
+  get setNgClass(): string{
+    let temp = "";
+    temp += (this.selected == "true" ? 'bg-skyblue ' : 'bg-white ');
+    temp += (this.firstFlg == 'true' ? 'derepo-block-first' : 'derepo-block');
+    return temp;
+  }
+
   constructor() { }
 
   ngOnInit() {
