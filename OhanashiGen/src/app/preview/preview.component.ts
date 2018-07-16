@@ -44,7 +44,6 @@ export class PreviewComponent implements OnInit {
       list.push(temp);
     }
     this.talkList = list;
-    console.log(this.talkList);
   }
 
   /**

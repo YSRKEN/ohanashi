@@ -29,7 +29,7 @@ export class SettingService {
   /**
    * デレポモードにするか？
    */
-  derepoFlg: boolean = true;
+  derepoFlg: boolean = false;
 
   constructor() {
     // サンプルデータを追加
@@ -46,6 +46,10 @@ export class SettingService {
         temp.selected = data.selected;
         this.talkList.push(temp);
       }
+    }
+    // デレポモードフラグを読み込み
+    if(window.localStorage.getItem("derepoFlg") != null){
+      this.derepoFlg = (window.localStorage.getItem("derepoFlg") == 'true');
     }
   }
 
@@ -117,5 +121,6 @@ export class SettingService {
   saveSetting(){
     const output: string = JSON.stringify(this.talkList);
     window.localStorage.setItem("saveData", output);
+    window.localStorage.setItem("derepoFlg", this.derepoFlg ? 'true' : 'false');
   }
 }

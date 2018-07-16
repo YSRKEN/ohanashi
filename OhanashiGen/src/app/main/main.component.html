@@ -25,7 +25,8 @@
             </textarea>
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="derepoFlg" name="derepoFlg" [(ngModel)]="derepoFlg">
+            <input type="checkbox" class="form-check-input" id="derepoFlg" name="derepoFlg" [(ngModel)]="derepoFlg"
+                (click)="checkDerepoFlg()">
             <label class="form-check-label" for="derepoFlg">デレポモードにする</label>
         </div>
         <div class="form-group">

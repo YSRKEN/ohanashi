@@ -163,4 +163,12 @@ export class MainComponent implements OnInit {
     this.setting.saveSetting();
     location.reload();
   }
+
+  /**
+   * デレポフラグを変更
+   */
+  checkDerepoFlg(){
+    this.setting.derepoFlg = !this.derepoFlg;
+    this.setting.saveSetting();
+  }
 }
