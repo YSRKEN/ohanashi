@@ -21,6 +21,11 @@ export class SettingService {
    */
   setUrl: string = "";
 
+  /**
+   * 設定したい名前
+   */
+  setName: string = "";
+
   constructor() {
     // サンプルデータを追加
     if(window.localStorage.getItem("saveData") == null){

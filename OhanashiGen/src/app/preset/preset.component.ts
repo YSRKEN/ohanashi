@@ -10,17 +10,42 @@ import { Router } from '@angular/router';
 })
 export class PresetComponent implements OnInit {
 
-  urlList: string[] = [];
+  dataList: ShowPresetData[] = [];
 
   constructor(private http: HttpClient, private setting: SettingService, private router: Router) { }
 
   async ngOnInit() {
-    const text = await this.http.get('assets/preset_list.txt' ,{ responseType: 'text' }).toPromise();
-    this.urlList = text.split("\n");
+    const text = await this.http.get<PresetData[]>('assets/preset_list.json').toPromise();
+    let i = 1;
+    this.dataList = text.map(temp => {
+      const temp2 = new ShowPresetData();
+      temp2.name = temp.name;
+      temp2.images = temp.images;
+      temp2.href = "#collapse" + i;
+      temp2.id = "heading" + i;
+      temp2.id2 = "collapse" + i;
+      ++i;
+      return temp2;
+    });
+    console.log(this.dataList);
   }
 
-  click(url: string){
+  click(name: string, url: string){
+    this.setting.setName =name;
     this.setting.setUrl = url;
     this.router.navigate(['/']);
   }
+}
+
+class PresetData{
+  name: string;
+  images: string[];
+}
+
+class ShowPresetData{
+  name: string;
+  images: string[];
+  id: string;
+  href: string;
+  id2: string;
 }
