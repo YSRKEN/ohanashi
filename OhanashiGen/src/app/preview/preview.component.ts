@@ -26,6 +26,11 @@ export class PreviewComponent implements OnInit {
   }
 
   /**
+   * デレポモードの場合はtrue
+   */
+  @Input() derepoFlg: string;
+
+  /**
    * 画面の内容を更新
    */
   refreshSelectDraw(){

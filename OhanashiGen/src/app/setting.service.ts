@@ -26,6 +26,11 @@ export class SettingService {
    */
   setName: string = "";
 
+  /**
+   * デレポモードにするか？
+   */
+  derepoFlg: boolean = false;
+
   constructor() {
     // サンプルデータを追加
     if(window.localStorage.getItem("saveData") == null){

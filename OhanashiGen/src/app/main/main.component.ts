@@ -14,6 +14,11 @@ export class MainComponent implements OnInit {
    */
   nowTalk: TalkData = new TalkData();
 
+  /**
+   * デレポモードにするか？
+   */
+  derepoFlg: boolean = false;
+
   constructor(private setting: SettingService, private router: Router) { }
 
   ngOnInit() {
@@ -21,6 +26,14 @@ export class MainComponent implements OnInit {
     this.setting.setUrl = "";
     this.nowTalk.name = this.setting.setName;
     this.setting.setName = "";
+    this.derepoFlg = this.setting.derepoFlg;
+  }
+
+  /**
+   * デレポモードにするか？
+   */
+  get derepoFlg2(): string{
+      return this.derepoFlg ? "true" : "false";
   }
 
   /**

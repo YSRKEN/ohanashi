@@ -1,4 +1,4 @@
 <div *ngFor="let talk of talkList">
     <app-talk-box selected={{talk.selected2}} url={{talk.url}} name={{talk.name}} message={{talk.message}}
-        (click)="select(talk.id)"></app-talk-box>
+        (click)="select(talk.id)" derepoFlg={{derepoFlg}}></app-talk-box>
 </div>

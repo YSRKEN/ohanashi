@@ -1,9 +1,16 @@
-<div class="talk-list" [ngClass]="selected == 'true' ? 'bg-skyblue' : 'bg-default'">
-    <div class="talk-block position-relative">
-        <img class="talk-face position-absolute" src={{url}}>
-        <div class="talk-balloon position-absolute">
-            <p class="talk-name position-absolute">{{name}}</p>
-            <pre class="talk-message position-absolute">{{message}}</pre>
+<div [ngClass]="derepoFlg == 'true' ? 'd-none' : 'd-block'">
+    <div class="talk-list" [ngClass]="selected == 'true' ? 'bg-skyblue' : 'bg-default'">
+        <div class="talk-block position-relative">
+            <img class="talk-face position-absolute" src={{url}}>
+            <div class="talk-balloon position-absolute">
+                <p class="talk-name position-absolute">{{name}}</p>
+                <pre class="talk-message position-absolute">{{message}}</pre>
+            </div>
         </div>
     </div>
 </div>
+<ul class="border" [ngClass]="derepoFlg == 'true' ? 'd-block' : 'd-none'">
+    <li>{{url}}</li>
+    <li>{{name}}</li>
+    <li>{{message}}</li>
+</ul>
