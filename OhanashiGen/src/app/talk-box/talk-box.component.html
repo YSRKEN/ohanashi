@@ -10,8 +10,7 @@
     </div>
 </div>
 <div [ngClass]="derepoFlg == 'true' ? 'd-block' : 'd-none'">
-    <div [ngClass]="selected == 'true' ? 'bg-skyblue' : 'bg-white'">
-        <div class="position-relative" [ngClass]="firstFlg == 'true' ? 'derepo-block-first' : 'derepo-block'">
+        <div class="position-relative" [ngClass]="setNgClass">
             <img class="derepo-face position-absolute" src={{url}}>
             <div class="derepo-name position-absolute">{{name}}</div>
             <div class="derepo-message position-absolute">{{message}}</div>
@@ -20,5 +19,4 @@
             <div class="derepo-favs position-absolute">{{favs}}</div>
             <div class="position-absolute" [ngClass]="firstFlg == 'true' ? 'derepo-date-first' : 'derepo-date'">{{date}}</div>
         </div>
-    </div>
 </div>
