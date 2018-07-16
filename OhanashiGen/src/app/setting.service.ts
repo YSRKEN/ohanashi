@@ -19,7 +19,7 @@ export class SettingService {
   /**
    * 設定したいURL
    */
-  setUrl: string = "";
+  setUrl: string = "assets/images/producer_p_head/P-suite.png";
 
   /**
    * 設定したい名前

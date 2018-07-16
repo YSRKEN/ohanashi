@@ -9,6 +9,11 @@
 .bg-skyblue{
     background-color: skyblue !important;
 }
+.bg-default{
+    background: url(/assets/images/background.png) repeat-y;
+    width: 320px;
+    background-size: 320px 5px;
+}
 .talk-face{
     left: 5px;
     top: 4px;
@@ -16,57 +21,23 @@
     height: 76px;
 }
 .talk-balloon{ 
-    height: 60px; 
-    width: 224px; 
-    background-color: #FFFFFF; 
-    border-radius: 5px; 
-    top: 20px; 
-    right: 9px; 
-    border-top: 1px solid #F33281; 
-    border-left: 1px solid #F33281; 
-    border-right: 1px solid #F33281; 
-    border-bottom: 1px solid #F33281; 
-} 
-.talk-balloon:before{ 
-    content: ""; 
     height: 76px; 
-    width: 94px; 
-    background-color: #FFFFFF; 
-    border-radius: 5px; 
-    position: absolute; 
-    top: -17px; 
-    left: -1px; 
-    border-top: 1px solid #F33281; 
-    border-left: 1px solid #F33281; 
-    border-right: 0px #F33281; 
-    border-bottom: 1px solid #F33281; 
+    width: 224px; 
+    background: url(/assets/images/balloon.png) no-repeat; 
+    background-size: 224px 76px;
+    right: 9px;
+    top: 4px;
 } 
-.talk-balloon:after{ 
-    content: ""; 
-    height: 16px; 
-    width: 16px; 
-    background-color: #FFFFFF; 
-    border-radius: 0px; 
-    position: absolute; 
-    top: -16px; 
-    left: 83px; 
-    transform: skew(45deg); 
-    -webkit-transform: skew(45deg); 
-    border-top: 1px #F33281; 
-    border-left: 1px #F33281; 
-    border-right: 1px solid #F33281; 
-    border-bottom: 1px #F33281;
-}
 .talk-name{
     left: 5px;
-    top: -12px;
+    top: 4px;
     color: #f33281;
     background-color: white;
     font: bold 14px/17.5px "Arial", sans-serif;
 }
 .talk-message{
     left: 5px;
-    top: 3px;
+    top: 19px;
     width: 214px;
     white-space: pre-wrap;
     background-color: white;

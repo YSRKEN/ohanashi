@@ -20,7 +20,7 @@ export class TalkData{
     /**
      * 表示する画像のURL
      */
-    url: string = "";
+    url: string = "assets/images/producer_p_head/P-suite.png";
 
     /**
      * 選択されているか？
