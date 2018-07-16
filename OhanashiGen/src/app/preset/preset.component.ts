@@ -27,7 +27,6 @@ export class PresetComponent implements OnInit {
       ++i;
       return temp2;
     });
-    console.log(this.dataList);
   }
 
   click(name: string, url: string){
