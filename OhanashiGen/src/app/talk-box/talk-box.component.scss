@@ -60,18 +60,25 @@
     height: 42px;
 }
 .derepo-name{
-    top: -33px;
+    top: 11px;
     left: 48px;
     font: bold 14px/17.5px "Arial", sans-serif;
 }
 .derepo-message{
-    top: -32px;
+    top: 32px;
     left: 48px;
     width: 238px;
     font: 14px/17.5px "Arial", sans-serif;
 }
+.derepo-fav-star{
+    top: 15px;
+    left: 336px;
+    color: #959595;
+    font: bold 28px "Arial", sans-serif;
+    background-color: rgba(255,255,255,0.0);
+}
 .derepo-fav-button{
-    top: -60px;
+    top: 17px;
     left: 330px;
     border-width: 1px;
     border-style: solid;
@@ -83,7 +90,7 @@
     background-color: rgba(255,255,255,0.0);
 }
 .derepo-favs{
-    top: -78px;
+    top: 46px;
     left: 337px;
     font: bold 14px "Arial", sans-serif;
     z-index: 1;
@@ -91,17 +98,11 @@
     background-color: rgba(255, 255, 255, 0);
 }
 .derepo-date{
-    top:-67px;
+    top: 65px;
     left: 308px;
     color: #959595;
     font: bold 14px "Arial", sans-serif;
     z-index: 2;
-    background-color: rgba(255,255,255,0.0);
-}
-.derepo-fav-star{
-    top:-138px;
-    left: 339px;
-    color: #959595;
-    font: bold 28px "Arial", sans-serif;
+    white-space: nowrap;
     background-color: rgba(255,255,255,0.0);
 }

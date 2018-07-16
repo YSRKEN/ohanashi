@@ -10,11 +10,11 @@
     </div>
 </div>
 <div class="derepo-block position-relative" [ngClass]="derepoFlg == 'true' ? selected == 'true' ? 'bg-skyblue d-block' : 'd-block' : 'd-none'">
-    <img class="derepo-face position-relative" src={{url}}>
-    <div class="derepo-name position-relative">{{name}}</div>
-    <div class="derepo-message position-relative">{{message}}</div>
-    <div class="derepo-fav-button position-relative"></div>
-    <div class="derepo-favs position-relative">2795</div>
-    <div class="derepo-date position-relative">06-12 11:45</div>
-    <div class="derepo-fav-star position-relative">★</div>
+    <img class="derepo-face position-absolute" src={{url}}>
+    <div class="derepo-name position-absolute">{{name}}</div>
+    <div class="derepo-message position-absolute">{{message}}</div>
+    <div class="derepo-fav-star position-absolute">★</div>
+    <div class="derepo-fav-button position-absolute"></div>
+    <div class="derepo-favs position-absolute">2795</div>
+    <div class="derepo-date position-absolute">06-12 11:45</div>
 </div>
