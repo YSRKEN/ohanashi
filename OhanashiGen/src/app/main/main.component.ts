@@ -93,6 +93,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.splice(eraseIndex, 1);
     this.nowTalk.id = 0;
     this.setting.saveSetting();
+    location.reload();
   }
 
   /**
@@ -114,6 +115,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex - 1, 0, newTalk);
     this.setting.saveSetting();
+    location.reload();
   }
 
   /**
@@ -135,6 +137,7 @@ export class MainComponent implements OnInit {
     this.setting.talkList.splice(talkIndex, 1);
     this.setting.talkList.splice(talkIndex + 1, 0, newTalk);
     this.setting.saveSetting();
+    location.reload();
   }
 
   /**

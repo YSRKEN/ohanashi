@@ -30,8 +30,10 @@
         </div>
         <div class="form-group">
             <label>プレビュー</label>
-            <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}}
-                derepoFlg={{derepoFlg2}}></app-talk-box>
+            <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
+                    <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}}
+                    derepoFlg={{derepoFlg2}}></app-talk-box>
+            </div>
         </div>
         <div class="d-flex">
             <button class="form-control btn-primary mr-3 px-0" (click)="addTalk()">追加</button>
@@ -41,7 +43,7 @@
             <button class="form-control btn-primary px-0" (click)="deleteTalk()" [ngClass]="nowTalk.id == 0 ? 'd-none' : 'd-inline'">削除</button>
         </div>
     </form>
-    <form class="border p-3  my-3">
+    <form class="border p-3 my-3">
         <app-preview (changeForm)="changeForm($event)" derepoFlg={{derepoFlg2}}></app-preview>
         <div class="d-flex mt-3">
             <button class="form-control btn-primary mr-3 px-0" (click)="setPreset()">初期化</button>

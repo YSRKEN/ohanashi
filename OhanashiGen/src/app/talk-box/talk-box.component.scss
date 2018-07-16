@@ -44,14 +44,26 @@
     font: bold 14px/17.5px "Arial", sans-serif;
     word-break: break-all;
 }
-.derepo-block{
+.derepo-block-first{
     top: 4px;
     left: 17px;
     width: 382px;
     height: 92px;
     margin-top: 0px;
     margin-bottom: 1px;
-    background-color: rgba(255,255,255,0.0);
+    background-color: rgba(255,255,255,1.0);
+    border-bottom-style: dotted;
+    border-bottom-color: #808080;
+    border-bottom-width: 1px;
+}
+.derepo-block{
+    top: 4px;
+    left: 17px;
+    width: 382px;
+    height: 95px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    background-color: rgba(255,255,255,1.0);
 }
 .derepo-face{
     top: 13px;
@@ -72,7 +84,7 @@
 }
 .derepo-fav-star{
     top: 15px;
-    left: 336px;
+    left: 338px;
     color: #959595;
     font: bold 28px "Arial", sans-serif;
     background-color: rgba(255,255,255,0.0);
@@ -91,14 +103,23 @@
 }
 .derepo-favs{
     top: 46px;
-    left: 337px;
+    left: 336px;
     font: bold 14px "Arial", sans-serif;
     z-index: 1;
     width: 25px;
     background-color: rgba(255, 255, 255, 0);
 }
-.derepo-date{
+.derepo-date-first{
     top: 65px;
+    left: 308px;
+    color: #959595;
+    font: bold 14px "Arial", sans-serif;
+    z-index: 2;
+    white-space: nowrap;
+    background-color: rgba(255,255,255,0.0);
+}
+.derepo-date{
+    top: 75px;
     left: 308px;
     color: #959595;
     font: bold 14px "Arial", sans-serif;

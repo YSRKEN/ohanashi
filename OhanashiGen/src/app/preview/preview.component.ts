@@ -17,7 +17,7 @@ export class PreviewComponent implements OnInit {
   /**
    * 会話一覧
    */
-  talkList: TalkData[] = [];
+  talkList: {firstFlg: string, talk: TalkData}[] = [];
 
   constructor(private setting: SettingService) { }
 
@@ -34,11 +34,17 @@ export class PreviewComponent implements OnInit {
    * 画面の内容を更新
    */
   refreshSelectDraw(){
-    const list = this.setting.talkList;
-    for(let i = 0; i < list.length; ++i){
-      list[i].selected = (this.setting.selectTalkId == list[i].id);
+    const list = [];
+    for(let i = 0; i < this.setting.talkList.length; ++i){
+      const temp = {firstFlg: "false", talk: this.setting.talkList[i]};
+      if(i == 0){
+        temp.firstFlg = "true";
+      }
+      temp.talk.selected = (this.setting.selectTalkId == this.setting.talkList[i].id);
+      list.push(temp);
     }
     this.talkList = list;
+    console.log(this.talkList);
   }
 
   /**

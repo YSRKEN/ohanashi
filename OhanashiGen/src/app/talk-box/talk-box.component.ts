@@ -32,6 +32,11 @@ export class TalkBoxComponent implements OnInit {
    */
   @Input() derepoFlg: string;
 
+  /**
+   * 先頭要素の場合はtrue
+   */
+  @Input() firstFlg: string;
+
   constructor() { }
 
   ngOnInit() {
