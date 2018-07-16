@@ -19,6 +19,8 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.nowTalk.url = this.setting.setUrl;
     this.setting.setUrl = "";
+    this.nowTalk.name = this.setting.setName;
+    this.setting.setName = "";
   }
 
   /**

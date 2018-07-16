@@ -1,7 +1,21 @@
 <h1 class="text-center d-none d-sm-block my-3">キャラを選択</h1>
 <h2 class="text-center d-xs-block d-sm-none my-3">キャラを選択</h2>
-<div class="m-2 d-flex flex-wrap">
-  <div *ngFor="let url of urlList" class="mx-auto">
-    <img src={{url}} width="76px" height="76px" class="m-1" (click)="click(url)">
+<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card" *ngFor="let data of dataList">
+    <div class="card-header" role="tab" id={{data.id}}>
+      <h5 class="mb-0">
+        <a class="collapsed text-body" data-toggle="collapse" href={{data.href}}
+          role="button" aria-expanded="false" (click)="workaround()">
+          {{data.name}}
+        </a>
+      </h5>
+    </div>
+    <div id={{data.id2}} class="collapse" role="tabpanel" data-parent="#accordion">
+      <div class="card-body d-flex flex-wrap">
+        <div *ngFor="let url of data.images">
+          <img lazyLoad={{url}} width="76px" height="76px" class="m-1" (click)="click(data.name, url)">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
