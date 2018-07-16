@@ -8,7 +8,8 @@
     <form class="border p-3">
         <div class="form-group">
             <label for="name">キャラ名</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="キャラ名" [(ngModel)]="nowTalk.name">
+            <input type="text" class="form-control" id="name" name="name" placeholder="キャラ名" [(ngModel)]="nowTalk.name"
+            maxlength='5'>
         </div>
         <div class="form-group">
             <label for="url">URL</label>
