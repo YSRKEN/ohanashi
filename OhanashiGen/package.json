@@ -24,6 +24,7 @@
     "@angular/router": "^6.0.3",
     "@angular/service-worker": "^6.0.3",
     "core-js": "^2.5.4",
+    "html2canvas": "^1.0.0-alpha.12",
     "ng-lazyload-image": "^4.0.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

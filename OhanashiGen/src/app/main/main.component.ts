@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TalkData } from '../model/TalkData';
 import { SettingService } from '../setting.service';
 import { Router } from '@angular/router';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-main',
@@ -37,20 +38,20 @@ export class MainComponent implements OnInit {
   /**
    * デレポモードにするか？
    */
-  get derepoFlg2(): string{
-      return this.derepoFlg ? "true" : "false";
+  get derepoFlg2(): string {
+    return this.derepoFlg ? "true" : "false";
   }
 
   /**
    * 会話を追加する
    */
-  addTalk(){
+  addTalk() {
     console.log(this.setting.talkList);
     let newId = 1;
-    while(true){
-      if(this.setting.talkList.filter(t => t.id == newId).length == 0){
+    while (true) {
+      if (this.setting.talkList.filter(t => t.id == newId).length == 0) {
         break;
-      }else{
+      } else {
         ++newId;
       }
     }
@@ -64,7 +65,7 @@ export class MainComponent implements OnInit {
   /**
    * プレビュー欄をタップすると、画面上部が書き換わるようにする
    */
-  changeForm(selectTalk: TalkData){
+  changeForm(selectTalk: TalkData) {
     this.nowTalk.id = selectTalk.id;
     this.nowTalk.message = selectTalk.message;
     this.nowTalk.name = selectTalk.name;
@@ -76,11 +77,11 @@ export class MainComponent implements OnInit {
   /**
    * 会話を修正する
    */
-  editTalk(){
-    if(this.nowTalk.id == 0){
+  editTalk() {
+    if (this.nowTalk.id == 0) {
       return;
     }
-    if(this.setting.talkList.filter(t => t.id == this.nowTalk.id).length > 0){
+    if (this.setting.talkList.filter(t => t.id == this.nowTalk.id).length > 0) {
       const selectTalk = this.setting.talkList.filter(t => t.id == this.nowTalk.id)[0];
       selectTalk.message = this.nowTalk.message;
       selectTalk.name = this.nowTalk.name;
@@ -94,8 +95,8 @@ export class MainComponent implements OnInit {
   /**
    * 会話を削除する
    */
-  deleteTalk(){
-    if(this.nowTalk.id == 0){
+  deleteTalk() {
+    if (this.nowTalk.id == 0) {
       return;
     }
     const eraseIndex = this.setting.talkList.findIndex(t => t.id == this.nowTalk.id);
@@ -108,12 +109,12 @@ export class MainComponent implements OnInit {
   /**
    * 選択した会話を上に移動させる
    */
-  upTalk(){
-    if(this.nowTalk.id == 0){
+  upTalk() {
+    if (this.nowTalk.id == 0) {
       return;
     }
     const talkIndex = this.setting.talkList.findIndex(t => t.id == this.nowTalk.id);
-    if(talkIndex == 0){
+    if (talkIndex == 0) {
       return;
     }
     const newTalk = new TalkData();
@@ -132,12 +133,12 @@ export class MainComponent implements OnInit {
   /**
    * 選択した会話を下に移動させる
    */
-  downTalk(){
-    if(this.nowTalk.id == 0){
+  downTalk() {
+    if (this.nowTalk.id == 0) {
       return;
     }
     const talkIndex = this.setting.talkList.findIndex(t => t.id == this.nowTalk.id);
-    if(talkIndex == this.setting.talkList.length - 1){
+    if (talkIndex == this.setting.talkList.length - 1) {
       return;
     }
     const newTalk = new TalkData();
@@ -156,14 +157,14 @@ export class MainComponent implements OnInit {
   /**
    * プリセット画面に遷移
    */
-  async moveSelectView(){
+  async moveSelectView() {
     await this.router.navigate(['/preset']);
   }
 
   /**
    * プリセットデータで上書き
    */
-  async setPreset(){
+  async setPreset() {
     this.setting.saveDefaultSetting();
     this.refreshFlg = "true";
   }
@@ -171,7 +172,7 @@ export class MainComponent implements OnInit {
   /**
    * 全削除
    */
-  async deleteAllTalk(){
+  async deleteAllTalk() {
     this.setting.talkList = [];
     this.setting.saveSetting();
     this.refreshFlg = "true";
@@ -180,7 +181,7 @@ export class MainComponent implements OnInit {
   /**
    * デレポフラグを変更
    */
-  checkDerepoFlg(){
+  checkDerepoFlg() {
     this.setting.derepoFlg = !this.derepoFlg;
     this.setting.saveSetting();
   }
@@ -188,7 +189,61 @@ export class MainComponent implements OnInit {
   /**
    * 画面更新を止める
    */
-  refreshDraw(){
+  refreshDraw() {
     setTimeout(() => this.refreshFlg = "false");
+  }
+
+  /**
+   * プレビューを保存する
+   */
+  savePreview() {
+    html2canvas(document.querySelector("#capture"), {
+      allowTaint: true,
+      useCORS: true,
+      proxy: true,
+      onrendered: function (canvas) {
+        canvas.toDataURL();
+      }
+    }).then(canvas => {
+      // Base64データに変換
+      const base64 = canvas.toDataURL();
+
+      // blobに変換
+      const blob = this.Base64toBlob(base64);
+
+      // ファイルの保存イベントを走らせる
+      this.saveBlob(blob, "ohanashi.png");
+    });
+  }
+
+  /**
+   * Base64をblobに変換する
+   * @param base64 Base64
+   */
+  Base64toBlob(base64): Blob {
+    var tmp = base64.split(',');
+    var data = atob(tmp[1]);
+    var mime = tmp[0].split(':')[1].split(';')[0];
+    var buf = new Uint8Array(data.length);
+    for (var i = 0; i < data.length; i++) {
+      buf[i] = data.charCodeAt(i);
+    }
+    var blob = new Blob([buf], { type: mime });
+    return blob;
+  }
+
+  /**
+   * blobを保存する
+   * @param blob 
+   */
+  saveBlob(blob: Blob, fileName: string){
+    const url = window.URL;
+    const dataUrl = url.createObjectURL(blob);
+    const event = document.createEvent("MouseEvents");
+    event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    const a = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+    (a as HTMLAnchorElement).href = dataUrl;
+    (a as HTMLAnchorElement).download = fileName;
+    a.dispatchEvent(event);
   }
 }

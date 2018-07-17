@@ -1,4 +1,4 @@
-<div class="pb-4" [ngClass]="derepoFlg == 'true' ? 'derepo-bg' : ''">
+<div [ngClass]="derepoFlg == 'true' ? 'derepo-bg pb-4' : ''">
     <div *ngFor="let talkPair of talkList">
         <app-talk-box selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}}
             name={{talkPair.talk.name}} message={{talkPair.talk.message}}
