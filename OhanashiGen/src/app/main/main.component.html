@@ -51,9 +51,12 @@
         </div>
     </form>
     <form class="border p-3 my-3">
-        <app-preview (changeForm)="changeForm($event)" derepoFlg={{derepoFlg2}} refreshFlg={{refreshFlg}}
-            (refreshDraw)="refreshDraw()"></app-preview>
+        <div [ngClass]="derepoFlg ? 'derepo-width' : 'normal-width'">
+                <app-preview id="capture" (changeForm)="changeForm($event)" derepoFlg={{derepoFlg2}} refreshFlg={{refreshFlg}}
+                (refreshDraw)="refreshDraw()"></app-preview>
+        </div>
         <div class="d-flex mt-3">
+                <button class="form-control btn-primary mr-3 px-0" (click)="savePreview()">保存</button>
             <button class="form-control btn-primary mr-3 px-0" (click)="setPreset()">初期化</button>
             <button class="form-control btn-primary px-0" (click)="deleteAllTalk()">全削除</button>
         </div>
