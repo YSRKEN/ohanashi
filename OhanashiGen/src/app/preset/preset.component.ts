@@ -20,6 +20,7 @@ export class PresetComponent implements OnInit {
     this.dataList = text.map(temp => {
       const temp2 = new ShowPresetData();
       temp2.name = temp.name;
+      temp2.ruby = temp.ruby;
       temp2.images = temp.images;
       temp2.href = "#collapse" + i;
       temp2.id = "heading" + i;
@@ -51,11 +52,13 @@ export class PresetComponent implements OnInit {
 
 class PresetData{
   name: string;
+  ruby: string;
   images: string[];
 }
 
 class ShowPresetData{
   name: string;
+  ruby: string;
   images: string[];
   id: string;
   href: string;
