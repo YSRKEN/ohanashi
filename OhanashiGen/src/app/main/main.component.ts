@@ -35,6 +35,27 @@ export class MainComponent implements OnInit {
     this.derepoFlg = this.setting.derepoFlg;
   }
 
+  ngAfterViewInit(){
+
+    var element = document.createElement('a');
+    element.setAttribute('href',"https://twitter.com/share?ref_src=twsrc%5Etfw");
+    element.setAttribute('class',"twitter-share-button");
+    element.setAttribute('data-size',"large");
+    element.setAttribute('data-text',"ミリマスもデレマスも！");
+    element.setAttribute('data-url',"https://ohanashigen.firebaseapp.com");
+    element.setAttribute('data-hashtags',"おはなしジェネレーター");
+    element.setAttribute('data-show-count',"false");
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('src',"https://platform.twitter.com/widgets.js");
+    script.setAttribute('charset','utf-8');
+
+    var div = document.getElementById("anchor");
+    div.parentNode.insertBefore(element,div.nextSibling);
+    div.parentNode.insertBefore(script,div.nextSibling);
+  }
+
   /**
    * デレポモードにするか？
    */
@@ -165,17 +186,21 @@ export class MainComponent implements OnInit {
    * プリセットデータで上書き
    */
   async setPreset() {
-    this.setting.saveDefaultSetting();
-    this.refreshFlg = "true";
+    if(window.confirm("サンプル会話で上書きしますか？")){
+      this.setting.saveDefaultSetting();
+      this.refreshFlg = "true";
+    }
   }
 
   /**
    * 全削除
    */
   async deleteAllTalk() {
-    this.setting.talkList = [];
-    this.setting.saveSetting();
-    this.refreshFlg = "true";
+    if(window.confirm("会話を全削除しますか？")){
+      this.setting.talkList = [];
+      this.setting.saveSetting();
+      this.refreshFlg = "true";
+    }
   }
 
   /**

@@ -12,6 +12,8 @@ export class PresetComponent implements OnInit {
 
   dataList: ShowPresetData[] = [];
 
+  searchWord: string = "";
+
   constructor(private http: HttpClient, private setting: SettingService, private router: Router) { }
 
   async ngOnInit() {
@@ -20,6 +22,7 @@ export class PresetComponent implements OnInit {
     this.dataList = text.map(temp => {
       const temp2 = new ShowPresetData();
       temp2.name = temp.name;
+      temp2.ruby = temp.ruby;
       temp2.images = temp.images;
       temp2.href = "#collapse" + i;
       temp2.id = "heading" + i;
@@ -41,6 +44,17 @@ export class PresetComponent implements OnInit {
   }
 
   /**
+   * 絞り込み後の一覧
+   */
+  get dataList2(): ShowPresetData[]{
+    if(this.searchWord == ""){
+      return this.dataList;
+    }else{
+      return this.dataList.filter(data => data.name.includes(this.searchWord) || data.ruby.includes(this.searchWord));
+    }
+  }
+
+  /**
    * https://github.com/tjoskar/ng-lazyload-image/issues/197
    */
   workaround(){
@@ -51,11 +65,13 @@ export class PresetComponent implements OnInit {
 
 class PresetData{
   name: string;
+  ruby: string;
   images: string[];
 }
 
 class ShowPresetData{
   name: string;
+  ruby: string;
   images: string[];
   id: string;
   href: string;

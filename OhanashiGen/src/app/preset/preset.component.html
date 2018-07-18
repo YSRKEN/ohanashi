@@ -1,12 +1,18 @@
 <h1 class="text-center d-none d-sm-block my-3">キャラを選択</h1>
 <h2 class="text-center d-xs-block d-sm-none my-3">キャラを選択</h2>
+<form class="mx-auto my-3 px-3">
+  <div class="form-group">
+      <label for="name">絞り込み</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="名前かふりがなの一部分" [(ngModel)]="searchWord">
+  </div>
+</form>
 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="card" *ngFor="let data of dataList">
+  <div class="card" *ngFor="let data of dataList2">
     <div class="card-header" role="tab" id={{data.id}}>
       <h5 class="mb-0">
         <a class="collapsed text-body" data-toggle="collapse" href={{data.href}}
           role="button" aria-expanded="false" (click)="workaround()">
-          {{data.name}}
+          <ruby><rb>{{data.name}}</rb><rt>{{data.ruby}}</rt></ruby>
         </a>
       </h5>
     </div>
