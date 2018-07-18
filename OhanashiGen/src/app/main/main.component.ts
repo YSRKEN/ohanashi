@@ -186,17 +186,21 @@ export class MainComponent implements OnInit {
    * プリセットデータで上書き
    */
   async setPreset() {
-    this.setting.saveDefaultSetting();
-    this.refreshFlg = "true";
+    if(window.confirm("サンプル会話で上書きしますか？")){
+      this.setting.saveDefaultSetting();
+      this.refreshFlg = "true";
+    }
   }
 
   /**
    * 全削除
    */
   async deleteAllTalk() {
-    this.setting.talkList = [];
-    this.setting.saveSetting();
-    this.refreshFlg = "true";
+    if(window.confirm("会話を全削除しますか？")){
+      this.setting.talkList = [];
+      this.setting.saveSetting();
+      this.refreshFlg = "true";
+    }
   }
 
   /**
