@@ -12,6 +12,8 @@ export class PresetComponent implements OnInit {
 
   dataList: ShowPresetData[] = [];
 
+  searchWord: string = "";
+
   constructor(private http: HttpClient, private setting: SettingService, private router: Router) { }
 
   async ngOnInit() {
@@ -39,6 +41,17 @@ export class PresetComponent implements OnInit {
     this.setting.setName =name;
     this.setting.setUrl = url;
     this.router.navigate(['/']);
+  }
+
+  /**
+   * 絞り込み後の一覧
+   */
+  get dataList2(): ShowPresetData[]{
+    if(this.searchWord == ""){
+      return this.dataList;
+    }else{
+      return this.dataList.filter(data => data.name.includes(this.searchWord) || data.ruby.includes(this.searchWord));
+    }
   }
 
   /**
