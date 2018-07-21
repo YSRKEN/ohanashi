@@ -3,7 +3,8 @@
 <form class="mx-auto my-3 px-3">
   <div class="form-group">
       <label for="name">絞り込み</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="名前かふりがなの一部分" [(ngModel)]="searchWord">
+      <input type="text" class="form-control" id="name" name="name" placeholder="名前かふりがなの一部分" [ngModel]="searchWord"
+      (ngModelChange)="changeSearchWord($event)">
   </div>
 </form>
 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">

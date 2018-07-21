@@ -27,6 +27,11 @@ export class SettingService {
   setName: string = "";
 
   /**
+   * プリセットメニューでの検索ワード
+   */
+  searchWord: string = "";
+
+  /**
    * デレぽモードにするか？
    */
   derepoFlg: boolean = false;
