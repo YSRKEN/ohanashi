@@ -648,6 +648,13 @@
         ]
     },
     {
+        "name": "アナスタシア",
+        "ruby": "あなすたしあ",
+        "images": [
+            "assets/images/_dere_co/100fcc1a6b0edb670d892b901c3661c3.png"
+        ]
+    },
+    {
         "name": "安部菜々",
         "ruby": "あべなな",
         "images": [
@@ -680,6 +687,13 @@
         "ruby": "いけぶくろあきは",
         "images": [
             "assets/images/_dere_cu/a400d81dd9cd7c15e0d5eb26a3c4fa5d.png"
+        ]
+    },
+    {
+        "name": "伊集院惠",
+        "ruby": "いじゅういんめぐみ",
+        "images": [
+            "assets/images/_dere_co/8b290eff79efa3dbed4cdd79a922444b.png"
         ]
     },
     {
@@ -788,6 +802,13 @@
         ]
     },
     {
+        "name": "片桐早苗",
+        "ruby": "かたぎりさなえ",
+        "images": [
+            "assets/images/_dere_pa/c88d8da05d834bc0da4cccd06d2a8f16.png"
+        ]
+    },
+    {
         "name": "上条春菜",
         "ruby": "かみじょうはるな",
         "images": [
@@ -834,6 +855,13 @@
         "ruby": "きゃしーぐらはむ",
         "images": [
             "assets/images/_dere_pa/bdc4a05f7d46e384aed2185c93443463.png"
+        ]
+    },
+    {
+        "name": "桐野アヤ",
+        "ruby": "きりのあや",
+        "images": [
+            "assets/images/_dere_co/42e6fc9e8bd1feba35fb9228ba506ef9.png"
         ]
     },
     {
@@ -1082,6 +1110,20 @@
         ]
     },
     {
+        "name": "並木芽衣子",
+        "ruby": "なみきめいこ",
+        "images": [
+            "assets/images/_dere_pa/b3a193f67e70cf24d86b07902d8a7722.png"
+        ]
+    },
+    {
+        "name": "成宮由愛",
+        "ruby": "なるみやゆめ",
+        "images": [
+            "assets/images/_dere_co/6bb4d3134a9e6d0113b50d3d5f92a4e1.png"
+        ]
+    },
+    {
         "name": "二宮飛鳥",
         "ruby": "にのみやあすか",
         "images": [
@@ -1093,6 +1135,13 @@
         "ruby": "にわひとみ",
         "images": [
             "assets/images/_dere_cu/c26289670b26019112def02e7702d6e5.png"
+        ]
+    },
+    {
+        "name": "野々村そら",
+        "ruby": "ののむらそら",
+        "images": [
+            "assets/images/_dere_pa/ba5b9bc37d1434dbfd9ca1bb93b31686.png"
         ]
     },
     {
@@ -1145,6 +1194,13 @@
         ]
     },
     {
+        "name": "福山舞",
+        "ruby": "ふくやままい",
+        "images": [
+            "assets/images/_dere_cu/a09c3b892b8789b8ec85fde2e582341e.png"
+        ]
+    },
+    {
         "name": "藤居朋",
         "ruby": "ふじいとも",
         "images": [
@@ -1194,6 +1250,13 @@
         ]
     },
     {
+        "name": "堀裕子",
+        "ruby": "ほりゆうこ",
+        "images": [
+            "assets/images/_dere_pa/28a0bc51b88c422077638a92a4ef0253.png"
+        ]
+    },
+    {
         "name": "本田未央",
         "ruby": "ほんだみお",
         "images": [
@@ -1205,6 +1268,13 @@
         "ruby": "まえかわみく",
         "images": [
             "assets/images/_dere_cu/6d24a410f82ef76cfe5fa461d2dd2fcf.png"
+        ]
+    },
+    {
+        "name": "槙原志保",
+        "ruby": "まきはらしほ",
+        "images": [
+            "assets/images/_dere_pa/fc083c9fa41f80890243a281ea08e7b8.png"
         ]
     },
     {
@@ -1250,6 +1320,13 @@
         ]
     },
     {
+        "name": "水木聖來",
+        "ruby": "みずきせいら",
+        "images": [
+            "assets/images/_dere_co/77a921117e91fe7ddce6e7896bb1fcea.png"
+        ]
+    },
+    {
         "name": "水本ゆかり",
         "ruby": "みずもとゆかり",
         "images": [
@@ -1278,6 +1355,13 @@
         ]
     },
     {
+        "name": "持田亜里沙",
+        "ruby": "もちだありさ",
+        "images": [
+            "assets/images/_dere_cu/f3700460d417977f35533322fa30fd49.png"
+        ]
+    },
+    {
         "name": "望月聖",
         "ruby": "もちづきひじり",
         "images": [
@@ -1303,6 +1387,13 @@
         "ruby": "もろぼしきらり",
         "images": [
             "assets/images/_dere_pa/487caeb61233109d9e40327faade0f8c.png"
+        ]
+    },
+    {
+        "name": "楊菲菲",
+        "ruby": "やおふぇいふぇい",
+        "images": [
+            "assets/images/_dere_cu/3691770c6715a19303ac56f90310f559.png"
         ]
     },
     {
@@ -1359,6 +1450,13 @@
         "ruby": "よりたよしの",
         "images": [
             "assets/images/_dere_pa/013cbd150ee973f30fe178d70e16b86c.png"
+        ]
+    },
+    {
+        "name": "ライラ",
+        "ruby": "らいら",
+        "images": [
+            "assets/images/_dere_co/92cd3776d4f54c69dd2121182632be13.png"
         ]
     },
     {
