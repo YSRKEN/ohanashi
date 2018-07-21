@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   nowTalk: TalkData = new TalkData();
 
   /**
-   * デレポモードにするか？
+   * デレぽモードにするか？
    */
   derepoFlg: boolean = false;
 
@@ -57,7 +57,7 @@ export class MainComponent implements OnInit {
   }
 
   /**
-   * デレポモードにするか？
+   * デレぽモードにするか？
    */
   get derepoFlg2(): string {
     return this.derepoFlg ? "true" : "false";
@@ -204,7 +204,7 @@ export class MainComponent implements OnInit {
   }
 
   /**
-   * デレポフラグを変更
+   * デレぽフラグを変更
    */
   checkDerepoFlg() {
     this.setting.derepoFlg = !this.derepoFlg;
@@ -238,6 +238,29 @@ export class MainComponent implements OnInit {
 
       // ファイルの保存イベントを走らせる
       this.saveBlob(blob, "ohanashi.png");
+    });
+  }
+
+  /**
+   * プレビュー部分をCanvas化して貼り付け
+   */
+  writeCanvas(){
+    html2canvas(document.querySelector("#capture"), {
+      allowTaint: true,
+      useCORS: true,
+      proxy: true
+    }).then(canvas => {
+      // 追加済みのものの削除処理
+      if(document.getElementById("previewPanvas") != null){
+        document.getElementById("previewPanvas").remove();
+      }
+      // 追加処理
+      const div = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+      div.setAttribute("id", "previewPanvas");
+      div.setAttribute("class", "mt-3");
+      div.appendChild(canvas);
+      var anchor = document.getElementById("anchor2");
+      anchor.parentNode.insertBefore(div,anchor.nextSibling);
     });
   }
 

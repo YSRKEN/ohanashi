@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SettingService } from '../setting.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-preset',
@@ -14,9 +15,12 @@ export class PresetComponent implements OnInit {
 
   searchWord: string = "";
 
-  constructor(private http: HttpClient, private setting: SettingService, private router: Router) { }
+  scrollObservable = new Subject();
+
+  constructor(private http: HttpClient, private setting: SettingService, private router: Router) {}
 
   async ngOnInit() {
+    this.searchWord = this.setting.searchWord;
     const text = await this.http.get<PresetData[]>('assets/preset_list.json').toPromise();
     let i = 1;
     this.dataList = text.map(temp => {
@@ -60,6 +64,15 @@ export class PresetComponent implements OnInit {
   workaround(){
     window.scrollTo(window.scrollX, window.scrollY - 1);
     window.scrollTo(window.scrollX, window.scrollY + 1);
+    this.scrollObservable.next();
+  }
+
+  /**
+   * 入力した検索ワードを記録する
+   * @param event 検索ワード
+   */
+  changeSearchWord(event: string){
+    this.setting.searchWord = this.searchWord = event;
   }
 }
 

@@ -27,7 +27,12 @@ export class SettingService {
   setName: string = "";
 
   /**
-   * デレポモードにするか？
+   * プリセットメニューでの検索ワード
+   */
+  searchWord: string = "";
+
+  /**
+   * デレぽモードにするか？
    */
   derepoFlg: boolean = false;
 
@@ -49,7 +54,7 @@ export class SettingService {
         this.talkList.push(temp);
       }
     }
-    // デレポモードフラグを読み込み
+    // デレぽモードフラグを読み込み
     if(window.localStorage.getItem("derepoFlg") != null){
       this.derepoFlg = (window.localStorage.getItem("derepoFlg") == 'true');
     }

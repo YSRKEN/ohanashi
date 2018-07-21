@@ -32,7 +32,7 @@ export class PreviewComponent implements OnInit {
   }
 
   /**
-   * デレポモードの場合はtrue
+   * デレぽモードの場合はtrue
    */
   @Input() derepoFlg: string;
 

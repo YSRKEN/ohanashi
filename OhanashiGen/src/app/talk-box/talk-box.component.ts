@@ -38,7 +38,7 @@ export class TalkBoxComponent implements OnInit {
   @Input() selected: string;
 
   /**
-   * デレポモードの場合はtrue
+   * デレぽモードの場合はtrue
    */
   @Input() derepoFlg: string;
 
