@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   nowTalk: TalkData = new TalkData();
 
   /**
-   * デレポモードにするか？
+   * デレぽモードにするか？
    */
   derepoFlg: boolean = false;
 
@@ -57,7 +57,7 @@ export class MainComponent implements OnInit {
   }
 
   /**
-   * デレポモードにするか？
+   * デレぽモードにするか？
    */
   get derepoFlg2(): string {
     return this.derepoFlg ? "true" : "false";
@@ -204,7 +204,7 @@ export class MainComponent implements OnInit {
   }
 
   /**
-   * デレポフラグを変更
+   * デレぽフラグを変更
    */
   checkDerepoFlg() {
     this.setting.derepoFlg = !this.derepoFlg;
