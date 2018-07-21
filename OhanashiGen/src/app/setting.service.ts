@@ -36,6 +36,8 @@ export class SettingService {
    */
   derepoFlg: boolean = false;
 
+  canvas: any = null;
+
   constructor() {
     // サンプルデータを追加
     if(window.localStorage.getItem("saveData") == null){
