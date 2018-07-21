@@ -578,6 +578,13 @@
         ]
     },
     {
+        "name": "詩花",
+        "ruby": "しいか",
+        "images": [
+            "assets/images/siika/siika.png"
+        ]
+    },
+    {
         "name": "音無小鳥",
         "ruby": "おとなしことり",
         "images": [

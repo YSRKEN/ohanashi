@@ -250,6 +250,8 @@ export class MainComponent implements OnInit {
       useCORS: true,
       proxy: true
     }).then(canvas => {
+      this.setting.canvas = canvas;
+      /*
       // 追加済みのものの削除処理
       if(document.getElementById("previewPanvas") != null){
         document.getElementById("previewPanvas").remove();
@@ -260,7 +262,9 @@ export class MainComponent implements OnInit {
       div.setAttribute("class", "mt-3");
       div.appendChild(canvas);
       var anchor = document.getElementById("anchor2");
-      anchor.parentNode.insertBefore(div,anchor.nextSibling);
+      anchor.parentNode.insertBefore(div,anchor.nextSibling);*/
+    }).then(async () => {
+      await this.router.navigate(['/canvas']);
     });
   }
 
