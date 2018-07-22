@@ -581,7 +581,10 @@
         "name": "詩花",
         "ruby": "しいか",
         "images": [
-            "assets/images/siika/siika.png"
+            "assets/images/siika/siika.png",
+            "assets/images/siika/siika2.png",
+            "assets/images/siika/siika3.png",
+            "assets/images/siika/siika4.png"
         ]
     },
     {
