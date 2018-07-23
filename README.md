@@ -1,5 +1,5 @@
-# おはなしジェネレーター製作キット
-Ohanashi Generator's Generator by Angular
+# アイマス会話メーカー
+Talk's List Maker for IDOLM@STER by Angular
 
 ## 概要
 

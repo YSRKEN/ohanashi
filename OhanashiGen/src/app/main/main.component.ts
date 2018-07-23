@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
     element.setAttribute('data-size',"large");
     element.setAttribute('data-text',"ミリマスもデレマスも！");
     element.setAttribute('data-url',"https://ohanashigen.firebaseapp.com");
-    element.setAttribute('data-hashtags',"おはなしジェネレーター");
+    element.setAttribute('data-hashtags',"アイマス会話メーカー");
     element.setAttribute('data-show-count',"false");
 
     var script = document.createElement('script');
