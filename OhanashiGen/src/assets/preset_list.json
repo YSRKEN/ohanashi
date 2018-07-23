@@ -630,6 +630,27 @@
         ]
     },
     {
+        "name": "日高愛",
+        "ruby": "ひだかあい",
+        "images": [
+            "assets/images/876pro/ai.png"
+        ]
+    },
+    {
+        "name": "水谷絵理",
+        "ruby": "みずたにえり",
+        "images": [
+            "assets/images/876pro/eri.png"
+        ]
+    },
+    {
+        "name": "秋月涼",
+        "ruby": "あきづきりょう",
+        "images": [
+            "assets/images/876pro/ryou.png"
+        ]
+    },
+    {
         "name": "相葉夕美",
         "ruby": "あいばゆみ",
         "images": [
