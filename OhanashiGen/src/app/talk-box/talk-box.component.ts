@@ -59,4 +59,9 @@ export class TalkBoxComponent implements OnInit {
   ngOnInit() {
   }
 
+  get favLeft(){
+    return {
+      left: `${350 - this.favs.length * 7 / 2}px`
+    }
+  }
 }

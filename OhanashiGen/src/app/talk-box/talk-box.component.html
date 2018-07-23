@@ -16,7 +16,7 @@
             <div class="derepo-message position-absolute">{{message}}</div>
             <div class="derepo-fav-star position-absolute">★</div>
             <div class="derepo-fav-button position-absolute"></div>
-            <div class="derepo-favs position-absolute">{{favs}}</div>
+            <div class="derepo-favs position-absolute" [ngStyle]="favLeft">{{favs}}</div>
             <div class="position-absolute" [ngClass]="firstFlg == 'true' ? 'derepo-date-first' : 'derepo-date'">{{date}}</div>
         </div>
 </div>

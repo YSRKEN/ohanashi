@@ -251,18 +251,6 @@ export class MainComponent implements OnInit {
       proxy: true
     }).then(canvas => {
       this.setting.canvas = canvas;
-      /*
-      // 追加済みのものの削除処理
-      if(document.getElementById("previewPanvas") != null){
-        document.getElementById("previewPanvas").remove();
-      }
-      // 追加処理
-      const div = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
-      div.setAttribute("id", "previewPanvas");
-      div.setAttribute("class", "mt-3");
-      div.appendChild(canvas);
-      var anchor = document.getElementById("anchor2");
-      anchor.parentNode.insertBefore(div,anchor.nextSibling);*/
     }).then(async () => {
       await this.router.navigate(['/canvas']);
     });
