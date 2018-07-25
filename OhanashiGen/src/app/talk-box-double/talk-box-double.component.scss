@@ -23,10 +23,16 @@
     width: 76px;
     height: 76px;
 }
+.talk-face2{
+    right: 5px;
+    top: 4px;
+    width: 76px;
+    height: 76px;
+}
 .talk-balloon{ 
     height: 76px; 
     width: 224px; 
-    background: url(/assets/images/balloon.png) no-repeat; 
+    background: url(/assets/images/balloon2.png) no-repeat; 
     background-size: 224px 76px;
     right: 9px;
     top: 4px;
@@ -35,13 +41,13 @@
     left: 5px;
     top: 4px;
     color: #f33281;
-    background-color: green;
+    background-color: white;
     font: bold 14px/17.5px "Arial", sans-serif;
 }
 .talk-message{
     left: 5px;
     top: 19px;
-    width: 214px;
+    width: 140px;
     white-space: pre-wrap;
     font: bold 14px/17.5px "Arial", sans-serif;
     word-break: break-all;

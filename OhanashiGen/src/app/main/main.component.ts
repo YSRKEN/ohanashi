@@ -38,6 +38,7 @@ export class MainComponent implements OnInit {
     this.nowTalk.name = this.setting.setName;
     this.setting.setName = "";
     this.derepoFlg = this.setting.derepoFlg;
+    this.doubleFlg = this.setting.doubleFlg;
   }
 
   ngAfterViewInit(){

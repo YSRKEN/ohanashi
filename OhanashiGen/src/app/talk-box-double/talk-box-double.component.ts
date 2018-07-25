@@ -13,6 +13,11 @@ export class TalkBoxDoubleComponent implements OnInit {
   @Input() url: string;
 
   /**
+   * URL(右側)
+   */
+  @Input() url2: string;
+
+  /**
    * キャラ名
    */
   @Input() name: string;
