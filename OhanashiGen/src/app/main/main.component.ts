@@ -21,6 +21,11 @@ export class MainComponent implements OnInit {
   derepoFlg: boolean = false;
 
   /**
+   * ダブルモードにするか？
+   */
+  doubleFlg: boolean = false;
+
+  /**
    * プレビューを更新する際は"true"にする
    */
   refreshFlg: string = "false";
@@ -208,6 +213,20 @@ export class MainComponent implements OnInit {
    */
   checkDerepoFlg() {
     this.setting.derepoFlg = !this.derepoFlg;
+    if(this.setting.derepoFlg){
+      this.setting.doubleFlg = this.doubleFlg = false;
+    }
+    this.setting.saveSetting();
+  }
+
+  /**
+   * ダブルフラグを変更
+   */
+  checkDoubleFlg(){
+    this.setting.doubleFlg = !this.doubleFlg;
+    if(this.setting.doubleFlg){
+      this.setting.derepoFlg = this.derepoFlg = false;
+    }
     this.setting.saveSetting();
   }
 

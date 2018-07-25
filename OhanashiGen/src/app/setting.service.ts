@@ -36,6 +36,12 @@ export class SettingService {
    */
   derepoFlg: boolean = false;
 
+  /**
+   * ダブルモードにするか？
+   */
+  doubleFlg: boolean = false;
+
+
   canvas: any = null;
 
   constructor() {
@@ -59,6 +65,10 @@ export class SettingService {
     // デレぽモードフラグを読み込み
     if(window.localStorage.getItem("derepoFlg") != null){
       this.derepoFlg = (window.localStorage.getItem("derepoFlg") == 'true');
+    }
+    // ダブルモードフラグを読み込み
+    if(window.localStorage.getItem("doubleFlg") != null){
+      this.doubleFlg = (window.localStorage.getItem("doubleFlg") == 'true');
     }
   }
 
@@ -143,5 +153,6 @@ export class SettingService {
     const output: string = JSON.stringify(this.talkList);
     window.localStorage.setItem("saveData", output);
     window.localStorage.setItem("derepoFlg", this.derepoFlg ? 'true' : 'false');
+    window.localStorage.setItem("doubleFlg", this.doubleFlg ? 'true' : 'false');
   }
 }
