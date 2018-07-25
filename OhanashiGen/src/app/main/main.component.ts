@@ -85,11 +85,17 @@ export class MainComponent implements OnInit {
     return this.derepoFlg ? "true" : "false";
   }
 
+    /**
+   * ダブルモードにするか？
+   */
+  get doubleFlg2(): string {
+    return this.doubleFlg ? "true" : "false";
+  }
+
   /**
    * 会話を追加する
    */
   addTalk() {
-    console.log(this.setting.talkList);
     let newId = 1;
     while (true) {
       if (this.setting.talkList.filter(t => t.id == newId).length == 0) {
@@ -99,6 +105,9 @@ export class MainComponent implements OnInit {
       }
     }
     this.nowTalk.id = newId;
+    if(this.doubleFlg != true){
+      this.nowTalk.url2 = "";
+    }
     this.setting.talkList.push(this.nowTalk);
     this.nowTalk = new TalkData();
     this.setting.saveSetting();
@@ -113,8 +122,16 @@ export class MainComponent implements OnInit {
     this.nowTalk.message = selectTalk.message;
     this.nowTalk.name = selectTalk.name;
     this.nowTalk.url = selectTalk.url;
+    this.nowTalk.url2 = selectTalk.url2;
     this.nowTalk.favs = selectTalk.favs;
     this.nowTalk.date = selectTalk.date;
+    if(this.nowTalk.url2 != ""){
+      this.doubleFlg = true;
+      this.setting.derepoFlg = true;
+    }else{
+      this.doubleFlg = false;
+      this.setting.derepoFlg = false;
+    }
   }
 
   /**
@@ -129,6 +146,10 @@ export class MainComponent implements OnInit {
       selectTalk.message = this.nowTalk.message;
       selectTalk.name = this.nowTalk.name;
       selectTalk.url = this.nowTalk.url;
+      selectTalk.url2 = this.nowTalk.url2;
+      if(this.doubleFlg != true){
+        selectTalk.url2 = "";
+      }
       selectTalk.favs = this.nowTalk.favs;
       selectTalk.date = this.nowTalk.date;
       this.setting.saveSetting();
@@ -165,6 +186,7 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.url2 = this.setting.talkList[talkIndex].url2;
     newTalk.date = this.setting.talkList[talkIndex].date;
     newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
@@ -189,6 +211,7 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.url2 = this.setting.talkList[talkIndex].url2;
     newTalk.date = this.setting.talkList[talkIndex].date;
     newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
