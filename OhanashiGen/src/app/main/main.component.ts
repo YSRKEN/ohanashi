@@ -33,10 +33,26 @@ export class MainComponent implements OnInit {
   constructor(private setting: SettingService, private router: Router) { }
 
   ngOnInit() {
-    this.nowTalk.url = this.setting.setUrl;
-    this.setting.setUrl = "";
-    this.nowTalk.name = this.setting.setName;
-    this.setting.setName = "";
+    if(this.setting.presetMode == 0){
+      this.nowTalk.url = this.setting.setUrl;
+      this.setting.setUrl = "";
+      this.nowTalk.name = this.setting.setName;
+      this.setting.setName = "";
+      if(this.setting.setUrl2 != ""){
+        this.nowTalk.url2 = this.setting.setUrl2;
+        this.setting.setUrl2 = "";
+      }
+    }else{
+      console.log("b");
+      if(this.setting.setUrl != ""){
+        this.nowTalk.url = this.setting.setUrl;
+        this.setting.setUrl = "";
+      }
+      this.nowTalk.name = this.setting.setName;
+      this.setting.setName = "";
+      this.nowTalk.url2 = this.setting.setUrl2;
+      this.setting.setUrl2 = "";
+    }
     this.derepoFlg = this.setting.derepoFlg;
     this.doubleFlg = this.setting.doubleFlg;
   }
@@ -185,6 +201,20 @@ export class MainComponent implements OnInit {
    * プリセット画面に遷移
    */
   async moveSelectView() {
+    this.setting.setUrl = this.nowTalk.url;
+    this.setting.setUrl2 = this.nowTalk.url2;
+    this.setting.presetMode = 0;
+    await this.router.navigate(['/preset']);
+  }
+
+  /**
+   * プリセット画面に遷移
+   */
+  async moveSelectView2() {
+    this.setting.setUrl = this.nowTalk.url;
+    this.setting.setUrl2 = this.nowTalk.url2;
+    this.setting.setName = this.nowTalk.name;
+    this.setting.presetMode = 1;
     await this.router.navigate(['/preset']);
   }
 
