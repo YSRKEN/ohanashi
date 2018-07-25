@@ -47,7 +47,13 @@
         </div>
         <div class="form-group">
             <label>プレビュー</label>
-            <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
+            <div class="border" [ngClass]="doubleFlg ? 'd-none' : 'd-block'">
+                <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
+                    <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}} derepoFlg={{derepoFlg2}}
+                    favs={{nowTalk.favs}} date={{nowTalk.date}}></app-talk-box>
+                </div>
+            </div>
+            <div class="border" [ngClass]="doubleFlg ? 'd-block' : 'd-none'">
                 <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}} derepoFlg={{derepoFlg2}}
                 favs={{nowTalk.favs}} date={{nowTalk.date}}></app-talk-box>
             </div>
