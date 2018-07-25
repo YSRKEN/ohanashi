@@ -21,6 +21,11 @@ export class MainComponent implements OnInit {
   derepoFlg: boolean = false;
 
   /**
+   * ダブルモードにするか？
+   */
+  doubleFlg: boolean = false;
+
+  /**
    * プレビューを更新する際は"true"にする
    */
   refreshFlg: string = "false";
@@ -28,11 +33,28 @@ export class MainComponent implements OnInit {
   constructor(private setting: SettingService, private router: Router) { }
 
   ngOnInit() {
-    this.nowTalk.url = this.setting.setUrl;
-    this.setting.setUrl = "";
-    this.nowTalk.name = this.setting.setName;
-    this.setting.setName = "";
+    if(this.setting.presetMode == 0){
+      this.nowTalk.url = this.setting.setUrl;
+      this.setting.setUrl = "";
+      this.nowTalk.name = this.setting.setName;
+      this.setting.setName = "";
+      if(this.setting.setUrl2 != ""){
+        this.nowTalk.url2 = this.setting.setUrl2;
+        this.setting.setUrl2 = "";
+      }
+    }else{
+      console.log("b");
+      if(this.setting.setUrl != ""){
+        this.nowTalk.url = this.setting.setUrl;
+        this.setting.setUrl = "";
+      }
+      this.nowTalk.name = this.setting.setName;
+      this.setting.setName = "";
+      this.nowTalk.url2 = this.setting.setUrl2;
+      this.setting.setUrl2 = "";
+    }
     this.derepoFlg = this.setting.derepoFlg;
+    this.doubleFlg = this.setting.doubleFlg;
   }
 
   ngAfterViewInit(){
@@ -63,11 +85,17 @@ export class MainComponent implements OnInit {
     return this.derepoFlg ? "true" : "false";
   }
 
+    /**
+   * ダブルモードにするか？
+   */
+  get doubleFlg2(): string {
+    return this.doubleFlg ? "true" : "false";
+  }
+
   /**
    * 会話を追加する
    */
   addTalk() {
-    console.log(this.setting.talkList);
     let newId = 1;
     while (true) {
       if (this.setting.talkList.filter(t => t.id == newId).length == 0) {
@@ -77,6 +105,9 @@ export class MainComponent implements OnInit {
       }
     }
     this.nowTalk.id = newId;
+    if(this.doubleFlg != true){
+      this.nowTalk.url2 = "";
+    }
     this.setting.talkList.push(this.nowTalk);
     this.nowTalk = new TalkData();
     this.setting.saveSetting();
@@ -91,8 +122,16 @@ export class MainComponent implements OnInit {
     this.nowTalk.message = selectTalk.message;
     this.nowTalk.name = selectTalk.name;
     this.nowTalk.url = selectTalk.url;
+    this.nowTalk.url2 = selectTalk.url2;
     this.nowTalk.favs = selectTalk.favs;
     this.nowTalk.date = selectTalk.date;
+    if(this.nowTalk.url2 != ""){
+      this.doubleFlg = true;
+      this.setting.derepoFlg = true;
+    }else{
+      this.doubleFlg = false;
+      this.setting.derepoFlg = false;
+    }
   }
 
   /**
@@ -107,6 +146,10 @@ export class MainComponent implements OnInit {
       selectTalk.message = this.nowTalk.message;
       selectTalk.name = this.nowTalk.name;
       selectTalk.url = this.nowTalk.url;
+      selectTalk.url2 = this.nowTalk.url2;
+      if(this.doubleFlg != true){
+        selectTalk.url2 = "";
+      }
       selectTalk.favs = this.nowTalk.favs;
       selectTalk.date = this.nowTalk.date;
       this.setting.saveSetting();
@@ -143,6 +186,7 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.url2 = this.setting.talkList[talkIndex].url2;
     newTalk.date = this.setting.talkList[talkIndex].date;
     newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
@@ -167,6 +211,7 @@ export class MainComponent implements OnInit {
     newTalk.message = this.setting.talkList[talkIndex].message;
     newTalk.name = this.setting.talkList[talkIndex].name;
     newTalk.url = this.setting.talkList[talkIndex].url;
+    newTalk.url2 = this.setting.talkList[talkIndex].url2;
     newTalk.date = this.setting.talkList[talkIndex].date;
     newTalk.favs = this.setting.talkList[talkIndex].favs;
     this.setting.talkList.splice(talkIndex, 1);
@@ -179,6 +224,20 @@ export class MainComponent implements OnInit {
    * プリセット画面に遷移
    */
   async moveSelectView() {
+    this.setting.setUrl = this.nowTalk.url;
+    this.setting.setUrl2 = this.nowTalk.url2;
+    this.setting.presetMode = 0;
+    await this.router.navigate(['/preset']);
+  }
+
+  /**
+   * プリセット画面に遷移
+   */
+  async moveSelectView2() {
+    this.setting.setUrl = this.nowTalk.url;
+    this.setting.setUrl2 = this.nowTalk.url2;
+    this.setting.setName = this.nowTalk.name;
+    this.setting.presetMode = 1;
     await this.router.navigate(['/preset']);
   }
 
@@ -208,6 +267,20 @@ export class MainComponent implements OnInit {
    */
   checkDerepoFlg() {
     this.setting.derepoFlg = !this.derepoFlg;
+    if(this.setting.derepoFlg){
+      this.setting.doubleFlg = this.doubleFlg = false;
+    }
+    this.setting.saveSetting();
+  }
+
+  /**
+   * ダブルフラグを変更
+   */
+  checkDoubleFlg(){
+    this.setting.doubleFlg = !this.doubleFlg;
+    if(this.setting.doubleFlg){
+      this.setting.derepoFlg = this.derepoFlg = false;
+    }
     this.setting.saveSetting();
   }
 

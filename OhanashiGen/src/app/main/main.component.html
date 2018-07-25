@@ -27,9 +27,15 @@
                 style="height: 100px;">
             </textarea>
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="derepoFlg" name="derepoFlg" [(ngModel)]="derepoFlg" (click)="checkDerepoFlg()">
-            <label class="form-check-label" for="derepoFlg">デレぽモードにする</label>
+        <div class="d-flex">
+            <div class="form-group form-check mr-3">
+                <input type="checkbox" class="form-check-input" id="derepoFlg" name="derepoFlg" [(ngModel)]="derepoFlg" (click)="checkDerepoFlg()">
+                <label class="form-check-label" for="derepoFlg">デレぽモードにする</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="doubleFlg" name="doubleFlg" [(ngModel)]="doubleFlg" (click)="checkDoubleFlg()">
+                <label class="form-check-label" for="doubleFlg">ダブルモードにする</label>
+            </div>
         </div>
         <div class="form-group" [ngClass]="derepoFlg ? 'd-block' : 'd-none'">
             <label for="favs">ファボ数</label>
@@ -39,11 +45,26 @@
             <label for="date">タイムスタンプ</label>
             <input type="text" class="form-control" id="date" name="date" placeholder="MM-DD HH:MM" [(ngModel)]="nowTalk.date" maxlength='11'>
         </div>
+        <div class="form-group" [ngClass]="doubleFlg ? 'd-block' : 'd-none'">
+            <label for="url">URL2</label>
+            <div class="d-flex">
+                <input type="text" class="form-control mr-3" id="url2" name="url2" placeholder="表示する画像のURL" [(ngModel)]="nowTalk.url2">
+                <button class="form-control btn-secondary px-0" style="width: 100px;" (click)="moveSelectView2()">選択...</button>
+            </div>
+        </div>
         <div class="form-group">
             <label>プレビュー</label>
-            <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
-                <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}} derepoFlg={{derepoFlg2}}
-                favs={{nowTalk.favs}} date={{nowTalk.date}}></app-talk-box>
+            <div class="border" [ngClass]="doubleFlg ? 'd-none' : 'd-block'">
+                <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
+                    <app-talk-box url={{nowTalk.url}} name={{nowTalk.name}} message={{nowTalk.message}} derepoFlg={{derepoFlg2}}
+                    favs={{nowTalk.favs}} date={{nowTalk.date}}></app-talk-box>
+                </div>
+            </div>
+            <div class="border" [ngClass]="doubleFlg ? 'd-block' : 'd-none'">
+                <div class="border normal-style">
+                    <app-talk-box-double url={{nowTalk.url}} url2={{nowTalk.url2}}
+                    name={{nowTalk.name}} message={{nowTalk.message}}></app-talk-box-double>
+                </div>
             </div>
         </div>
         <div class="d-flex">
@@ -56,7 +77,8 @@
     </form>
     <form class="border p-3 my-3">
         <div [ngClass]="derepoFlg ? 'derepo-width' : 'normal-width'">
-                <app-preview id="capture" (changeForm)="changeForm($event)" derepoFlg={{derepoFlg2}} refreshFlg={{refreshFlg}}
+                <app-preview id="capture" (changeForm)="changeForm($event)" derepoFlg={{derepoFlg2}}
+                refreshFlg={{refreshFlg}}
                 (refreshDraw)="refreshDraw()"></app-preview>
         </div>
         <div class="d-flex mt-3" id="anchor2">

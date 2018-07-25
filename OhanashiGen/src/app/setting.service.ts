@@ -17,9 +17,19 @@ export class SettingService {
   selectTalkId: number = -1;
 
   /**
+   * プリセット画面で選ぶ方
+   */
+  presetMode: number = 0;
+
+  /**
    * 設定したいURL
    */
   setUrl: string = "assets/images/producer_p_head/P-suite.png";
+
+  /**
+   * 設定したいURL
+   */
+  setUrl2: string = "assets/images/kotori/1100234b19f.png";
 
   /**
    * 設定したい名前
@@ -36,6 +46,11 @@ export class SettingService {
    */
   derepoFlg: boolean = false;
 
+  /**
+   * ダブルモードにするか？
+   */
+  doubleFlg: boolean = false;
+
   canvas: any = null;
 
   constructor() {
@@ -50,6 +65,7 @@ export class SettingService {
         temp.message = data.message;
         temp.name = data.name;
         temp.url = data.url;
+        temp.url2 = data.url2;
         temp.favs = data.favs;
         temp.date = data.date;
         temp.selected = data.selected;
@@ -59,6 +75,10 @@ export class SettingService {
     // デレぽモードフラグを読み込み
     if(window.localStorage.getItem("derepoFlg") != null){
       this.derepoFlg = (window.localStorage.getItem("derepoFlg") == 'true');
+    }
+    // ダブルモードフラグを読み込み
+    if(window.localStorage.getItem("doubleFlg") != null){
+      this.doubleFlg = (window.localStorage.getItem("doubleFlg") == 'true');
     }
   }
 
@@ -143,5 +163,6 @@ export class SettingService {
     const output: string = JSON.stringify(this.talkList);
     window.localStorage.setItem("saveData", output);
     window.localStorage.setItem("derepoFlg", this.derepoFlg ? 'true' : 'false');
+    window.localStorage.setItem("doubleFlg", this.doubleFlg ? 'true' : 'false');
   }
 }
