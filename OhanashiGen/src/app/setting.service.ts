@@ -93,6 +93,7 @@ export class SettingService {
       data.message = "当ツールをご利用いただき、ありがとうございます。以下、簡単に操作説明をさせていただきます。";
       data.name = "田中琴葉";
       data.url = "assets/images/kotoha/1100aefcf25.png";
+      data.url2 = "";
       data.selected = false;
       data.favs = "9999+";
       data.date = "07-17 09:00";
@@ -104,6 +105,7 @@ export class SettingService {
       data.message = "と言っても見たまんまじゃない？入力欄に入力して「追加」ってするだけだよ？";
       data.name = "島原エレナ";
       data.url = "assets/images/elena/1100d030dd9.png";
+      data.url2 = "";
       data.selected = false;
       data.favs = "2243";
       data.date = "07-17 09:03";
@@ -115,6 +117,7 @@ export class SettingService {
       data.message = "「プレビュー欄をタップして光らせ、↑↑ボタンか↓↓ボタンで移動」というのは直感的でしょうか……";
       data.name = "田中琴葉";
       data.url = "assets/images/kotoha/1100f374c0e.png";
+      data.url2 = "";
       data.selected = false;
       data.favs = "1214";
       data.date = "07-17 09:04";
@@ -126,6 +129,7 @@ export class SettingService {
       data.message = "元のおはなしジェネレーターもそうだったし、許されると信じたい";
       data.name = "望月杏奈";
       data.url = "assets/images/anna/1100774c550.png";
+      data.url2 = "";
       data.selected = false;
       data.favs = "5627";
       data.date = "07-17 09:20";
@@ -137,6 +141,7 @@ export class SettingService {
       data.message = "ちなみにこのツールはPWAやから、スマホのホームボタンに追加できるんや！　凄いやろ？";
       data.name = "横山奈緒";
       data.url = "assets/images/nao/110032c8059.png";
+      data.url2 = "";
       data.selected = false;
       data.favs = "3304";
       data.date = "01-17 09:30";
@@ -148,6 +153,7 @@ export class SettingService {
       data.message = "※PWAがどう凄いかについての説明は割愛させていただきます。存分にご活用くださいませ。";
       data.name = "早坂そら";
       data.url = "assets/images/sora/2100994b563_1.png";
+      data.url2 = "";
       data.selected = false;
       data.favs = "1000";
       data.date = "01-17 10:00";

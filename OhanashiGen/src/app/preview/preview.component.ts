@@ -53,7 +53,7 @@ export class PreviewComponent implements OnInit {
       if(i == 0){
         temp.firstFlg = "true";
       }
-      if(this.setting.talkList[i].url2 != ""){
+      if(typeof this.setting.talkList[i].url2 != "undefined" && this.setting.talkList[i].url2 != ""){
         temp.doubleflg = "true";
       }
       temp.talk.selected = (this.setting.selectTalkId == this.setting.talkList[i].id);
