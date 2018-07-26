@@ -15,6 +15,7 @@ import { PresetComponent } from './preset/preset.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { CanvasComponent } from './canvas/canvas.component';
+import { TalkBoxDoubleComponent } from './talk-box-double/talk-box-double.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CanvasComponent } from './canvas/canvas.component';
     PreviewComponent,
     TalkBoxComponent,
     PresetComponent,
-    CanvasComponent
+    CanvasComponent,
+    TalkBoxDoubleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

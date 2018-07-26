@@ -23,7 +23,7 @@ export class PreviewComponent implements OnInit {
   /**
    * 会話一覧
    */
-  talkList: {firstFlg: string, talk: TalkData}[] = [];
+  talkList: {firstFlg: string, talk: TalkData, doubleflg: string}[] = [];
 
   constructor(private setting: SettingService) { }
 
@@ -49,9 +49,12 @@ export class PreviewComponent implements OnInit {
   refreshSelectDraw(){
     const list = [];
     for(let i = 0; i < this.setting.talkList.length; ++i){
-      const temp = {firstFlg: "false", talk: this.setting.talkList[i]};
+      const temp = {firstFlg: "false", talk: this.setting.talkList[i], doubleflg: "false"};
       if(i == 0){
         temp.firstFlg = "true";
+      }
+      if(typeof this.setting.talkList[i].url2 != "undefined" && this.setting.talkList[i].url2 != ""){
+        temp.doubleflg = "true";
       }
       temp.talk.selected = (this.setting.selectTalkId == this.setting.talkList[i].id);
       list.push(temp);
@@ -72,6 +75,7 @@ export class PreviewComponent implements OnInit {
       talk.message = nowTalk.message;
       talk.name = nowTalk.name;
       talk.url = nowTalk.url;
+      talk.url2 = nowTalk.url2;
       talk.favs = nowTalk.favs;
       talk.date = nowTalk.date;
       this.changeForm.emit(talk);

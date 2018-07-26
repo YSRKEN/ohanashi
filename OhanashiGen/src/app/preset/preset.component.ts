@@ -17,10 +17,15 @@ export class PresetComponent implements OnInit {
 
   scrollObservable = new Subject();
 
+  setUrl = "";
+  setUrl2 = "";
+
   constructor(private http: HttpClient, private setting: SettingService, private router: Router) {}
 
   async ngOnInit() {
     this.searchWord = this.setting.searchWord;
+    this.setUrl = this.setting.setUrl;
+    this.setUrl2 = this.setting.setUrl2;
     const text = await this.http.get<PresetData[]>('assets/preset_list.json').toPromise();
     let i = 1;
     this.dataList = text.map(temp => {
@@ -42,8 +47,14 @@ export class PresetComponent implements OnInit {
    * @param url 画像URL
    */
   click(name: string, url: string){
-    this.setting.setName =name;
-    this.setting.setUrl = url;
+    if(this.setting.presetMode == 1){
+      this.setting.setUrl = this.setUrl;
+      this.setting.setUrl2 = url;
+    }else{
+      this.setting.setUrl2 = this.setUrl2;
+      this.setting.setName = name;
+      this.setting.setUrl = url;
+    }
     this.router.navigate(['/']);
   }
 
