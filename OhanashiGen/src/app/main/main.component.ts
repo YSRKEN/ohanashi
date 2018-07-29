@@ -33,23 +33,21 @@ export class MainComponent implements OnInit {
   constructor(private setting: SettingService, private router: Router) { }
 
   ngOnInit() {
+    this.nowTalk.name = this.setting.setName;
+    this.setting.setName = "";
+    this.nowTalk.message = this.setting.setMessage;
     if(this.setting.presetMode == 0){
       this.nowTalk.url = this.setting.setUrl;
       this.setting.setUrl = "";
-      this.nowTalk.name = this.setting.setName;
-      this.setting.setName = "";
       if(this.setting.setUrl2 != ""){
         this.nowTalk.url2 = this.setting.setUrl2;
         this.setting.setUrl2 = "";
       }
     }else{
-      console.log("b");
       if(this.setting.setUrl != ""){
         this.nowTalk.url = this.setting.setUrl;
         this.setting.setUrl = "";
       }
-      this.nowTalk.name = this.setting.setName;
-      this.setting.setName = "";
       this.nowTalk.url2 = this.setting.setUrl2;
       this.setting.setUrl2 = "";
     }
@@ -224,6 +222,7 @@ export class MainComponent implements OnInit {
    * プリセット画面に遷移
    */
   async moveSelectView() {
+    this.setting.setMessage = this.nowTalk.message;
     this.setting.setUrl = this.nowTalk.url;
     this.setting.setUrl2 = this.nowTalk.url2;
     this.setting.presetMode = 0;
