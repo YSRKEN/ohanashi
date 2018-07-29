@@ -23,10 +23,14 @@
     "@angular/pwa": "^0.6.8",
     "@angular/router": "^6.0.3",
     "@angular/service-worker": "^6.0.3",
+    "boom": "^7.2.0",
     "core-js": "^2.5.4",
+    "hawk": "^7.0.7",
     "html2canvas": "^1.0.0-alpha.12",
     "ng-lazyload-image": "^4.0.0",
+    "node-gyp": "^3.7.0",
     "rxjs": "^6.0.0",
+    "sntp": "^3.0.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
