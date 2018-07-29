@@ -37,6 +37,11 @@ export class SettingService {
   setName: string = "";
 
   /**
+   * 設定したいテキスト
+   */
+  setMessage: string = "";
+
+  /**
    * プリセットメニューでの検索ワード
    */
   searchWord: string = "";
