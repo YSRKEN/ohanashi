@@ -1,13 +1,13 @@
-<div *ngFor="let talkPair of talkList">
-    <div [ngClass]="talkPair.doubleflg == 'true' ? 'd-none' : 'd-block'">
-        <div [ngClass]="derepoFlg == 'true' ? 'derepo-bg pb-4' : ''">
-            <app-talk-box selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}} name={{talkPair.talk.name}} message={{talkPair.talk.message}}
-                favs={{talkPair.talk.favs}} date={{talkPair.talk.date}} (click)="select(talkPair.talk.id)" derepoFlg={{derepoFlg}}
-                firstFlg={{talkPair.firstFlg}}></app-talk-box>
+<div [ngClass]="derepoFlg == 'true' ? 'derepo-bg pb-4' : ''">
+    <div *ngFor="let talkPair of talkList">
+        <div [ngClass]="talkPair.doubleflg == 'true' ? 'd-none' : 'd-block'">
+                <app-talk-box selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}} name={{talkPair.talk.name}} message={{talkPair.talk.message}}
+                    favs={{talkPair.talk.favs}} date={{talkPair.talk.date}} (click)="select(talkPair.talk.id)" derepoFlg={{derepoFlg}}
+                    firstFlg={{talkPair.firstFlg}}></app-talk-box>
         </div>
-    </div>
-    <div class="normal-style" [ngClass]="talkPair.doubleflg == 'true' ? 'd-block' : 'd-none'">
-        <app-talk-box-double selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}} url2={{talkPair.talk.url2}} name={{talkPair.talk.name}}
-            message={{talkPair.talk.message}} (click)="select(talkPair.talk.id)"></app-talk-box-double>
+        <div class="normal-style" [ngClass]="talkPair.doubleflg == 'true' ? 'd-block' : 'd-none'">
+            <app-talk-box-double selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}} url2={{talkPair.talk.url2}} name={{talkPair.talk.name}}
+                message={{talkPair.talk.message}} (click)="select(talkPair.talk.id)"></app-talk-box-double>
+        </div>
     </div>
 </div>

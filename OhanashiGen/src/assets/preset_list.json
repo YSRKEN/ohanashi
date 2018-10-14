@@ -484,7 +484,7 @@
     },
     {
         "name": "真壁瑞希",
-        "ruby": "まかべみづき",
+        "ruby": "まかべみずき",
         "images": [
             "assets/images/mizuki/11009c71579.png",
             "assets/images/mizuki/1100a16190e.png",
@@ -897,6 +897,13 @@
         "ruby": "きたひなこ",
         "images": [
             "assets/images/_dere_pa/ce63aa58d272444fa56976cea9b953ed.png"
+        ]
+    },
+    {
+        "name": "木村夏樹",
+        "ruby": "きむらなつき",
+        "images": [
+            "assets/images/_dere_pa/6998ff71c57f810ea2d0b4e7b0e3f6e9.png"
         ]
     },
     {
