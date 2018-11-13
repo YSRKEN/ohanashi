@@ -657,6 +657,20 @@
         ]
     },
     {
+        "name": "高木社長",
+        "ruby": "たかぎじゅんじろう",
+        "images": [
+            "assets/images/other/takagi.png"
+        ]
+    },
+    {
+        "name": "黒井社長",
+        "ruby": "くろいたかお",
+        "images": [
+            "assets/images/other/kuroi.png"
+        ]
+    },
+    {
         "name": "日高愛",
         "ruby": "ひだかあい",
         "images": [
