@@ -17,6 +17,8 @@ export class PresetComponent implements OnInit {
 
   scrollObservable = new Subject();
 
+  notLazyLoadFlg: boolean = false;
+
   setUrl = "";
   setUrl2 = "";
 
@@ -84,6 +86,10 @@ export class PresetComponent implements OnInit {
    */
   changeSearchWord(event: string){
     this.setting.searchWord = this.searchWord = event;
+  }
+
+  get lazyLoadFlg() {
+    return !this.notLazyLoadFlg;
   }
 }
 
