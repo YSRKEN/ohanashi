@@ -22,7 +22,8 @@
       <div class="card-body d-flex flex-wrap">
         <div *ngFor="let url of data.images">
           <img *ngIf="notLazyLoadFlg" src={{url}} width="76px" height="76px" class="m-1" (click)="click(data.name, url)">
-          <img *ngIf="lazyLoadFlg" lazyLoad={{url}} width="76px" height="76px" class="m-1" (click)="click(data.name, url)">
+          <img *ngIf="lazyLoadFlg" lazyLoad={{url}} width="76px" height="76px" class="m-1" (click)="click(data.name, url)"
+          [scrollObservable]="scrollObservable">
         </div>
       </div>
     </div>
