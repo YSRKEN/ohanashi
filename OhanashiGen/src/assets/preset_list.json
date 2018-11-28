@@ -853,6 +853,13 @@
         ]
     },
     {
+        "name": "大沼くるみ",
+        "ruby": "おおぬまくるみ",
+        "images": [
+            "assets/images/_dere_cu/36b609e38a96aa687b0ca0e00e48ae38.png"
+        ]
+    },
+    {
         "name": "岡崎泰葉",
         "ruby": "おかざきやすは",
         "images": [
@@ -944,6 +951,13 @@
         ]
     },
     {
+        "name": "桐生つかさ",
+        "ruby": "きりゅうつかさ",
+        "images": [
+            "assets/images/_dere_co/95130f3e49df02ba8952ff44ed2e26b4.png"
+        ]
+    },
+    {
         "name": "工藤忍",
         "ruby": "くどうしのぶ",
         "images": [
@@ -983,6 +997,13 @@
         "ruby": "こひなたみほ",
         "images": [
             "assets/images/_dere_cu/000ffdb88f22d0620574843e6af8fa3d.png"
+        ]
+    },
+    {
+        "name": "小松伊吹",
+        "ruby": "こまついぶき",
+        "images": [
+            "assets/images/_dere_pa/5a3dd9b14286b7fda6288e28ccde3c09.png"
         ]
     },
     {
@@ -1091,6 +1112,13 @@
         ]
     },
     {
+        "name": "白菊ほたる",
+        "ruby": "しらぎくほたる",
+        "images": [
+            "assets/images/_dere_cu/f165b1a6d0df11406991d43a9194a009.png"
+        ]
+    },
+    {
         "name": "白坂小梅",
         "ruby": "しらさかこうめ",
         "images": [
@@ -1109,6 +1137,13 @@
         "ruby": "すぎさかうみ",
         "images": [
             "assets/images/_dere_pa/4a5308de6756325a9fb85a244249e80a.png"
+        ]
+    },
+    {
+        "name": "涼宮星花",
+        "ruby": "すずみやせいか",
+        "images": [
+            "assets/images/_dere_cu/674392fd40893e7c94033270cd904aeb.png"
         ]
     },
     {
@@ -1200,6 +1235,13 @@
         "ruby": "なるみやゆめ",
         "images": [
             "assets/images/_dere_co/6bb4d3134a9e6d0113b50d3d5f92a4e1.png"
+        ]
+    },
+    {
+        "name": "西川保奈美",
+        "ruby": "にしかわほなみ",
+        "images": [
+            "assets/images/_dere_co/a86575aedf415e012d146b402eba99fe.png"
         ]
     },
     {
@@ -1434,6 +1476,13 @@
         ]
     },
     {
+        "name": "棟方愛海",
+        "ruby": "むなかたあつみ",
+        "images": [
+            "assets/images/_dere_cu/7ca1dca7c67e437d1c5c9accc69dc204.png"
+        ]
+    },
+    {
         "name": "持田亜里沙",
         "ruby": "もちだありさ",
         "images": [
@@ -1494,6 +1543,13 @@
         "ruby": "やなぎきよら",
         "images": [
             "assets/images/_dere_cu/44a94b153b6f0d7c192eccbf372b3925.png"
+        ]
+    },
+    {
+        "name": "大和亜季",
+        "ruby": "やまとあき",
+        "images": [
+            "assets/images/_dere_co/aeb96a4c89ba2817d010d062fa872032.png"
         ]
     },
     {
