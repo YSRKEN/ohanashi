@@ -12,8 +12,10 @@
 </div>
 <div [ngClass]="derepoFlg == 'true' ? 'd-block' : 'd-none'">
     <div class="position-relative" [ngClass]="setNgClass">
-        <img class="derepo-face2 position-absolute" src={{url}} crossorigin="anonymous">
-        <img class="derepo-face3 position-absolute" src={{url2}} crossorigin="anonymous">
+        <img class="derepo-face2 position-absolute"  [ngClass]="firstFlg == 'true' ? 'd-none' : 'd-block'" src={{url}} crossorigin="anonymous">
+        <img class="derepo-face3 position-absolute"  [ngClass]="firstFlg == 'true' ? 'd-none' : 'd-block'" src={{url2}} crossorigin="anonymous">
+        <img class="derepo-face4 position-absolute"  [ngClass]="firstFlg == 'true' ? 'd-block' : 'd-none'" src={{url}} crossorigin="anonymous">
+        <img class="derepo-face5 position-absolute"  [ngClass]="firstFlg == 'true' ? 'd-block' : 'd-none'" src={{url2}} crossorigin="anonymous">
         <div class="derepo-name position-absolute">{{name}}</div>
         <div class="derepo-message position-absolute">{{message}}</div>
         <div class="derepo-fav-star position-absolute">★</div>
