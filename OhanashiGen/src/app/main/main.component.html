@@ -64,8 +64,9 @@
                 </div>
             </div>
             <div class="border" [ngClass]="doubleFlg ? 'd-block' : 'd-none'">
-                <div class="border normal-style">
-                    <app-talk-box-double url={{nowTalk.url}} url2={{nowTalk.url2}}
+                <div class="border" [ngClass]="derepoFlg ? 'derepo-style' : 'normal-style'">
+                    <app-talk-box-double url={{nowTalk.url}} url2={{nowTalk.url2}} derepoFlg={{derepoFlg2}}
+                    favs={{nowTalk.favs}} date={{nowTalk.date}}
                     name={{nowTalk.name}} message={{nowTalk.message}}></app-talk-box-double>
                 </div>
             </div>
