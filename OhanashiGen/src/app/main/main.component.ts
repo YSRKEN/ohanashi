@@ -266,9 +266,6 @@ export class MainComponent implements OnInit {
    */
   checkDerepoFlg() {
     this.setting.derepoFlg = !this.derepoFlg;
-    if(this.setting.derepoFlg){
-      this.setting.doubleFlg = this.doubleFlg = false;
-    }
     this.setting.saveSetting();
   }
 
@@ -277,9 +274,6 @@ export class MainComponent implements OnInit {
    */
   checkDoubleFlg(){
     this.setting.doubleFlg = !this.doubleFlg;
-    if(this.setting.doubleFlg){
-      this.setting.derepoFlg = this.derepoFlg = false;
-    }
     this.setting.saveSetting();
   }
 

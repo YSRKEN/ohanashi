@@ -7,6 +7,7 @@
         </div>
         <div class="normal-style" [ngClass]="talkPair.doubleflg == 'true' ? 'd-block' : 'd-none'">
             <app-talk-box-double selected={{talkPair.talk.selected2}} url={{talkPair.talk.url}} url2={{talkPair.talk.url2}} name={{talkPair.talk.name}}
+                favs={{talkPair.talk.favs}} date={{talkPair.talk.date}} firstFlg={{talkPair.firstFlg}} derepoFlg={{derepoFlg}}
                 message={{talkPair.talk.message}} (click)="select(talkPair.talk.id)"></app-talk-box-double>
         </div>
     </div>
