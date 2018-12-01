@@ -352,4 +352,23 @@ export class MainComponent implements OnInit {
     (a as HTMLAnchorElement).download = fileName;
     a.dispatchEvent(event);
   }
+
+  /**
+   * ファボ数を乱数で決定する
+   */
+  setFavAuto(){
+    console.log('setFavAuto');
+  }
+
+  /**
+   * タイムスタンプを適当に決定する
+   * ・最初の1個の場合、現在日付とする
+   * ・そうでなく、かつどのおはなしも選択されていない場合、末尾に合う日付とする
+   *   (末尾から1～30分以内)
+   * ・どれかのおはなしが選択されていた場合、上と下を見て『間に差し込めるように』決定する
+   * 　(差し込めない場合、上の日付+1分とする)
+   */
+  setTimestampAuto(){
+    console.log('setTimestampAuto');
+  }
 }
