@@ -42,10 +42,12 @@
         </div>
         <div class="form-group" [ngClass]="derepoFlg ? 'd-block' : 'd-none'">
             <label for="favs">ファボ数</label>
+            <button class="ml-3" (click)="setFavAuto()">乱数で決定</button>
             <input type="text" class="form-control" id="favs" name="favs" placeholder="XXXX" [(ngModel)]="nowTalk.favs" maxlength='5'>
         </div>
         <div class="form-group" [ngClass]="derepoFlg ? 'd-block' : 'd-none'">
             <label for="date">タイムスタンプ</label>
+            <button class="ml-3" (click)="setTimestampAuto()">適当に決定</button>
             <input type="text" class="form-control" id="date" name="date" placeholder="MM-DD HH:MM" [(ngModel)]="nowTalk.date" maxlength='11'>
         </div>
         <div class="form-group" [ngClass]="doubleFlg ? 'd-block' : 'd-none'">
