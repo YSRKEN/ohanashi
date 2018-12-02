@@ -352,4 +352,130 @@ export class MainComponent implements OnInit {
     (a as HTMLAnchorElement).download = fileName;
     a.dispatchEvent(event);
   }
+
+  /**
+   * ファボ数を乱数で決定する
+   */
+  setFavAuto(){
+    const num = Math.floor(Math.random() * 10001);
+    if (num == 10000) {
+      this.nowTalk.favs = '9999+';
+    }else {
+      this.nowTalk.favs = '' + num;
+    }
+  }
+
+  /**
+   * タイムスタンプを適当に決定する
+   * ・最初の1個の場合、現在日付とする
+   * ・そうでなく、かつどのおはなしも選択されていない場合、末尾に合う日付とする
+   *   (末尾から1～30分以内)
+   * ・どれかのおはなしが選択されていた場合、上と下を見て『間に差し込めるように』決定する
+   * 　(差し込めない場合、上の日付+1分とする)
+   */
+  setTimestampAuto(){
+    // 参考：JavaScript 日付を指定した書式の文字列にフォーマットする
+    // https://zukucode.com/2017/04/javascript-date-format.html
+    const formatDate = (date: Date, format: string): string => {
+      format = format.replace(/yyyy/g, '' + date.getFullYear());
+      format = format.replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2));
+      format = format.replace(/dd/g, ('0' + date.getDate()).slice(-2));
+      format = format.replace(/HH/g, ('0' + date.getHours()).slice(-2));
+      format = format.replace(/mm/g, ('0' + date.getMinutes()).slice(-2));
+      format = format.replace(/ss/g, ('0' + date.getSeconds()).slice(-2));
+      format = format.replace(/SSS/g, ('00' + date.getMilliseconds()).slice(-3));
+      return format;
+    };
+
+    // 「MM-dd HH:mm」形式の文字列をパースする
+    const parseDerepoDate = (dateString: string): Date | null => {
+      const pattern = /([0-9]+)-([0-9]+) ([0-9]+):([0-9]+)/;
+      if (!pattern.test(dateString)) {
+        return null;
+      }
+      const matches = dateString.match(pattern);
+      if (matches.length < 5) {
+        return null;
+      }
+      return new Date(2018, parseInt(matches[1]) - 1, parseInt(matches[2]), parseInt(matches[3]), parseInt(matches[4]));
+    };
+
+    // 選択した時刻に、0～29分まで加算した日付を返す
+    const addRandomMinute = (date: Date): Date => {
+      const newDate = new Date(date);
+      newDate.setMinutes(newDate.getMinutes() + Math.floor(Math.random() * 30));
+      return newDate;
+    }
+
+    // 選択した時刻に、0～29分まで減算した日付を返す
+    const subRandomMinute = (date: Date): Date => {
+      const newDate = new Date(date);
+      newDate.setMinutes(newDate.getMinutes() - Math.floor(Math.random() * 30));
+      return newDate;
+    }
+
+    // 省力化のため、事前に現在日付を代入しておく
+    this.nowTalk.date = formatDate(new Date(), 'MM-dd HH:mm');
+
+    // 最初の1個の場合、現在日付とする
+    if (this.setting.talkList.length == 0) {
+      return;
+    }
+
+    // そうでなく、かつどのおはなしも選択されていない場合、末尾に合う日付とする
+    if (this.setting.selectTalkId < 0){
+      const lastDateString = this.setting.talkList[this.setting.talkList.length - 1].date;
+      const lastDate = parseDerepoDate(lastDateString);
+      if (lastDate != null) {
+        this.nowTalk.date = formatDate(addRandomMinute(lastDate), 'MM-dd HH:mm');
+      }
+      return;
+    }
+
+    //// いずれかのおはなしが選択されている場合
+
+    // そもそもおはなしが1個しかない場合、現在日付とする
+    if (this.setting.talkList.length == 1){
+      return;
+    }
+
+    // 選択されているおはなしの、表示上のインデックスを検索する
+    let index = -1;
+    for (let i = 0; i < this.setting.talkList.length; ++i){
+      if (this.setting.talkList[i].id == this.setting.selectTalkId) {
+        index = i;
+        break;
+      }
+    }
+    if (index == -1) {
+      return;
+    }
+
+    // 表示上のインデックスが先頭や末尾だった場合の処理
+    if (index == 0){
+      const nextDate = parseDerepoDate(this.setting.talkList[index + 1].date);
+      this.nowTalk.date = formatDate(subRandomMinute(nextDate), 'MM-dd HH:mm');
+      return;
+    }
+    if (index == this.setting.talkList.length - 1) {
+      const prevDate = parseDerepoDate(this.setting.talkList[index - 1].date);
+      this.nowTalk.date = formatDate(addRandomMinute(prevDate), 'MM-dd HH:mm');
+      return;
+    }
+
+    // 表示上のインデックスが中間だった場合の処理
+    const prevDate = parseDerepoDate(this.setting.talkList[index - 1].date);
+    const nextDate = parseDerepoDate(this.setting.talkList[index + 1].date);
+    if (prevDate.getTime() > nextDate.getTime()) {
+      // 矛盾していれば、直前の日付からのaddRandomMinuteを返す
+      this.nowTalk.date = formatDate(addRandomMinute(prevDate), 'MM-dd HH:mm');
+      return;
+    }else {
+      // 矛盾していないので、日付の間の時刻を返す
+      const diffDate = nextDate.getTime() - prevDate.getTime();
+      const newDateTime = prevDate.getTime() + Math.floor(Math.random() * diffDate);
+      const newDate = new Date(newDateTime);
+      this.nowTalk.date = formatDate(newDate, 'MM-dd HH:mm');
+    }
+  }
 }
