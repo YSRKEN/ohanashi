@@ -1147,6 +1147,13 @@
         ]
     },
     {
+        "name": "関裕美",
+        "ruby": "せきひろみ",
+        "images": [
+            "assets/images/_dere_cu/f29720a7f7ad7dd404d165817a1fdaac.png"
+        ]
+    },
+    {
         "name": "瀬名詩織",
         "ruby": "せなしおり",
         "images": [
@@ -1403,6 +1410,13 @@
         "ruby": "まきはらしほ",
         "images": [
             "assets/images/_dere_pa/fc083c9fa41f80890243a281ea08e7b8.png"
+        ]
+    },
+    {
+        "name": "松尾千鶴",
+        "ruby": "まつおちづる",
+        "images": [
+            "assets/images/_dere_co/48483af5530863672b4b39a71456933c.png"
         ]
     },
     {
