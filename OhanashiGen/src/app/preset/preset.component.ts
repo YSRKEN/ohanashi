@@ -67,7 +67,10 @@ export class PresetComponent implements OnInit {
     if(this.searchWord == ""){
       return this.dataList;
     }else{
-      return this.dataList.filter(data => data.name.includes(this.searchWord) || (/\u3057\u3044\u304B/.test(data.ruby) ? "\u304F\u308D\u3044\u3057\u3044\u304B" : data.ruby).includes(this.searchWord));
+      return this.dataList.filter(
+        data => data.name.includes(this.searchWord)
+        || (/\u3057\u3044\u304B/.test(data.ruby) ? "\u304F\u308D\u3044\u3057\u3044\u304B" : data.ruby).includes(this.searchWord)
+        || (/\u306F\u3084\u307F\u304B\u306A\u3067/.test(data.ruby) ? "\u3082\u307F\u3084\u3067" : data.ruby).includes(this.searchWord));
     }
   }
 
