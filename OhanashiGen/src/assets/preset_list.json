@@ -965,6 +965,13 @@
         ]
     },
     {
+        "name": "黒川千秋",
+        "ruby": "くろかわちあき",
+        "images": [
+            "assets/images/_dere_co/43c33ebfe1c42d6c220ca9413ffa2d0c.png"
+        ]
+    },
+    {
         "name": "古賀小春",
         "ruby": "こがこはる",
         "images": [
@@ -1455,6 +1462,13 @@
         ]
     },
     {
+        "name": "的場梨沙",
+        "ruby": "まとばりさ",
+        "images": [
+            "assets/images/_dere_pa/5467742abdb6fa27bcc6b5bc6c06b12e.png"
+        ]
+    },
+    {
         "name": "間中美里",
         "ruby": "まなかみさと",
         "images": [
@@ -1473,6 +1487,13 @@
         "ruby": "みずきせいら",
         "images": [
             "assets/images/_dere_co/77a921117e91fe7ddce6e7896bb1fcea.png"
+        ]
+    },
+    {
+        "name": "水野翠",
+        "ruby": "みずのみどり",
+        "images": [
+            "assets/images/_dere_co/f239e9fc613e75cf36043ac0025cc815.png"
         ]
     },
     {
