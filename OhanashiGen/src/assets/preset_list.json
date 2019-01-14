@@ -692,6 +692,13 @@
         ]
     },
     {
+        "name": "愛野渚",
+        "ruby": "あいのなぎさ",
+        "images": [
+            "assets/images/_dere_pa/ac8271708d2e181e4bfd127791acb6b6.png"
+        ]
+    },
+    {
         "name": "相葉夕美",
         "ruby": "あいばゆみ",
         "images": [
@@ -801,6 +808,13 @@
         "ruby": "いむらせつな",
         "images": [
             "assets/images/_dere_cu/5f78843cb3bd7aff0668a90cae422260.png"
+        ]
+    },
+    {
+        "name": "氏家むつみ",
+        "ruby": "うじいえむつみ",
+        "images": [
+            "assets/images/_dere_co/35a60da97fd0d5a2f23d29e8fa03cc17.png"
         ]
     },
     {
@@ -962,6 +976,13 @@
         "ruby": "くどうしのぶ",
         "images": [
             "assets/images/_dere_cu/246626f360953bd592eb8d408e059fcf.png"
+        ]
+    },
+    {
+        "name": "黒川千秋",
+        "ruby": "くろかわちあき",
+        "images": [
+            "assets/images/_dere_co/43c33ebfe1c42d6c220ca9413ffa2d0c.png"
         ]
     },
     {
@@ -1210,6 +1231,13 @@
         ]
     },
     {
+        "name": "辻野あかり(仮)",
+        "ruby": "つじのあかりかっこかり",
+        "images": [
+            "assets/images/_dere_cu/akari_tsujino_.png"
+        ]
+    },
+    {
         "name": "十時愛梨",
         "ruby": "とときあいり",
         "images": [
@@ -1221,6 +1249,13 @@
         "ruby": "どうみょうじかりん",
         "images": [
             "assets/images/_dere_cu/b94846c43301d94bac672c1a89c76ab3.png"
+        ]
+    },
+    {
+        "name": "長富蓮実",
+        "ruby": "ながとみはすみ",
+        "images": [
+            "assets/images/_dere_cu/629e012e1b52a18a425235cc6358f4ff.png"
         ]
     },
     {
@@ -1455,6 +1490,13 @@
         ]
     },
     {
+        "name": "的場梨沙",
+        "ruby": "まとばりさ",
+        "images": [
+            "assets/images/_dere_pa/5467742abdb6fa27bcc6b5bc6c06b12e.png"
+        ]
+    },
+    {
         "name": "間中美里",
         "ruby": "まなかみさと",
         "images": [
@@ -1473,6 +1515,13 @@
         "ruby": "みずきせいら",
         "images": [
             "assets/images/_dere_co/77a921117e91fe7ddce6e7896bb1fcea.png"
+        ]
+    },
+    {
+        "name": "水野翠",
+        "ruby": "みずのみどり",
+        "images": [
+            "assets/images/_dere_co/f239e9fc613e75cf36043ac0025cc815.png"
         ]
     },
     {
