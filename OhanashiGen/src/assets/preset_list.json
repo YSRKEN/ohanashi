@@ -888,6 +888,13 @@
         ]
     },
     {
+        "name": "奥山沙織",
+        "ruby": "おくやまさおり",
+        "images": [
+            "assets/images/_dere_cu/4b59828899da67b4ead073298d8dcff1.png"
+        ]
+    },
+    {
         "name": "乙倉悠貴",
         "ruby": "おとくらゆうき",
         "images": [
@@ -941,6 +948,13 @@
         "ruby": "きたひなこ",
         "images": [
             "assets/images/_dere_pa/ce63aa58d272444fa56976cea9b953ed.png"
+        ]
+    },
+    {
+        "name": "喜多見柚",
+        "ruby": "きたみゆず",
+        "images": [
+            "assets/images/_dere_pa/7408994e5b3a1a90b71ce68a1a00f894.png"
         ]
     },
     {
@@ -1165,6 +1179,13 @@
         "ruby": "すずみやせいか",
         "images": [
             "assets/images/_dere_cu/674392fd40893e7c94033270cd904aeb.png"
+        ]
+    },
+    {
+        "name": "砂塚あきら",
+        "ruby": "すなづかあきら",
+        "images": [
+            "assets/images/_dere_co/akira_sunaduka_.png"
         ]
     },
     {
