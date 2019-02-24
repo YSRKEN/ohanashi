@@ -706,6 +706,13 @@
         ]
     },
     {
+        "name": "相原雪乃",
+        "ruby": "あいはらゆきの",
+        "images": [
+            "assets/images/_dere_cu/fb68f200b3543f079140ab93ca19710e.png"
+        ]
+    },
+    {
         "name": "赤城みりあ",
         "ruby": "あかぎみりあ",
         "images": [
@@ -1182,8 +1189,8 @@
         ]
     },
     {
-        "name": "砂塚あきら",
-        "ruby": "すなづかあきら",
+        "name": "砂塚あきら(仮)",
+        "ruby": "すなづかあきらかっこかり",
         "images": [
             "assets/images/_dere_co/akira_sunaduka_.png"
         ]
@@ -1676,6 +1683,13 @@
         "ruby": "ゆさこずえ",
         "images": [
             "assets/images/_dere_cu/fc6320af9e78d1ed717c25498d4302d2.png"
+        ]
+    },
+    {
+        "name": "夢見りあむ(仮)",
+        "ruby": "ゆめみりあむかっこかり",
+        "images": [
+            "assets/images/_dere_pa/riamu_yumemi_.png"
         ]
     },
     {
