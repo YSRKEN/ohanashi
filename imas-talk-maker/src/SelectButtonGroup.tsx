@@ -4,14 +4,16 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 const SelectButtonGroup: React.FC<{
 	nameList: string[],			// 表示名一覧
 	firstSelectName: string,	// 最初に選択する名前
-	className?: string,			// ButtonGroupに設定するクラス
+	className?: string,			// ButtonGroupに設定するclass
 	// 選択されている方のボタン色
-	selectedColorType?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark'
+	selectedColorType?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark',
+	callback: (value: string) => void
 }> = ({
 	nameList,
 	firstSelectName,
 	className,
-	selectedColorType = 'primary'
+	selectedColorType = 'primary',
+	callback
 }) => {
 	// 関数を定義する
 	const clickButtonFunc = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -26,6 +28,7 @@ const SelectButtonGroup: React.FC<{
 			return;
 		}
 		setSelectName(buttonName);
+		callback(buttonName);
 	}
 
 	// Hooksを設定する
