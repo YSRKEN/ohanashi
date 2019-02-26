@@ -1,41 +1,15 @@
 import * as React from 'react';
-import { Button, Col, Container, FormGroup, FormLabel, Row } from 'react-bootstrap';
-import Form from 'react-bootstrap/FormGroup';
-import SelectButtonGroup from './SelectButtonGroup';
-
-const sampleFunction = () => window.alert("Hello, React-Bootstrap!");
+import { Col, Container, Row } from 'react-bootstrap';
+import { TalkType } from './constant';
+import InputTalkForm from './InputTalkForm';
 
 const App: React.FC = () => {
-  const [talkType, setTalkType] = React.useState('おはなし');
-  const [productionType, setProductionType] = React.useState('ミリマス');
-  const [idolName, setIdolName] = React.useState('こがね');
+  const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
   return (
     <Container>
       <Row>
-        <Col>
-          <Form>
-            <FormGroup>
-              <SelectButtonGroup nameList={['おはなし', 'デレぽ']}
-                firstSelectName={talkType} selectedColorType='primary'
-                callback={setTalkType}/><br/>
-              <FormLabel>{talkType}</FormLabel>
-            </FormGroup>
-            <FormGroup>
-              <SelectButtonGroup nameList={['デレマス', 'ミリマス', 'シャニマス']}
-                firstSelectName={productionType} selectedColorType='info'
-                callback={setProductionType} /><br/>
-                <FormLabel>{productionType}</FormLabel>
-            </FormGroup>
-            <FormGroup>
-              <SelectButtonGroup nameList={['まみみ', 'きりこ', 'こがね', 'ゆいか', 'さくや']}
-                firstSelectName={idolName} selectedColorType='danger'
-                callback={setIdolName} /><br/>
-                <FormLabel>{idolName}</FormLabel>
-            </FormGroup>
-            <FormGroup>
-              <Button onClick={sampleFunction}>Push!</Button>
-            </FormGroup>
-          </Form>
+        <Col className="mx-auto" xs={12} sm={10} md={8}>
+          <InputTalkForm className="m-3" talkType={talkType} setTalkType={setTalkType}/>
         </Col>
       </Row>
     </Container>
