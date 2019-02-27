@@ -7,6 +7,7 @@ const SelectButtonGroup: React.FC<{
 	className?: string,			// ButtonGroupに設定するclass
 	// 選択されている方のボタン色
 	selectedColorType?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark',
+	// 切り替えた際のコールバック
 	callback: (value: string) => void
 }> = ({
 	nameList,
