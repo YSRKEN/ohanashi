@@ -33,6 +33,14 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 				}
 			}
 
+			// 本文が変更した際の処理
+			const onChangeMessage = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+				const value = event.currentTarget.value;
+				if (typeof value === 'string') {
+					props.setMessage(value);
+				}
+			}
+
 			return (
 				<Form className={`border p-3 ${className}`}>
 					<FormGroup>
@@ -47,6 +55,10 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 							callback={props.setCharaNameType}/>
 						<FormControl disabled={isAutoInputName(props.charaNameType)}
 							value={props.charaName} onChange={onChangeCharaName}/>
+					</FormGroup>
+					<FormGroup>
+						<FormLabel>喋る内容</FormLabel>
+						<FormControl as='textarea' value={props.message} onChange={onChangeMessage} />
 					</FormGroup>
 					{derepoForm(props.talkType)}
 				</Form>

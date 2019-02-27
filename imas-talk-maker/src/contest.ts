@@ -13,6 +13,10 @@ export interface IConfig {
 	// キャラ名
 	charaName: string
 	setCharaName: (value: string) => void
+
+	// 本文
+	message: string
+	setMessage: (value: string) => void
 }
 
 export const ConfigContext = React.createContext<IConfig | null>(null);

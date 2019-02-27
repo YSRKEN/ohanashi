@@ -5,14 +5,11 @@ import { ConfigContext } from './contest';
 import InputTalkForm from './InputTalkForm';
 
 const App: React.FC = () => {
-  // おはなしモードかデレぽモードか
+  // Hooks
   const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
-
-  // キャラ名について
   const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('自動');
-
-  // キャラ名
   const [charaName, setCharaName] = React.useState('');
+  const [message, setMessage] = React.useState('');
 
   return (
     <ConfigContext.Provider value={{
@@ -22,13 +19,15 @@ const App: React.FC = () => {
       charaNameType,
       setCharaNameType,
       charaName,
-      setCharaName
+      setCharaName,
+      message,
+      setMessage
     }}>
       <Container>
         <Row>
           <Col className="mx-auto" xs={12} sm={10} md={8}>
             <InputTalkForm className="m-3"/>
-            <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})</span>
+            <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})<br/>喋る内容：{message}</span>
           </Col>
         </Row>
       </Container>
