@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { CharaNameType, TalkType } from './constant';
+import { ConfigContext } from './contest';
 import InputTalkForm from './InputTalkForm';
 
 const App: React.FC = () => {
@@ -14,16 +15,24 @@ const App: React.FC = () => {
   const [charaName, setCharaName] = React.useState('');
 
   return (
-    <Container>
-      <Row>
-        <Col className="mx-auto" xs={12} sm={10} md={8}>
-          <InputTalkForm className="m-3" talkType={talkType} setTalkType={setTalkType}
-            charaNameType={charaNameType} setCharaNameType={setCharaNameType}
-            charaName={charaName} setCharaName={setCharaName}/>
-          <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})</span>
-        </Col>
-      </Row>
-    </Container>
+    <ConfigContext.Provider value={{
+      talkType,
+      // tslint:disable-next-line: object-literal-sort-keys
+      setTalkType,
+      charaNameType,
+      setCharaNameType,
+      charaName,
+      setCharaName
+    }}>
+      <Container>
+        <Row>
+          <Col className="mx-auto" xs={12} sm={10} md={8}>
+            <InputTalkForm className="m-3"/>
+            <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})</span>
+          </Col>
+        </Row>
+      </Container>
+    </ConfigContext.Provider>
   );
 }
 
