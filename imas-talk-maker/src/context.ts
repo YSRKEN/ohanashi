@@ -14,6 +14,14 @@ export interface IConfig {
 	charaName: string
 	setCharaName: (value: string) => void
 
+	// アイコンのURL
+	iconURL: string
+	setIconURL: (value: string) => void
+
+	// アイコンの名前
+	iconName: string
+	setIconName: (value: string) => void
+
 	// 本文
 	message: string
 	setMessage: (value: string) => void

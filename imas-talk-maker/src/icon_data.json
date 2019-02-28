@@ -1,0 +1,35 @@
+[
+  {
+    "name": "天海春香",
+    "short_name": "春香",
+    "kana": "あまみはるか",
+    "category": "million",
+    "image": [
+      "haruka_1.png",
+      "haruka_2.png",
+      "haruka_3.png",
+      "haruka_4.png",
+      "haruka_5.png"
+    ]
+  },
+  {
+    "name": "島村卯月",
+    "short_name": "卯月",
+    "kana": "しまむらうづき",
+    "category": "cinderella",
+    "image": ["uduki_1.png"]
+  },
+  {
+    "name": "春日未来",
+    "short_name": "未来",
+    "kana": "かすがみらい",
+    "category": "million",
+    "image": [
+      "mirai_1.png",
+      "mirai_2.png",
+      "mirai_3.png",
+      "mirai_4.png",
+      "mirai_5.png"
+    ]
+  }
+]

@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { FormControl, FormGroup, FormLabel } from 'react-bootstrap';
+import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { CHARA_NAME_TYPE_LIST, CharaNameType, TALK_TYPE_LIST, TalkType } from '../constant';
 import { ConfigContext } from '../context';
 import SelectButtonGroup from './SelectButtonGroup';
+
+// 自動入力時はtrue
+const isAutoInputName = (charaNameType: CharaNameType) => (charaNameType === '自動');
 
 // デレぽモード時のみ表示されるフォーム
 const derepoForm = (talkType: TalkType) => (talkType === 'デレぽ' ? (
@@ -13,9 +16,6 @@ const derepoForm = (talkType: TalkType) => (talkType === 'デレぽ' ? (
 		<FormControl />
 	</FormGroup>
 ) : (<></>));
-
-// 自動入力時はtrue
-const isAutoInputName = (charaNameType: CharaNameType) => (charaNameType === '自動');
 
 // 入力フォーム全体
 const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
@@ -51,10 +51,20 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 					<FormGroup>
 						<FormLabel>キャラ名</FormLabel>
 						<SelectButtonGroup className="ml-3 my-3" nameList={CHARA_NAME_TYPE_LIST}
-							firstSelectName={props.charaNameType} selectedColorType='primary'
+							firstSelectName={props.charaNameType} selectedColorType='secondary'
 							callback={props.setCharaNameType}/>
 						<FormControl disabled={isAutoInputName(props.charaNameType)}
 							value={props.charaName} onChange={onChangeCharaName}/>
+					</FormGroup>
+					<FormGroup>
+						<FormLabel>アイコン({props.iconName})</FormLabel><br />
+						<div className="d-flex ml-3">
+							<img src={`${process.env.PUBLIC_URL}/asset/${props.iconURL}`} width="72" height="72" />
+							<div className="my-auto">
+								<Button className="mx-3" variant="secondary">キャラ</Button>
+								<Button variant="secondary">表情</Button>
+							</div>
+						</div>
 					</FormGroup>
 					<FormGroup>
 						<FormLabel>喋る内容</FormLabel>
