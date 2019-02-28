@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { CHARA_NAME_TYPE_LIST, CharaNameType, TALK_TYPE_LIST, TalkType } from './constant';
-import { ConfigContext } from './contest';
+import { ConfigContext } from './context';
 import SelectButtonGroup from './SelectButtonGroup';
 
 // デレぽモード時のみ表示されるフォーム

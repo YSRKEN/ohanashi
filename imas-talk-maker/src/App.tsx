@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { CharaNameType, TalkType } from './constant';
-import { ConfigContext } from './contest';
+import { ConfigContext } from './context';
 import InputTalkForm from './InputTalkForm';
 
 const App: React.FC = () => {
