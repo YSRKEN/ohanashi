@@ -18,23 +18,15 @@ const App: React.FC = () => {
 
   return (
     <ConfigContext.Provider value={{
-      talkType,
       // tslint:disable-next-line: object-literal-sort-keys
-      setTalkType,
-      viewType,
-      setViewType,
-      charaNameType,
-      setCharaNameType,
-      charaName,
-      setCharaName,
-      message,
-      setMessage,
-      iconURL,
-      setIconURL,
-      iconName,
-      setIconName,
-      iconSelectorFlg,
-      setIconSelectorFlg
+      talkType, setTalkType,
+      viewType, setViewType,
+      charaNameType, setCharaNameType,
+      charaName, setCharaName,
+      message, setMessage,
+      iconURL, setIconURL,
+      iconName, setIconName,
+      iconSelectorFlg, setIconSelectorFlg
     }}>
       <Container>
         <Row>

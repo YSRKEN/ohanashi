@@ -4,19 +4,24 @@ import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { findIconListByName } from 'src/iconData';
 import { CHARA_NAME_TYPE_LIST, CharaNameType, TALK_TYPE_LIST, TalkType } from '../constant';
-import { ConfigContext, IConfig } from '../context';
+import { ConfigContext } from '../context';
 import SelectButtonGroup from './SelectButtonGroup';
 
 // 自動入力時はtrue
 const isAutoInputName = (charaNameType: CharaNameType) => (charaNameType === '自動');
 
 // キャラ名入力
-const InputCharacterName: React.FC<{props: IConfig}> = ({props}) => {
+const InputCharacterName: React.FC = () => {
+	const config = React.useContext(ConfigContext);
+	if (config === null) {
+		return (<></>);
+	}
+
 	// キャラ名が変更した際の処理
 	const onChangeCharaName = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
 		const value = event.currentTarget.value;
 		if (typeof value === 'string') {
-			props.setCharaName(value);
+			config.setCharaName(value);
 		}
 	}
 
@@ -24,10 +29,10 @@ const InputCharacterName: React.FC<{props: IConfig}> = ({props}) => {
 		<FormGroup>
 			<FormLabel>キャラ名</FormLabel>
 			<SelectButtonGroup className="ml-3 my-3" nameList={CHARA_NAME_TYPE_LIST}
-				firstSelectName={props.charaNameType} selectedColorType='secondary'
-				callback={props.setCharaNameType}/>
-			<FormControl disabled={isAutoInputName(props.charaNameType)}
-				value={props.charaName} onChange={onChangeCharaName}/>
+				firstSelectName={config.charaNameType} selectedColorType='secondary'
+				callback={config.setCharaNameType}/>
+			<FormControl disabled={isAutoInputName(config.charaNameType)}
+				value={config.charaName} onChange={onChangeCharaName}/>
 		</FormGroup>
 	);
 }
@@ -68,33 +73,38 @@ const IconSelector: React.FC<{ className?: string, iconName: string }> = ({class
 }
 
 // キャラアイコン選択
-const InputCharacterIcon: React.FC<{props: IConfig}> = ({props}) => {
+const InputCharacterIcon: React.FC = () => {
+	const config = React.useContext(ConfigContext);
+	if (config === null) {
+		return (<></>);
+	}
+
 	// キャラボタンを押した際の処理
 	const clickCharaButtonFunc = () => {
-		props.setViewType('SelectName');
+		config.setViewType('SelectName');
 	}
 
 	// 表情ボタンを押した際の処理
 	const clickIconButtonFunc = () => {
-		if (props.iconSelectorFlg) {
-			props.setIconSelectorFlg(false);
+		if (config.iconSelectorFlg) {
+			config.setIconSelectorFlg(false);
 		} else {
-			props.setIconSelectorFlg(true);
+			config.setIconSelectorFlg(true);
 		}
 	}
 
 	return (
 		<FormGroup>
-			<FormLabel>アイコン({props.iconName})</FormLabel><br />
+			<FormLabel>アイコン({config.iconName})</FormLabel><br />
 			<div className="d-flex ml-3">
-				<img src={`${process.env.PUBLIC_URL}${props.iconURL}`} width="72" height="72" />
+				<img src={`${process.env.PUBLIC_URL}${config.iconURL}`} width="72" height="72" />
 				<div className="my-auto">
 					<Button className="mx-3" variant="secondary" onClick={clickCharaButtonFunc}>キャラ</Button>
 					<Button variant="secondary" onClick={clickIconButtonFunc}>表情</Button>
 				</div>
 			</div>
-			{props.iconSelectorFlg
-				? (<IconSelector iconName={props.iconName}/>)
+			{config.iconSelectorFlg
+				? (<IconSelector iconName={config.iconName}/>)
 				:	(<></>)}
 	</FormGroup>
 	);
@@ -115,39 +125,36 @@ const DerepoForm: React.FC<{talkType: TalkType}> = ({talkType}) => {
 }
 
 // 入力フォーム全体
-const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
-	<ConfigContext.Consumer>
-		{(props) => {
-			if (props === null){
-				return (<></>);
-			}
+const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
+	const config = React.useContext(ConfigContext);
+	if (config === null) {
+		return (<></>);
+	}
 
-			// 本文が変更した際の処理
-			const onChangeMessage = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
-				const value = event.currentTarget.value;
-				if (typeof value === 'string') {
-					props.setMessage(value);
-				}
-			}
+	// 本文が変更した際の処理
+	const onChangeMessage = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+		const value = event.currentTarget.value;
+		if (typeof value === 'string') {
+			config.setMessage(value);
+		}
+	}
 
-			return (
-				<Form className={`border p-3 ${className}`}>
-					<FormGroup>
-						<SelectButtonGroup className="w-100" nameList={TALK_TYPE_LIST}
-							firstSelectName={props.talkType} selectedColorType='primary'
-							callback={props.setTalkType}/>
-					</FormGroup>
-					<InputCharacterName props={props}/>
-					<InputCharacterIcon props={props}/>
-					<FormGroup>
-						<FormLabel>喋る内容</FormLabel>
-						<FormControl as='textarea' value={props.message} onChange={onChangeMessage} />
-					</FormGroup>
-					<DerepoForm talkType={props.talkType}/>
-				</Form>
-			);
-		}}
-	</ConfigContext.Consumer>
-);
+	return (
+		<Form className={`border p-3 ${className}`}>
+			<FormGroup>
+				<SelectButtonGroup className="w-100" nameList={TALK_TYPE_LIST}
+					firstSelectName={config.talkType} selectedColorType='primary'
+					callback={config.setTalkType}/>
+			</FormGroup>
+			<InputCharacterName/>
+			<InputCharacterIcon/>
+			<FormGroup>
+				<FormLabel>喋る内容</FormLabel>
+				<FormControl as='textarea' value={config.message} onChange={onChangeMessage} />
+			</FormGroup>
+			<DerepoForm talkType={config.talkType}/>
+		</Form>
+	);
+}
 
 export default InputTalkForm;
