@@ -8,7 +8,7 @@ import SelectNameForm from './SelectNameForm';
 const App: React.FC = () => {
   // Hooks
   const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
-  const [viewType, setViewType] = React.useState<ViewType>('SelectName');
+  const [viewType, setViewType] = React.useState<ViewType>('InputTalk');
   const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('手動');
   const [charaName, setCharaName] = React.useState('春香さん');
   const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
