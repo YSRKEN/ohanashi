@@ -19,9 +19,9 @@ export const findIconListByName = async (name: string) => {
 export const findIdolListBySearchWord = async (searchWord: string) => {
   const jsonData: IIconData[] = await (await fetch(iconUrl)).json();
   if (searchWord === '') {
-    return jsonData.map(idol =>({name: idol.name, kana: idol.kana}));
+    return jsonData.map(idol =>({name: idol.name, kana: idol.kana, url: idol.image[0]}));
   } else {
     return jsonData.filter(idol => (idol.name+idol.kana).includes(searchWord))
-      .map(idol =>({name: idol.name, kana: idol.kana}));
+      .map(idol =>({name: idol.name, kana: idol.kana, url: idol.image[0]}));
   }
 };

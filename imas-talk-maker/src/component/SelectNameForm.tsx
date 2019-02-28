@@ -20,7 +20,7 @@ const SelectNameForm: React.FC<{ className?: string }> = ({className = ""}) => {
   }
 
   const [searchWord, setSearchWord] = React.useState('');
-  const [idolList, setIdolList] = React.useState<Array<{name: string, kana: string}>>([]);
+  const [idolList, setIdolList] = React.useState<Array<{name: string, kana: string, url: string}>>([]);
 
   React.useEffect(() => {
     findIdolListBySearchWord(searchWord).then((list) => {
@@ -35,7 +35,15 @@ const SelectNameForm: React.FC<{ className?: string }> = ({className = ""}) => {
         <FormControl value={searchWord} onChange={onChangeSearchWord}/>
       </FormGroup>
       <ButtonGroup className="w-100" vertical={true}>
-        {idolList.map((idol, i) => (<Button className="w-100" variant="outline-secondary" key={i}>{idol.name}</Button>))}
+        {idolList.map((idol, i) => {
+          const onClickButton = () => {
+            config.setIconName(idol.name);
+            config.setIconURL(idol.url);
+            config.setViewType('InputTalk');
+          }
+          return (<Button className="w-100" variant="outline-secondary" key={i}
+            onClick={onClickButton}>{idol.name}</Button>);
+        })}
       </ButtonGroup>
     </Form>
   );

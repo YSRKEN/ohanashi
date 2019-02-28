@@ -69,6 +69,11 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 				}
 			}
 
+			// キャラボタンを押した際の処理
+			const clickCharaButtonFunc = () => {
+				props.setViewType('SelectName');
+			}
+
 			// 表情ボタンを押した際の処理
 			const clickIconButtonFunc = () => {
 				props.setIconSelectorFlg(true);
@@ -102,7 +107,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 						<div className="d-flex ml-3">
 							<img src={`${process.env.PUBLIC_URL}/asset/${props.iconURL}`} width="72" height="72" />
 							<div className="my-auto">
-								<Button className="mx-3" variant="secondary">キャラ</Button>
+								<Button className="mx-3" variant="secondary" onClick={clickCharaButtonFunc}>キャラ</Button>
 								<Button variant="secondary" onClick={clickIconButtonFunc}>表情</Button>
 							</div>
 						</div>
