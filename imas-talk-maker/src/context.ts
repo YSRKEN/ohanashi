@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { CharaNameType, TalkType } from './constant';
+import { CharaNameType, TalkType, ViewType } from './constant';
 
 // 設定を表すContext
 export interface IConfig {
 	// おはなしモードかデレぽモードか
 	talkType: TalkType
 	setTalkType: (value: TalkType) => void
+
+	// 画面構成の種類
+	viewType: ViewType
+	setViewType: (value: ViewType) => void
 
 	// キャラ名について
 	charaNameType: CharaNameType

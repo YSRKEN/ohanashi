@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { CharaNameType, TalkType } from '../constant';
+import { CharaNameType, TalkType, ViewType } from '../constant';
 import { ConfigContext } from '../context';
 import InputTalkForm from './InputTalkForm';
+import SelectNameForm from './SelectNameForm';
 
 const App: React.FC = () => {
   // Hooks
   const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
+  const [viewType, setViewType] = React.useState<ViewType>('SelectName');
   const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('手動');
   const [charaName, setCharaName] = React.useState('春香さん');
   const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
@@ -19,6 +21,8 @@ const App: React.FC = () => {
       talkType,
       // tslint:disable-next-line: object-literal-sort-keys
       setTalkType,
+      viewType,
+      setViewType,
       charaNameType,
       setCharaNameType,
       charaName,
@@ -35,10 +39,18 @@ const App: React.FC = () => {
       <Container>
         <Row>
           <Col className="mx-auto" xs={12} sm={10} md={8}>
-            <InputTalkForm className="m-3"/>
-            <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})</span><br/>
-            <span>アイコン：{iconName} {iconURL}</span><br/>
-            <span>喋る内容：{message}</span>
+            {
+              viewType === 'InputTalk'
+                ? (<>
+                    <InputTalkForm className="m-3"/>
+                    <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})</span><br/>
+                    <span>アイコン：{iconName} {iconURL}</span><br/>
+                    <span>喋る内容：{message}</span>
+                  </>)
+                : (
+                  <SelectNameForm className="m-3"/>
+                )
+            }
           </Col>
         </Row>
       </Container>
