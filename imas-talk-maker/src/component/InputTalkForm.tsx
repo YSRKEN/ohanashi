@@ -12,6 +12,7 @@ const isAutoInputName = (charaNameType: CharaNameType) => (charaNameType === '�
 
 // 表情セレクター
 const IconSelector: React.FC<{ className?: string, iconName: string }> = ({className = "", iconName = ""}) => {
+	const config = React.useContext(ConfigContext);
 	const [urlList, setUrlList] = React.useState<string[]>([]);
 
 	React.useEffect(() => {
@@ -20,10 +21,25 @@ const IconSelector: React.FC<{ className?: string, iconName: string }> = ({class
 		});
   }, [iconName]);
 
+	if (config === null) {
+		return (<></>);
+	}
+	if (urlList.length === 0) {
+		return (<></>);
+	}
+
 	return (
 		<div className={`${className} mt-3`}>
 			<div>
-				{urlList.map((url, i) => (<img key={i} src={url} width="44" height="44" className="m-1"/>))}
+				{urlList.map((url, i) => {
+					const onClickImg = () => {
+						config.setIconURL(url);
+						config.setIconSelectorFlg(false);
+					};
+					return (
+						<img key={i} src={url} width="44" height="44" className="m-1" onClick={onClickImg}/>
+					);
+				})}
 			</div>
 		</div>
 	);
@@ -90,7 +106,9 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 								<Button variant="secondary" onClick={clickIconButtonFunc}>表情</Button>
 							</div>
 						</div>
-						<IconSelector iconName={props.iconName}/>
+						{props.iconSelectorFlg
+							? (<IconSelector iconName={props.iconName}/>)
+							:	(<></>)}
 					</FormGroup>
 					<FormGroup>
 						<FormLabel>喋る内容</FormLabel>
