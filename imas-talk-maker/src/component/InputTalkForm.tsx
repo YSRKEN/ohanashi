@@ -109,7 +109,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 					<FormGroup>
 						<FormLabel>アイコン({props.iconName})</FormLabel><br />
 						<div className="d-flex ml-3">
-							<img src={`${process.env.PUBLIC_URL}/asset/${props.iconURL}`} width="72" height="72" />
+							<img src={`${process.env.PUBLIC_URL}${props.iconURL}`} width="72" height="72" />
 							<div className="my-auto">
 								<Button className="mx-3" variant="secondary" onClick={clickCharaButtonFunc}>キャラ</Button>
 								<Button variant="secondary" onClick={clickIconButtonFunc}>表情</Button>

@@ -5,11 +5,11 @@
     "kana": "あまみはるか",
     "category": "million",
     "image": [
-      "haruka_1.png",
-      "haruka_2.png",
-      "haruka_3.png",
-      "haruka_4.png",
-      "haruka_5.png"
+      "haruka-1.png",
+      "haruka-2.png",
+      "haruka-3.png",
+      "haruka-4.png",
+      "haruka-5.png"
     ]
   },
   {
@@ -17,7 +17,7 @@
     "short_name": "卯月",
     "kana": "しまむらうづき",
     "category": "cinderella",
-    "image": ["uduki_1.png"]
+    "image": ["uduki.png"]
   },
   {
     "name": "春日未来",
@@ -25,11 +25,11 @@
     "kana": "かすがみらい",
     "category": "million",
     "image": [
-      "mirai_1.png",
-      "mirai_2.png",
-      "mirai_3.png",
-      "mirai_4.png",
-      "mirai_5.png"
+      "mirai-1.png",
+      "mirai-2.png",
+      "mirai-3.png",
+      "mirai-4.png",
+      "mirai-5.png"
     ]
   }
 ]

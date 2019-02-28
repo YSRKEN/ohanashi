@@ -39,6 +39,7 @@ const SelectNameForm: React.FC<{ className?: string }> = ({className = ""}) => {
           const onClickButton = () => {
             config.setIconName(idol.name);
             config.setIconURL(idol.url);
+            config.setIconSelectorFlg(false);
             config.setViewType('InputTalk');
           }
           return (<Button className="w-100" variant="outline-secondary" key={i}
