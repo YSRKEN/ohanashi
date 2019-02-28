@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CharaNameType, TalkType } from './constant';
 
+// 設定を表すContext
 export interface IConfig {
 	// おはなしモードかデレぽモードか
 	talkType: TalkType
@@ -22,9 +23,12 @@ export interface IConfig {
 	iconName: string
 	setIconName: (value: string) => void
 
+	// アイコンの表情を選択するメニューを表示する
+	iconSelectorFlg: boolean
+	setIconSelectorFlg: (value: boolean) => void
+
 	// 本文
 	message: string
 	setMessage: (value: string) => void
 }
-
 export const ConfigContext = React.createContext<IConfig | null>(null);

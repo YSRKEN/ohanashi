@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
   const [iconURL, setIconURL] = React.useState('million/haruka-1.png');
   const [iconName, setIconName] = React.useState('天海春香');
+  const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
 
   return (
     <ConfigContext.Provider value={{
@@ -27,7 +28,9 @@ const App: React.FC = () => {
       iconURL,
       setIconURL,
       iconName,
-      setIconName
+      setIconName,
+      iconSelectorFlg,
+      setIconSelectorFlg
     }}>
       <Container>
         <Row>

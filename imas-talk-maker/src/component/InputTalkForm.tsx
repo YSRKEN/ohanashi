@@ -2,12 +2,32 @@ import * as React from 'react';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
+import { findIconListByName } from 'src/iconData';
 import { CHARA_NAME_TYPE_LIST, CharaNameType, TALK_TYPE_LIST, TalkType } from '../constant';
 import { ConfigContext } from '../context';
 import SelectButtonGroup from './SelectButtonGroup';
 
 // 自動入力時はtrue
 const isAutoInputName = (charaNameType: CharaNameType) => (charaNameType === '自動');
+
+// 表情セレクター
+const IconSelector: React.FC<{ className?: string, iconName: string }> = ({className = "", iconName = ""}) => {
+	const [urlList, setUrlList] = React.useState<string[]>([]);
+
+	React.useEffect(() => {
+    findIconListByName(iconName).then((list) => {
+			setUrlList(list);
+		});
+  }, [iconName]);
+
+	return (
+		<div className={`${className} mt-3`}>
+			<div>
+				{urlList.map((url, i) => (<img key={i} src={url} width="44" height="44" className="m-1"/>))}
+			</div>
+		</div>
+	);
+}
 
 // デレぽモード時のみ表示されるフォーム
 const derepoForm = (talkType: TalkType) => (talkType === 'デレぽ' ? (
@@ -31,6 +51,11 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 				if (typeof value === 'string') {
 					props.setCharaName(value);
 				}
+			}
+
+			// 表情ボタンを押した際の処理
+			const clickIconButtonFunc = () => {
+				props.setIconSelectorFlg(true);
 			}
 
 			// 本文が変更した際の処理
@@ -62,9 +87,10 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 							<img src={`${process.env.PUBLIC_URL}/asset/${props.iconURL}`} width="72" height="72" />
 							<div className="my-auto">
 								<Button className="mx-3" variant="secondary">キャラ</Button>
-								<Button variant="secondary">表情</Button>
+								<Button variant="secondary" onClick={clickIconButtonFunc}>表情</Button>
 							</div>
 						</div>
+						<IconSelector iconName={props.iconName}/>
 					</FormGroup>
 					<FormGroup>
 						<FormLabel>喋る内容</FormLabel>
