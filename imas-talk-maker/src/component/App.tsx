@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('手動');
   const [charaName, setCharaName] = React.useState('春香さん');
   const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
-  const [iconURL, setIconURL] = React.useState('million/haruka-1.png');
+  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/haruka-1.png`);
   const [iconName, setIconName] = React.useState('天海春香');
   const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
 
