@@ -76,7 +76,11 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => (
 
 			// 表情ボタンを押した際の処理
 			const clickIconButtonFunc = () => {
-				props.setIconSelectorFlg(true);
+				if (props.iconSelectorFlg) {
+					props.setIconSelectorFlg(false);
+				} else {
+					props.setIconSelectorFlg(true);
+				}
 			}
 
 			// 本文が変更した際の処理
