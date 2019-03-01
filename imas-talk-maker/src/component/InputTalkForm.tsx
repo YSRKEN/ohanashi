@@ -5,6 +5,7 @@ import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
 import DerepoForm from './DerepoForm';
+import DerepoView from './DerepoView';
 import InputCharacterIcon from './InputCharacterIcon';
 import InputCharacterName from './InputCharacterName';
 import OhanashiView from './OhanashiView';
@@ -25,6 +26,18 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 		}
 	}
 
+	const previewData = () => {
+		return {
+			name: config.charaNameType === '自動' ? config.iconName : config.charaName,
+			url: config.iconURL,
+			// tslint:disable-next-line: object-literal-sort-keys
+			message: config.message,
+			favs: '9999+',
+			datetime: '03-01 22:33',
+			myFavFlg: true
+		};
+	}
+
 	return (
 		<Form className={`border p-3 ${className}`}>
 			<FormGroup>
@@ -39,7 +52,12 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				<FormControl as='textarea' value={config.message} onChange={onChangeMessage} />
 			</FormGroup>
 			<DerepoForm talkType={config.talkType}/>
-			<OhanashiView />
+			<FormGroup>
+				<FormLabel>プレビュー</FormLabel>
+				<OhanashiView talkData={previewData()}/>
+				<DerepoView talkData={previewData()} firstFlg={true}/>
+				<DerepoView talkData={previewData()} firstFlg={false}/>
+			</FormGroup>
 		</Form>
 	);
 }

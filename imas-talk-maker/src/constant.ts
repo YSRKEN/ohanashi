@@ -19,3 +19,13 @@ export interface IIdolInfo {
 	kana: string
 	url: string
 }
+
+// 会話データ
+export interface ITalkData {
+	name: string
+	url: string
+	message: string
+	favs: string
+	datetime: string
+	myFavFlg: boolean
+}
