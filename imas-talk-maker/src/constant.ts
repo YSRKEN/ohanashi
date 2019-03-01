@@ -12,3 +12,10 @@ export const CHARA_NAME_TYPE_LIST = ['自動', '手動'];
 
 // 画面の種類
 export type ViewType = 'InputTalk' | 'SelectName';
+
+// アイドルの情報を表示するための型
+export interface IIdolInfo {
+	name: string
+	kana: string
+	url: string
+}
