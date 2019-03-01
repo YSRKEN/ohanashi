@@ -34,5 +34,17 @@ export interface IConfig {
 	// 本文
 	message: string
 	setMessage: (value: string) => void
+
+	// ファボ数
+	favs: string
+	setFavs: (value: string) => void
+
+	// 時刻
+	datetime: string
+	setDatetime: (value: string) => void
+
+	// 自分がファボったか？
+	myFavFlg: boolean
+	setMyFavFlg: (value: boolean) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);

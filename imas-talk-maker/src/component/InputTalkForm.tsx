@@ -32,9 +32,9 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 			url: config.iconURL,
 			// tslint:disable-next-line: object-literal-sort-keys
 			message: config.message,
-			favs: '9999+',
-			datetime: '03-01 22:33',
-			myFavFlg: true
+			favs: config.favs,
+			datetime: config.datetime,
+			myFavFlg: config.myFavFlg
 		};
 	}
 
@@ -54,9 +54,11 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 			<DerepoForm talkType={config.talkType}/>
 			<FormGroup>
 				<FormLabel>プレビュー</FormLabel>
-				<OhanashiView talkData={previewData()}/>
-				<DerepoView talkData={previewData()} firstFlg={true}/>
-				<DerepoView talkData={previewData()} firstFlg={false}/>
+				{
+					config.talkType === 'おはなし'
+						? <OhanashiView talkData={previewData()}/>
+						: <DerepoView talkData={previewData()} firstFlg={true}/>
+				}
 			</FormGroup>
 		</Form>
 	);

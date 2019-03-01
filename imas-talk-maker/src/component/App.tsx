@@ -15,6 +15,9 @@ const App: React.FC = () => {
   const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/haruka-1.png`);
   const [iconName, setIconName] = React.useState('天海春香');
   const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
+  const [favs, setFavs] = React.useState('9999+');
+  const [datetime, setDatetime] = React.useState('01-02 03:04');
+  const [myFavFlg, setMyFavFlg] = React.useState(true);
 
   return (
     <ConfigContext.Provider value={{
@@ -26,22 +29,18 @@ const App: React.FC = () => {
       message, setMessage,
       iconURL, setIconURL,
       iconName, setIconName,
-      iconSelectorFlg, setIconSelectorFlg
+      iconSelectorFlg, setIconSelectorFlg,
+      favs, setFavs,
+      datetime, setDatetime,
+      myFavFlg, setMyFavFlg
     }}>
       <Container>
         <Row>
           <Col className="mx-auto" xs={12} sm={10} md={8}>
             {
               viewType === 'InputTalk'
-                ? (<>
-                    <InputTalkForm className="m-3"/>
-                    <span>モード：{talkType}　キャラ名：{charaNameType}設定({charaName})</span><br/>
-                    <span>アイコン：{iconName} {iconURL}</span><br/>
-                    <span>喋る内容：{message}</span>
-                  </>)
-                : (
-                  <SelectNameForm className="m-3"/>
-                )
+                ? <InputTalkForm className="m-3"/>
+                : <SelectNameForm className="m-3"/>
             }
           </Col>
         </Row>
