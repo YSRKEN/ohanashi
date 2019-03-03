@@ -8,7 +8,6 @@ import '../css/DerepoView.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
 import DerepoView from './DerepoView';
-import DerepoView2 from './DerepoView2';
 import InputCharacterIcon from './InputCharacterIcon';
 import InputCharacterName from './InputCharacterName';
 import OhanashiView from './OhanashiView';
@@ -80,15 +79,6 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 					}
 				</FormGroup>
 			</Form>
-			<DerepoView2 talkData={{
-				name: '槙原志保',
-				url: '/asset/cinderella/uduki.png',
-				// tslint:disable-next-line: object-literal-sort-keys
-				message: 'アヤちゃん、もしかして晴ちゃんと\n同じことしてました？',
-				favs: '132',
-				datetime: '03-03 12:44',
-				myFavFlg: true
-			}} firstFlg={false}/>
 		</>
 	);
 }

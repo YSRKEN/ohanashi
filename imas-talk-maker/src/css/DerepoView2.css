@@ -1,0 +1,19 @@
+.name {
+	font-weight: bold;
+}
+.message {
+	line-height: 1.25;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+.star-base {
+	border-color: #DBDBDB;
+	border-style: solid;
+	border-width: 1px;
+}
+.star {
+	color: #959595;
+}
+.favs {
+	font-weight: bold;
+}

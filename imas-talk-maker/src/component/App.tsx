@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { CharaNameType, TalkType, ViewType } from '../constant';
 import { ConfigContext } from '../context';
+import DerepoView2 from './DerepoView2';
 import InputTalkForm from './InputTalkForm';
 import SelectNameForm from './SelectNameForm';
 
@@ -18,6 +19,33 @@ const App: React.FC = () => {
   const [favs, setFavs] = React.useState('9999+');
   const [datetime, setDatetime] = React.useState('01-02 03:04');
   const [myFavFlg, setMyFavFlg] = React.useState(true);
+
+  return (
+    <>
+      <div className="m-3" style={{width: 382}}>
+        <DerepoView2 talkData={{
+          name: '槙原志保',
+          url: '/asset/cinderella/uduki.png',
+          // tslint:disable-next-line: object-literal-sort-keys
+          message: "アヤちゃん、もしかして晴ちゃんと\n同じことしてました？",
+          favs: '132',
+          datetime: '03-03 12:44',
+          myFavFlg: true
+        }} firstFlg={false}/>
+      </div>
+      <div className="m-3" style={{width: 382}}>
+        <DerepoView2 talkData={{
+          name: '槙原志保',
+          url: '/asset/cinderella/uduki.png',
+          // tslint:disable-next-line: object-literal-sort-keys
+          message: "アヤちゃん、もしかして晴ちゃんと\n同じことしてました？",
+          favs: '132',
+          datetime: '03-03 12:44',
+          myFavFlg: false
+        }} firstFlg={false}/>
+      </div>
+    </>
+  )
 
   return (
     <ConfigContext.Provider value={{
