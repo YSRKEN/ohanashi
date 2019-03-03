@@ -3,14 +3,38 @@ import { ITalkData } from 'src/constant';
 import '../OhanashiView.css';
 
 const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
+	const divRef = React.useRef<HTMLDivElement>(null);
+	const [overallCss, setOverallCss] = React.useState<{}>({});
+	const [fontCss, setFontCss] = React.useState<{}>({});
+
+	React.useEffect(() => {
+		if (divRef.current === null) {
+			setOverallCss({
+				height: 84,
+				width: 320
+			});
+			setFontCss({
+				fontSize: 14
+			});
+			return;
+		}
+		const width = divRef.current.offsetWidth;
+		setOverallCss({
+			height: divRef.current.offsetWidth * 84 / 320,
+			"width": width
+		});
+		setFontCss({
+			fontSize: divRef.current.offsetWidth * 14 / 320
+		});
+	});
+
 	return (
-		<div className='talk-list bg-default'>
-			<div className="talk-block position-relative">
-				<img className="talk-face position-absolute" src={talkData.url} />
-				<div className="talk-balloon position-absolute">
-					<p className="talk-name position-absolute">{talkData.name}</p>
-					<pre className="talk-message position-absolute">{talkData.message}</pre>
-				</div>
+		<div ref={divRef} style={overallCss}>
+			<div className="bg-default position-relative">
+				<img className="talk-face position-absolute" src={talkData.url}/>
+				<div className="talk-balloon position-absolute"/>
+				<p className="talk-name position-absolute" style={fontCss}>{talkData.name}</p>
+				<pre className="talk-message position-absolute" style={fontCss}>{talkData.message}</pre>
 			</div>
 		</div>
 	);
