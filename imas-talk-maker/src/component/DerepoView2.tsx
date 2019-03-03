@@ -15,4 +15,11 @@ const DerepoView2: React.FC<{ talkData: ITalkData, firstFlg: boolean }> = ({ tal
 	);
 }
 
+// 2行まで：382x85px
+// 3行：382x98px
+// 横方向の文字数(全角)：18文字
+// 字のサイズ：13～14px？
+// 行間隔：間は1px程度？
+
+
 export default DerepoView2;

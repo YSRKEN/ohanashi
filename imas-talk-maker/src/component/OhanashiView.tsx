@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITalkData } from 'src/constant';
-import '../OhanashiView.css';
+import '../css/OhanashiView.css';
 
 const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
 	const divRef = React.useRef<HTMLDivElement>(null);

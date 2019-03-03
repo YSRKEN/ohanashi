@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITalkData } from 'src/constant';
-import '../DerepoView.css';
+import '../css/DerepoView.css';
 
 const frameClass = (firstFlg: boolean) => {
 	if (firstFlg) {
