@@ -63,7 +63,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				<InputCharacterIcon/>
 				<FormGroup>
 					<FormLabel>喋る内容</FormLabel>
-					<FormControl as='textarea' value={config.message} onChange={onChangeMessage} />
+					<FormControl as='textarea' value={config.message} onChange={onChangeMessage} rows="3"/>
 				</FormGroup>
 				<DerepoForm talkType={config.talkType}/>
 				<FormGroup>
@@ -75,6 +75,8 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 							</div>
 							: <div className="derepo-list">
 								<DerepoView talkData={previewData()} firstFlg={true}/>
+								<DerepoView talkData={previewData()} firstFlg={false}/>
+								<DerepoView talkData={previewData()} firstFlg={false}/>
 							</div>
 					}
 				</FormGroup>

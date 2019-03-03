@@ -7,13 +7,13 @@ import SelectNameForm from './SelectNameForm';
 
 const App: React.FC = () => {
   // Hooks
-  const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
+  const [talkType, setTalkType] = React.useState<TalkType>('デレぽ');
   const [viewType, setViewType] = React.useState<ViewType>('InputTalk');
-  const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('手動');
-  const [charaName, setCharaName] = React.useState('春香さん');
-  const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
-  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/haruka-1.png`);
-  const [iconName, setIconName] = React.useState('天海春香');
+  const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('自動');
+  const [charaName, setCharaName] = React.useState('島村卯月');
+  const [message, setMessage] = React.useState('テストメッセージ');
+  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/cinderella/uduki.png`);
+  const [iconName, setIconName] = React.useState('島村卯月');
   const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
   const [favs, setFavs] = React.useState('9999+');
   const [datetime, setDatetime] = React.useState('01-02 03:04');

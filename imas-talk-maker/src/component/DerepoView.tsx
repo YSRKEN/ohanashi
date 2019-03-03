@@ -4,82 +4,72 @@ import '../DerepoView.css';
 
 const frameClass = (firstFlg: boolean) => {
 	if (firstFlg) {
-		return 'position-relative derepo-block-first';
+		return 'derepo-block-first';
 	} else {
-		return 'position-relative derepo-block';
+		return '';
 	}
 }
 
 const DerepoView: React.FC<{ talkData: ITalkData, firstFlg: boolean }> = ({ talkData, firstFlg }) => {
-	const divRef = React.useRef<HTMLDivElement>(null);
+	const overallRef = React.useRef<HTMLDivElement>(null);
+	const messageRef = React.useRef<HTMLDivElement>(null);
 	const [overallCss1, setOverallCss1] = React.useState<{}>({});
 	const [overallCss2, setOverallCss2] = React.useState<{}>({});
-	const [fontCss1, setFontCss1] = React.useState<{}>({});
-	const [fontCss2, setFontCss2] = React.useState<{}>({});
-	const [fontCss3, setFontCss3] = React.useState<{}>({});
+	const [nameCss, setNameCss] = React.useState<{}>({});
+	const [messageCss, setMessageCss] = React.useState<{}>({});
+	const [favStarCss, setFavStarCss] = React.useState<{}>({});
+	const [favsCss, setFavsCss] = React.useState<{}>({});
 	const [borderRadiusCss, setBorderRadiusCss] = React.useState<{}>({});
+	const [datetimeCss, setDatetimeCss] = React.useState<{}>({});
 
 	React.useEffect(() => {
-		if (divRef.current === null) {
-			setOverallCss1({
-				height: (firstFlg ? 92 : 95),
-				width: 382
-			});
-			setOverallCss2({
-				height: 92,
-				width: 382
-			});
-			setFontCss1({
-				fontSize: 14
-			});
-			setFontCss2({
-				color: (talkData.myFavFlg ? '#FDCD08' : ''),
-				fontSize: 28
-			});
-			setFontCss3({
-				fontSize: 14,
-				left: 350 - talkData.favs.length * 7 / 2
-			});
-			setBorderRadiusCss({
-				borderRadius: 7
-			});
+		if (overallRef.current === null || messageRef.current === null) {
 			return;
 		}
-		const width = divRef.current.offsetWidth;
+		const overallWidth = overallRef.current.offsetWidth;
+		const messageHeight = messageRef.current.offsetHeight;
+		const fixedPixel = overallWidth / 382;
 		setOverallCss1({
-			height: width * (firstFlg ? 92 : 95) / 382,
-			"width": width
+			height: Math.max(fixedPixel * (firstFlg ? 57 : 75), messageHeight + fixedPixel * (firstFlg ? 48 : 58)),
+			"width": overallWidth
 		});
 		setOverallCss2({
-			height: width * 92 / 382,
-			"width": width
+			height: fixedPixel * 92,
+			"width": overallWidth
 		});
-		setFontCss1({
-			fontSize: width * 14 / 382
+		setNameCss({
+			fontSize: fixedPixel * 13
 		});
-		setFontCss2({
+		setMessageCss({
+			fontSize: fixedPixel * 13
+		});
+		setFavStarCss({
 			color: (talkData.myFavFlg ? '#FDCD08' : ''),
-			fontSize: width * 28 / 382
+			fontSize: fixedPixel * 28
 		});
-		setFontCss3({
-			fontSize: width * 14 / 382,
-			left: width * (350 - talkData.favs.length * 7 / 2) / 382
+		setFavsCss({
+			fontSize: fixedPixel * 12,
+			left: fixedPixel * (347 - talkData.favs.length * 6 / 2)
 		});
 		setBorderRadiusCss({
-			borderRadius: width * 7 / 382
+			borderRadius: fixedPixel * 7
+		});
+		setDatetimeCss({
+			fontSize: fixedPixel * 14,
+			top: Math.max(fixedPixel * 63, messageHeight + fixedPixel * 25)
 		});
 	});
 
 	return (
-		<div style={overallCss1}>
-			<div ref={divRef} className={frameClass(firstFlg)} style={overallCss2}>
+		<div style={overallCss1} className={frameClass(firstFlg)}>
+			<div ref={overallRef} className='position-relative derepo-block' style={overallCss2}>
 				<img className="position-absolute derepo-face" src={talkData.url}/>
-				<div className="position-absolute derepo-name" style={fontCss1}>{talkData.name}</div>
-				<div className="position-absolute derepo-message" style={fontCss1}>{talkData.message}</div>
-				<div className="position-absolute derepo-fav-star" style={fontCss2}>★</div>
+				<div className="position-absolute derepo-name" style={nameCss}>{talkData.name}</div>
+				<div ref={messageRef} className="position-absolute derepo-message" style={messageCss}>{talkData.message}</div>
+				<div className="position-absolute derepo-fav-star" style={favStarCss}>★</div>
 				<div className="position-absolute derepo-fav-button" style={borderRadiusCss}/>
-				<div className="position-absolute derepo-favs" style={fontCss3}>{talkData.favs}</div>
-				<div className='position-absolute derepo-date' style={fontCss1}>{talkData.datetime}</div>
+				<div className="position-absolute derepo-favs" style={favsCss}>{talkData.favs}</div>
+				<div className='position-absolute derepo-date' style={datetimeCss}>{talkData.datetime}</div>
 			</div>
 		</div>
 	);
