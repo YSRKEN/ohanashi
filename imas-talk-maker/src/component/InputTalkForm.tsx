@@ -7,6 +7,7 @@ import { ConfigContext } from '../context';
 import '../DerepoView.css';
 import '../OhanashiView.css';
 import DerepoForm from './DerepoForm';
+import DerepoView2 from './DerepoForm2';
 import DerepoView from './DerepoView';
 import InputCharacterIcon from './InputCharacterIcon';
 import InputCharacterName from './InputCharacterName';
@@ -75,12 +76,19 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 							</div>
 							: <div className="derepo-list">
 								<DerepoView talkData={previewData()} firstFlg={true}/>
-								<DerepoView talkData={previewData()} firstFlg={false}/>
-								<DerepoView talkData={previewData()} firstFlg={false}/>
 							</div>
 					}
 				</FormGroup>
 			</Form>
+			<DerepoView2 talkData={{
+				name: '槙原志保',
+				url: '/asset/cinderella/uduki.png',
+				// tslint:disable-next-line: object-literal-sort-keys
+				message: 'アヤちゃん、もしかして晴ちゃんと\n同じことしてました？',
+				favs: '132',
+				datetime: '03-03 12:44',
+				myFavFlg: true
+			}} firstFlg={false}/>
 		</>
 	);
 }
