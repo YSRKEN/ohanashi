@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
+import '../DerepoView.css';
 import '../OhanashiView.css';
 import DerepoForm from './DerepoForm';
 import DerepoView from './DerepoView';
@@ -55,13 +56,17 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 			<DerepoForm talkType={config.talkType}/>
 			<FormGroup>
 				<FormLabel>プレビュー</FormLabel>
-				<div className="talk-list">
-					{
-						config.talkType === 'おはなし'
-							? <OhanashiView talkData={previewData()}/>
-							: <DerepoView talkData={previewData()} firstFlg={true}/>
-					}
-				</div>
+				{
+					config.talkType === 'おはなし'
+						? <div className="talk-list">
+							<OhanashiView talkData={previewData()}/>
+						</div>
+						: <div className="derepo-list">
+							<DerepoView talkData={previewData()} firstFlg={true}/>
+							<DerepoView talkData={previewData()} firstFlg={false}/>
+							<DerepoView talkData={previewData()} firstFlg={false}/>
+						</div>
+				}
 			</FormGroup>
 		</Form>
 	);

@@ -20,11 +20,11 @@ const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
 		}
 		const width = divRef.current.offsetWidth;
 		setOverallCss({
-			height: divRef.current.offsetWidth * 84 / 320,
+			height: width * 84 / 320,
 			"width": width
 		});
 		setFontCss({
-			fontSize: divRef.current.offsetWidth * 14 / 320
+			fontSize: width * 14 / 320
 		});
 	});
 
