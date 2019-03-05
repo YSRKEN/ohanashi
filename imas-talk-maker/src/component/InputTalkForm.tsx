@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormControl, FormGroup, FormLabel } from 'react-bootstrap';
+import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { TALK_TYPE_LIST } from '../constant';
@@ -74,9 +74,12 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 								<OhanashiView talkData={previewData()}/>
 							</div>
 							: <div className="derepo-list">
-								<DerepoView2 talkData={previewData()} firstFlg={true}/>
+								<DerepoView2 talkData={previewData()} firstFlg={false}/>
 							</div>
 					}
+				</FormGroup>
+				<FormGroup>
+					<Button className='w-100'>追加</Button>
 				</FormGroup>
 			</Form>
 		</>

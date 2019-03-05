@@ -59,7 +59,7 @@ const DerepoView2: React.FC<{ talkData: ITalkData, firstFlg: boolean }> = ({ tal
 		}
 		setIconCss({ height: calc(42), top: calc(1), width: calc(42) });
 		setNameCss({ fontSize: calc(13), left: calc(48) });
-		setMessageCss({ fontSize: calc(13), left: calc(48), top: calc(20) });
+		setMessageCss({ fontSize: calc(13), left: calc(48), top: calc(20), width: calc(13*17) });
 		setStarBaseCss({ borderRadius: calc(7), height: calc(46), left: calc(333),
 			top: calc(5), width: calc(46) });
 		setStarCss({ color: (talkData.myFavFlg ? '#FDCD08' : ''),
