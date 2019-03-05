@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { CharaNameType, TalkType, ViewType } from '../constant';
 import { ConfigContext } from '../context';
-import DerepoView2 from './DerepoView2';
 import InputTalkForm from './InputTalkForm';
 import SelectNameForm from './SelectNameForm';
 
@@ -19,88 +18,6 @@ const App: React.FC = () => {
   const [favs, setFavs] = React.useState('9999+');
   const [datetime, setDatetime] = React.useState('01-02 03:04');
   const [myFavFlg, setMyFavFlg] = React.useState(true);
-
-  return (
-    <>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '松永涼',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "ただいま！\n路上LIVE、大成功だ！\n直前の告知だったのに、\nたくさんの人が集まってくれて、\nすごく嬉しかったよ。",
-          favs: '1230',
-          datetime: '03-05 17:09',
-          myFavFlg: true
-        }} firstFlg={true}/>
-      </div>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '涼宮星花',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "ゲリラLIVE、というのですよね？\nこういった形のLIVEも、\n楽しいですわね♪",
-          favs: '945',
-          datetime: '03-05 17:13',
-          myFavFlg: false
-        }} firstFlg={false}/>
-      </div>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '有浦柑奈',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "ゲリラといっても許可はとってました\nから、安心してください。いつだって\n心にはラブ＆ピースですから♪",
-          favs: '945',
-          datetime: '03-05 17:13',
-          myFavFlg: false
-        }} firstFlg={false}/>
-      </div>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '有浦柑奈',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "おふたりの気品と力強さも\n感じられる音に圧倒されました。",
-          favs: '945',
-          datetime: '03-05 17:13',
-          myFavFlg: false
-        }} firstFlg={false}/>
-      </div>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "新年！",
-          favs: '1230',
-          datetime: '03-05 17:09',
-          myFavFlg: true
-        }} firstFlg={true}/>
-      </div>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "あけまして。",
-          favs: '945',
-          datetime: '03-05 17:13',
-          myFavFlg: false
-        }} firstFlg={false}/>
-      </div>
-      <div className="mx-3" style={{width: 382}}>
-        <DerepoView2 talkData={{
-          name: '',
-          url: '/asset/cinderella/uduki.png',
-          // tslint:disable-next-line: object-literal-sort-keys
-          message: "おめでとうございまーすっ♪",
-          favs: '945',
-          datetime: '03-05 17:13',
-          myFavFlg: false
-        }} firstFlg={false}/>
-      </div>
-    </>
-  )
 
   return (
     <ConfigContext.Provider value={{

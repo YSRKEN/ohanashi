@@ -7,7 +7,7 @@ import { ConfigContext } from '../context';
 import '../css/DerepoView.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
-import DerepoView from './DerepoView';
+import DerepoView2 from './DerepoView2';
 import InputCharacterIcon from './InputCharacterIcon';
 import InputCharacterName from './InputCharacterName';
 import OhanashiView from './OhanashiView';
@@ -74,7 +74,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 								<OhanashiView talkData={previewData()}/>
 							</div>
 							: <div className="derepo-list">
-								<DerepoView talkData={previewData()} firstFlg={true}/>
+								<DerepoView2 talkData={previewData()} firstFlg={true}/>
 							</div>
 					}
 				</FormGroup>
