@@ -46,5 +46,9 @@ export interface IConfig {
 	// 自分がファボったか？
 	myFavFlg: boolean
 	setMyFavFlg: (value: boolean) => void
+
+	// 第二アイコンを表示するか？
+	secondIconFlg: boolean
+	setSecondIconFlg: (value: boolean) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);

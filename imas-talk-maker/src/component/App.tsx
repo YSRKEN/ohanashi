@@ -18,6 +18,7 @@ const App: React.FC = () => {
   const [favs, setFavs] = React.useState('9999+');
   const [datetime, setDatetime] = React.useState('01-02 03:04');
   const [myFavFlg, setMyFavFlg] = React.useState(true);
+  const [secondIconFlg, setSecondIconFlg] = React.useState(false);
 
   return (
     <ConfigContext.Provider value={{
@@ -32,7 +33,8 @@ const App: React.FC = () => {
       iconSelectorFlg, setIconSelectorFlg,
       favs, setFavs,
       datetime, setDatetime,
-      myFavFlg, setMyFavFlg
+      myFavFlg, setMyFavFlg,
+      secondIconFlg, setSecondIconFlg
     }}>
       <Container>
         <Row>

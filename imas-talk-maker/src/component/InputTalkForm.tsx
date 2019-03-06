@@ -28,6 +28,12 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 		}
 	}
 
+	// 第二アイコンを開閉するボタンを押した際の処理
+	const onClickSecondIconButton = () => {
+		const nowFlg = config.secondIconFlg;
+		config.setSecondIconFlg(!nowFlg);
+	}
+
 	const previewData = () => {
 		return {
 			name: config.charaNameType === '自動' ? config.iconName : config.charaName,
@@ -60,7 +66,11 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 						callback={config.setTalkType}/>
 				</FormGroup>
 				<InputCharacterName/>
-				<InputCharacterIcon/>
+				<div className='d-flex'>
+					<InputCharacterIcon/>
+					<button className='p-0 mx-3' style={{fontSize: 10, width: 20}} onClick={onClickSecondIconButton}>{config.secondIconFlg ? '←' : '→'}</button>
+					{config.secondIconFlg ? <InputCharacterIcon/> : <></>}
+				</div>
 				<FormGroup>
 					<FormLabel>喋る内容</FormLabel>
 					<FormControl as='textarea' value={config.message} onChange={onChangeMessage} rows="3"/>
