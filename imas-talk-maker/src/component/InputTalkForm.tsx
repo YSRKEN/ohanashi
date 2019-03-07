@@ -13,6 +13,8 @@ import InputCharacterName from './InputCharacterName';
 import OhanashiView from './OhanashiView';
 import SelectButtonGroup from './SelectButtonGroup';
 
+const isPC = () => window.innerWidth >= 768;
+
 // 入力フォーム全体
 const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 	const config = React.useContext(ConfigContext);
@@ -66,11 +68,21 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 						callback={config.setTalkType}/>
 				</FormGroup>
 				<InputCharacterName/>
-				<div className='d-flex'>
-					<InputCharacterIcon/>
-					<button className='p-0 mx-3' style={{fontSize: 10, width: 20}} onClick={onClickSecondIconButton}>{config.secondIconFlg ? '←' : '→'}</button>
-					{config.secondIconFlg ? <InputCharacterIcon/> : <></>}
-				</div>
+				{
+					isPC()
+					? <div className='d-flex'>
+						<InputCharacterIcon/>
+						<button className='p-0 mx-3' style={{fontSize: 10, width: 20}}
+								onClick={onClickSecondIconButton}>{config.secondIconFlg ? '←' : '→'}</button>
+						{config.secondIconFlg ? <InputCharacterIcon/> : <></>}
+					</div>
+					: <>
+						<InputCharacterIcon/>
+						<button className='p-0 mb-3 w-100' style={{fontSize: 10, height: 20}}
+								onClick={onClickSecondIconButton}>{config.secondIconFlg ? '↑' : '↓'}</button>
+						{config.secondIconFlg ? <InputCharacterIcon/> : <></>}
+					</>
+				}
 				<FormGroup>
 					<FormLabel>喋る内容</FormLabel>
 					<FormControl as='textarea' value={config.message} onChange={onChangeMessage} rows="3"/>
