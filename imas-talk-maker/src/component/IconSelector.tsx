@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { ConfigContext } from 'src/context';
 import { findIconListByName } from 'src/iconData';
 
 // 表情セレクター
-const IconSelector: React.FC<{ className?: string, iconName: string }> = ({className = "", iconName = ""}) => {
-	const config = React.useContext(ConfigContext);
+const IconSelector: React.FC<{
+	className?: string,
+	iconName: string,
+	setIconUrl: (value: string) => void,
+	setIconSelectorFlg: (value: boolean) => void
+}> = ({className = "", iconName = "", setIconUrl, setIconSelectorFlg}) => {
 	const [urlList, setUrlList] = React.useState<string[]>([]);
 
 	React.useEffect(() => {
@@ -13,9 +16,6 @@ const IconSelector: React.FC<{ className?: string, iconName: string }> = ({class
 		});
   }, [iconName]);
 
-	if (config === null) {
-		return (<></>);
-	}
 	if (urlList.length === 0) {
 		return (<></>);
 	}
@@ -25,8 +25,8 @@ const IconSelector: React.FC<{ className?: string, iconName: string }> = ({class
 			<div>
 				{urlList.map((url, i) => {
 					const onClickImg = () => {
-						config.setIconURL(url);
-						config.setIconSelectorFlg(false);
+						setIconUrl(url);
+						setIconSelectorFlg(false);
 					};
 					return (
 						<img key={i} src={url} width="44" height="44" className="m-1" onClick={onClickImg}/>

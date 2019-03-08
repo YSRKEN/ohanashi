@@ -50,5 +50,17 @@ export interface IConfig {
 	// 第二アイコンを表示するか？
 	secondIconFlg: boolean
 	setSecondIconFlg: (value: boolean) => void
+
+	// 第二アイコンの名前
+	secondIconName: string
+	setSecondIconName: (value: string) => void
+
+	// 第二アイコンのURL
+	secondIconURL: string
+	setSecondIconURL: (value: string) => void
+
+	// 第二アイコンの表情を選択するメニューを表示する
+	secondIconSelectorFlg: boolean
+	setSecondIconSelectorFlg: (value: boolean) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);

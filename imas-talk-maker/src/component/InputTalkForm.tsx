@@ -8,7 +8,8 @@ import '../css/DerepoView.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
 import DerepoView2 from './DerepoView2';
-import InputCharacterIcon from './InputCharacterIcon';
+import InputCharacterIcon1 from './InputCharacterIcon1';
+import InputCharacterIcon2 from './InputCharacterIcon2';
 import InputCharacterName from './InputCharacterName';
 import OhanashiView from './OhanashiView';
 import SelectButtonGroup from './SelectButtonGroup';
@@ -71,16 +72,16 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				{
 					isPC()
 					? <div className='d-flex'>
-						<InputCharacterIcon/>
+						<InputCharacterIcon1/>
 						<button className='p-0 mx-3' style={{fontSize: 10, width: 20}}
 								onClick={onClickSecondIconButton}>{config.secondIconFlg ? '←' : '→'}</button>
-						{config.secondIconFlg ? <InputCharacterIcon/> : <></>}
+						{config.secondIconFlg ? <InputCharacterIcon2/> : <></>}
 					</div>
 					: <>
-						<InputCharacterIcon/>
+						<InputCharacterIcon1/>
 						<button className='p-0 mb-3 w-100' style={{fontSize: 10, height: 20}}
 								onClick={onClickSecondIconButton}>{config.secondIconFlg ? '↑' : '↓'}</button>
-						{config.secondIconFlg ? <InputCharacterIcon/> : <></>}
+						{config.secondIconFlg ? <InputCharacterIcon2/> : <></>}
 					</>
 				}
 				<FormGroup>

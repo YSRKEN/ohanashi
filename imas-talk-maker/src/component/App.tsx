@@ -19,6 +19,9 @@ const App: React.FC = () => {
   const [datetime, setDatetime] = React.useState('01-02 03:04');
   const [myFavFlg, setMyFavFlg] = React.useState(true);
   const [secondIconFlg, setSecondIconFlg] = React.useState(false);
+  const [secondIconName, setSecondIconName] = React.useState('春日未来');
+  const [secondIconURL, setSecondIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/mirai-1.png`);
+  const [secondIconSelectorFlg, setSecondIconSelectorFlg] = React.useState(false);
 
   return (
     <ConfigContext.Provider value={{
@@ -34,7 +37,10 @@ const App: React.FC = () => {
       favs, setFavs,
       datetime, setDatetime,
       myFavFlg, setMyFavFlg,
-      secondIconFlg, setSecondIconFlg
+      secondIconFlg, setSecondIconFlg,
+      secondIconName, setSecondIconName,
+      secondIconURL, setSecondIconURL,
+      secondIconSelectorFlg, setSecondIconSelectorFlg
     }}>
       <Container>
         <Row>
