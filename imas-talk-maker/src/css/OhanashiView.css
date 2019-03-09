@@ -62,3 +62,13 @@
     white-space: pre-wrap;
     word-break: break-all;
 }
+.talk-message2{
+    left: calc(100% * 92 / 320);
+    top: calc(100% * 23 / 84);
+    width: calc(100% * 140 / 320);
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    line-height: 1.25;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
