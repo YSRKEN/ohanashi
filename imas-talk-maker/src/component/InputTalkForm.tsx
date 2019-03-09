@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
-import { TALK_TYPE_LIST } from '../constant';
+import { ITalkData, TALK_TYPE_LIST, TalkType } from '../constant';
 import { ConfigContext } from '../context';
 import '../css/DerepoView.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
 import DerepoView from './DerepoView';
+import DoubleDerepoView from './DoubleDerepoView';
+import DoubleOhanashiView from './DoubleOhanashiView';
 import InputCharacterIcon1 from './InputCharacterIcon1';
 import InputCharacterIcon2 from './InputCharacterIcon2';
 import InputCharacterName from './InputCharacterName';
@@ -15,6 +17,23 @@ import OhanashiView from './OhanashiView';
 import SelectButtonGroup from './SelectButtonGroup';
 
 const isPC = () => window.innerWidth >= 768;
+
+// プレビュー表示部分
+const ViewComponent: React.FC<{
+	talkType: TalkType,
+	secondIconFlg: boolean,
+	talkData: ITalkData
+}> = ({talkType, secondIconFlg, talkData}) => {
+	if (talkType === 'おはなし') {
+		return (<div className="talk-list">
+			{secondIconFlg ? <DoubleOhanashiView talkData={talkData}/> : <OhanashiView talkData={talkData}/>}
+		</div>);
+	} else {
+		return (<div className="derepo-list">
+			{secondIconFlg ? <DoubleDerepoView talkData={talkData}/> : <DerepoView talkData={talkData}/>}
+		</div>);
+	}
+};
 
 // 入力フォーム全体
 const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
@@ -91,15 +110,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				<DerepoForm talkType={config.talkType}/>
 				<FormGroup>
 					<FormLabel>プレビュー</FormLabel>
-					{
-						config.talkType === 'おはなし'
-							? <div className="talk-list">
-								<OhanashiView talkData={previewData()}/>
-							</div>
-							: <div className="derepo-list">
-								<DerepoView talkData={previewData()} firstFlg={false}/>
-							</div>
-					}
+					<ViewComponent talkType={config.talkType} secondIconFlg={config.secondIconFlg} talkData={previewData()}/>
 				</FormGroup>
 				<FormGroup>
 					<Button className='w-100'>追加</Button>
