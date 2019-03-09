@@ -35,3 +35,10 @@ export const findIdolListBySearchWord = async (searchWord: string) => {
       }));
   }
 };
+
+// 指定したアイドルの短縮名を探す
+export const findShortNameByName = async (name: string) => {
+  const jsonData: IIconData[] = await (await fetch(iconUrl)).json();
+  const idolData = jsonData.filter(data => data.name === name)[0];
+  return idolData.short_name;
+};

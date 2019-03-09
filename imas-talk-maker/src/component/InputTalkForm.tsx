@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
+import { findShortNameByName } from 'src/iconData';
 import { ITalkData, TALK_TYPE_LIST, TalkType } from '../constant';
 import { ConfigContext } from '../context';
 import '../css/DerepoView.css';
@@ -58,15 +59,35 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 
 	const previewData = () => {
 		return {
-			name: config.charaNameType === '自動' ? config.iconName : config.charaName,
+			name: previewName,
 			url: config.iconURL,
 			// tslint:disable-next-line: object-literal-sort-keys
 			message: config.message,
 			favs: config.favs,
 			datetime: config.datetime,
-			myFavFlg: config.myFavFlg
+			myFavFlg: config.myFavFlg,
+			url2: config.secondIconURL
 		};
 	}
+
+	const [previewName, setPreviewName] = React.useState(config.iconName);
+
+	React.useEffect(() => {
+		if (config.charaNameType === '手動') {
+			setPreviewName(config.charaName);
+			return;
+		}
+		if (!config.secondIconFlg) {
+			setPreviewName(config.iconName);
+			return;
+		}
+
+		findShortNameByName(config.iconName).then((sName1) => {
+			findShortNameByName(config.secondIconName).then((sName2) => {
+				setPreviewName(`${sName1}＆${sName2}`);
+			})
+		});
+	}, [config.charaNameType, config.secondIconFlg, config.iconName, config.secondIconName]);
 
 	return (
 		<>

@@ -28,6 +28,7 @@ export interface ITalkData {
 	favs: string
 	datetime: string
 	myFavFlg: boolean
+	url2: string
 }
 
 // どちらのアイコンを選択するか

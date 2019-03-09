@@ -19,12 +19,27 @@
     width: calc(100% * 76 / 320);
     height: calc(100% * 76 / 84);
 }
+.doubletalk-face{
+    right: calc(100% * 5 / 320);
+    top: calc(100% * 4 / 84);
+    width: calc(100% * 76 / 320);
+    height: calc(100% * 76 / 84);
+}
 .talk-balloon{
     right: calc(100% * 9 / 320);
     top: calc(100% * 4 / 84);
     width: calc(100% * 224 / 320);
     height: calc(100% * 76 / 84);
     background-image: url(/asset/balloon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.doubletalk-balloon{
+    right: calc(100% * 9 / 320);
+    top: calc(100% * 4 / 84);
+    width: calc(100% * 224 / 320);
+    height: calc(100% * 76 / 84);
+    background-image: url(/asset/balloon2.png);
     background-repeat: no-repeat;
     background-size: contain;
 } 
