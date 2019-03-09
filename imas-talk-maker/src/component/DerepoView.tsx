@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ITalkData } from 'src/constant';
-import '../css/DerepoView2.css';
+import '../css/DerepoView.css';
 
-const DerepoView2: React.FC<{ talkData: ITalkData, firstFlg: boolean }> = ({ talkData, firstFlg }) => {
+const DerepoView: React.FC<{ talkData: ITalkData, firstFlg: boolean }> = ({ talkData, firstFlg }) => {
 	// 外側のdivの参照
 	const overallRef = React.useRef<HTMLDivElement>(null);
 	// メッセージの参照
@@ -91,4 +91,4 @@ const DerepoView2: React.FC<{ talkData: ITalkData, firstFlg: boolean }> = ({ tal
 // 字のサイズ：13～14px？
 // 行間隔：間は1px程度？
 
-export default DerepoView2;
+export default DerepoView;

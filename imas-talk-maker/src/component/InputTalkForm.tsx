@@ -4,10 +4,10 @@ import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
-import '../css/DerepoView2.css';
+import '../css/DerepoView.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
-import DerepoView2 from './DerepoView2';
+import DerepoView from './DerepoView';
 import InputCharacterIcon1 from './InputCharacterIcon1';
 import InputCharacterIcon2 from './InputCharacterIcon2';
 import InputCharacterName from './InputCharacterName';
@@ -97,7 +97,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 								<OhanashiView talkData={previewData()}/>
 							</div>
 							: <div className="derepo-list">
-								<DerepoView2 talkData={previewData()} firstFlg={false}/>
+								<DerepoView talkData={previewData()} firstFlg={false}/>
 							</div>
 					}
 				</FormGroup>
