@@ -11,6 +11,7 @@ const DoubleDerepoView: React.FC<{ talkData: ITalkData, firstFlg?: boolean }> = 
 	const [overallCss, setOverallCss] = React.useState<{}>({});
 	// アイコンのCSS
 	const [iconCss, setIconCss] = React.useState<{}>({});
+	const [iconCss2, setIconCss2] = React.useState<{}>({});
 	// 名前のCSS
 	const [nameCss, setNameCss] = React.useState<{}>({});
 	// メッセージのCSS
@@ -57,7 +58,8 @@ const DoubleDerepoView: React.FC<{ talkData: ITalkData, firstFlg?: boolean }> = 
 				width: overallWidth
 			});
 		}
-		setIconCss({ height: calc(42), top: calc(1), width: calc(42) });
+		setIconCss({ height: calc(35), top: calc(1), width: calc(35) });
+		setIconCss2({ height: calc(35), top: calc(1+35+4), width: calc(35) });
 		setNameCss({ fontSize: calc(13), left: calc(48) });
 		setMessageCss({ fontSize: calc(13), left: calc(48), top: calc(20), width: calc(13*17) });
 		setStarBaseCss({ borderRadius: calc(7), height: calc(46), left: calc(333),
@@ -75,6 +77,7 @@ const DoubleDerepoView: React.FC<{ talkData: ITalkData, firstFlg?: boolean }> = 
 	return (
 		<div ref={overallRef} className='position-relative' style={overallCss}>
 			<img src={talkData.url} className='position-absolute' style={iconCss}/>
+			<img src={talkData.url2} className='position-absolute' style={iconCss2}/>
 			<span className='position-absolute name' style={nameCss}>{talkData.name}</span>
 			<span ref={messageRef} className='position-absolute message' style={messageCss}>{talkData.message}</span>
 			<span className='position-absolute star-base' style={starBaseCss}/>
