@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, FormGroup, FormLabel } from 'react-bootstrap';
+import { SelectIconType } from 'src/constant';
 import { ConfigContext } from 'src/context';
 import IconSelector from './IconSelector';
 
@@ -9,8 +10,9 @@ const InputCharacterIcon: React.FC<{
 	iconURL: string,
 	setIconUrl: (value: string) => void
 	iconSelectorFlg: boolean,
-	setIconSelectorFlg: (value: boolean) => void
-}> = ({iconName, iconURL, setIconUrl, iconSelectorFlg, setIconSelectorFlg}) => {
+	setIconSelectorFlg: (value: boolean) => void,
+	selectIconType: SelectIconType
+}> = ({iconName, iconURL, setIconUrl, iconSelectorFlg, setIconSelectorFlg, selectIconType}) => {
 	const config = React.useContext(ConfigContext);
 	if (config === null) {
 		return (<></>);
@@ -18,6 +20,7 @@ const InputCharacterIcon: React.FC<{
 
 	// キャラボタンを押した際の処理
 	const clickCharaButtonFunc = () => {
+		config.setSelectIconType(selectIconType);
 		config.setViewType('SelectName');
 	}
 

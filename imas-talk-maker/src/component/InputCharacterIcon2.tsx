@@ -14,6 +14,7 @@ const InputCharacterIcon2: React.FC = () => {
 		setIconUrl={config.setSecondIconURL}
 		iconSelectorFlg={config.secondIconSelectorFlg}
 		setIconSelectorFlg={config.setSecondIconSelectorFlg}
+		selectIconType='2nd'
 	/>);
 }
 

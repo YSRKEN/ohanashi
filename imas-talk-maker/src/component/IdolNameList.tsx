@@ -14,8 +14,13 @@ const IdolNameList: React.FC<{ idolList: IIdolInfo[] }> = ({ idolList }) => {
 		<ButtonGroup className="w-100" vertical={true}>
 			{idolList.map((idol, i) => {
 				const onClickButton = () => {
-					config.setIconName(idol.name);
-					config.setIconURL(idol.url);
+					if (config.selectIconType === '1st') {
+						config.setIconName(idol.name);
+						config.setIconURL(idol.url);
+					} else {
+						config.setSecondIconName(idol.name);
+						config.setSecondIconURL(idol.url);
+					}
 					config.setIconSelectorFlg(false);
 					config.setViewType('InputTalk');
 				}

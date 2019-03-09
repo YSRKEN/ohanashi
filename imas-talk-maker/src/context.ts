@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CharaNameType, TalkType, ViewType } from './constant';
+import { CharaNameType, SelectIconType, TalkType, ViewType } from './constant';
 
 // 設定を表すContext
 export interface IConfig {
@@ -62,5 +62,9 @@ export interface IConfig {
 	// 第二アイコンの表情を選択するメニューを表示する
 	secondIconSelectorFlg: boolean
 	setSecondIconSelectorFlg: (value: boolean) => void
+
+	// どちらのアイコンのキャラを選択するか？
+	selectIconType: SelectIconType
+	setSelectIconType: (value: SelectIconType) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);

@@ -29,3 +29,6 @@ export interface ITalkData {
 	datetime: string
 	myFavFlg: boolean
 }
+
+// どちらのアイコンを選択するか
+export type SelectIconType = '1st' | '2nd';

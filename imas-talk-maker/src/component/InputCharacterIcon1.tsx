@@ -14,6 +14,7 @@ const InputCharacterIcon1: React.FC = () => {
 		setIconUrl={config.setIconURL}
 		iconSelectorFlg={config.iconSelectorFlg}
 		setIconSelectorFlg={config.setIconSelectorFlg}
+		selectIconType='1st'
 	/>);
 }
 

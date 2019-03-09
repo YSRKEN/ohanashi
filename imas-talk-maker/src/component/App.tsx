@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { CharaNameType, TalkType, ViewType } from '../constant';
+import { CharaNameType, SelectIconType, TalkType, ViewType } from '../constant';
 import { ConfigContext } from '../context';
 import InputTalkForm from './InputTalkForm';
 import SelectNameForm from './SelectNameForm';
@@ -22,6 +22,7 @@ const App: React.FC = () => {
   const [secondIconName, setSecondIconName] = React.useState('春日未来');
   const [secondIconURL, setSecondIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/mirai-1.png`);
   const [secondIconSelectorFlg, setSecondIconSelectorFlg] = React.useState(false);
+  const [selectIconType, setSelectIconType] = React.useState<SelectIconType>('1st');
 
   return (
     <ConfigContext.Provider value={{
@@ -40,7 +41,8 @@ const App: React.FC = () => {
       secondIconFlg, setSecondIconFlg,
       secondIconName, setSecondIconName,
       secondIconURL, setSecondIconURL,
-      secondIconSelectorFlg, setSecondIconSelectorFlg
+      secondIconSelectorFlg, setSecondIconSelectorFlg,
+      selectIconType, setSelectIconType
     }}>
       <Container>
         <Row>
