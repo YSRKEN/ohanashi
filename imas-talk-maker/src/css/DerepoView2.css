@@ -1,3 +1,11 @@
+.derepo-list{
+    width: 100%;
+}
+@media screen and (min-width:768px) { 
+    .derepo-list{
+        width: 382px;
+    }
+}
 .name {
 	font-weight: bold;
 }

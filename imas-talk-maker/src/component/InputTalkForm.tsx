@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
-import '../css/DerepoView.css';
+import '../css/DerepoView2.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
 import DerepoView2 from './DerepoView2';
