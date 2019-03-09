@@ -119,7 +119,7 @@ const DerepoForm: React.FC<{ talkType: TalkType }> = ({ talkType }) => {
 				<FormControl value={config.datetime} onChange={onChangeDatetime} />
 			</FormGroup>
 			<FormGroup>
-				<FormCheck type='checkbox' label='ファボる' checked={config.myFavFlg} onClick={onClickMyFav} />
+				<FormCheck type='checkbox' label='ファボる' defaultChecked={config.myFavFlg} onClick={onClickMyFav} />
 			</FormGroup>
 		</>
 	);
