@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CharaNameType, SelectIconType, TalkType, ViewType } from './constant';
+import { CharaNameType, ITalkData, SelectIconType, TalkType, ViewType } from './constant';
 
 // 設定を表すContext
 export interface IConfig {
@@ -66,5 +66,9 @@ export interface IConfig {
 	// どちらのアイコンのキャラを選択するか？
 	selectIconType: SelectIconType
 	setSelectIconType: (value: SelectIconType) => void
+
+	// 会話リスト
+	idolTalkList: ITalkData[]
+	setIdolTalkList: (value: ITalkData[]) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);

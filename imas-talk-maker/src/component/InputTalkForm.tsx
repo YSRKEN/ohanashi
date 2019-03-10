@@ -3,38 +3,18 @@ import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { findShortNameByName } from 'src/iconData';
-import { ITalkData, TALK_TYPE_LIST, TalkType } from '../constant';
+import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
 import '../css/DerepoView.css';
 import '../css/OhanashiView.css';
 import DerepoForm from './DerepoForm';
-import DerepoView from './DerepoView';
-import DoubleDerepoView from './DoubleDerepoView';
-import DoubleOhanashiView from './DoubleOhanashiView';
 import InputCharacterIcon1 from './InputCharacterIcon1';
 import InputCharacterIcon2 from './InputCharacterIcon2';
 import InputCharacterName from './InputCharacterName';
-import OhanashiView from './OhanashiView';
 import SelectButtonGroup from './SelectButtonGroup';
+import ViewComponent from './ViewComponent';
 
 const isPC = () => window.innerWidth >= 768;
-
-// プレビュー表示部分
-const ViewComponent: React.FC<{
-	talkType: TalkType,
-	secondIconFlg: boolean,
-	talkData: ITalkData
-}> = ({talkType, secondIconFlg, talkData}) => {
-	if (talkType === 'おはなし') {
-		return (<div className="talk-list">
-			{secondIconFlg ? <DoubleOhanashiView talkData={talkData}/> : <OhanashiView talkData={talkData}/>}
-		</div>);
-	} else {
-		return (<div className="derepo-list">
-			{secondIconFlg ? <DoubleDerepoView talkData={talkData}/> : <DerepoView talkData={talkData}/>}
-		</div>);
-	}
-};
 
 // 入力フォーム全体
 const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
@@ -57,6 +37,17 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 		config.setSecondIconFlg(!nowFlg);
 	}
 
+	// 会話を追加する際の処理
+	const onClickAddTalkButton = () => {
+		const newTalkList = [];
+		for (const data of config.idolTalkList) {
+			const cloneData = JSON.parse(JSON.stringify(data));
+			newTalkList.push(cloneData);
+		}
+		newTalkList.push(JSON.parse(JSON.stringify(previewData())));
+		config.setIdolTalkList(newTalkList);
+	}
+
 	const previewData = () => {
 		return {
 			name: previewName,
@@ -66,7 +57,8 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 			favs: config.favs,
 			datetime: config.datetime,
 			myFavFlg: config.myFavFlg,
-			url2: config.secondIconURL
+			url2: config.secondIconURL,
+			secondIconFlg: config.secondIconFlg
 		};
 	}
 
@@ -131,10 +123,10 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				<DerepoForm talkType={config.talkType}/>
 				<FormGroup>
 					<FormLabel>プレビュー</FormLabel>
-					<ViewComponent talkType={config.talkType} secondIconFlg={config.secondIconFlg} talkData={previewData()}/>
+					<ViewComponent talkType={config.talkType} talkData={previewData()}/>
 				</FormGroup>
 				<FormGroup>
-					<Button className='w-100'>追加</Button>
+					<Button className='w-100' onClick={onClickAddTalkButton}>追加</Button>
 				</FormGroup>
 			</Form>
 		</>
