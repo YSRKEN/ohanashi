@@ -8,15 +8,20 @@ import OhanashiView from './OhanashiView';
 // プレビュー表示部分
 export const ViewComponent: React.FC<{
 	talkType: TalkType,
-	talkData: ITalkData
-}> = ({talkType, talkData}) => {
+	talkData: ITalkData,
+	firstFlg?: boolean,
+}> = ({talkType, talkData, firstFlg = false}) => {
 	if (talkType === 'おはなし') {
 		return (<div className="talk-list">
-			{talkData.secondIconFlg ? <DoubleOhanashiView talkData={talkData}/> : <OhanashiView talkData={talkData}/>}
+			{talkData.secondIconFlg
+				? <DoubleOhanashiView talkData={talkData}/>
+				: <OhanashiView talkData={talkData}/>}
 		</div>);
 	} else {
 		return (<div className="derepo-list">
-			{talkData.secondIconFlg ? <DoubleDerepoView talkData={talkData}/> : <DerepoView talkData={talkData}/>}
+			{talkData.secondIconFlg
+				? <DoubleDerepoView talkData={talkData} firstFlg={firstFlg}/>
+				: <DerepoView talkData={talkData} firstFlg={firstFlg}/>}
 		</div>);
 	}
 };

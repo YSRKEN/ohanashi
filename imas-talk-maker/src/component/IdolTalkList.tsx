@@ -13,7 +13,8 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 
 	return (<div className={`border p-3 ${className}`}>
 		{config.idolTalkList.map((idolTalk, i) => (
-				<ViewComponent key={i} talkType={config.talkType} talkData={idolTalk}/>
+				<ViewComponent key={i} talkType={config.talkType} talkData={idolTalk}
+					firstFlg={i === 0}/>
 			))
 		}
 	</div>);
