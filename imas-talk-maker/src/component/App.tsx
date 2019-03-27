@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('手動');
   const [charaName, setCharaName] = React.useState('春香さん');
   const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
-  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/haruka-1.png`);
+  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/1100228cfb2.png`);
   const [iconName, setIconName] = React.useState('天海春香');
   const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
   const [favs, setFavs] = React.useState('9999+');
@@ -21,7 +21,7 @@ const App: React.FC = () => {
   const [myFavFlg, setMyFavFlg] = React.useState(true);
   const [secondIconFlg, setSecondIconFlg] = React.useState(false);
   const [secondIconName, setSecondIconName] = React.useState('春日未来');
-  const [secondIconURL, setSecondIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/mirai-1.png`);
+  const [secondIconURL, setSecondIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/110082b91c4.png`);
   const [secondIconSelectorFlg, setSecondIconSelectorFlg] = React.useState(false);
   const [selectIconType, setSelectIconType] = React.useState<SelectIconType>('1st');
   const [idolTalkList, setIdolTalkList] = React.useState<ITalkData[]>([]);
