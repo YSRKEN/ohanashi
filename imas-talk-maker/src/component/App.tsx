@@ -25,6 +25,8 @@ const App: React.FC = () => {
   const [secondIconSelectorFlg, setSecondIconSelectorFlg] = React.useState(false);
   const [selectIconType, setSelectIconType] = React.useState<SelectIconType>('1st');
   const [idolTalkList, setIdolTalkList] = React.useState<ITalkData[]>([]);
+  const [draggedTalkIndex, setDraggedTalkIndex] = React.useState(-1);
+
 
   return (
     <ConfigContext.Provider value={{
@@ -45,7 +47,8 @@ const App: React.FC = () => {
       secondIconURL, setSecondIconURL,
       secondIconSelectorFlg, setSecondIconSelectorFlg,
       selectIconType, setSelectIconType,
-      idolTalkList, setIdolTalkList
+      idolTalkList, setIdolTalkList,
+      draggedTalkIndex, setDraggedTalkIndex,
     }}>
       <Container>
         <Row>

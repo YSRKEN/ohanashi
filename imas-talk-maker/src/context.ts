@@ -70,5 +70,9 @@ export interface IConfig {
 	// 会話リスト
 	idolTalkList: ITalkData[]
 	setIdolTalkList: (value: ITalkData[]) => void
+
+	// ドラッグ中のTalkのインデックス
+	draggedTalkIndex: number
+	setDraggedTalkIndex: (value: number) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);
