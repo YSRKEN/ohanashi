@@ -26,7 +26,7 @@ export const findIdolListBySearchWord = async (searchWord: string) => {
       url: `${process.env.PUBLIC_URL}/asset/${idol.category}/${idol.image[0]}`
     }));
   } else {
-    return jsonData.filter(idol => (idol.name+idol.kana).includes(searchWord))
+    return jsonData.filter(idol => (idol.name+'/'+idol.kana).includes(searchWord))
       .map(idol =>({
         name: idol.name,
         // tslint:disable-next-line: object-literal-sort-keys

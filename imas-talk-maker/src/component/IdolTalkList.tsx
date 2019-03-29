@@ -60,6 +60,21 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		config.setDraggedTalkIndex(-1);
 	}
 
+	const deleteTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
+		if (event.target instanceof HTMLButtonElement) {
+			const index = parseInt(event.target.id.replace('delete-', ''), 10);
+			const newTalkList = [];
+			for (let i = 0; i < config.idolTalkList.length; ++i) {
+				if (i === index) {
+					continue;
+				}
+				const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i]));
+				newTalkList.push(cloneData);
+			}
+			config.setIdolTalkList(newTalkList);
+		}
+	}
+
 	if (config.talkType === 'おはなし') {
 		return (<div className={`border p-3 ${className}`}>
 			<div id={`to-0`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
@@ -70,9 +85,10 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 							firstFlg={i === 0}/>
 					</div>
 					<div className='flex'>
-						<Button className='px-1 py-0 mb-0'>編集</Button>
-						<Button className='px-1 py-0 mb-0'>上書</Button>
-						<Button className='px-1 py-0 mb-0 ml-auto' variant='danger'>削除</Button>
+						<Button id={`edit-${i}`} className='px-1 py-0 mb-0'>編集</Button>
+						<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'>上書</Button>
+						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
+							onClick={deleteTalk}>削除</Button>
 					</div>
 					<div id={`to-${i+1}`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
 				</div>
@@ -90,7 +106,7 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 								firstFlg={i === 0}/>
 						</div>
 						<div className='flex'>
-							<Button className='px-1 py-0 mb-0 mr-3'>編集</Button>
+							<Button className='px-1 py-0 mb-0'>編集</Button>
 							<Button className='px-1 py-0 mb-0'>上書</Button>
 							<Button className='px-1 py-0 mb-0 ml-auto' variant='danger'>削除</Button>
 						</div>
