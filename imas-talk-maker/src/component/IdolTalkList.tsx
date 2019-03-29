@@ -28,6 +28,30 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 			const toTalkIndex = parseInt(event.target.id.replace('to-', ''), 10);
 			// tslint:disable-next-line: no-console
 			console.log(`${config.draggedTalkIndex}->${toTalkIndex}`);
+			if (config.draggedTalkIndex !== toTalkIndex
+				&& config.draggedTalkIndex + 1 !== toTalkIndex) {
+				const newTalkList = [];
+				for (let i = 0; i < config.idolTalkList.length; ++i) {
+					if (i === config.draggedTalkIndex) {
+						continue;
+					}
+					const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i]));
+					newTalkList.push(cloneData);
+				}
+				const insertData = JSON.parse(JSON.stringify(config.idolTalkList[config.draggedTalkIndex]));
+				// tslint:disable-next-line: no-console
+				console.log(insertData);
+				// tslint:disable-next-line: no-console
+				console.log(newTalkList);
+				if (config.draggedTalkIndex > toTalkIndex) {
+					newTalkList.splice(toTalkIndex, 0, insertData);
+				} else {
+					newTalkList.splice(toTalkIndex - 1, 0, insertData);
+				}
+				// tslint:disable-next-line: no-console
+				console.log(newTalkList);
+				config.setIdolTalkList(newTalkList);
+			}
 		}
 		event.preventDefault();
 	}
