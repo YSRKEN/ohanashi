@@ -122,6 +122,62 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		}
 	}
 
+	// ↑↑ボタン
+	const liftUpTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
+		if (event.target instanceof HTMLButtonElement) {
+			// 選択した会話の情報を取り出す
+			const index = parseInt(event.target.id.replace('delete-', ''), 10);
+
+			// 移動処理
+			if (index === 0) {
+				return;
+			} else {
+				const newTalkList = [];
+				for (let i = 0; i < config.idolTalkList.length; ++i) {
+					if (i === index - 1) {
+						const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i + 1]));
+						newTalkList.push(cloneData);
+					} else if (i === index) {
+						const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i - 1]));
+						newTalkList.push(cloneData);
+					} else {
+						const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i]));
+						newTalkList.push(cloneData);
+					}
+				}
+				config.setIdolTalkList(newTalkList);
+			}
+		}
+	}
+
+	// ↓↓ボタン
+	const liftDownTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
+		if (event.target instanceof HTMLButtonElement) {
+			// 選択した会話の情報を取り出す
+			const index = parseInt(event.target.id.replace('delete-', ''), 10);
+
+			// 移動処理
+			if (index === config.idolTalkList.length - 1) {
+				return;
+			} else {
+				const newTalkList = [];
+				for (let i = 0; i < config.idolTalkList.length; ++i) {
+					if (i === index + 1) {
+						const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i - 1]));
+						newTalkList.push(cloneData);
+					} else if (i === index) {
+						const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i + 1]));
+						newTalkList.push(cloneData);
+					} else {
+						const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i]));
+						newTalkList.push(cloneData);
+					}
+				}
+				config.setIdolTalkList(newTalkList);
+			}
+		}
+	}
+
 	// 削除ボタン
 	const deleteTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
 		if (event.target instanceof HTMLButtonElement) {
@@ -156,6 +212,10 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 							onClick={editTalk}>編集</Button>
 						<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
 							onClick={overwriteTalk}>上書</Button>
+						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+							onClick={liftUpTalk}>↑↑</Button>
+						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+							onClick={liftDownTalk}>↓↓</Button>
 						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
 							onClick={deleteTalk}>削除</Button>
 					</div>
@@ -179,6 +239,10 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 								onClick={editTalk}>編集</Button>
 							<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
 								onClick={overwriteTalk}>上書</Button>
+							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+							onClick={liftUpTalk}>↑↑</Button>
+							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+							onClick={liftDownTalk}>↓↓</Button>
 							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
 								onClick={deleteTalk}>削除</Button>
 						</div>
