@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Form, FormCheck, FormGroup } from 'react-bootstrap';
 import { ITalkData } from 'src/constant';
 import { ConfigContext } from 'src/context';
 import '../css/IdolTalkList.css';
 import ViewComponent from './ViewComponent';
 
 const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
+	const [disableButtonFlg, setDisableButtonFlg] = React.useState(false);
+
 	const config = React.useContext(ConfigContext);
 	if (config === null) {
 		return (<></>);
@@ -197,6 +199,10 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		}
 	}
 
+	const onClickDisableButton = () => {
+		setDisableButtonFlg(flg => !flg);
+	}
+
 	// JSX
 	if (config.talkType === 'おはなし') {
 		return (<div className={`border p-3 ${className}`}>
@@ -207,51 +213,71 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 						<ViewComponent talkType={config.talkType} talkData={idolTalk}
 							firstFlg={i === 0}/>
 					</div>
-					<div className='flex'>
-						<Button id={`edit-${i}`} className='px-1 py-0 mb-0'
-							onClick={editTalk}>編集</Button>
-						<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
-							onClick={overwriteTalk}>上書</Button>
-						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
-							onClick={liftUpTalk}>↑↑</Button>
-						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
-							onClick={liftDownTalk}>↓↓</Button>
-						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
-							onClick={deleteTalk}>削除</Button>
-					</div>
-					<div id={`to-${i+1}`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
+					{
+						!disableButtonFlg ? <>
+							<div className='flex'>
+								<Button id={`edit-${i}`} className='px-1 py-0 mb-0'
+									onClick={editTalk}>編集</Button>
+								<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
+									onClick={overwriteTalk}>上書</Button>
+								<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+								onClick={liftUpTalk}>↑↑</Button>
+								<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+								onClick={liftDownTalk}>↓↓</Button>
+								<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
+									onClick={deleteTalk}>削除</Button>
+							</div>
+							<div id={`to-${i+1}`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
+						</> : <></>
+					}
 				</div>
 				))
 			}
+			<Form>
+				<FormGroup>
+					<FormCheck type='checkbox' label='ボタン非表示' defaultChecked={disableButtonFlg} onClick={onClickDisableButton} />
+				</FormGroup>
+			</Form>
 		</div>);
 	} else {
-		return (<div className={`border p-3 ${className}`}>
-			<div className='border p-3 d-inline-block derepo'>
-				<div id={`to-0`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
-				{config.idolTalkList.map((idolTalk, i) => (
-					<div key={i}>
-						<div draggable={true} id={`from-${i}`} onDragStart={dragstart}>
-							<ViewComponent talkType={config.talkType} talkData={idolTalk}
-								firstFlg={i === 0}/>
+		return (<>
+			<div className={`border p-3 ${className}`}>
+				<div className='border p-3 d-inline-block derepo'>
+					<div id={`to-0`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
+					{config.idolTalkList.map((idolTalk, i) => (
+						<div key={i}>
+							<div draggable={true} id={`from-${i}`} onDragStart={dragstart}>
+								<ViewComponent talkType={config.talkType} talkData={idolTalk}
+									firstFlg={i === 0}/>
+							</div>
+							{
+								!disableButtonFlg ? <>
+									<div className='flex'>
+										<Button id={`edit-${i}`} className='px-1 py-0 mb-0'
+											onClick={editTalk}>編集</Button>
+										<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
+											onClick={overwriteTalk}>上書</Button>
+										<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+										onClick={liftUpTalk}>↑↑</Button>
+										<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
+										onClick={liftDownTalk}>↓↓</Button>
+										<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
+											onClick={deleteTalk}>削除</Button>
+									</div>
+									<div id={`to-${i+1}`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
+								</> : <></>
+							}
 						</div>
-						<div className='flex'>
-							<Button id={`edit-${i}`} className='px-1 py-0 mb-0'
-								onClick={editTalk}>編集</Button>
-							<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
-								onClick={overwriteTalk}>上書</Button>
-							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
-							onClick={liftUpTalk}>↑↑</Button>
-							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='info'
-							onClick={liftDownTalk}>↓↓</Button>
-							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
-								onClick={deleteTalk}>削除</Button>
-						</div>
-						<div id={`to-${i+1}`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
-					</div>
-					))
-				}
+						))
+					}
+				</div>
+				<Form>
+					<FormGroup>
+						<FormCheck type='checkbox' label='ボタン非表示' defaultChecked={disableButtonFlg} onClick={onClickDisableButton} />
+					</FormGroup>
+				</Form>
 			</div>
-		</div>);
+		</>);
 	}
 
 }
