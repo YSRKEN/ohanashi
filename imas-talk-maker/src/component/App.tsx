@@ -26,7 +26,7 @@ const App: React.FC = () => {
   const [selectIconType, setSelectIconType] = React.useState<SelectIconType>('1st');
   const [idolTalkList, setIdolTalkList] = React.useState<ITalkData[]>([]);
   const [draggedTalkIndex, setDraggedTalkIndex] = React.useState(-1);
-
+  const [previewName, setPreviewName] = React.useState('天海春香');
 
   return (
     <ConfigContext.Provider value={{
@@ -49,6 +49,7 @@ const App: React.FC = () => {
       selectIconType, setSelectIconType,
       idolTalkList, setIdolTalkList,
       draggedTalkIndex, setDraggedTalkIndex,
+      previewName, setPreviewName,
     }}>
       <Container>
         <Row>

@@ -74,5 +74,9 @@ export interface IConfig {
 	// ドラッグ中のTalkのインデックス
 	draggedTalkIndex: number
 	setDraggedTalkIndex: (value: number) => void
+
+	// プレビュー欄の名前
+	previewName: string
+	setPreviewName: (value: string) => void
 }
 export const ConfigContext = React.createContext<IConfig | null>(null);

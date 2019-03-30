@@ -50,7 +50,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 
 	const previewData = () => {
 		return {
-			name: previewName,
+			name: config.previewName,
 			url: config.iconURL,
 			// tslint:disable-next-line: object-literal-sort-keys
 			message: config.message,
@@ -62,21 +62,19 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 		};
 	}
 
-	const [previewName, setPreviewName] = React.useState(config.iconName);
-
 	React.useEffect(() => {
 		if (config.charaNameType === '手動') {
-			setPreviewName(config.charaName);
+			config.setPreviewName(config.charaName);
 			return;
 		}
 		if (!config.secondIconFlg) {
-			setPreviewName(config.iconName);
+			config.setPreviewName(config.iconName);
 			return;
 		}
 
 		findShortNameByName(config.iconName).then((sName1) => {
 			findShortNameByName(config.secondIconName).then((sName2) => {
-				setPreviewName(`${sName1}＆${sName2}`);
+				config.setPreviewName(`${sName1}＆${sName2}`);
 			})
 		});
 	}, [config.charaNameType, config.secondIconFlg, config.iconName, config.secondIconName]);

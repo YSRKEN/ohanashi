@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
+import { ITalkData } from 'src/constant';
 import { ConfigContext } from 'src/context';
 import '../css/IdolTalkList.css';
 import ViewComponent from './ViewComponent';
@@ -60,6 +61,49 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		config.setDraggedTalkIndex(-1);
 	}
 
+	const editTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
+		if (event.target instanceof HTMLButtonElement) {
+			const index = parseInt(event.target.id.replace('edit-', ''), 10);
+			const talk = config.idolTalkList[index];
+			config.setCharaName(talk.name);
+			config.setIconName(talk.name);
+			config.setIconURL(talk.url);
+			config.setSecondIconURL(talk.url2);
+			config.setSecondIconFlg(talk.secondIconFlg);
+			config.setMessage(talk.message);
+			config.setFavs(talk.favs);
+			config.setMyFavFlg(talk.myFavFlg);
+			config.setDatetime(talk.datetime);
+		}
+	}
+
+	const overwriteTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
+		if (event.target instanceof HTMLButtonElement) {
+			const index = parseInt(event.target.id.replace('overwrite-', ''), 10);
+			const talk: ITalkData = {
+				name: config.previewName,
+				url: config.iconURL,
+				// tslint:disable-next-line: object-literal-sort-keys
+				message: config.message,
+				favs: config.favs,
+				datetime: config.datetime,
+				myFavFlg: config.myFavFlg,
+				url2: config.secondIconURL,
+				secondIconFlg: config.secondIconFlg
+			};
+			const newTalkList = [];
+			for (let i = 0; i < config.idolTalkList.length; ++i) {
+				if (i === index) {
+					newTalkList.push(talk);
+				} else {
+					const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i]));
+					newTalkList.push(cloneData);
+				}
+			}
+			config.setIdolTalkList(newTalkList);
+		}
+	}
+
 	const deleteTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
 		if (event.target instanceof HTMLButtonElement) {
 			const index = parseInt(event.target.id.replace('delete-', ''), 10);
@@ -85,8 +129,10 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 							firstFlg={i === 0}/>
 					</div>
 					<div className='flex'>
-						<Button id={`edit-${i}`} className='px-1 py-0 mb-0'>編集</Button>
-						<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'>上書</Button>
+						<Button id={`edit-${i}`} className='px-1 py-0 mb-0'
+							onClick={editTalk}>編集</Button>
+						<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
+							onClick={overwriteTalk}>上書</Button>
 						<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
 							onClick={deleteTalk}>削除</Button>
 					</div>
@@ -106,9 +152,12 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 								firstFlg={i === 0}/>
 						</div>
 						<div className='flex'>
-							<Button className='px-1 py-0 mb-0'>編集</Button>
-							<Button className='px-1 py-0 mb-0'>上書</Button>
-							<Button className='px-1 py-0 mb-0 ml-auto' variant='danger'>削除</Button>
+							<Button id={`edit-${i}`} className='px-1 py-0 mb-0'
+								onClick={editTalk}>編集</Button>
+							<Button id={`overwrite-${i}`} className='px-1 py-0 mb-0'
+								onClick={overwriteTalk}>上書</Button>
+							<Button id={`delete-${i}`} className='px-1 py-0 mb-0 ml-auto' variant='danger'
+								onClick={deleteTalk}>削除</Button>
 						</div>
 						<div id={`to-${i+1}`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
 					</div>
