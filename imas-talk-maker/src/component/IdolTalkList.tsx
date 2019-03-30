@@ -14,23 +14,29 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		return (<></>);
 	}
 
+	// ドラッグ開始時の動き
 	const dragstart = (event: React.DragEvent<HTMLDivElement>) => {
 		if (event.target instanceof HTMLDivElement) {
+			// ドラッグ中のTalkの番号を記憶する
 			config.setDraggedTalkIndex(parseInt(event.target.id.replace('from-', ''), 10));
 		}
 	}
 
+	// ドラッグ中の動き
 	const dragover = (event: React.DragEvent<HTMLDivElement>) => {
 		event.preventDefault();
 	}
 
+	// ドラッグ完了時の動き
 	const drop = (event: React.DragEvent<HTMLDivElement>) => {
-		if (event.target instanceof HTMLDivElement) {
+		if (config.draggedTalkIndex >= 0 && event.target instanceof HTMLDivElement && event.target.id.includes('to-')) {
+			// ドラッグ先の番号を記録する
 			const toTalkIndex = parseInt(event.target.id.replace('to-', ''), 10);
-			// tslint:disable-next-line: no-console
-			console.log(`${config.draggedTalkIndex}->${toTalkIndex}`);
+			
+			// ドラッグによって「移動」する場合
 			if (config.draggedTalkIndex !== toTalkIndex
 				&& config.draggedTalkIndex + 1 !== toTalkIndex) {
+				// 会話を再作成するため、まずドラッグされていない既存の会話を吸い出す
 				const newTalkList = [];
 				for (let i = 0; i < config.idolTalkList.length; ++i) {
 					if (i === config.draggedTalkIndex) {
@@ -39,32 +45,38 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 					const cloneData = JSON.parse(JSON.stringify(config.idolTalkList[i]));
 					newTalkList.push(cloneData);
 				}
+				
+				// 次に、ドラッグ中の対象を吸い出す
 				const insertData = JSON.parse(JSON.stringify(config.idolTalkList[config.draggedTalkIndex]));
-				// tslint:disable-next-line: no-console
-				console.log(insertData);
-				// tslint:disable-next-line: no-console
-				console.log(newTalkList);
+
+				// 挿入処理
 				if (config.draggedTalkIndex > toTalkIndex) {
 					newTalkList.splice(toTalkIndex, 0, insertData);
 				} else {
 					newTalkList.splice(toTalkIndex - 1, 0, insertData);
 				}
-				// tslint:disable-next-line: no-console
-				console.log(newTalkList);
+				
+				// 上書きして完了
 				config.setIdolTalkList(newTalkList);
 			}
 		}
 		event.preventDefault();
 	}
 
+	// ドラッグ完了時の動き
 	const dragend = (event: React.DragEvent<HTMLDivElement>) => {
+		// ドラッグ中オブジェクトの状態を無効化する
 		config.setDraggedTalkIndex(-1);
 	}
 
+	// 編集ボタン
 	const editTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
 		if (event.target instanceof HTMLButtonElement) {
+			// 選択した会話の情報を取り出す
 			const index = parseInt(event.target.id.replace('edit-', ''), 10);
 			const talk = config.idolTalkList[index];
+
+			// 入力欄に上書き
 			config.setCharaName(talk.name);
 			config.setIconName(talk.name);
 			config.setIconURL(talk.url);
@@ -77,9 +89,13 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		}
 	}
 
+	// 上書ボタン
 	const overwriteTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
 		if (event.target instanceof HTMLButtonElement) {
+			// 選択した会話の情報を取り出す
 			const index = parseInt(event.target.id.replace('overwrite-', ''), 10);
+
+			// 上書き用データを生成
 			const talk: ITalkData = {
 				name: config.previewName,
 				url: config.iconURL,
@@ -91,6 +107,8 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 				url2: config.secondIconURL,
 				secondIconFlg: config.secondIconFlg
 			};
+
+			// 上書き処理
 			const newTalkList = [];
 			for (let i = 0; i < config.idolTalkList.length; ++i) {
 				if (i === index) {
@@ -104,9 +122,13 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		}
 	}
 
+	// 削除ボタン
 	const deleteTalk = (event: React.MouseEvent<HTMLButtonElement>) => {
 		if (event.target instanceof HTMLButtonElement) {
+			// 選択した会話の情報を取り出す
 			const index = parseInt(event.target.id.replace('delete-', ''), 10);
+
+			// 削除処理
 			const newTalkList = [];
 			for (let i = 0; i < config.idolTalkList.length; ++i) {
 				if (i === index) {
@@ -119,6 +141,7 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		}
 	}
 
+	// JSX
 	if (config.talkType === 'おはなし') {
 		return (<div className={`border p-3 ${className}`}>
 			<div id={`to-0`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
