@@ -9,25 +9,25 @@ import SelectNameForm from './SelectNameForm';
 
 const App: React.FC = () => {
   // Hooks
-  const [talkType, setTalkType] = localStorageState<TalkType>('talkType', 'おはなし');
-  const [viewType, setViewType] = React.useState<ViewType>('InputTalk');
-  const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('自動');
-  const [charaName, setCharaName] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/other/P-suite.png`);
-  const [iconName, setIconName] = React.useState('P');
-  const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
-  const [favs, setFavs] = React.useState('9999+');
-  const [datetime, setDatetime] = React.useState('01-02 03:04');
-  const [myFavFlg, setMyFavFlg] = React.useState(true);
-  const [secondIconFlg, setSecondIconFlg] = React.useState(false);
-  const [secondIconName, setSecondIconName] = React.useState('春日未来');
-  const [secondIconURL, setSecondIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/110082b91c4.png`);
-  const [secondIconSelectorFlg, setSecondIconSelectorFlg] = React.useState(false);
-  const [selectIconType, setSelectIconType] = React.useState<SelectIconType>('1st');
-  const [idolTalkList, setIdolTalkList] = React.useState<ITalkData[]>([]);
-  const [draggedTalkIndex, setDraggedTalkIndex] = React.useState(-1);
-  const [previewName, setPreviewName] = React.useState('P');
+  const [talkType, setTalkType]                 = localStorageState<TalkType>('talkType', 'おはなし');
+  const [viewType, setViewType]                 = localStorageState<ViewType>('viewType', 'InputTalk');
+  const [charaNameType, setCharaNameType]       = localStorageState<CharaNameType>('charaNameType', '自動');
+  const [charaName, setCharaName]               = localStorageState<string>('charaName', '');
+  const [message, setMessage]                   = localStorageState<string>('message', '');
+  const [iconURL, setIconURL]                   = localStorageState<string>('iconURL', `${process.env.PUBLIC_URL}/asset/other/P-suite.png`);
+  const [iconName, setIconName]                 = localStorageState<string>('iconName', 'P');
+  const [iconSelectorFlg, setIconSelectorFlg]   = localStorageState<boolean>('iconSelectorFlg', false);
+  const [favs, setFavs]                         = localStorageState<string>('favs', '9999+');
+  const [datetime, setDatetime]                 = localStorageState<string>('datetime', '01-02 03:04');
+  const [myFavFlg, setMyFavFlg]                 = localStorageState<boolean>('myFavFlg', true);
+  const [secondIconFlg, setSecondIconFlg]       = localStorageState<boolean>('secondIconFlg', false);
+  const [secondIconName, setSecondIconName]     = localStorageState<string>('secondIconName', '春日未来');
+  const [secondIconURL, setSecondIconURL]       = localStorageState<string>('secondIconURL', `${process.env.PUBLIC_URL}/asset/million/110082b91c4.png`);
+  const [secondIconSelectorFlg, setSecondIconSelectorFlg] = localStorageState<boolean>('secondIconSelectorFlg', false);
+  const [selectIconType, setSelectIconType]     = localStorageState<SelectIconType>('selectIconType', '1st');
+  const [idolTalkList, setIdolTalkList]         = localStorageState<ITalkData[]>('idolTalkList', []);
+  const [draggedTalkIndex, setDraggedTalkIndex] = localStorageState<number>('draggedTalkIndex', -1);
+  const [previewName, setPreviewName]           = localStorageState<string>('previewName', 'P');
 
   return (
     <ConfigContext.Provider value={{
