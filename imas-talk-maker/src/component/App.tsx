@@ -10,11 +10,11 @@ const App: React.FC = () => {
   // Hooks
   const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
   const [viewType, setViewType] = React.useState<ViewType>('InputTalk');
-  const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('手動');
-  const [charaName, setCharaName] = React.useState('春香さん');
-  const [message, setMessage] = React.useState('プロデューサーさん、ドームですよ、ドーム！');
-  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/million/1100228cfb2.png`);
-  const [iconName, setIconName] = React.useState('天海春香');
+  const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('自動');
+  const [charaName, setCharaName] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [iconURL, setIconURL] = React.useState(`${process.env.PUBLIC_URL}/asset/other/P-suite.png`);
+  const [iconName, setIconName] = React.useState('P');
   const [iconSelectorFlg, setIconSelectorFlg] = React.useState(false);
   const [favs, setFavs] = React.useState('9999+');
   const [datetime, setDatetime] = React.useState('01-02 03:04');
@@ -26,7 +26,7 @@ const App: React.FC = () => {
   const [selectIconType, setSelectIconType] = React.useState<SelectIconType>('1st');
   const [idolTalkList, setIdolTalkList] = React.useState<ITalkData[]>([]);
   const [draggedTalkIndex, setDraggedTalkIndex] = React.useState(-1);
-  const [previewName, setPreviewName] = React.useState('天海春香');
+  const [previewName, setPreviewName] = React.useState('P');
 
   return (
     <ConfigContext.Provider value={{
