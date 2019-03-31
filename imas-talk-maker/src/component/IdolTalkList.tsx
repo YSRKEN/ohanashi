@@ -80,7 +80,7 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 
 			// 入力欄に上書き
 			config.setCharaName(talk.name);
-			config.setIconName(talk.name);
+			config.setIconName(talk.iconName);
 			config.setIconURL(talk.url);
 			config.setSecondIconURL(talk.url2);
 			config.setSecondIconFlg(talk.secondIconFlg);
@@ -102,6 +102,7 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 				name: config.previewName,
 				url: config.iconURL,
 				// tslint:disable-next-line: object-literal-sort-keys
+				iconName: config.iconName,
 				message: config.message,
 				favs: config.favs,
 				datetime: config.datetime,

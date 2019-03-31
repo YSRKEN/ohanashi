@@ -53,6 +53,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 			name: config.previewName,
 			url: config.iconURL,
 			// tslint:disable-next-line: object-literal-sort-keys
+			iconName: config.iconName,
 			message: config.message,
 			favs: config.favs,
 			datetime: config.datetime,

@@ -23,6 +23,7 @@ export interface IIdolInfo {
 // 会話データ
 export interface ITalkData {
 	name: string
+	iconName: string
 	url: string
 	message: string
 	favs: string
