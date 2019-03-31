@@ -2,13 +2,14 @@ import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { CharaNameType, ITalkData, SelectIconType, TalkType, ViewType } from '../constant';
 import { ConfigContext } from '../context';
+import { localStorageState } from '../state';
 import IdolTalkList from './IdolTalkList';
 import InputTalkForm from './InputTalkForm';
 import SelectNameForm from './SelectNameForm';
 
 const App: React.FC = () => {
   // Hooks
-  const [talkType, setTalkType] = React.useState<TalkType>('おはなし');
+  const [talkType, setTalkType] = localStorageState<TalkType>('talkType', 'おはなし');
   const [viewType, setViewType] = React.useState<ViewType>('InputTalk');
   const [charaNameType, setCharaNameType] = React.useState<CharaNameType>('自動');
   const [charaName, setCharaName] = React.useState('');
