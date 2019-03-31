@@ -199,6 +199,14 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		}
 	}
 
+	// 全削除ボタン
+	const allDeleteTalks = () => {
+		if (window.confirm('すべての会話を削除しますか？')) {
+			const newTalkList: ITalkData[] = [];
+			config.setIdolTalkList(newTalkList);
+		}
+	}
+
 	const onClickDisableButton = () => {
 		setDisableButtonFlg(flg => !flg);
 	}
@@ -206,6 +214,12 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 	// JSX
 	if (config.talkType === 'おはなし') {
 		return (<div className={`border p-3 ${className}`}>
+			<Form>
+				<FormGroup className='d-flex'>
+					<FormCheck className='mt-2 mr-1' type='checkbox' label='ボタン非表示' defaultChecked={disableButtonFlg} onClick={onClickDisableButton} />
+					<Button variant='danger' onClick={allDeleteTalks}>全て削除</Button>
+				</FormGroup>
+			</Form>
 			<div id={`to-0`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
 			{config.idolTalkList.map((idolTalk, i) => (
 				<div key={i}>
@@ -233,15 +247,16 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 				</div>
 				))
 			}
-			<Form>
-				<FormGroup>
-					<FormCheck type='checkbox' label='ボタン非表示' defaultChecked={disableButtonFlg} onClick={onClickDisableButton} />
-				</FormGroup>
-			</Form>
 		</div>);
 	} else {
 		return (<>
 			<div className={`border p-3 ${className}`}>
+				<Form>
+					<FormGroup className='d-flex'>
+						<FormCheck className='mt-2 mr-1' type='checkbox' label='ボタン非表示' defaultChecked={disableButtonFlg} onClick={onClickDisableButton} />
+						<Button variant='danger' onClick={allDeleteTalks}>全て削除</Button>
+					</FormGroup>
+				</Form>
 				<div className='border p-3 d-inline-block derepo'>
 					<div id={`to-0`} style={{height: 10}} onDragOver={dragover} onDrop={drop}/>
 					{config.idolTalkList.map((idolTalk, i) => (
@@ -271,11 +286,6 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 						))
 					}
 				</div>
-				<Form>
-					<FormGroup>
-						<FormCheck type='checkbox' label='ボタン非表示' defaultChecked={disableButtonFlg} onClick={onClickDisableButton} />
-					</FormGroup>
-				</Form>
 			</div>
 		</>);
 	}
