@@ -818,6 +818,13 @@
         ]
     },
     {
+        "name": "上田鈴帆",
+        "ruby": "うえだすずほ",
+        "images": [
+            "assets/images/_dere_pa/2f0a27f91d5b6772df79abaea9c2f792.png"
+        ]
+    },
+    {
         "name": "氏家むつみ",
         "ruby": "うじいえむつみ",
         "images": [
@@ -1312,6 +1319,13 @@
         "ruby": "なんじょうひかる",
         "images": [
             "assets/images/_dere_pa/99119e16de6812cde28eb218628ce6e0.png"
+        ]
+    },
+    {
+        "name": "難波笑美",
+        "ruby": "なんばえみ",
+        "images": [
+            "assets/images/_dere_pa/8bafa8007e86c5f71cebff5e9455edd8.png"
         ]
     },
     {
