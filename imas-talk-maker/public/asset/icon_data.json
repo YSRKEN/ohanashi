@@ -990,6 +990,15 @@
   ]
  },
  {
+    "name": "上田鈴帆",
+    "short_name": "鈴帆",
+    "kana": "うえだすずほ",
+    "category": "cinderella",
+    "image": [
+      "suzuho_ueda.png"
+    ]
+  },
+ {
   "name": "氏家むつみ",
   "short_name": "むつみ",
   "kana": "うじいえむつみ",
@@ -1627,6 +1636,15 @@
   "image": [
    "99119e16de6812cde28eb218628ce6e0.png"
   ]
+ },
+ {
+   "name": "難波笑美",
+   "short_name": "笑美",
+   "kana": "なんばえみ",
+   "category": "cinderella",
+   "image": [
+     "emi_namba.png"
+   ]
  },
  {
   "name": "西川保奈美",
