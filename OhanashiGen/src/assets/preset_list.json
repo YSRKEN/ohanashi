@@ -1196,13 +1196,6 @@
         ]
     },
     {
-        "name": "砂塚あきら(仮)",
-        "ruby": "すなづかあきらかっこかり",
-        "images": [
-            "assets/images/_dere_co/akira_sunaduka_.png"
-        ]
-    },
-    {
         "name": "関裕美",
         "ruby": "せきひろみ",
         "images": [
@@ -1263,13 +1256,6 @@
         "ruby": "たちばなありす",
         "images": [
             "assets/images/_dere_co/2bdffdcbc683d93139b7dfa77e2d4bfc.png"
-        ]
-    },
-    {
-        "name": "辻野あかり(仮)",
-        "ruby": "つじのあかりかっこかり",
-        "images": [
-            "assets/images/_dere_cu/akari_tsujino_.png"
         ]
     },
     {
@@ -1707,13 +1693,6 @@
         ]
     },
     {
-        "name": "夢見りあむ(仮)",
-        "ruby": "ゆめみりあむかっこかり",
-        "images": [
-            "assets/images/_dere_pa/riamu_yumemi_.png"
-        ]
-    },
-    {
         "name": "横山千佳",
         "ruby": "よこやまちか",
         "images": [
@@ -1760,6 +1739,55 @@
         "ruby": "わきやまたまみ",
         "images": [
             "assets/images/_dere_co/9c94617c8f5560d668155f89496c6f92.png"
+        ]
+    },
+    {
+        "name": "黒埼ちとせ",
+        "ruby": "くろさきちとせ",
+        "images": [
+            "assets/images/_dere_cu/chitose_kurosaki.png"
+        ]
+    },
+    {
+        "name": "辻野あかり",
+        "ruby": "つじのあかり",
+        "images": [
+            "assets/images/_dere_cu/akari_tsujino.png"
+        ]
+    },
+    {
+        "name": "白雪千夜",
+        "ruby": "しらゆきちよ",
+        "images": [
+            "assets/images/_dere_cu/chiyo_shirayuki.png"
+        ]
+    },
+    {
+        "name": "砂塚あきら",
+        "ruby": "すなづかあきら",
+        "images": [
+            "assets/images/_dere_co/akira_sunazuka.png"
+        ]
+    },
+    {
+        "name": "久川颯",
+        "ruby": "ひさかわはやて",
+        "images": [
+            "assets/images/_dere_co/hayate_hisakawa.png"
+        ]
+    },
+    {
+        "name": "久川凪",
+        "ruby": "ひさかわなぎ",
+        "images": [
+            "assets/images/_dere_pa/nagi_hisakawa.png"
+        ]
+    },
+    {
+        "name": "夢見りあむ",
+        "ruby": "ゆめみりあむ",
+        "images": [
+            "assets/images/_dere_pa/riamu_yumemi.png"
         ]
     }
 ]
