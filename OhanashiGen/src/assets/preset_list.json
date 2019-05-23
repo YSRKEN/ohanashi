@@ -751,7 +751,8 @@
         "name": "綾瀬穂乃香",
         "ruby": "あやせほのか",
         "images": [
-            "assets/images/_dere_co/2a790799402aed0c751bcfbedc55bd03.png"
+            "assets/images/_dere_co/2a790799402aed0c751bcfbedc55bd03.png",
+            "assets/images/_dere_co/honoka_ayase-2.png"
         ]
     },
     {
@@ -891,7 +892,8 @@
         "name": "岡崎泰葉",
         "ruby": "おかざきやすは",
         "images": [
-            "assets/images/_dere_co/5dc0bf69f545920c80d4cd02b532b72c.png"
+            "assets/images/_dere_co/5dc0bf69f545920c80d4cd02b532b72c.png",
+            "assets/images/_dere_co/yasuha_okazaki-2.png"
         ]
     },
     {
@@ -968,7 +970,8 @@
         "name": "喜多見柚",
         "ruby": "きたみゆず",
         "images": [
-            "assets/images/_dere_pa/7408994e5b3a1a90b71ce68a1a00f894.png"
+            "assets/images/_dere_pa/7408994e5b3a1a90b71ce68a1a00f894.png",
+            "assets/images/_dere_pa/yuzu_kitami-2.png"
         ]
     },
     {
@@ -1003,7 +1006,8 @@
         "name": "工藤忍",
         "ruby": "くどうしのぶ",
         "images": [
-            "assets/images/_dere_cu/246626f360953bd592eb8d408e059fcf.png"
+            "assets/images/_dere_cu/246626f360953bd592eb8d408e059fcf.png",
+            "assets/images/_dere_cu/shinobu_kudou-2.png"
         ]
     },
     {
@@ -1199,7 +1203,8 @@
         "name": "関裕美",
         "ruby": "せきひろみ",
         "images": [
-            "assets/images/_dere_cu/f29720a7f7ad7dd404d165817a1fdaac.png"
+            "assets/images/_dere_cu/f29720a7f7ad7dd404d165817a1fdaac.png",
+            "assets/images/_dere_cu/hiromi_seki-2.png"
         ]
     },
     {
@@ -1493,7 +1498,8 @@
         "name": "松尾千鶴",
         "ruby": "まつおちづる",
         "images": [
-            "assets/images/_dere_co/48483af5530863672b4b39a71456933c.png"
+            "assets/images/_dere_co/48483af5530863672b4b39a71456933c.png",
+            "assets/images/_dere_co/chizuru_matsuo-2.png"
         ]
     },
     {
@@ -1619,7 +1625,8 @@
         "name": "桃井あずき",
         "ruby": "ももいあずき",
         "images": [
-            "assets/images/_dere_cu/68db4f14419b5754f24d6a2b18c4f9b8.png"
+            "assets/images/_dere_cu/68db4f14419b5754f24d6a2b18c4f9b8.png",
+            "assets/images/_dere_cu/azuki_momoi-2.png"
         ]
     },
     {
