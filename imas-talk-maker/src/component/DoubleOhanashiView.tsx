@@ -31,11 +31,11 @@ const DoubleOhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => 
 	return (
 		<div ref={divRef} style={overallCss}>
 			<div className="bg-default position-relative">
-				<img className="talk-face position-absolute" src={talkData.url}/>
+				<img className="talk-face position-absolute" src={talkData.url} crossOrigin="anonymous"/>
 				<div className="doubletalk-balloon position-absolute"/>
 				<p className="talk-name position-absolute" style={fontCss}>{talkData.name}</p>
 				<pre className="talk-message2 position-absolute" style={fontCss}>{talkData.message}</pre>
-				<img className="doubletalk-face position-absolute" src={talkData.url2}/>
+				<img className="doubletalk-face position-absolute" src={talkData.url2} crossOrigin="anonymous"/>
 			</div>
 		</div>
 	);

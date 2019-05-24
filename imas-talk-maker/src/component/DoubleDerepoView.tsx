@@ -76,8 +76,8 @@ const DoubleDerepoView: React.FC<{ talkData: ITalkData, firstFlg?: boolean }> = 
 
 	return (
 		<div ref={overallRef} className='position-relative' style={overallCss}>
-			<img src={talkData.url} className='position-absolute' style={iconCss}/>
-			<img src={talkData.url2} className='position-absolute' style={iconCss2}/>
+			<img src={talkData.url} className='position-absolute' style={iconCss} crossOrigin="anonymous"/>
+			<img src={talkData.url2} className='position-absolute' style={iconCss2} crossOrigin="anonymous"/>
 			<span className='position-absolute name' style={nameCss}>{talkData.name}</span>
 			<span ref={messageRef} className='position-absolute message' style={messageCss}>{talkData.message}</span>
 			<span className='position-absolute star-base' style={starBaseCss}/>

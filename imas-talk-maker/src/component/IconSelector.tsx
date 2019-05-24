@@ -29,7 +29,7 @@ const IconSelector: React.FC<{
 						setIconSelectorFlg(false);
 					};
 					return (
-						<img key={i} src={url} width="44" height="44" className="m-1" onClick={onClickImg}/>
+						<img key={i} src={url} width="44" height="44" className="m-1" onClick={onClickImg} crossOrigin="anonymous"/>
 					);
 				})}
 			</div>

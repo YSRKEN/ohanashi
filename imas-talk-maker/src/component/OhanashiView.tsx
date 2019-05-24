@@ -31,7 +31,7 @@ const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
 	return (
 		<div ref={divRef} style={overallCss}>
 			<div className="bg-default position-relative">
-				<img className="talk-face position-absolute" src={talkData.url}/>
+				<img className="talk-face position-absolute" src={talkData.url} crossOrigin="anonymous"/>
 				<div className="talk-balloon position-absolute"/>
 				<p className="talk-name position-absolute" style={fontCss}>{talkData.name}</p>
 				<pre className="talk-message position-absolute" style={fontCss}>{talkData.message}</pre>
