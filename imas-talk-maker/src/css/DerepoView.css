@@ -1,0 +1,32 @@
+.derepo-list{
+	width: 100%;
+}
+@media screen and (min-width:768px) { 
+    .derepo-list{
+		width: 382px;
+    }
+}
+.name {
+	font-weight: bold;
+}
+.message {
+	line-height: 1.35;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+.star-base {
+	border-color: #DBDBDB;
+	border-style: solid;
+	border-width: 1px;
+}
+.star {
+	color: #959595;
+}
+.favs {
+	font-weight: bold;
+}
+.datetime {
+	color: #959595;
+	font-weight: bold;
+	white-space: nowrap;
+}

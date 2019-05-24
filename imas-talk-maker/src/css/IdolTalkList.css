@@ -1,0 +1,12 @@
+.derepo {
+	border-radius: 7px;
+}
+@media screen and (max-width:768px) { 
+    .derepo{
+		width: 100%;
+    }
+}
+.derepo2 {
+	border-radius: 7px;
+	width: 416px;
+}
