@@ -212,6 +212,10 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 		setDisableButtonFlg(flg => !flg);
 	}
 
+	const gotoPreviewMode = () => {
+		config.setViewType('PreviewTalk');
+	}
+
 	// JSX
 	if (config.talkType === 'おはなし') {
 		return (<div className={`border p-3 ${className}`}>
@@ -248,6 +252,9 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 				</div>
 				))
 			}
+			<Form className='my-3'>
+				<Button variant='primary' onClick={gotoPreviewMode}>プレビュー画面へ</Button>
+			</Form>
 		</div>);
 	} else {
 		return (<>
@@ -287,6 +294,9 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 						))
 					}
 				</div>
+				<Form className='my-3'>
+					<Button variant='primary' onClick={gotoPreviewMode}>プレビュー画面へ</Button>
+				</Form>
 			</div>
 		</>);
 	}

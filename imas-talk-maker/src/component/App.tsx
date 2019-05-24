@@ -5,6 +5,7 @@ import { ConfigContext } from '../context';
 import { localStorageState } from '../state';
 import IdolTalkList from './IdolTalkList';
 import InputTalkForm from './InputTalkForm';
+import PreviewTalkForm from './PreviewTalkForm';
 import SelectNameForm from './SelectNameForm';
 
 const App: React.FC = () => {
@@ -28,6 +29,22 @@ const App: React.FC = () => {
   const [idolTalkList, setIdolTalkList]         = localStorageState<ITalkData[]>('idolTalkList', []);
   const [draggedTalkIndex, setDraggedTalkIndex] = localStorageState<number>('draggedTalkIndex', -1);
   const [previewName, setPreviewName]           = localStorageState<string>('previewName', 'P');
+
+  const viewTypeToView = () => {
+    switch(viewType) {
+      case 'InputTalk':
+        return (<>
+          <InputTalkForm className="m-3"/>
+          <IdolTalkList className="m-3"/>
+        </>);
+      case 'SelectName':
+        return <SelectNameForm className="m-3"/>;
+      case 'PreviewTalk':
+        return <PreviewTalkForm className="m-3"/>;
+      default:
+        return (<></>);
+    }
+  };
 
   return (
     <ConfigContext.Provider value={{
@@ -56,12 +73,7 @@ const App: React.FC = () => {
         <Row>
           <Col className="mx-auto" xs={12} sm={10} md={8}>
             {
-              viewType === 'InputTalk'
-                ? (<>
-                  <InputTalkForm className="m-3"/>
-                  <IdolTalkList className="m-3"/>
-                </>)
-                : <SelectNameForm className="m-3"/>
+              viewTypeToView()
             }
           </Col>
         </Row>

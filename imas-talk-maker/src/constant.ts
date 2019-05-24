@@ -11,7 +11,7 @@ export type CharaNameType = '自動' | '手動';
 export const CHARA_NAME_TYPE_LIST = ['自動', '手動'];
 
 // 画面の種類
-export type ViewType = 'InputTalk' | 'SelectName';
+export type ViewType = 'InputTalk' | 'SelectName' | 'PreviewTalk';
 
 // アイドルの情報を表示するための型
 export interface IIdolInfo {
