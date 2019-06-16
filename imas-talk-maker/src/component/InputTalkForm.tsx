@@ -78,7 +78,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				config.setPreviewName(`${sName1}＆${sName2}`);
 			})
 		});
-	}, [config.charaNameType, config.secondIconFlg, config.iconName, config.secondIconName]);
+	}, [config.charaName, config.charaNameType, config.secondIconFlg, config.iconName, config.secondIconName]);
 
 	return (
 		<>
