@@ -878,7 +878,8 @@
   "kana": "あさりななみ",
   "category": "cinderella",
   "image": [
-   "e49dd3968c2df5a76b521c19866ed428.png"
+   "e49dd3968c2df5a76b521c19866ed428.png",
+   "nanami_asari-2.png"
   ]
  },
  {
@@ -978,7 +979,8 @@
   "kana": "いまいかな",
   "category": "cinderella",
   "image": [
-   "c0dcf32e2b4e89dd5af2f6daad7967fe.png"
+   "c0dcf32e2b4e89dd5af2f6daad7967fe.png",
+   "kana_imai-2.png"
   ]
  },
  {
@@ -1068,7 +1070,8 @@
   "kana": "おおはらみちる",
   "category": "cinderella",
   "image": [
-   "b79a778b5f664de94602802fbafa6e3f.png"
+   "b79a778b5f664de94602802fbafa6e3f.png",
+   "michiru_oohara-2.png"
   ]
  },
  {
@@ -1177,7 +1180,8 @@
   "kana": "きたひなこ",
   "category": "cinderella",
   "image": [
-   "ce63aa58d272444fa56976cea9b953ed.png"
+   "ce63aa58d272444fa56976cea9b953ed.png",
+   "hinako_kita-2.png"
   ]
  },
  {
@@ -1595,6 +1599,15 @@
   "category": "cinderella",
   "image": [
    "akari_tsujino.png"
+  ]
+ },
+ {
+  "name": "土屋亜子",
+  "short_name": "亜子",
+  "kana": "つちやあこ",
+  "category": "cinderella",
+  "image": [
+   "ako_tsuchiya.png"
   ]
  },
  {
@@ -2058,6 +2071,15 @@
   ]
  },
  {
+  "name": "村松さくら",
+  "short_name": "さくら",
+  "kana": "むらまつさくら",
+  "category": "cinderella",
+  "image": [
+   "sakura_muramatsu.png"
+  ]
+ },
+ {
   "name": "持田亜里沙",
   "short_name": "亜里沙",
   "kana": "もちだありさ",
@@ -2118,7 +2140,8 @@
   "kana": "やがみまきの",
   "category": "cinderella",
   "image": [
-   "5f7fef6021842df9f7e8629c3d124b8c.png"
+   "5f7fef6021842df9f7e8629c3d124b8c.png",
+   "makino_yagami-2.png"
   ]
  },
  {
@@ -2127,7 +2150,8 @@
   "kana": "やぐちみう",
   "category": "cinderella",
   "image": [
-   "8134bfb31a2d579a225fe2d1c4b7ff09.png"
+   "8134bfb31a2d579a225fe2d1c4b7ff09.png",
+   "miu_yaguchi-2.png"
   ]
  },
  {
