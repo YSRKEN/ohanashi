@@ -78,14 +78,14 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 				config.setPreviewName(`${sName1}＆${sName2}`);
 			})
 		});
-	}, [config.charaNameType, config.secondIconFlg, config.iconName, config.secondIconName]);
+	}, [config.charaName, config.charaNameType, config.secondIconFlg, config.iconName, config.secondIconName]);
 
 	return (
 		<>
 			<h1 className="text-center d-none d-sm-block my-3">アイマス会話メーカー</h1>
 			<h2 className="text-center d-xs-block d-sm-none my-3">アイマス会話メーカー</h2>
 			<p className="text-center">
-				<span className='mr-3'>Ver.2.0.0(β)</span>
+				<span className='mr-3'>Ver.2.0.0</span>
 				<a href="https://github.com/YSRKEN/ohanashi">GitHub</a>
 				<span className="ml-3">
 					作者：
