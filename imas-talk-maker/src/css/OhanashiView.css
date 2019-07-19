@@ -1,0 +1,74 @@
+.talk-list{
+    width: 100%;
+}
+@media screen and (min-width:768px) { 
+    .talk-list{
+        width: 320px;
+    }
+}
+.bg-default{
+    width: 100%;
+    height: 100%;
+    background-image: url(/asset/background.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.talk-face{
+    left: calc(100% * 5 / 320);
+    top: calc(100% * 4 / 84);
+    width: calc(100% * 76 / 320);
+    height: calc(100% * 76 / 84);
+}
+.doubletalk-face{
+    right: calc(100% * 5 / 320);
+    top: calc(100% * 4 / 84);
+    width: calc(100% * 76 / 320);
+    height: calc(100% * 76 / 84);
+}
+.talk-balloon{
+    right: calc(100% * 9 / 320);
+    top: calc(100% * 4 / 84);
+    width: calc(100% * 224 / 320);
+    height: calc(100% * 76 / 84);
+    background-image: url(/asset/balloon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.doubletalk-balloon{
+    right: calc(100% * 9 / 320);
+    top: calc(100% * 4 / 84);
+    width: calc(100% * 224 / 320);
+    height: calc(100% * 76 / 84);
+    background-image: url(/asset/balloon2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+} 
+.talk-name{
+    left: calc(100% * 92 / 320);
+    top: calc(100% * 8 / 84);
+    color: #f33281;
+    background-color: white;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    line-height: 1.25;
+}
+.talk-message{
+    left: calc(100% * 92 / 320);
+    top: calc(100% * 23 / 84);
+    width: calc(100% * 214 / 320);
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    line-height: 1.25;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+.talk-message2{
+    left: calc(100% * 92 / 320);
+    top: calc(100% * 23 / 84);
+    width: calc(100% * 140 / 320);
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    line-height: 1.25;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
