@@ -680,7 +680,17 @@
    "tsumugi3.png",
    "tsumugi4.png",
    "tsumugi5.png",
-   "tsumugi6.png"
+   "tsumugi6.png",
+   "tmgicon1-1.jpg",
+   "tmgicon1-2.jpg",
+   "tmgicon2-1.jpg",
+   "tmgicon2-2.jpg",
+   "tmgicon3-1.jpg",
+   "tmgicon3-2.jpg",
+   "tmgicon4-1.jpg",
+   "tmgicon4-2.jpg",
+   "tmgicon5-1.jpg",
+   "tmgicon5-2.jpg"
   ]
  },
  {
@@ -2269,6 +2279,17 @@
   "category": "cinderella",
   "image": [
    "9c94617c8f5560d668155f89496c6f92.png"
+  ]
+ },
+ {
+  "name": "未選択",
+  "short_name": "",
+  "kana": "みせんたく、くうはく、くろべた、しろべた",
+  "category": "other",
+  "image": [
+   "non-select-clear.png",
+   "non-select-black.png",
+   "non-select-white.png"
   ]
  }
 ]
