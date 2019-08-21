@@ -28,9 +28,15 @@ const IconSelector: React.FC<{
 						setIconUrl(url);
 						setIconSelectorFlg(false);
 					};
-					return (
-						<img key={i} src={url} width="44" height="44" className="m-1" onClick={onClickImg} crossOrigin="anonymous"/>
-					);
+					if (url.includes('non-select')) {
+						return (
+							<img key={i} src={url} width="44" height="44" className="border m-1" onClick={onClickImg} crossOrigin="anonymous"/>
+						);
+					} else {
+						return (
+							<img key={i} src={url} width="44" height="44" className="m-1" onClick={onClickImg} crossOrigin="anonymous"/>
+						);
+					}
 				})}
 			</div>
 		</div>

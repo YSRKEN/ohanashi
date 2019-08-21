@@ -37,7 +37,11 @@ const InputCharacterIcon: React.FC<{
 		<FormGroup>
 			<FormLabel>アイコン({iconName})</FormLabel><br />
 			<div className="d-flex ml-3">
-				<img src={`${process.env.PUBLIC_URL}${iconURL}`} width="72" height="72" crossOrigin="anonymous"/>
+				{
+					iconURL.includes('non-select')
+					? (<img className="border" src={`${process.env.PUBLIC_URL}${iconURL}`} width="72" height="72" crossOrigin="anonymous"/>)
+					: (<img src={`${process.env.PUBLIC_URL}${iconURL}`} width="72" height="72" crossOrigin="anonymous"/>)
+				}
 				<div className="my-auto">
 					<Button className="mx-3" variant="secondary" onClick={clickCharaButtonFunc}>キャラ</Button>
 					<Button variant="secondary" onClick={clickIconButtonFunc}>表情</Button>
