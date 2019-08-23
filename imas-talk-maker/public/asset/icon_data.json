@@ -705,7 +705,17 @@
    "kaori4.png",
    "kaori5.png",
    "kaori6.png",
-   "kaori7.png"
+   "kaori7.png",
+   "kaoricon1-1.jpg",
+   "kaoricon1-2.jpg",
+   "kaoricon2-1.jpg",
+   "kaoricon2-2.jpg",
+   "kaoricon3-1.jpg",
+   "kaoricon3-2.jpg",
+   "kaoricon4-1.jpg",
+   "kaoricon4-2.jpg",
+   "kaoricon5-1.jpg",
+   "kaoricon5-2.jpg"
   ]
  },
  {
@@ -852,7 +862,8 @@
   "kana": "あいばゆみ",
   "category": "cinderella",
   "image": [
-   "c444a91508d494e220d2f6046816eb62.png"
+   "c444a91508d494e220d2f6046816eb62.png",
+   "yumi_aiba-2.png"
   ]
  },
  {
@@ -1191,7 +1202,8 @@
   "category": "cinderella",
   "image": [
    "ce63aa58d272444fa56976cea9b953ed.png",
-   "hinako_kita-2.png"
+   "hinako_kita-2.png",
+   "hinako_kita-3.png"
   ]
  },
  {
@@ -1241,6 +1253,15 @@
   ]
  },
  {
+  "name": "日下部若葉",
+  "short_name": "若葉",
+  "kana": "くさかべわかば",
+  "category": "cinderella",
+  "image": [
+   "wakaba_kusakabe.png"
+  ]
+ },
+ {
   "name": "工藤忍",
   "short_name": "忍",
   "kana": "くどうしのぶ",
@@ -1248,6 +1269,15 @@
   "image": [
    "246626f360953bd592eb8d408e059fcf.png",
    "shinobu_kudou-2.png"
+  ]
+ },
+ {
+  "name": "栗原ネネ",
+  "short_name": "ネネ",
+  "kana": "くりはらねね",
+  "category": "cinderella",
+  "image": [
+   "nene_kurihara.png"
   ]
  },
  {
@@ -1590,7 +1620,8 @@
   "kana": "ただりいな",
   "category": "cinderella",
   "image": [
-   "17b973f2733da4209dfae5ad6d3000bf.png"
+   "17b973f2733da4209dfae5ad6d3000bf.png",
+   "riina_tada-2.png"
   ]
  },
  {
@@ -1648,6 +1679,16 @@
   ]
  },
  {
+  "name": "中野有香",
+  "short_name": "有香",
+  "kana": "なかのゆか",
+  "category": "cinderella",
+  "image": [
+   "yuka_nakano-1.png",
+   "yuka_nakano-2.png"
+  ]
+ },
+ {
   "name": "ナターリア",
   "short_name": "ナターリア",
   "kana": "なたーりあ",
@@ -1702,6 +1743,15 @@
   ]
  },
  {
+  "name": "新田美波",
+  "short_name": "美波",
+  "kana": "にったみなみ",
+  "category": "cinderella",
+  "image": [
+   "minami_nitta.png"
+  ]
+ },
+ {
   "name": "二宮飛鳥",
   "short_name": "飛鳥",
   "kana": "にのみやあすか",
@@ -1752,7 +1802,8 @@
   "kana": "はやみかなで/もみやで",
   "category": "cinderella",
   "image": [
-   "ffe14bbba7e3f1f4349065813d2183ab.png"
+   "ffe14bbba7e3f1f4349065813d2183ab.png",
+   "kanade_hayami-2.png"
   ]
  },
  {
@@ -2042,6 +2093,24 @@
   "category": "cinderella",
   "image": [
    "1f1daf171effe6243505be8f623244f6.png"
+  ]
+ },
+ {
+  "name": "三村かな子",
+  "short_name": "かな子",
+  "kana": "みむらかなこ",
+  "category": "cinderella",
+  "image": [
+   "kanako_mimura.png"
+  ]
+ },
+ {
+  "name": "宮本フレデリカ",
+  "short_name": "フレデリカ",
+  "kana": "みやもとふれでりか",
+  "category": "cinderella",
+  "image": [
+   "hurederika_miyamoto.png"
   ]
  },
  {
