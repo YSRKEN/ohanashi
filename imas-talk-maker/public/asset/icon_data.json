@@ -844,7 +844,8 @@
      "chihiro-1.png",
      "chihiro-2.png",
      "chihiro-3.png",
-     "chihiro-4.png"
+     "chihiro-4.png",
+     "chihiro-5.png"
     ]
    },
  {
@@ -891,6 +892,16 @@
   "category": "cinderella",
   "image": [
    "837e180dfcd3d9b497507f283b6ff587.png"
+  ]
+ },
+ {
+  "name": "浅野風香",
+  "short_name": "風香",
+  "kana": "あさのふうか",
+  "category": "cinderella",
+  "image": [
+   "huuka_asano-1.png",
+   "huuka_asano-2.png"
   ]
  },
  {
@@ -1488,6 +1499,15 @@
   ]
  },
  {
+  "name": "首藤葵",
+  "short_name": "葵",
+  "kana": "しゅとうあおい",
+  "category": "cinderella",
+  "image": [
+   "aoi_shutou.png"
+  ]
+ },
+ {
   "name": "白菊ほたる",
   "short_name": "ほたる",
   "kana": "しらぎくほたる",
@@ -1512,6 +1532,16 @@
   "category": "cinderella",
   "image": [
    "chiyo_shirayuki.png"
+  ]
+ },
+ {
+  "name": "城ヶ崎美嘉",
+  "short_name": "美嘉",
+  "kana": "じょうがさきみか",
+  "category": "cinderella",
+  "image": [
+   "mika_jougasaki-1.png",
+   "mika_jougasaki-2.png"
   ]
  },
  {
@@ -1776,6 +1806,15 @@
   "category": "cinderella",
   "image": [
    "ba5b9bc37d1434dbfd9ca1bb93b31686.png"
+  ]
+ },
+ {
+  "name": "服部瞳子",
+  "short_name": "瞳子",
+  "kana": "はっとりとうこ",
+  "category": "cinderella",
+  "image": [
+   "touko_hattori.png"
   ]
  },
  {
@@ -2348,6 +2387,16 @@
   "category": "cinderella",
   "image": [
    "9c94617c8f5560d668155f89496c6f92.png"
+  ]
+ },
+ {
+  "name": "和久井留美",
+  "short_name": "留美",
+  "kana": "わくいるみ",
+  "category": "cinderella",
+  "image": [
+   "rumi_wakui-1.png",
+   "rumi_wakui-2.png"
   ]
  },
  {
