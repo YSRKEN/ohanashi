@@ -252,6 +252,12 @@ const IdolTalkList: React.FC<{className?: string}> = ({className = ""}) => {
 				</div>
 				))
 			}
+			<div className="talk-list" style={{
+				backgroundColor: '#262626', color: 'white', fontSize: 14, fontWeight: 'bold',
+				height: (14 + 3 * 4), paddingRight: 10, paddingTop: 3, textAlign: 'right'
+			}}>
+				使用アプリ：アイマス会話メーカー
+			</div>
 			<Form className='my-3'>
 				<Button variant='primary' onClick={gotoPreviewMode}>プレビュー画面へ</Button>
 			</Form>
