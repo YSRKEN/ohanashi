@@ -26,7 +26,7 @@ const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
 		setFontCss({
 			fontSize: width * 14 / 320
 		});
-	});
+	}, []);
 
 	return (
 		<div ref={divRef} style={overallCss}>

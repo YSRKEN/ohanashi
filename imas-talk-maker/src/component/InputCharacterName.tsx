@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { FormControl, FormGroup, FormLabel } from 'react-bootstrap';
-import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { CHARA_NAME_TYPE_LIST, CharaNameType } from 'src/constant';
 import { ConfigContext } from 'src/context';
 import SelectButtonGroup from './SelectButtonGroup';
@@ -16,7 +15,7 @@ const InputCharacterName: React.FC = () => {
 	}
 
 	// キャラ名が変更した際の処理
-	const onChangeCharaName = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+	const onChangeCharaName = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value;
 		if (typeof value === 'string') {
 			config.setCharaName(value);

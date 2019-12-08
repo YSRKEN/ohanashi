@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
-import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { IIdolInfo } from 'src/constant';
 import { ConfigContext } from 'src/context';
 import { findIdolListBySearchWord } from 'src/iconData';
@@ -20,7 +19,7 @@ const SelectNameForm: React.FC<{ className?: string }> = ({className = ""}) => {
   }
 
   // 検索ワードが変化した際の処理
-  const onChangeSearchWord = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+  const onChangeSearchWord = (event: React.FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     if (typeof value === 'string') {
       setSearchWord(value);

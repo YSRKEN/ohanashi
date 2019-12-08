@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
-import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { findShortNameByName } from 'src/iconData';
 import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
@@ -24,7 +23,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 	}
 
 	// 本文が変更した際の処理
-	const onChangeMessage = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+	const onChangeMessage = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value;
 		if (typeof value === 'string') {
 			config.setMessage(value);
@@ -85,7 +84,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 			<h1 className="text-center d-none d-sm-block my-3">アイマス会話メーカー</h1>
 			<h2 className="text-center d-xs-block d-sm-none my-3">アイマス会話メーカー</h2>
 			<p className="text-center">
-				<span className='mr-3'>Ver.2.1.0</span>
+				<span className='mr-3'>Ver.2.1.1</span>
 				<a href="https://github.com/YSRKEN/ohanashi">GitHub</a>
 				<span className="ml-3">
 					作者：
