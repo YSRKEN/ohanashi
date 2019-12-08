@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/FormGroup';
-import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { findShortNameByName } from 'src/iconData';
 import { TALK_TYPE_LIST } from '../constant';
 import { ConfigContext } from '../context';
@@ -24,7 +23,7 @@ const InputTalkForm: React.FC<{ className?: string }> = ({className = ""}) => {
 	}
 
 	// 本文が変更した際の処理
-	const onChangeMessage = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+	const onChangeMessage = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value;
 		if (typeof value === 'string') {
 			config.setMessage(value);

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button, FormCheck, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
-import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import { TalkType } from 'src/constant';
 import { ConfigContext } from 'src/context';
 
@@ -64,7 +63,7 @@ const DerepoForm: React.FC<{ talkType: TalkType }> = ({ talkType }) => {
 	}
 
 	// ファボ数が変更した際の処理
-	const onChangeFavs = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+	const onChangeFavs = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value;
 		if (typeof value === 'string') {
 			config.setFavs(value);
@@ -72,7 +71,7 @@ const DerepoForm: React.FC<{ talkType: TalkType }> = ({ talkType }) => {
 	}
 
 	// 時刻が変更した際の処理
-	const onChangeDatetime = (event: React.FormEvent<ReplaceProps<"input", BsPrefixProps<"input">>>) => {
+	const onChangeDatetime = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value;
 		if (typeof value === 'string') {
 			config.setDatetime(value);
