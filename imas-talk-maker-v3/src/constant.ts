@@ -8,3 +8,14 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans JP', sans-serif;
   }
 `;
+
+// 「おはなし」の形態
+type MessageMode = 'normal' | 'double' | 'quartet' | 'message-only';
+
+// 「おはなし」の1データ
+export interface OhanashiData {
+  name: string;
+  iconUrls: string[];
+  message: string;
+  messageMode: MessageMode;
+}
