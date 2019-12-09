@@ -7,23 +7,36 @@
     "@types/html2canvas": "^0.0.35",
     "bootstrap": "^4.3.1",
     "html2canvas": "^1.0.0-rc.1",
-    "js-yaml": "^3.13.1",
     "react": "^16.8.3",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.3",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.6",
-    "@types/node": "^11.9.5",
-    "@types/react": "^16.8.4",
-    "@types/react-dom": "^16.8.2",
-    "typescript": "^3.3.3333"
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "@types/react": "^16.9.15",
+    "@types/react-dom": "^16.9.4",
+    "tslint": "^5.20.1",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.7.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
