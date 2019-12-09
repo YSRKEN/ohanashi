@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { GlobalStyles } from 'constant';
+import { GlobalStyles, SAMPLE_OHANASHI } from 'constant';
 import { ApplicationContext, useApplicationStore } from 'store';
 import OhanashiView from 'component/ohanashi-view';
 
@@ -14,7 +14,7 @@ const SampleForm: React.FC = () => {
           テスト
         </button>
       </form>
-      <OhanashiView dataList={[]} />
+      <OhanashiView dataList={SAMPLE_OHANASHI} />
     </>
   );
 };
