@@ -1,23 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyles, SAMPLE_OHANASHI } from 'constant';
-import { ApplicationContext, useApplicationStore } from 'store';
-import OhanashiView from 'component/ohanashi-view';
-
-const SampleForm: React.FC = () => {
-  const { dispatch } = useContext(ApplicationContext);
-
-  return (
-    <>
-      <form>
-        <button onClick={() => dispatch({ type: 'alert', message: '' })}>
-          テスト
-        </button>
-      </form>
-      <OhanashiView dataList={SAMPLE_OHANASHI} />
-    </>
-  );
-};
+import { GlobalStyles } from 'constant';
+import { ApplicationContext, useApplicationStore } from 'service/store';
+import OhanashiForm from 'container/ohanashi-form';
 
 const App: React.FC = () => {
   const store = useApplicationStore();
@@ -25,11 +10,17 @@ const App: React.FC = () => {
   return (
     <ApplicationContext.Provider value={store}>
       <GlobalStyles />
-      <Title>テスト</Title>
-      <SampleForm />
+      <TitleWrapper>
+        <Title>テスト</Title>
+      </TitleWrapper>
+      <OhanashiForm />
     </ApplicationContext.Provider>
   );
 };
+
+const TitleWrapper = styled.div`
+  text-align: center;
+`;
 
 const Title = styled.span`
   font-size: 3rem;

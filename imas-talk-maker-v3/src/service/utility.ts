@@ -1,4 +1,27 @@
 /**
+ * 設定をローカルストレージから読み込む
+ * @param key キー
+ * @param defaultValue デフォルト値
+ */
+export const loadSetting = <T>(key: string, defaultValue: T) => {
+  const data = window.localStorage.getItem(key);
+  if (data === null) {
+    return defaultValue;
+  }
+
+  return JSON.parse(data) as T;
+};
+
+/**
+ * 設定をローカルストレージに書き込む
+ * @param key キー
+ * @param value 値
+ */
+export const saveSetting = <T>(key: string, value: T) => {
+  window.localStorage.setItem(key, JSON.stringify(value));
+};
+
+/**
  * 画像を非同期に読み込み、HTMLImageElementとして返す
  * @param imagePath 画像のパス
  */
