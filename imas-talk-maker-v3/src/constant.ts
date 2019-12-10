@@ -1,20 +1,3 @@
-import { createGlobalStyle } from 'styled-components';
-
-// システムで使用するフォント
-export const APPLICATION_FONT = 'Noto Sans JP';
-
-// システムで使用するフォントに対応するURL
-const FONT_URL = `https://fonts.googleapis.com/css?family=${APPLICATION_FONT.replace(' ', '+')}`;
-
-// システム共通に適用する CSS を設定する
-export const GlobalStyles = createGlobalStyle`
-  /* フォントを指定した Web フォントに設定する */
-  @import url('${FONT_URL}');
-  body {
-    font-family: '${APPLICATION_FONT}', sans-serif;
-  }
-`;
-
 // 「おはなし」の形態
 type MessageMode = 'normal' | 'double' | 'quartet' | 'message-only';
 

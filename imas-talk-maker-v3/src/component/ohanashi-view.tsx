@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { OhanashiData, APPLICATION_FONT } from 'constant';
+import { OhanashiData } from 'constant';
 import { loadImage, fillTextEx } from 'service/utility';
 
 // 「おはなし」の大きさ
@@ -66,7 +66,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
     switch (dataList[di].messageMode) {
       case 'normal':
         // 準備
-        canvas.font = `14px ${APPLICATION_FONT}`;
+        canvas.font = `14px Noto Sans JP`;
         canvas.textBaseline = 'top';
 
         // 名前部分を描画
@@ -79,7 +79,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
         break;
       case 'double':
         // 準備
-        canvas.font = `14px ${APPLICATION_FONT}`;
+        canvas.font = `14px Noto Sans JP`;
         canvas.textBaseline = 'top';
 
         // 名前部分を描画
@@ -92,7 +92,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
         break;
       case 'message-only':
         // 準備
-        canvas.font = `14px ${APPLICATION_FONT}`;
+        canvas.font = `14px Noto Sans JP`;
         canvas.textBaseline = 'top';
 
         // 名前部分を描画
@@ -118,16 +118,21 @@ const OhanashiView: React.FC<{ dataList: OhanashiData[] }> = ({ dataList }) => {
   useEffect(() => {
     const drawMethod = async () => {
       // 描画できない際は飛ばす
-      if (canvasRef.current === null) {
-        return;
-      }
-      const canvas = canvasRef.current.getContext('2d');
+      const canvas = canvasRef.current;
       if (canvas === null) {
         return;
       }
 
       // 描画を実施
-      await drawMethodImpl(canvas, dataList);
+      const offscreenCanvas = document.createElement('canvas');
+      offscreenCanvas.width = canvas.width;
+      offscreenCanvas.height = canvas.height;
+      const context = canvas.getContext('2d');
+      const offscreenCanvasContext = offscreenCanvas.getContext('2d');
+      if (context !== null && offscreenCanvasContext !== null) {
+        await drawMethodImpl(offscreenCanvasContext, dataList);
+        context.drawImage(offscreenCanvas, 0, 0);
+      }
     };
     drawMethod();
   }, [canvasRef, dataList]);

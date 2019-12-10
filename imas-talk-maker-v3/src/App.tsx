@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyles } from 'constant';
 import { ApplicationContext, useApplicationStore } from 'service/store';
 import OhanashiForm from 'container/ohanashi-form';
 
@@ -9,7 +8,6 @@ const App: React.FC = () => {
 
   return (
     <ApplicationContext.Provider value={store}>
-      <GlobalStyles />
       <TitleWrapper>
         <Title>アイマス会話メーカー</Title>
       </TitleWrapper>
