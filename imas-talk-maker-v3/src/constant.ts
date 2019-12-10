@@ -1,5 +1,5 @@
 // 「おはなし」の形態
-type MessageMode = 'normal' | 'double' | 'quartet' | 'message-only';
+export type MessageMode = 'normal' | 'double' | 'quartet' | 'message-only';
 
 // 「おはなし」の1データ
 export interface OhanashiData {
