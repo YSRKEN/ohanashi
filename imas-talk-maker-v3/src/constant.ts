@@ -24,29 +24,32 @@ export interface OhanashiData {
 export const SAMPLE_OHANASHI: OhanashiData[] = [
   {
     name: '千鶴',
-    iconUrls: ['nikaido_chizuru-1.png'],
+    iconUrls: ['million/nikaido_chizuru-1.png'],
     message: 'サンプルメッセージ',
     messageMode: 'normal'
   },
   {
     name: '莉緒',
-    iconUrls: ['momose_rio-1.png'],
+    iconUrls: ['million/momose_rio-1.png'],
     message: 'サンプルメッセージ2',
     messageMode: 'normal'
   },
   {
     name: '恵美＆朋花',
-    iconUrls: ['tokoro_megumi-1.png', 'tenkubashi_tomoka-1.png'],
+    iconUrls: [
+      'million/tokoro_megumi-1.png',
+      'million/tenkubashi_tomoka-1.png'
+    ],
     message: 'サンプルメッセージ3',
     messageMode: 'double'
   },
   {
     name: '',
     iconUrls: [
-      'tenkubashi_tomoka-1.png',
-      'tokoro_megumi-1.png',
-      'momose_rio-1.png',
-      'nikaido_chizuru-1.png'
+      'million/tenkubashi_tomoka-1.png',
+      'million/tokoro_megumi-1.png',
+      'million/momose_rio-1.png',
+      'million/nikaido_chizuru-1.png'
     ],
     message: '',
     messageMode: 'quartet'
