@@ -7,6 +7,18 @@ const OHANASHI_WIDTH = 320;
 const OHANASHI_HEIGHT = 84;
 const ICON_SIZE = 76;
 
+// 複数行の文字列を描画する
+const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: number, y: number, lineHeight: number, maxWidth: number | undefined) => {
+  const splitedText = text.split('\n');
+  for (let li = 0; li < splitedText.length; li += 1) {
+    const text2 = splitedText[li];
+    if (text2.length === 0) {
+      continue;
+    }
+    canvas.fillText(text2, x, y + lineHeight * li, maxWidth);
+  }
+};
+
 // 描画メソッド
 const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: OhanashiData[]) => {
   // 描画用の画像を読み込む
@@ -75,7 +87,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
 
         // メッセージ部分を描画
         canvas.fillStyle = 'black';
-        canvas.fillText(dataList[di].message, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 23, 214);
+        fillTextEx(canvas, dataList[di].message, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 23, 17.5, 214);
         break;
       case 'double':
         // 準備
@@ -88,7 +100,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
 
         // メッセージ部分を描画
         canvas.fillStyle = 'black';
-        canvas.fillText(dataList[di].message, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 23, 140);
+        fillTextEx(canvas, dataList[di].message, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 23, 17.5, 140);
         break;
       case 'message-only':
         // 準備
@@ -101,7 +113,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
 
         // メッセージ部分を描画
         canvas.fillStyle = 'black';
-        canvas.fillText(dataList[di].message, 14, OHANASHI_HEIGHT * di + 23, 292);
+        fillTextEx(canvas, dataList[di].message, 14, OHANASHI_HEIGHT * di + 23, 17.5, 292);
         break;
       default:
         // dataList[di].messageMode === 'quartet'の場合、テキストは描画しない
