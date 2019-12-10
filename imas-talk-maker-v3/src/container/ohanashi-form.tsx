@@ -13,18 +13,26 @@ const OhanashiForm: React.FC = () => {
           追加
         </Button>
       </Form>
-      <PreviewLabel>プレビュー：</PreviewLabel>
-      <Preview>
-        <OhanashiView dataList={ohanashiDataList} />
-      </Preview>
+      <Wrapper>
+        <PreviewLabel>プレビュー：</PreviewLabel>
+      </Wrapper>
+      <Wrapper>
+        <Preview>
+          <OhanashiView dataList={ohanashiDataList} />
+        </Preview>
+      </Wrapper>
     </>
   );
 };
 
 const Form = styled.form`
-  margin: 1rem;
+  margin: 1rem auto;
   border: 1px solid black;
   padding: 1rem;
+  text-align: center;
+  @media screen and (min-width:768px) {
+    width: 50%;
+  }
 `;
 
 const Button = styled.button(
@@ -38,18 +46,24 @@ const Button = styled.button(
 `
 );
 
+const Wrapper = styled.div`
+  display: flex;
+`;
+
 const Preview = styled.div`
   border: 1px solid black;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem auto;
   text-align: center;
+  display: inline-block;
 `;
+
 
 const PreviewLabel = styled.span`
   font-size: 1.5rem;
   color: black;
   display: block;
-  margin: 1rem;
+  margin: 1rem auto;
 `;
 
 export default OhanashiForm;

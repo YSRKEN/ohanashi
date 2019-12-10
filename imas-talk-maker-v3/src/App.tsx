@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <ApplicationContext.Provider value={store}>
       <GlobalStyles />
       <TitleWrapper>
-        <Title>テスト</Title>
+        <Title>アイマス会話メーカー</Title>
       </TitleWrapper>
       <OhanashiForm />
     </ApplicationContext.Provider>
@@ -23,7 +23,10 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 3rem;
+  font-size: 2rem;
+  @media screen and (min-width:768px) {
+    font-size: 3rem;
+  }
 `;
 
 export default App;
