@@ -10,7 +10,7 @@ export interface OhanashiData {
 }
 
 // Actionの種類
-export type ActionType = 'addOhanashi';
+export type ActionType = 'changeName' | 'changeMessage' | 'changeMessageMode' | 'addOhanashi';
 
 // Action本体
 export interface Action {
@@ -20,6 +20,7 @@ export interface Action {
 
 // StoreのI/F
 export interface ApplicationStore {
+  nowOhanashiData: OhanashiData;
   ohanashiDataList: OhanashiData[];
   dispatch: (action: Action) => void;
 }

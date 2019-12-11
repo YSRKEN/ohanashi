@@ -1,7 +1,15 @@
 import { OhanashiData } from 'constant/type';
 
 // サンプルデータ
-export const SAMPLE_OHANASHI: OhanashiData[] = [
+export const SAMPLE_OHANASHI: OhanashiData = {
+  name: '千鶴',
+  iconUrls: ['million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png'],
+  message: '',
+  messageMode: 'normal'
+};
+
+// サンプルデータ
+export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
   {
     name: '千鶴',
     iconUrls: ['million/nikaido_chizuru-1.png'],

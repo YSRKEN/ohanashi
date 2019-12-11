@@ -1,24 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, FormEvent } from 'react';
 import { ApplicationContext } from 'service/store';
 import OhanashiView from 'component/ohanashi-view';
 import styled from 'styled-components';
-import { MessageMode } from 'constant/type';
+import IconForm from 'container/icon-form';
 
 const OhanashiForm: React.FC = () => {
-  const { ohanashiDataList, dispatch } = useContext(ApplicationContext);
+  const { nowOhanashiData, ohanashiDataList, dispatch } = useContext(ApplicationContext);
 
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [messageMode, setMessageMode] = useState<MessageMode>('normal');
+  const changeName = (e: FormEvent<HTMLInputElement>) => {
+    dispatch({
+      type: 'changeName',
+      message: e.currentTarget.value
+    });
+  };
+
+  const changeMessage = (e: FormEvent<HTMLTextAreaElement>) => {
+    dispatch({
+      type: 'changeMessage',
+      message: e.currentTarget.value
+    });
+  };
+
+  const changeMessageMode = (e: FormEvent<HTMLSelectElement>) => {
+    dispatch({
+      type: 'changeMessageMode',
+      message: e.currentTarget.value
+    });
+  };
 
   const addMessage = () => {
     dispatch({
       type: 'addOhanashi',
-      message: JSON.stringify({
-        name,
-        message,
-        messageMode
-      })
+      message: ''
     });
   };
 
@@ -26,19 +39,25 @@ const OhanashiForm: React.FC = () => {
     <>
       <Form>
         <ControlWeapper>
-          <Name placeholder="名前を入力" value={name} onChange={e => setName(e.currentTarget.value)} />
+          <Name placeholder="名前を入力" value={nowOhanashiData.name} onChange={changeName} />
         </ControlWeapper>
         <ControlWeapper>
-          <Message placeholder="メッセージを入力" rows={3} value={message} onChange={e => setMessage(e.currentTarget.value)} />
+          <Message placeholder="メッセージを入力" rows={3} value={nowOhanashiData.message} onChange={changeMessage} />
         </ControlWeapper>
         <ControlWeapper>
-          <TypeSelect value={messageMode} onChange={e => setMessageMode(e.currentTarget.value as MessageMode)}>
+          <TypeSelect value={nowOhanashiData.messageMode} onChange={changeMessageMode}>
             <TypeOption value="normal">通常</TypeOption>
             <TypeOption value="double">ダブル</TypeOption>
             <TypeOption value="quartet">カルテット</TypeOption>
             <TypeOption value="message-only">メッセージのみ</TypeOption>
           </TypeSelect>
         </ControlWeapper>
+        <ControlWeapper>{<IconForm />}</ControlWeapper>
+        <Wrapper>
+          <Preview>
+            <OhanashiView dataList={[nowOhanashiData]} />
+          </Preview>
+        </Wrapper>
         <ControlWeapper>
           <AddButton type="button" onClick={() => addMessage()}>
             追加
@@ -46,12 +65,9 @@ const OhanashiForm: React.FC = () => {
         </ControlWeapper>
       </Form>
       <Wrapper>
-        <PreviewLabel>一覧</PreviewLabel>
-      </Wrapper>
-      <Wrapper>
-        <Preview>
+        <PreviewList>
           <OhanashiView dataList={ohanashiDataList} />
-        </Preview>
+        </PreviewList>
       </Wrapper>
     </>
   );
@@ -110,18 +126,15 @@ const Wrapper = styled.div`
 `;
 
 const Preview = styled.div`
-  border: 1px solid black;
-  padding: 1rem;
   margin: 0 auto;
   text-align: center;
   display: inline-block;
 `;
 
-const PreviewLabel = styled.span`
-  font-size: 2rem;
-  color: black;
-  display: block;
-  margin: 0 auto;
+const PreviewList = styled.div`
+  margin: 1rem auto;
+  text-align: center;
+  display: inline-block;
 `;
 
 export default OhanashiForm;
