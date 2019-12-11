@@ -45,6 +45,7 @@ const OhanashiForm: React.FC = () => {
           <Message placeholder="メッセージを入力" rows={3} value={nowOhanashiData.message} onChange={changeMessage} />
         </ControlWeapper>
         <ControlWeapper>
+          <FormLabel>アイコン：</FormLabel>
           <TypeSelect value={nowOhanashiData.messageMode} onChange={changeMessageMode}>
             <TypeOption value="normal">通常</TypeOption>
             <TypeOption value="double">ダブル</TypeOption>
@@ -55,6 +56,8 @@ const OhanashiForm: React.FC = () => {
         <ControlWeapper>{<IconForm />}</ControlWeapper>
         <Wrapper>
           <Preview>
+            <FormLabel>プレビュー：</FormLabel>
+            <br />
             <OhanashiView dataList={[nowOhanashiData]} />
           </Preview>
         </Wrapper>
@@ -129,6 +132,11 @@ const Preview = styled.div`
   margin: 0 auto;
   text-align: center;
   display: inline-block;
+`;
+
+const FormLabel = styled.span`
+  display: inline-block;
+  margin-right: 1rem;
 `;
 
 const PreviewList = styled.div`

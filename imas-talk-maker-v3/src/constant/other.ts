@@ -1,6 +1,6 @@
 import { OhanashiData } from 'constant/type';
 
-// サンプルデータ
+// 「おはなし」の初期データ
 export const SAMPLE_OHANASHI: OhanashiData = {
   name: '千鶴',
   iconUrls: ['million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png'],
@@ -8,7 +8,7 @@ export const SAMPLE_OHANASHI: OhanashiData = {
   messageMode: 'normal'
 };
 
-// サンプルデータ
+// 「おはなし」のサンプルデータ
 export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
   {
     name: '千鶴',
@@ -41,3 +41,11 @@ export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
     messageMode: 'message-only'
   }
 ];
+
+// 「おはなし」の種類に応じたアイコン表示数
+export const OHANASHI_ICON_COUNT: { [key: string]: number } = {
+  normal: 1,
+  double: 2,
+  quartet: 4,
+  'message-only': 0
+};
