@@ -1,3 +1,6 @@
+import { IDOL_MILLION_LIST } from 'constant/idol_million';
+import { Idol } from 'constant/type';
+
 /**
  * 設定をローカルストレージから読み込む
  * @param key キー
@@ -87,5 +90,20 @@ export const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: nu
       continue;
     }
     canvas.fillText(text2, x, y + lineHeight * li, maxWidth);
+  }
+};
+
+/**
+ * 指定したURLのアイコンに対するIdol型を検索する
+ */
+export const findIdolByIconUrl = (url: string): Idol | null => {
+  const index = IDOL_MILLION_LIST.findIndex(idol => {
+    const temp = idol.iconList.map(url => `${idol.category}/${url}`);
+    return temp.includes(url);
+  });
+  if (index < 0) {
+    return null;
+  } else {
+    return IDOL_MILLION_LIST[index];
   }
 };

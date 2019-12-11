@@ -3,7 +3,7 @@ import { OhanashiData } from 'constant/type';
 // 「おはなし」の初期データ
 export const SAMPLE_OHANASHI: OhanashiData = {
   name: '千鶴',
-  iconUrls: ['million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png'],
+  iconUrls: ['million/nikaido_chizuru-1.png', 'million/tenkubashi_tomoka-1.png', 'million/tokoro_megumi-1.png', 'million/momose_rio-1.png'],
   message: '',
   messageMode: 'normal'
 };
