@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import { OhanashiData } from 'constant';
 import { loadImage, fillTextEx } from 'service/utility';
+import { OhanashiData } from 'constant/type';
 
 // 「おはなし」の大きさ
 const OHANASHI_WIDTH = 320;

@@ -1,18 +1,7 @@
 import { createContext, useState } from 'react';
-import { OhanashiData, SAMPLE_OHANASHI } from 'constant';
-import { loadSetting } from './utility';
-
-type ActionType = 'addOhanashi';
-
-interface Action {
-  type: ActionType;
-  message: string;
-}
-
-interface ApplicationStore {
-  ohanashiDataList: OhanashiData[];
-  dispatch: (action: Action) => void;
-}
+import { loadSetting } from 'service/utility';
+import { OhanashiData, ApplicationStore, Action } from 'constant/type';
+import { SAMPLE_OHANASHI } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
   const [ohanashiDataList, setOhanashiDataList] = useState<OhanashiData[]>(loadSetting('ohanashiDataList', SAMPLE_OHANASHI));
@@ -25,10 +14,7 @@ export const useApplicationStore = (): ApplicationStore => {
         if (messageData.messageMode === 'normal') {
           messageData.iconUrls = ['million/nikaido_chizuru-1.png'];
         } else if (messageData.messageMode === 'double') {
-          messageData.iconUrls = [
-            'million/nikaido_chizuru-1.png',
-            'million/nikaido_chizuru-1.png'
-          ];
+          messageData.iconUrls = ['million/nikaido_chizuru-1.png', 'million/nikaido_chizuru-1.png'];
         } else if (messageData.messageMode === 'quartet') {
           messageData.iconUrls = [
             'million/nikaido_chizuru-1.png',

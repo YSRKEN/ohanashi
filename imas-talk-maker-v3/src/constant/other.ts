@@ -1,13 +1,4 @@
-// 「おはなし」の形態
-export type MessageMode = 'normal' | 'double' | 'quartet' | 'message-only';
-
-// 「おはなし」の1データ
-export interface OhanashiData {
-  name: string;
-  iconUrls: string[];
-  message: string;
-  messageMode: MessageMode;
-}
+import { OhanashiData } from 'constant/type';
 
 // サンプルデータ
 export const SAMPLE_OHANASHI: OhanashiData[] = [
