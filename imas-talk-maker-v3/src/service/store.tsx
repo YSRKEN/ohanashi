@@ -26,7 +26,8 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       }
       case 'addOhanashi': {
-        setOhanashiDataList([...ohanashiDataList, { ...nowOhanashiData }]);
+        const temp = JSON.parse(JSON.stringify(nowOhanashiData)) as OhanashiData;
+        setOhanashiDataList([...ohanashiDataList, temp]);
         break;
       }
       case 'selectIcon': {
@@ -36,6 +37,13 @@ export const useApplicationStore = (): ApplicationStore => {
         } else {
           setSelectedIconIndex(index);
         }
+        break;
+      }
+      case 'selectFaceIcon': {
+        const url = action.message;
+        const temp = { ...nowOhanashiData };
+        temp.iconUrls[selectedIconIndex] = url;
+        setNowOhanashiData(temp);
         break;
       }
       default:

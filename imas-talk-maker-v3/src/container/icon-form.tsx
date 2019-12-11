@@ -53,7 +53,7 @@ const IconForm: React.FC<{}> = () => {
   };
 
   const onClickFaceIcon = (index: number) => {
-    // dispatch({ type: 'selectIcon', message: `${index}` });
+    dispatch({ type: 'selectFaceIcon', message: `${faceIconList[index]}` });
   };
 
   return (

@@ -10,7 +10,7 @@ export interface OhanashiData {
 }
 
 // Actionの種類
-export type ActionType = 'changeName' | 'changeMessage' | 'changeMessageMode' | 'addOhanashi' | 'selectIcon';
+export type ActionType = 'changeName' | 'changeMessage' | 'changeMessageMode' | 'addOhanashi' | 'selectIcon' | 'selectFaceIcon';
 
 // Action本体
 export interface Action {
