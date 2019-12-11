@@ -14,6 +14,7 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
   const balloon1 = await loadImage('./asset/balloon1.png');
   const balloon2 = await loadImage('./asset/balloon2.png');
   const balloon3 = await loadImage('./asset/balloon3.png');
+  const balloon4 = await loadImage('./asset/balloon4.png');
 
   // 描画を行う
   for (let di = 0; di < dataList.length; di += 1) {
@@ -25,11 +26,14 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
       case 'normal':
         canvas.drawImage(balloon1, 0, 0, OHANASHI_WIDTH, OHANASHI_HEIGHT, 0, OHANASHI_HEIGHT * di, OHANASHI_WIDTH, OHANASHI_HEIGHT);
         break;
-      case 'double':
+      case 'reverse':
         canvas.drawImage(balloon2, 0, 0, OHANASHI_WIDTH, OHANASHI_HEIGHT, 0, OHANASHI_HEIGHT * di, OHANASHI_WIDTH, OHANASHI_HEIGHT);
         break;
-      case 'message-only':
+      case 'double':
         canvas.drawImage(balloon3, 0, 0, OHANASHI_WIDTH, OHANASHI_HEIGHT, 0, OHANASHI_HEIGHT * di, OHANASHI_WIDTH, OHANASHI_HEIGHT);
+        break;
+      case 'message-only':
+        canvas.drawImage(balloon4, 0, 0, OHANASHI_WIDTH, OHANASHI_HEIGHT, 0, OHANASHI_HEIGHT * di, OHANASHI_WIDTH, OHANASHI_HEIGHT);
         break;
       default:
         // dataList[di].messageMode === 'quartet'の場合、会話枠は描画しない
@@ -41,6 +45,11 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
       case 'normal': {
         const iconImage = await loadImage(`./asset/${dataList[di].iconUrls[0]}`);
         canvas.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, 5, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
+        break;
+      }
+      case 'reverse': {
+        const iconImage = await loadImage(`./asset/${dataList[di].iconUrls[0]}`);
+        canvas.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, OHANASHI_WIDTH - 5 - ICON_SIZE, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
         break;
       }
       case 'double': {
@@ -63,12 +72,10 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
     }
 
     // テキストの描画
+    canvas.font = `14px Noto Sans JP`;
+    canvas.textBaseline = 'top';
     switch (dataList[di].messageMode) {
       case 'normal':
-        // 準備
-        canvas.font = `14px Noto Sans JP`;
-        canvas.textBaseline = 'top';
-
         // 名前部分を描画
         canvas.fillStyle = '#f33281';
         canvas.fillText(dataList[di].name, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 8, 214);
@@ -77,11 +84,16 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
         canvas.fillStyle = 'black';
         fillTextEx(canvas, dataList[di].message, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 23, 17.5, 214);
         break;
-      case 'double':
-        // 準備
-        canvas.font = `14px Noto Sans JP`;
-        canvas.textBaseline = 'top';
+      case 'reverse':
+        // 名前部分を描画
+        canvas.fillStyle = '#f33281';
+        canvas.fillText(dataList[di].name, 14, OHANASHI_HEIGHT * di + 8, 214);
 
+        // メッセージ部分を描画
+        canvas.fillStyle = 'black';
+        fillTextEx(canvas, dataList[di].message, 14, OHANASHI_HEIGHT * di + 23, 17.5, 214);
+        break;
+      case 'double':
         // 名前部分を描画
         canvas.fillStyle = '#f33281';
         canvas.fillText(dataList[di].name, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 8, 140);
@@ -91,10 +103,6 @@ const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: Ohanas
         fillTextEx(canvas, dataList[di].message, ICON_SIZE + 16, OHANASHI_HEIGHT * di + 23, 17.5, 140);
         break;
       case 'message-only':
-        // 準備
-        canvas.font = `14px Noto Sans JP`;
-        canvas.textBaseline = 'top';
-
         // 名前部分を描画
         canvas.fillStyle = '#f33281';
         canvas.fillText(dataList[di].name, 14, OHANASHI_HEIGHT * di + 8, 292);

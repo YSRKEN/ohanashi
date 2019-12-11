@@ -45,6 +45,7 @@ export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
 // 「おはなし」の種類に応じたアイコン表示数
 export const OHANASHI_ICON_COUNT: { [key: string]: number } = {
   normal: 1,
+  reverse: 1,
   double: 2,
   quartet: 4,
   'message-only': 0

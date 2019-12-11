@@ -48,6 +48,7 @@ const OhanashiForm: React.FC = () => {
           <FormLabel>アイコン：</FormLabel>
           <TypeSelect value={nowOhanashiData.messageMode} onChange={changeMessageMode}>
             <TypeOption value="normal">通常</TypeOption>
+            <TypeOption value="reverse">反転</TypeOption>
             <TypeOption value="double">ダブル</TypeOption>
             <TypeOption value="quartet">カルテット</TypeOption>
             <TypeOption value="message-only">メッセージのみ</TypeOption>
