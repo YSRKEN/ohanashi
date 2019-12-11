@@ -10,10 +10,19 @@ const ICON_SIZE_2 = 35;
 
 const IconForm: React.FC<{}> = () => {
   const { nowOhanashiData, selectedIconIndex, dispatch } = useContext(ApplicationContext);
+  const [iconList, setIconList] = useState<string[]>([]);
   const [faceIconList, setFaceIconList] = useState<string[]>([]);
 
-  const iconCount = OHANASHI_ICON_COUNT[nowOhanashiData.messageMode];
-  const iconList = nowOhanashiData.iconUrls.slice(0, iconCount);
+  /**
+   * 現在入力している「おはなし」のアイコン一覧を取得する
+   */
+  useEffect(() => {
+    // 表示するべきアイコンの数
+    const iconCount = OHANASHI_ICON_COUNT[nowOhanashiData.messageMode];
+
+    // 表示されるアイコンの一覧
+    setIconList(nowOhanashiData.iconUrls.slice(0, iconCount));
+  }, [nowOhanashiData]);
 
   /**
    * 現在選択中のアイドルのアイコン一覧を取得する
