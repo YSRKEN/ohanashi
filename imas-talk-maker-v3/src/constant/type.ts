@@ -23,3 +23,15 @@ export interface ApplicationStore {
   ohanashiDataList: OhanashiData[];
   dispatch: (action: Action) => void;
 }
+
+// アイドルの種類
+export type IdolType = 'million' | 'cinderella' | 'other';
+
+// アイドルデータ
+export interface Idol {
+  name: string;
+  shortName: string;
+  kana: string;
+  iconList: string[];
+  category: IdolType;
+}
