@@ -107,6 +107,7 @@ const OhanashiForm: React.FC = () => {
             setDownloadLink={url =>
               dispatch({ type: 'setDownloadLink', message: url })
             }
+            showLogoFlg={true}
           />
         </ControlWrapper>
       </PreviewForm>

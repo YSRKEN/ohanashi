@@ -5,12 +5,18 @@ import { OhanashiData } from 'constant/type';
 // 「おはなし」の大きさ
 const OHANASHI_WIDTH = 320;
 const OHANASHI_HEIGHT = 84;
+
+// アイコンサイズ
 const ICON_SIZE = 76;
+
+// ロゴの縦幅
+const OHANASHI_LOGO_HEIGHT = 16;
 
 // 描画メソッド
 const drawMethodImpl = async (
   canvas: CanvasRenderingContext2D,
-  dataList: OhanashiData[]
+  dataList: OhanashiData[],
+  showLogoFlg: boolean
 ) => {
   // 描画用の画像を読み込む
   const bgImage = await loadImage('./asset/background.png');
@@ -267,13 +273,21 @@ const drawMethodImpl = async (
         break;
     }
   }
+  if (showLogoFlg) {
+    canvas.fillStyle = 'black';
+    canvas.fillRect(0, OHANASHI_HEIGHT * dataList.length, OHANASHI_WIDTH, OHANASHI_LOGO_HEIGHT + 2);
+    canvas.fillStyle = 'white';
+    canvas.font = `${OHANASHI_LOGO_HEIGHT}px Noto Sans JP`;
+    canvas.fillText('アイマス会話メーカーv3', OHANASHI_WIDTH - OHANASHI_LOGO_HEIGHT * 12, OHANASHI_HEIGHT * dataList.length, OHANASHI_WIDTH);
+  }
   canvas.save();
 };
 
 const OhanashiView: React.FC<{
   dataList: OhanashiData[];
   setDownloadLink?: (val: string) => void;
-}> = ({ dataList, setDownloadLink = () => {} }) => {
+  showLogoFlg?: boolean;
+}> = ({ dataList, setDownloadLink = () => {}, showLogoFlg = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // 描画に必要なコンテキストが得られたなら描画を行う
@@ -295,7 +309,7 @@ const OhanashiView: React.FC<{
       const context = canvas.getContext('2d');
       const offscreenCanvasContext = offscreenCanvas.getContext('2d');
       if (context !== null && offscreenCanvasContext !== null) {
-        await drawMethodImpl(offscreenCanvasContext, dataList);
+        await drawMethodImpl(offscreenCanvasContext, dataList, showLogoFlg);
         context.drawImage(offscreenCanvas, 0, 0);
         setDownloadLink(canvas.toDataURL('image/png'));
       }
@@ -308,7 +322,7 @@ const OhanashiView: React.FC<{
     <canvas
       ref={canvasRef}
       width={OHANASHI_WIDTH}
-      height={OHANASHI_HEIGHT * dataList.length}
+      height={OHANASHI_HEIGHT * dataList.length + (showLogoFlg ? OHANASHI_LOGO_HEIGHT + 2 : 0)}
     />
   );
 };
