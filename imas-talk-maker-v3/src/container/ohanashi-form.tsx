@@ -82,11 +82,15 @@ const OhanashiForm: React.FC = () => {
           </AddButton>
         </ControlWrapper>
       </Form>
-      <Wrapper>
-        <PreviewList>
+      <PreviewForm>
+        <ControlWrapper>
+          <SaveButton type="button">保存</SaveButton>
+          <AllDeleteButton type="button">全削除</AllDeleteButton>
+        </ControlWrapper>
+        <ControlWrapper>
           <OhanashiView dataList={ohanashiDataList} />
-        </PreviewList>
-      </Wrapper>
+        </ControlWrapper>
+      </PreviewForm>
     </>
   );
 };
@@ -94,6 +98,14 @@ const OhanashiForm: React.FC = () => {
 const Form = styled.form`
   margin: 1rem auto;
   border: 1px solid black;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+`;
+
+const PreviewForm = styled.form`
+  margin: 1rem auto;
   text-align: center;
   @media screen and (min-width: 768px) {
     width: 50%;
@@ -139,6 +151,26 @@ const AddButton = styled.button`
   color: black;
 `;
 
+const SaveButton = styled.button`
+  font-size: 1rem;
+  background-color: green;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  margin: 0 0.5rem;
+`;
+
+const AllDeleteButton = styled.button`
+  font-size: 1rem;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  margin: 0 0.5rem;
+`;
+
 const Wrapper = styled.div`
   display: flex;
 `;
@@ -152,12 +184,6 @@ const Preview = styled.div`
 const FormLabel = styled.span`
   display: inline-block;
   margin-right: 1rem;
-`;
-
-const PreviewList = styled.div`
-  margin: 1rem auto;
-  text-align: center;
-  display: inline-block;
 `;
 
 export default OhanashiForm;
