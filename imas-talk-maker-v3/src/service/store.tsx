@@ -11,9 +11,9 @@ import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
   // 現在入力している「おはなし」の一覧
-  const [ohanashiDataList, setOhanashiDataList] = useState<OhanashiData[]>(
-    loadSetting('ohanashiDataList', SAMPLE_OHANASHI_LIST)
-  );
+  const [ohanashiDataList, setOhanashiDataList] = useLocalStorageState<
+    OhanashiData[]
+  >('ohanashiDataList', SAMPLE_OHANASHI_LIST);
   // プレビュー用の「おはなし」
   const [nowOhanashiData, setNowOhanashiData] = useLocalStorageState<
     OhanashiData
@@ -48,6 +48,12 @@ export const useApplicationStore = (): ApplicationStore => {
           JSON.stringify(nowOhanashiData)
         ) as OhanashiData;
         setOhanashiDataList([...ohanashiDataList, temp]);
+        break;
+      }
+      case 'deleteAllOhanashi': {
+        if (window.confirm('全ての「おはなし」を削除しますか？')) {
+          setOhanashiDataList([]);
+        }
         break;
       }
       case 'selectIcon': {

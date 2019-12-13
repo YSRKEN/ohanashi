@@ -37,6 +37,13 @@ const OhanashiForm: React.FC = () => {
     });
   };
 
+  const deleteAllMessage = () => {
+    dispatch({
+      type: 'deleteAllOhanashi',
+      message: ''
+    });
+  };
+
   return (
     <>
       <Form>
@@ -77,7 +84,7 @@ const OhanashiForm: React.FC = () => {
           </Preview>
         </Wrapper>
         <ControlWrapper>
-          <AddButton type="button" onClick={() => addMessage()}>
+          <AddButton type="button" onClick={addMessage}>
             追加
           </AddButton>
         </ControlWrapper>
@@ -85,7 +92,9 @@ const OhanashiForm: React.FC = () => {
       <PreviewForm>
         <ControlWrapper>
           <SaveButton type="button">保存</SaveButton>
-          <AllDeleteButton type="button">全削除</AllDeleteButton>
+          <AllDeleteButton type="button" onClick={deleteAllMessage}>
+            全削除
+          </AllDeleteButton>
         </ControlWrapper>
         <ControlWrapper>
           <OhanashiView dataList={ohanashiDataList} />
