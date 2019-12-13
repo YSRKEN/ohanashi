@@ -1,4 +1,4 @@
-import { IDOL_MILLION_LIST } from 'constant/idol_million';
+import { IDOL_MILLION_LIST } from 'constant/idol-million';
 import { Idol } from 'constant/type';
 
 /**
@@ -49,7 +49,14 @@ export const loadImage = (imagePath: string): Promise<HTMLImageElement> => {
  * @param lineHeight 行間(pixel単位)
  * @param maxWidth 描画範囲の最大横幅
  */
-export const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: number, y: number, lineHeight: number, maxWidth: number | undefined) => {
+export const fillTextEx = (
+  canvas: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  lineHeight: number,
+  maxWidth: number | undefined
+) => {
   // 改行ごとに切り出す
   const splitedText = text.split('\n');
 
@@ -106,4 +113,10 @@ export const findIdolByIconUrl = (url: string): Idol | null => {
   } else {
     return IDOL_MILLION_LIST[index];
   }
+};
+
+export const sortIdolList = (list: Idol[]) => {
+  return list.sort((a: Idol, b: Idol) =>
+    a.kana > b.kana ? 1 : a.kana < b.kana ? -1 : 0
+  );
 };
