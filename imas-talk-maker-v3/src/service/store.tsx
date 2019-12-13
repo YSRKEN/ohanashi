@@ -75,6 +75,15 @@ export const useApplicationStore = (): ApplicationStore => {
         setScene('Ohanashi');
         break;
       }
+      case 'selectIdolIcon': {
+        const iconUrl = action.message;
+        const temp = { ...nowOhanashiData };
+        temp.iconUrls[selectedIconIndex] = iconUrl;
+        setNowOhanashiData(temp);
+        setSelectedIconIndex(-1);
+        setScene('Ohanashi');
+        break;
+      }
       default:
         break;
     }

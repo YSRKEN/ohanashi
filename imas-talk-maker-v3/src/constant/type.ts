@@ -23,7 +23,8 @@ export type ActionType =
   | 'selectIcon'
   | 'selectFaceIcon'
   | 'toSelectIdolForm'
-  | 'toBaseForm';
+  | 'toBaseForm'
+  | 'selectIdolIcon';
 
 // Action本体
 export interface Action {
