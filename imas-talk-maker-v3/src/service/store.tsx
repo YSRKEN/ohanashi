@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { loadSetting, useLocalStorageState } from 'service/utility';
+import { useLocalStorageState } from 'service/utility';
 import {
   OhanashiData,
   ApplicationStore,
@@ -25,6 +25,8 @@ export const useApplicationStore = (): ApplicationStore => {
     'scene',
     'Ohanashi'
   );
+  // ダウンロードリンク
+  const [downloadLink, setDownloadLink] = useState('#');
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -90,6 +92,9 @@ export const useApplicationStore = (): ApplicationStore => {
         setScene('Ohanashi');
         break;
       }
+      case 'setDownloadLink':
+        setDownloadLink(action.message);
+        break;
       default:
         break;
     }
@@ -100,6 +105,7 @@ export const useApplicationStore = (): ApplicationStore => {
     ohanashiDataList,
     selectedIconIndex,
     scene,
+    downloadLink,
     dispatch
   };
 };

@@ -5,9 +5,12 @@ import styled from 'styled-components';
 import IconForm from 'container/icon-form';
 
 const OhanashiForm: React.FC = () => {
-  const { nowOhanashiData, ohanashiDataList, dispatch } = useContext(
-    ApplicationContext
-  );
+  const {
+    nowOhanashiData,
+    ohanashiDataList,
+    downloadLink,
+    dispatch
+  } = useContext(ApplicationContext);
 
   const changeName = (e: FormEvent<HTMLInputElement>) => {
     dispatch({
@@ -91,13 +94,20 @@ const OhanashiForm: React.FC = () => {
       </Form>
       <PreviewForm>
         <ControlWrapper>
-          <SaveButton type="button">保存</SaveButton>
+          <SaveButton href={downloadLink} download="ohanashi.png">
+            保存
+          </SaveButton>
           <AllDeleteButton type="button" onClick={deleteAllMessage}>
             全削除
           </AllDeleteButton>
         </ControlWrapper>
         <ControlWrapper>
-          <OhanashiView dataList={ohanashiDataList} />
+          <OhanashiView
+            dataList={ohanashiDataList}
+            setDownloadLink={url =>
+              dispatch({ type: 'setDownloadLink', message: url })
+            }
+          />
         </ControlWrapper>
       </PreviewForm>
     </>
@@ -160,7 +170,7 @@ const AddButton = styled.button`
   color: black;
 `;
 
-const SaveButton = styled.button`
+const SaveButton = styled.a`
   font-size: 1rem;
   background-color: green;
   border: 1px solid black;
@@ -168,6 +178,7 @@ const SaveButton = styled.button`
   padding: 0.25rem 1rem;
   color: white;
   margin: 0 0.5rem;
+  text-decoration: none;
 `;
 
 const AllDeleteButton = styled.button`

@@ -25,7 +25,8 @@ export type ActionType =
   | 'selectFaceIcon'
   | 'toSelectIdolForm'
   | 'toBaseForm'
-  | 'selectIdolIcon';
+  | 'selectIdolIcon'
+  | 'setDownloadLink';
 
 // Action本体
 export interface Action {
@@ -39,6 +40,7 @@ export interface ApplicationStore {
   ohanashiDataList: OhanashiData[];
   selectedIconIndex: number;
   scene: SceneType;
+  downloadLink: string;
   dispatch: (action: Action) => void;
 }
 

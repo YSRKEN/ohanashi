@@ -270,7 +270,10 @@ const drawMethodImpl = async (
   canvas.save();
 };
 
-const OhanashiView: React.FC<{ dataList: OhanashiData[] }> = ({ dataList }) => {
+const OhanashiView: React.FC<{
+  dataList: OhanashiData[];
+  setDownloadLink?: (val: string) => void;
+}> = ({ dataList, setDownloadLink = () => {} }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // 描画に必要なコンテキストが得られたなら描画を行う
@@ -294,9 +297,11 @@ const OhanashiView: React.FC<{ dataList: OhanashiData[] }> = ({ dataList }) => {
       if (context !== null && offscreenCanvasContext !== null) {
         await drawMethodImpl(offscreenCanvasContext, dataList);
         context.drawImage(offscreenCanvas, 0, 0);
+        setDownloadLink(canvas.toDataURL('image/png'));
       }
     };
     drawMethod();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvasRef, dataList]);
 
   return (
