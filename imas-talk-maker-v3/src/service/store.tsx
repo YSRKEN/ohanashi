@@ -4,7 +4,8 @@ import {
   OhanashiData,
   ApplicationStore,
   Action,
-  MessageMode
+  MessageMode,
+  SceneType
 } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
@@ -19,6 +20,8 @@ export const useApplicationStore = (): ApplicationStore => {
   );
   // 入力フォームでどのアイコンを選択しているか
   const [selectedIconIndex, setSelectedIconIndex] = useState(-1);
+  // 現在の表示シーン
+  const [scene, setScene] = useState<SceneType>('Ohanashi');
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -61,6 +64,10 @@ export const useApplicationStore = (): ApplicationStore => {
         setSelectedIconIndex(-1);
         break;
       }
+      case 'toSelectIdolForm': {
+        setScene('IdolSelect');
+        break;
+      }
       default:
         break;
     }
@@ -70,6 +77,7 @@ export const useApplicationStore = (): ApplicationStore => {
     nowOhanashiData,
     ohanashiDataList,
     selectedIconIndex,
+    scene,
     dispatch
   };
 };

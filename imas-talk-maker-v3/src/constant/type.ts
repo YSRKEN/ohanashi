@@ -1,5 +1,10 @@
 // 「おはなし」の形態
-export type MessageMode = 'normal' | 'reverse' | 'double' | 'quartet' | 'message-only';
+export type MessageMode =
+  | 'normal'
+  | 'reverse'
+  | 'double'
+  | 'quartet'
+  | 'message-only';
 
 // 「おはなし」の1データ
 export interface OhanashiData {
@@ -10,7 +15,14 @@ export interface OhanashiData {
 }
 
 // Actionの種類
-export type ActionType = 'changeName' | 'changeMessage' | 'changeMessageMode' | 'addOhanashi' | 'selectIcon' | 'selectFaceIcon';
+export type ActionType =
+  | 'changeName'
+  | 'changeMessage'
+  | 'changeMessageMode'
+  | 'addOhanashi'
+  | 'selectIcon'
+  | 'selectFaceIcon'
+  | 'toSelectIdolForm';
 
 // Action本体
 export interface Action {
@@ -23,6 +35,7 @@ export interface ApplicationStore {
   nowOhanashiData: OhanashiData;
   ohanashiDataList: OhanashiData[];
   selectedIconIndex: number;
+  scene: SceneType;
   dispatch: (action: Action) => void;
 }
 
@@ -37,3 +50,6 @@ export interface Idol {
   iconList: string[];
   category: IdolType;
 }
+
+// 表示シーン
+export type SceneType = 'Ohanashi' | 'IdolSelect';

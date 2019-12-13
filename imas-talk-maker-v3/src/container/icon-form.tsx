@@ -46,19 +46,28 @@ const IconForm: React.FC<{}> = () => {
     setFaceIconList(idol.iconList.map(url => `${idol.category}/${url}`));
   }, [nowOhanashiData, selectedIconIndex]);
 
-  useEffect(() => {
-    console.log(faceIconList);
-  }, [faceIconList]);
-
+  /**
+   * アイコンクリック時は、表情アイコンの表示を切り替える
+   * @param index インデックス
+   */
   const onClickIcon = (index: number) => {
     dispatch({ type: 'selectIcon', message: `${index}` });
   };
 
+  /**
+   * 表情アイコンクリック時は、アイコンの表情を変更する
+   * @param index インデックス
+   */
   const onClickFaceIcon = (index: number) => {
     dispatch({ type: 'selectFaceIcon', message: `${faceIconList[index]}` });
   };
 
-  const onClickChangeIcon = () => {};
+  /**
+   * 変更アイコンクリック時は、アイドル一覧を表示するページに遷移する
+   */
+  const onClickChangeIcon = () => {
+    dispatch({ type: 'toSelectIdolForm', message: '' });
+  };
 
   return (
     <Wrapper>

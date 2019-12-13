@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ApplicationContext, useApplicationStore } from 'service/store';
-import OhanashiForm from 'container/ohanashi-form';
+import SelectedScene from 'container/selected-scene';
 
 const App: React.FC = () => {
   const store = useApplicationStore();
@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <TitleWrapper>
         <Title>アイマス会話メーカー</Title>
       </TitleWrapper>
-      <OhanashiForm />
+      <SelectedScene />
     </ApplicationContext.Provider>
   );
 };
@@ -22,7 +22,7 @@ const TitleWrapper = styled.div`
 
 const Title = styled.span`
   font-size: 2rem;
-  @media screen and (min-width:768px) {
+  @media screen and (min-width: 768px) {
     font-size: 3rem;
   }
 `;
