@@ -1,13 +1,22 @@
 import { createContext, useState } from 'react';
 import { loadSetting } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode } from 'constant/type';
+import {
+  OhanashiData,
+  ApplicationStore,
+  Action,
+  MessageMode
+} from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
   // 現在入力している「おはなし」の一覧
-  const [ohanashiDataList, setOhanashiDataList] = useState<OhanashiData[]>(loadSetting('ohanashiDataList', SAMPLE_OHANASHI_LIST));
+  const [ohanashiDataList, setOhanashiDataList] = useState<OhanashiData[]>(
+    loadSetting('ohanashiDataList', SAMPLE_OHANASHI_LIST)
+  );
   // プレビュー用の「おはなし」
-  const [nowOhanashiData, setNowOhanashiData] = useState<OhanashiData>(SAMPLE_OHANASHI);
+  const [nowOhanashiData, setNowOhanashiData] = useState<OhanashiData>(
+    SAMPLE_OHANASHI
+  );
   // 入力フォームでどのアイコンを選択しているか
   const [selectedIconIndex, setSelectedIconIndex] = useState(-1);
 
@@ -22,11 +31,16 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       case 'changeMessageMode': {
         setSelectedIconIndex(-1);
-        setNowOhanashiData({ ...nowOhanashiData, messageMode: action.message as MessageMode });
+        setNowOhanashiData({
+          ...nowOhanashiData,
+          messageMode: action.message as MessageMode
+        });
         break;
       }
       case 'addOhanashi': {
-        const temp = JSON.parse(JSON.stringify(nowOhanashiData)) as OhanashiData;
+        const temp = JSON.parse(
+          JSON.stringify(nowOhanashiData)
+        ) as OhanashiData;
         setOhanashiDataList([...ohanashiDataList, temp]);
         break;
       }
@@ -44,6 +58,7 @@ export const useApplicationStore = (): ApplicationStore => {
         const temp = { ...nowOhanashiData };
         temp.iconUrls[selectedIconIndex] = url;
         setNowOhanashiData(temp);
+        setSelectedIconIndex(-1);
         break;
       }
       default:
@@ -59,4 +74,6 @@ export const useApplicationStore = (): ApplicationStore => {
   };
 };
 
-export const ApplicationContext = createContext<ApplicationStore>({} as ApplicationStore);
+export const ApplicationContext = createContext<ApplicationStore>(
+  {} as ApplicationStore
+);
