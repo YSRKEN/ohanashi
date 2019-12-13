@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import IconForm from 'container/icon-form';
 
 const OhanashiForm: React.FC = () => {
-  const { nowOhanashiData, ohanashiDataList, dispatch } = useContext(ApplicationContext);
+  const { nowOhanashiData, ohanashiDataList, dispatch } = useContext(
+    ApplicationContext
+  );
 
   const changeName = (e: FormEvent<HTMLInputElement>) => {
     dispatch({
@@ -38,23 +40,35 @@ const OhanashiForm: React.FC = () => {
   return (
     <>
       <Form>
-        <ControlWeapper>
-          <Name placeholder="名前を入力" value={nowOhanashiData.name} onChange={changeName} />
-        </ControlWeapper>
-        <ControlWeapper>
-          <Message placeholder="メッセージを入力" rows={3} value={nowOhanashiData.message} onChange={changeMessage} />
-        </ControlWeapper>
-        <ControlWeapper>
+        <ControlWrapper>
+          <Name
+            placeholder="名前を入力"
+            value={nowOhanashiData.name}
+            onChange={changeName}
+          />
+        </ControlWrapper>
+        <ControlWrapper>
+          <Message
+            placeholder="メッセージを入力"
+            rows={3}
+            value={nowOhanashiData.message}
+            onChange={changeMessage}
+          />
+        </ControlWrapper>
+        <ControlWrapper>
           <FormLabel>アイコン：</FormLabel>
-          <TypeSelect value={nowOhanashiData.messageMode} onChange={changeMessageMode}>
+          <TypeSelect
+            value={nowOhanashiData.messageMode}
+            onChange={changeMessageMode}
+          >
             <TypeOption value="normal">通常</TypeOption>
             <TypeOption value="reverse">反転</TypeOption>
             <TypeOption value="double">ダブル</TypeOption>
             <TypeOption value="quartet">カルテット</TypeOption>
             <TypeOption value="message-only">メッセージのみ</TypeOption>
           </TypeSelect>
-        </ControlWeapper>
-        <ControlWeapper>{<IconForm />}</ControlWeapper>
+        </ControlWrapper>
+        <ControlWrapper>{<IconForm />}</ControlWrapper>
         <Wrapper>
           <Preview>
             <FormLabel>プレビュー：</FormLabel>
@@ -62,11 +76,11 @@ const OhanashiForm: React.FC = () => {
             <OhanashiView dataList={[nowOhanashiData]} />
           </Preview>
         </Wrapper>
-        <ControlWeapper>
+        <ControlWrapper>
           <AddButton type="button" onClick={() => addMessage()}>
             追加
           </AddButton>
-        </ControlWeapper>
+        </ControlWrapper>
       </Form>
       <Wrapper>
         <PreviewList>
@@ -86,7 +100,7 @@ const Form = styled.form`
   }
 `;
 
-const ControlWeapper = styled.div`
+const ControlWrapper = styled.div`
   margin: 1rem auto;
 `;
 
