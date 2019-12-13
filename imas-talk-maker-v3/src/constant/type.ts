@@ -22,7 +22,8 @@ export type ActionType =
   | 'addOhanashi'
   | 'selectIcon'
   | 'selectFaceIcon'
-  | 'toSelectIdolForm';
+  | 'toSelectIdolForm'
+  | 'toBaseForm';
 
 // Action本体
 export interface Action {

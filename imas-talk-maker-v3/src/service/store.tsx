@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { loadSetting } from 'service/utility';
+import { loadSetting, useLocalStorageState } from 'service/utility';
 import {
   OhanashiData,
   ApplicationStore,
@@ -15,13 +15,16 @@ export const useApplicationStore = (): ApplicationStore => {
     loadSetting('ohanashiDataList', SAMPLE_OHANASHI_LIST)
   );
   // プレビュー用の「おはなし」
-  const [nowOhanashiData, setNowOhanashiData] = useState<OhanashiData>(
-    SAMPLE_OHANASHI
-  );
+  const [nowOhanashiData, setNowOhanashiData] = useLocalStorageState<
+    OhanashiData
+  >('nowOhanashiData', SAMPLE_OHANASHI);
   // 入力フォームでどのアイコンを選択しているか
   const [selectedIconIndex, setSelectedIconIndex] = useState(-1);
   // 現在の表示シーン
-  const [scene, setScene] = useState<SceneType>('Ohanashi');
+  const [scene, setScene] = useLocalStorageState<SceneType>(
+    'scene',
+    'Ohanashi'
+  );
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -66,6 +69,10 @@ export const useApplicationStore = (): ApplicationStore => {
       }
       case 'toSelectIdolForm': {
         setScene('IdolSelect');
+        break;
+      }
+      case 'toBaseForm': {
+        setScene('Ohanashi');
         break;
       }
       default:

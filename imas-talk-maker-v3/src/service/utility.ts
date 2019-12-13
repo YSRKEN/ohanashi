@@ -1,5 +1,6 @@
 import { IDOL_MILLION_LIST } from 'constant/idol-million';
 import { Idol } from 'constant/type';
+import { useState, useEffect } from 'react';
 
 /**
  * 設定をローカルストレージから読み込む
@@ -115,8 +116,31 @@ export const findIdolByIconUrl = (url: string): Idol | null => {
   }
 };
 
+/**
+ * アイドル一覧を名前順にソートする
+ * @param list アイドル一覧
+ */
 export const sortIdolList = (list: Idol[]) => {
   return list.sort((a: Idol, b: Idol) =>
     a.kana > b.kana ? 1 : a.kana < b.kana ? -1 : 0
   );
+};
+
+/**
+ * 自動でローカルストレージに永続化するuseState
+ * @param key 保存キー
+ * @param defaultValue 初期値
+ */
+export const useLocalStorageState = <T>(
+  key: string,
+  defaultValue: T
+): [T, (t: T) => void] => {
+  const [val, setVal] = useState<T>(loadSetting(key, defaultValue));
+
+  useEffect(() => {
+    saveSetting(key, val);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [val]);
+
+  return [val, setVal];
 };
