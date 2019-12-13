@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "imas-talk-maker-2nd"
+  },
+  "targets": {
+    "imas-talk-maker-2nd": {
+      "hosting": {
+        "test": [
+          "imas-talk-maker-test"
+        ]
+      }
+    }
+  }
+}

@@ -1,38 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { GlobalStyles, SAMPLE_OHANASHI } from 'constant';
-import { ApplicationContext, useApplicationStore } from 'store';
-import OhanashiView from 'component/ohanashi-view';
-
-const SampleForm: React.FC = () => {
-  const { dispatch } = useContext(ApplicationContext);
-
-  return (
-    <>
-      <form>
-        <button onClick={() => dispatch({ type: 'alert', message: '' })}>
-          テスト
-        </button>
-      </form>
-      <OhanashiView dataList={SAMPLE_OHANASHI} />
-    </>
-  );
-};
+import { ApplicationContext, useApplicationStore } from 'service/store';
+import SelectedScene from 'container/selected-scene';
 
 const App: React.FC = () => {
   const store = useApplicationStore();
 
   return (
     <ApplicationContext.Provider value={store}>
-      <GlobalStyles />
-      <Title>テスト</Title>
-      <SampleForm />
+      <TitleWrapper>
+        <Title>アイマス会話メーカー</Title>
+      </TitleWrapper>
+      <SelectedScene />
     </ApplicationContext.Provider>
   );
 };
 
+const TitleWrapper = styled.div`
+  text-align: center;
+`;
+
 const Title = styled.span`
-  font-size: 3rem;
+  font-size: 2rem;
+  @media screen and (min-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 export default App;

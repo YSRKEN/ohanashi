@@ -1,3 +1,30 @@
+import { IDOL_MILLION_LIST } from 'constant/idol-million';
+import { Idol } from 'constant/type';
+import { useState, useEffect } from 'react';
+
+/**
+ * 設定をローカルストレージから読み込む
+ * @param key キー
+ * @param defaultValue デフォルト値
+ */
+export const loadSetting = <T>(key: string, defaultValue: T) => {
+  const data = window.localStorage.getItem(key);
+  if (data === null) {
+    return defaultValue;
+  }
+
+  return JSON.parse(data) as T;
+};
+
+/**
+ * 設定をローカルストレージに書き込む
+ * @param key キー
+ * @param value 値
+ */
+export const saveSetting = <T>(key: string, value: T) => {
+  window.localStorage.setItem(key, JSON.stringify(value));
+};
+
 /**
  * 画像を非同期に読み込み、HTMLImageElementとして返す
  * @param imagePath 画像のパス
@@ -23,7 +50,14 @@ export const loadImage = (imagePath: string): Promise<HTMLImageElement> => {
  * @param lineHeight 行間(pixel単位)
  * @param maxWidth 描画範囲の最大横幅
  */
-export const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: number, y: number, lineHeight: number, maxWidth: number | undefined) => {
+export const fillTextEx = (
+  canvas: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  lineHeight: number,
+  maxWidth: number | undefined
+) => {
   // 改行ごとに切り出す
   const splitedText = text.split('\n');
 
@@ -65,4 +99,48 @@ export const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: nu
     }
     canvas.fillText(text2, x, y + lineHeight * li, maxWidth);
   }
+};
+
+/**
+ * 指定したURLのアイコンに対するIdol型を検索する
+ */
+export const findIdolByIconUrl = (url: string): Idol | null => {
+  const index = IDOL_MILLION_LIST.findIndex(idol => {
+    const temp = idol.iconList.map(url => `${idol.category}/${url}`);
+    return temp.includes(url);
+  });
+  if (index < 0) {
+    return null;
+  } else {
+    return IDOL_MILLION_LIST[index];
+  }
+};
+
+/**
+ * アイドル一覧を名前順にソートする
+ * @param list アイドル一覧
+ */
+export const sortIdolList = (list: Idol[]) => {
+  return list.sort((a: Idol, b: Idol) =>
+    a.kana > b.kana ? 1 : a.kana < b.kana ? -1 : 0
+  );
+};
+
+/**
+ * 自動でローカルストレージに永続化するuseState
+ * @param key 保存キー
+ * @param defaultValue 初期値
+ */
+export const useLocalStorageState = <T>(
+  key: string,
+  defaultValue: T
+): [T, (t: T) => void] => {
+  const [val, setVal] = useState<T>(loadSetting(key, defaultValue));
+
+  useEffect(() => {
+    saveSetting(key, val);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [val]);
+
+  return [val, setVal];
 };

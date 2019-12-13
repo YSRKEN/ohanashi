@@ -1,33 +1,15 @@
-import { createGlobalStyle } from 'styled-components';
+import { OhanashiData } from 'constant/type';
 
-// システムで使用するフォント
-export const APPLICATION_FONT = 'Noto Sans JP';
+// 「おはなし」の初期データ
+export const SAMPLE_OHANASHI: OhanashiData = {
+  name: '千鶴',
+  iconUrls: ['million/nikaido_chizuru-1.png', 'million/tenkubashi_tomoka-1.png', 'million/tokoro_megumi-1.png', 'million/momose_rio-1.png'],
+  message: '',
+  messageMode: 'normal'
+};
 
-// システムで使用するフォントに対応するURL
-const FONT_URL = `https://fonts.googleapis.com/css?family=${APPLICATION_FONT.replace(' ', '+')}`;
-
-// システム共通に適用する CSS を設定する
-export const GlobalStyles = createGlobalStyle`
-  /* フォントを指定した Web フォントに設定する */
-  @import url('${FONT_URL}');
-  body {
-    font-family: '${APPLICATION_FONT}', sans-serif;
-  }
-`;
-
-// 「おはなし」の形態
-type MessageMode = 'normal' | 'double' | 'quartet' | 'message-only';
-
-// 「おはなし」の1データ
-export interface OhanashiData {
-  name: string;
-  iconUrls: string[];
-  message: string;
-  messageMode: MessageMode;
-}
-
-// サンプルデータ
-export const SAMPLE_OHANASHI: OhanashiData[] = [
+// 「おはなし」のサンプルデータ
+export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
   {
     name: '千鶴',
     iconUrls: ['million/nikaido_chizuru-1.png'],
@@ -59,3 +41,12 @@ export const SAMPLE_OHANASHI: OhanashiData[] = [
     messageMode: 'message-only'
   }
 ];
+
+// 「おはなし」の種類に応じたアイコン表示数
+export const OHANASHI_ICON_COUNT: { [key: string]: number } = {
+  normal: 1,
+  reverse: 1,
+  double: 2,
+  quartet: 4,
+  'message-only': 0
+};
