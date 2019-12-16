@@ -127,12 +127,19 @@ const OhanashiForm: React.FC = () => {
                 }
               />
               <MessageActionWrapper>
-                <InsertButton>挿入</InsertButton>
-                <ShiftButton>↑</ShiftButton>
-                <ShiftButton>↓</ShiftButton>
-                <SendButton>転送</SendButton>
-                <UpdateButton>上書</UpdateButton>
-                <DeleteButton>削除</DeleteButton>
+                <InsertButton type="button">挿入</InsertButton>
+                <ShiftButton type="button">↑</ShiftButton>
+                <ShiftButton type="button">↓</ShiftButton>
+                <SendButton type="button">転送</SendButton>
+                <UpdateButton type="button">上書</UpdateButton>
+                <DeleteButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'deleteOhanashi', message: '' })
+                  }
+                >
+                  削除
+                </DeleteButton>
               </MessageActionWrapper>
               <OhanashiView
                 dataList={ohanashiDataList.slice(messageSplitIndex + 1)}

@@ -60,6 +60,13 @@ export const useApplicationStore = (): ApplicationStore => {
         }
         break;
       }
+      case 'deleteOhanashi':
+        setOhanashiDataList([
+          ...ohanashiDataList.slice(0, messageSplitIndex),
+          ...ohanashiDataList.slice(messageSplitIndex + 1)
+        ]);
+        setMessageSplitIndex(-1);
+        break;
       case 'selectIcon': {
         const index = parseInt(action.message, 10);
         if (selectedIconIndex === index) {

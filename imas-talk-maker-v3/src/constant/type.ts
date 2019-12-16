@@ -21,6 +21,7 @@ export type ActionType =
   | 'changeMessageMode'
   | 'addOhanashi'
   | 'deleteAllOhanashi'
+  | 'deleteOhanashi'
   | 'selectIcon'
   | 'selectFaceIcon'
   | 'toSelectIdolForm'
