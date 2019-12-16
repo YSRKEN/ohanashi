@@ -236,6 +236,7 @@ const InsertButton = styled.button`
   color: black;
   margin: 0 0.25rem;
   text-decoration: none;
+  height: 2rem;
 `;
 
 const ShiftButton = InsertButton;
@@ -248,6 +249,7 @@ const UpdateButton = styled.button`
   color: black;
   margin: 0 0.25rem;
   text-decoration: none;
+  height: 2rem;
 `;
 
 const SendButton = UpdateButton;
@@ -259,6 +261,7 @@ const DeleteButton = styled.button`
   color: white;
   margin: 0 0.25rem;
   text-decoration: none;
+  height: 2rem;
 `;
 
 const Wrapper = styled.div`
