@@ -93,14 +93,18 @@ const OhanashiForm: React.FC = () => {
         </ControlWrapper>
       </Form>
       <PreviewForm>
-        <ControlWrapper>
-          <SaveButton href={downloadLink} download="ohanashi.png">
-            保存
-          </SaveButton>
-          <AllDeleteButton type="button" onClick={deleteAllMessage}>
-            全削除
-          </AllDeleteButton>
-        </ControlWrapper>
+        {ohanashiDataList.length > 0 ? (
+          <ControlWrapper>
+            <SaveButton href={downloadLink} download="ohanashi.png">
+              保存
+            </SaveButton>
+            <AllDeleteButton type="button" onClick={deleteAllMessage}>
+              全削除
+            </AllDeleteButton>
+          </ControlWrapper>
+        ) : (
+          <></>
+        )}
         <ControlWrapper>
           <OhanashiView
             dataList={ohanashiDataList}
