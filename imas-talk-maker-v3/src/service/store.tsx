@@ -27,6 +27,8 @@ export const useApplicationStore = (): ApplicationStore => {
   );
   // ダウンロードリンク
   const [downloadLink, setDownloadLink] = useState('#');
+  // 「おはなし」におけるどの位置で区切るか
+  const [messageSplitIndex] = useState(1);
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -106,6 +108,7 @@ export const useApplicationStore = (): ApplicationStore => {
     selectedIconIndex,
     scene,
     downloadLink,
+    messageSplitIndex,
     dispatch
   };
 };

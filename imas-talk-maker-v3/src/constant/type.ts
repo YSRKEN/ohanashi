@@ -41,6 +41,7 @@ export interface ApplicationStore {
   selectedIconIndex: number;
   scene: SceneType;
   downloadLink: string;
+  messageSplitIndex: number;
   dispatch: (action: Action) => void;
 }
 

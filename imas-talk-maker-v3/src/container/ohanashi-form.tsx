@@ -9,6 +9,7 @@ const OhanashiForm: React.FC = () => {
     nowOhanashiData,
     ohanashiDataList,
     downloadLink,
+    messageSplitIndex,
     dispatch
   } = useContext(ApplicationContext);
 
@@ -93,7 +94,7 @@ const OhanashiForm: React.FC = () => {
         </ControlWrapper>
       </Form>
       <PreviewForm>
-        {ohanashiDataList.length > 0 ? (
+        {ohanashiDataList.length > 0 && messageSplitIndex < 0 ? (
           <ControlWrapper>
             <SaveButton href={downloadLink} download="ohanashi.png">
               保存
@@ -106,13 +107,27 @@ const OhanashiForm: React.FC = () => {
           <></>
         )}
         <ControlWrapper>
-          <OhanashiView
-            dataList={ohanashiDataList}
-            setDownloadLink={url =>
-              dispatch({ type: 'setDownloadLink', message: url })
-            }
-            showLogoFlg={true}
-          />
+          {messageSplitIndex < 0 ? (
+            <OhanashiView
+              dataList={ohanashiDataList}
+              setDownloadLink={url =>
+                dispatch({ type: 'setDownloadLink', message: url })
+              }
+              showLogoFlg={true}
+            />
+          ) : (
+            <>
+              <OhanashiView
+                dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
+              />
+              <br />
+              <span>スキマ</span>
+              <br />
+              <OhanashiView
+                dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
+              />
+            </>
+          )}
         </ControlWrapper>
       </PreviewForm>
     </>
