@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { loadImage, fillTextEx } from 'service/utility';
+import { loadImage, fillTextEx, getOhanashiNameAuto } from 'service/utility';
 import { OhanashiData } from 'constant/type';
 
 // 「おはなし」の大きさ
@@ -189,7 +189,10 @@ const drawMethodImpl = async (
     // テキストの描画
     canvas.font = `14px Noto Sans JP`;
     canvas.textBaseline = 'top';
-    const name = dataList[di].name;
+    const name =
+      dataList[di].name === ''
+        ? getOhanashiNameAuto(dataList[di])
+        : dataList[di].name;
     const message = dataList[di].message;
     switch (dataList[di].messageMode) {
       case 'normal':

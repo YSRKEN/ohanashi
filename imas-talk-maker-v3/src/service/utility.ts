@@ -1,5 +1,5 @@
 import { IDOL_MILLION_LIST } from 'constant/idol-million';
-import { Idol } from 'constant/type';
+import { Idol, OhanashiData } from 'constant/type';
 import { useState, useEffect } from 'react';
 
 /**
@@ -143,4 +143,30 @@ export const useLocalStorageState = <T>(
   }, [val]);
 
   return [val, setVal];
+};
+
+/**
+ * 「おはなし」から、名前欄を自動生成する
+ * @param ohanashi 「おはなし」
+ */
+export const getOhanashiNameAuto = (ohanashi: OhanashiData) => {
+  switch (ohanashi.messageMode) {
+    case 'message-only':
+      return '';
+    case 'quartet':
+      return '';
+    case 'double': {
+      const idol1 = findIdolByIconUrl(ohanashi.iconUrls[0]);
+      const idol2 = findIdolByIconUrl(ohanashi.iconUrls[1]);
+      if (idol1 !== null && idol2 !== null) {
+        return `${idol1.shortName}＆${idol2.shortName}`;
+      } else {
+        return '';
+      }
+    }
+    default: {
+      const idol = findIdolByIconUrl(ohanashi.iconUrls[0]);
+      return idol !== null ? idol.shortName : '';
+    }
+  }
 };

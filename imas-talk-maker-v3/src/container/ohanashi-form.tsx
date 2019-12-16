@@ -52,7 +52,7 @@ const OhanashiForm: React.FC = () => {
       <Form>
         <ControlWrapper>
           <Name
-            placeholder="名前を入力"
+            placeholder="(未入力時は自動設定)"
             value={nowOhanashiData.name}
             onChange={changeName}
           />
