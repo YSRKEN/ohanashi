@@ -126,9 +126,14 @@ const OhanashiForm: React.FC = () => {
                   dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
                 }
               />
-              <br />
-              <span>スキマ</span>
-              <br />
+              <MessageActionWrapper>
+                <InsertButton>挿入</InsertButton>
+                <ShiftButton>↑</ShiftButton>
+                <ShiftButton>↓</ShiftButton>
+                <SendButton>転送</SendButton>
+                <UpdateButton>上書</UpdateButton>
+                <DeleteButton>削除</DeleteButton>
+              </MessageActionWrapper>
               <OhanashiView
                 dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
                 onClick={n =>
@@ -218,6 +223,42 @@ const AllDeleteButton = styled.button`
   padding: 0.25rem 1rem;
   color: white;
   margin: 0 0.5rem;
+`;
+
+const MessageActionWrapper = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const InsertButton = styled.button`
+  font-size: 1rem;
+  background-color: skyblue;
+  border: 1px solid black;
+  color: black;
+  margin: 0 0.25rem;
+  text-decoration: none;
+`;
+
+const ShiftButton = InsertButton;
+
+const UpdateButton = styled.button`
+  font-size: 1rem;
+  background-color: yellow;
+  border: 1px solid black;
+  padding: 0rem 0.5rem;
+  color: black;
+  margin: 0 0.25rem;
+  text-decoration: none;
+`;
+
+const SendButton = UpdateButton;
+
+const DeleteButton = styled.button`
+  font-size: 1rem;
+  background-color: red;
+  border: 1px solid black;
+  color: white;
+  margin: 0 0.25rem;
+  text-decoration: none;
 `;
 
 const Wrapper = styled.div`
