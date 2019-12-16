@@ -12,6 +12,52 @@ const ICON_SIZE = 76;
 // ロゴの縦幅
 const OHANASHI_LOGO_HEIGHT = 16;
 
+// 背景を描画する
+const drawBgImage = (
+  canvas: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  di: number
+) => {
+  canvas.drawImage(
+    image,
+    0,
+    0,
+    OHANASHI_WIDTH,
+    OHANASHI_HEIGHT,
+    0,
+    OHANASHI_HEIGHT * di,
+    OHANASHI_WIDTH,
+    OHANASHI_HEIGHT
+  );
+};
+
+// 文字を描画する
+const drawText = (
+  canvas: CanvasRenderingContext2D,
+  name: string,
+  message: string,
+  di: number,
+  nameX: number,
+  nameWidth: number,
+  messageX: number,
+  messageWidth: number
+) => {
+  // 名前部分を描画
+  canvas.fillStyle = '#f33281';
+  canvas.fillText(name, nameX, OHANASHI_HEIGHT * di + 8, nameWidth);
+
+  // メッセージ部分を描画
+  canvas.fillStyle = 'black';
+  fillTextEx(
+    canvas,
+    message,
+    messageX,
+    OHANASHI_HEIGHT * di + 23,
+    17.5,
+    messageWidth
+  );
+};
+
 // 描画メソッド
 const drawMethodImpl = async (
   canvas: CanvasRenderingContext2D,
@@ -28,71 +74,21 @@ const drawMethodImpl = async (
   // 描画を行う
   for (let di = 0; di < dataList.length; di += 1) {
     // 背景の描画
-    canvas.drawImage(
-      bgImage,
-      0,
-      0,
-      OHANASHI_WIDTH,
-      OHANASHI_HEIGHT,
-      0,
-      OHANASHI_HEIGHT * di,
-      OHANASHI_WIDTH,
-      OHANASHI_HEIGHT
-    );
+    drawBgImage(canvas, bgImage, di);
 
     // 会話枠の描画
     switch (dataList[di].messageMode) {
       case 'normal':
-        canvas.drawImage(
-          balloon1,
-          0,
-          0,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT,
-          0,
-          OHANASHI_HEIGHT * di,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT
-        );
+        drawBgImage(canvas, balloon1, di);
         break;
       case 'reverse':
-        canvas.drawImage(
-          balloon2,
-          0,
-          0,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT,
-          0,
-          OHANASHI_HEIGHT * di,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT
-        );
+        drawBgImage(canvas, balloon2, di);
         break;
       case 'double':
-        canvas.drawImage(
-          balloon3,
-          0,
-          0,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT,
-          0,
-          OHANASHI_HEIGHT * di,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT
-        );
+        drawBgImage(canvas, balloon3, di);
         break;
       case 'message-only':
-        canvas.drawImage(
-          balloon4,
-          0,
-          0,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT,
-          0,
-          OHANASHI_HEIGHT * di,
-          OHANASHI_WIDTH,
-          OHANASHI_HEIGHT
-        );
+        drawBgImage(canvas, balloon4, di);
         break;
       default:
         // dataList[di].messageMode === 'quartet'の場合、会話枠は描画しない
@@ -193,80 +189,38 @@ const drawMethodImpl = async (
     // テキストの描画
     canvas.font = `14px Noto Sans JP`;
     canvas.textBaseline = 'top';
+    const name = dataList[di].name;
+    const message = dataList[di].message;
     switch (dataList[di].messageMode) {
       case 'normal':
-        // 名前部分を描画
-        canvas.fillStyle = '#f33281';
-        canvas.fillText(
-          dataList[di].name,
-          ICON_SIZE + 16,
-          OHANASHI_HEIGHT * di + 8,
-          214
-        );
-
-        // メッセージ部分を描画
-        canvas.fillStyle = 'black';
-        fillTextEx(
+        drawText(
           canvas,
-          dataList[di].message,
+          name,
+          message,
+          di,
           ICON_SIZE + 16,
-          OHANASHI_HEIGHT * di + 23,
-          17.5,
+          214,
+          ICON_SIZE + 16,
           214
         );
         break;
       case 'reverse':
-        // 名前部分を描画
-        canvas.fillStyle = '#f33281';
-        canvas.fillText(dataList[di].name, 14, OHANASHI_HEIGHT * di + 8, 214);
-
-        // メッセージ部分を描画
-        canvas.fillStyle = 'black';
-        fillTextEx(
-          canvas,
-          dataList[di].message,
-          14,
-          OHANASHI_HEIGHT * di + 23,
-          17.5,
-          214
-        );
+        drawText(canvas, name, message, di, 14, 214, 14, 214);
         break;
       case 'double':
-        // 名前部分を描画
-        canvas.fillStyle = '#f33281';
-        canvas.fillText(
-          dataList[di].name,
-          ICON_SIZE + 16,
-          OHANASHI_HEIGHT * di + 8,
-          140
-        );
-
-        // メッセージ部分を描画
-        canvas.fillStyle = 'black';
-        fillTextEx(
+        drawText(
           canvas,
-          dataList[di].message,
+          name,
+          message,
+          di,
           ICON_SIZE + 16,
-          OHANASHI_HEIGHT * di + 23,
-          17.5,
+          140,
+          ICON_SIZE + 16,
           140
         );
         break;
       case 'message-only':
-        // 名前部分を描画
-        canvas.fillStyle = '#f33281';
-        canvas.fillText(dataList[di].name, 14, OHANASHI_HEIGHT * di + 8, 292);
-
-        // メッセージ部分を描画
-        canvas.fillStyle = 'black';
-        fillTextEx(
-          canvas,
-          dataList[di].message,
-          14,
-          OHANASHI_HEIGHT * di + 23,
-          17.5,
-          292
-        );
+        drawText(canvas, name, message, di, 14, 292, 14, 292);
         break;
       default:
         // dataList[di].messageMode === 'quartet'の場合、テキストは描画しない
@@ -275,10 +229,20 @@ const drawMethodImpl = async (
   }
   if (showLogoFlg) {
     canvas.fillStyle = 'black';
-    canvas.fillRect(0, OHANASHI_HEIGHT * dataList.length, OHANASHI_WIDTH, OHANASHI_LOGO_HEIGHT + 2);
+    canvas.fillRect(
+      0,
+      OHANASHI_HEIGHT * dataList.length,
+      OHANASHI_WIDTH,
+      OHANASHI_LOGO_HEIGHT + 2
+    );
     canvas.fillStyle = 'white';
     canvas.font = `${OHANASHI_LOGO_HEIGHT}px Noto Sans JP`;
-    canvas.fillText('アイマス会話メーカーv3', OHANASHI_WIDTH - OHANASHI_LOGO_HEIGHT * 12, OHANASHI_HEIGHT * dataList.length, OHANASHI_WIDTH);
+    canvas.fillText(
+      'アイマス会話メーカーv3',
+      OHANASHI_WIDTH - OHANASHI_LOGO_HEIGHT * 12,
+      OHANASHI_HEIGHT * dataList.length,
+      OHANASHI_WIDTH
+    );
   }
   canvas.save();
 };
@@ -322,7 +286,10 @@ const OhanashiView: React.FC<{
     <canvas
       ref={canvasRef}
       width={OHANASHI_WIDTH}
-      height={OHANASHI_HEIGHT * dataList.length + (showLogoFlg ? OHANASHI_LOGO_HEIGHT + 2 : 0)}
+      height={
+        OHANASHI_HEIGHT * dataList.length +
+        (showLogoFlg ? OHANASHI_LOGO_HEIGHT + 2 : 0)
+      }
     />
   );
 };
