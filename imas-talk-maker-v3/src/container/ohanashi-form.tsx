@@ -114,17 +114,26 @@ const OhanashiForm: React.FC = () => {
                 dispatch({ type: 'setDownloadLink', message: url })
               }
               showLogoFlg={true}
+              onClick={n =>
+                dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
+              }
             />
           ) : (
             <>
               <OhanashiView
                 dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
+                onClick={n =>
+                  dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
+                }
               />
               <br />
               <span>スキマ</span>
               <br />
               <OhanashiView
                 dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
+                onClick={n =>
+                  dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })
+                }
               />
             </>
           )}

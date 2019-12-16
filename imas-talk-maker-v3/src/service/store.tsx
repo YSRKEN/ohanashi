@@ -28,7 +28,7 @@ export const useApplicationStore = (): ApplicationStore => {
   // ダウンロードリンク
   const [downloadLink, setDownloadLink] = useState('#');
   // 「おはなし」におけるどの位置で区切るか
-  const [messageSplitIndex] = useState(1);
+  const [messageSplitIndex, setMessageSplitIndex] = useState(-1);
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -97,6 +97,26 @@ export const useApplicationStore = (): ApplicationStore => {
       case 'setDownloadLink':
         setDownloadLink(action.message);
         break;
+      case 'clickUpperOhanashiView': {
+        const index = parseInt(action.message, 10);
+        const newMessageSplitIndex = index;
+        if (messageSplitIndex === newMessageSplitIndex) {
+          setMessageSplitIndex(-1);
+        } else {
+          setMessageSplitIndex(newMessageSplitIndex);
+        }
+        break;
+      }
+      case 'clickLowerOhanashiView': {
+        const index = parseInt(action.message, 10);
+        if (index < 0) {
+          setMessageSplitIndex(-1);
+        } else {
+          const newMessageSplitIndex = index + messageSplitIndex + 1;
+          setMessageSplitIndex(newMessageSplitIndex);
+        }
+        break;
+      }
       default:
         break;
     }

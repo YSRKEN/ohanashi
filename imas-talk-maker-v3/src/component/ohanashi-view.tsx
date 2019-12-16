@@ -254,7 +254,13 @@ const OhanashiView: React.FC<{
   dataList: OhanashiData[];
   setDownloadLink?: (val: string) => void;
   showLogoFlg?: boolean;
-}> = ({ dataList, setDownloadLink = () => {}, showLogoFlg = false }) => {
+  onClick?: (val: number) => void;
+}> = ({
+  dataList,
+  setDownloadLink = () => {},
+  showLogoFlg = false,
+  onClick = () => {}
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // 描画に必要なコンテキストが得られたなら描画を行う
@@ -285,6 +291,18 @@ const OhanashiView: React.FC<{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvasRef, dataList]);
 
+  // クリック時の処理
+  const onClickCanvas = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    const yPos = Math.floor((1.0 * y) / OHANASHI_HEIGHT);
+    if (yPos >= dataList.length) {
+      onClick(-1);
+    } else {
+      onClick(yPos);
+    }
+  };
+
   return (
     <canvas
       ref={canvasRef}
@@ -293,6 +311,7 @@ const OhanashiView: React.FC<{
         OHANASHI_HEIGHT * dataList.length +
         (showLogoFlg ? OHANASHI_LOGO_HEIGHT + 2 : 0)
       }
+      onClick={onClickCanvas}
     />
   );
 };

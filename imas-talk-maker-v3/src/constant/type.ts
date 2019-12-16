@@ -26,7 +26,9 @@ export type ActionType =
   | 'toSelectIdolForm'
   | 'toBaseForm'
   | 'selectIdolIcon'
-  | 'setDownloadLink';
+  | 'setDownloadLink'
+  | 'clickUpperOhanashiView'
+  | 'clickLowerOhanashiView';
 
 // Action本体
 export interface Action {
