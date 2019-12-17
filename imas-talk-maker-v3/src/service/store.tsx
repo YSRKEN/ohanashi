@@ -54,6 +54,56 @@ export const useApplicationStore = (): ApplicationStore => {
         setOhanashiDataList([...ohanashiDataList, temp]);
         break;
       }
+      case 'insertOhanashi': {
+        const temp = JSON.parse(
+          JSON.stringify(nowOhanashiData)
+        ) as OhanashiData;
+        setOhanashiDataList([
+          ...ohanashiDataList.slice(0, messageSplitIndex + 1),
+          temp,
+          ...ohanashiDataList.slice(messageSplitIndex + 1)
+        ]);
+        setMessageSplitIndex(messageSplitIndex + 1);
+        break;
+      }
+      case 'upOhanashi':
+        if (messageSplitIndex > 0) {
+          setOhanashiDataList([
+            ...ohanashiDataList.slice(0, messageSplitIndex - 1),
+            ohanashiDataList[messageSplitIndex],
+            ohanashiDataList[messageSplitIndex - 1],
+            ...ohanashiDataList.slice(messageSplitIndex + 1)
+          ]);
+          setMessageSplitIndex(messageSplitIndex - 1);
+        }
+        break;
+      case 'downOhanashi':
+        if (messageSplitIndex < ohanashiDataList.length - 1) {
+          setOhanashiDataList([
+            ...ohanashiDataList.slice(0, messageSplitIndex),
+            ohanashiDataList[messageSplitIndex + 1],
+            ohanashiDataList[messageSplitIndex],
+            ...ohanashiDataList.slice(messageSplitIndex + 2)
+          ]);
+          setMessageSplitIndex(messageSplitIndex + 1);
+        }
+        break;
+      case 'editOhanashi':
+        setNowOhanashiData(
+          JSON.parse(JSON.stringify(ohanashiDataList[messageSplitIndex]))
+        );
+        break;
+      case 'overWriteOhanashi': {
+        const temp = JSON.parse(
+          JSON.stringify(nowOhanashiData)
+        ) as OhanashiData;
+        setOhanashiDataList([
+          ...ohanashiDataList.slice(0, messageSplitIndex),
+          temp,
+          ...ohanashiDataList.slice(messageSplitIndex + 1)
+        ]);
+        break;
+      }
       case 'deleteAllOhanashi': {
         if (window.confirm('全ての「おはなし」を削除しますか？')) {
           setOhanashiDataList([]);

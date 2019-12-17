@@ -127,11 +127,44 @@ const OhanashiForm: React.FC = () => {
                 }
               />
               <MessageActionWrapper>
-                <InsertButton type="button">挿入</InsertButton>
-                <ShiftButton type="button">↑</ShiftButton>
-                <ShiftButton type="button">↓</ShiftButton>
-                <SendButton type="button">転送</SendButton>
-                <UpdateButton type="button">上書</UpdateButton>
+                <InsertButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'insertOhanashi', message: '' })
+                  }
+                >
+                  挿入
+                </InsertButton>
+                <ShiftButton
+                  type="button"
+                  onClick={() => dispatch({ type: 'upOhanashi', message: '' })}
+                >
+                  ↑
+                </ShiftButton>
+                <ShiftButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'downOhanashi', message: '' })
+                  }
+                >
+                  ↓
+                </ShiftButton>
+                <SendButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'editOhanashi', message: '' })
+                  }
+                >
+                  転送
+                </SendButton>
+                <UpdateButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'overWriteOhanashi', message: '' })
+                  }
+                >
+                  上書
+                </UpdateButton>
                 <DeleteButton
                   type="button"
                   onClick={() =>
