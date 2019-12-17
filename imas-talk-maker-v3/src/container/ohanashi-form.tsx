@@ -5,13 +5,7 @@ import styled from 'styled-components';
 import IconForm from 'container/icon-form';
 
 const OhanashiForm: React.FC = () => {
-  const {
-    nowOhanashiData,
-    ohanashiDataList,
-    downloadLink,
-    messageSplitIndex,
-    dispatch
-  } = useContext(ApplicationContext);
+  const { nowOhanashiData, ohanashiDataList, downloadLink, messageSplitIndex, dispatch } = useContext(ApplicationContext);
 
   const changeName = (e: FormEvent<HTMLInputElement>) => {
     dispatch({
@@ -52,26 +46,14 @@ const OhanashiForm: React.FC = () => {
     <>
       <Form>
         <ControlWrapper>
-          <Name
-            placeholder="(未入力時は自動設定)"
-            value={nowOhanashiData.name}
-            onChange={changeName}
-          />
+          <Name placeholder="(未入力時は自動設定)" value={nowOhanashiData.name} onChange={changeName} />
         </ControlWrapper>
         <ControlWrapper>
-          <Message
-            placeholder="メッセージを入力"
-            rows={3}
-            value={nowOhanashiData.message}
-            onChange={changeMessage}
-          />
+          <Message placeholder="メッセージを入力" rows={3} value={nowOhanashiData.message} onChange={changeMessage} />
         </ControlWrapper>
         <ControlWrapper>
           <FormLabel>アイコン：</FormLabel>
-          <TypeSelect
-            value={nowOhanashiData.messageMode}
-            onChange={changeMessageMode}
-          >
+          <TypeSelect value={nowOhanashiData.messageMode} onChange={changeMessageMode}>
             <TypeOption value="normal">通常</TypeOption>
             <TypeOption value="reverse">反転</TypeOption>
             <TypeOption value="double">ダブル</TypeOption>
@@ -110,75 +92,39 @@ const OhanashiForm: React.FC = () => {
           {messageSplitIndex < 0 ? (
             <OhanashiView
               dataList={ohanashiDataList}
-              setDownloadLink={url =>
-                dispatch({ type: 'setDownloadLink', message: url })
-              }
+              setDownloadLink={url => dispatch({ type: 'setDownloadLink', message: url })}
               showLogoFlg={true}
-              onClick={n =>
-                dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
-              }
+              onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
             />
           ) : (
             <>
               <OhanashiView
                 dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
-                onClick={n =>
-                  dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
-                }
+                onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
               />
               <MessageActionWrapper>
-                <InsertButton
-                  type="button"
-                  onClick={() =>
-                    dispatch({ type: 'insertOhanashi', message: '' })
-                  }
-                >
+                <InsertButton type="button" onClick={() => dispatch({ type: 'insertOhanashi', message: '' })}>
                   挿入
                 </InsertButton>
-                <ShiftButton
-                  type="button"
-                  onClick={() => dispatch({ type: 'upOhanashi', message: '' })}
-                >
+                <ShiftButton type="button" onClick={() => dispatch({ type: 'upOhanashi', message: '' })}>
                   ↑
                 </ShiftButton>
-                <ShiftButton
-                  type="button"
-                  onClick={() =>
-                    dispatch({ type: 'downOhanashi', message: '' })
-                  }
-                >
+                <ShiftButton type="button" onClick={() => dispatch({ type: 'downOhanashi', message: '' })}>
                   ↓
                 </ShiftButton>
-                <SendButton
-                  type="button"
-                  onClick={() =>
-                    dispatch({ type: 'editOhanashi', message: '' })
-                  }
-                >
+                <SendButton type="button" onClick={() => dispatch({ type: 'editOhanashi', message: '' })}>
                   転送
                 </SendButton>
-                <UpdateButton
-                  type="button"
-                  onClick={() =>
-                    dispatch({ type: 'overWriteOhanashi', message: '' })
-                  }
-                >
+                <UpdateButton type="button" onClick={() => dispatch({ type: 'overWriteOhanashi', message: '' })}>
                   上書
                 </UpdateButton>
-                <DeleteButton
-                  type="button"
-                  onClick={() =>
-                    dispatch({ type: 'deleteOhanashi', message: '' })
-                  }
-                >
+                <DeleteButton type="button" onClick={() => dispatch({ type: 'deleteOhanashi', message: '' })}>
                   削除
                 </DeleteButton>
               </MessageActionWrapper>
               <OhanashiView
                 dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
-                onClick={n =>
-                  dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })
-                }
+                onClick={n => dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })}
               />
             </>
           )}

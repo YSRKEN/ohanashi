@@ -13,11 +13,7 @@ const IdolSelectForm: React.FC = () => {
   return (
     <Form>
       <ControlWeapper>
-        <BackButton
-          onClick={() => dispatch({ type: 'toBaseForm', message: '' })}
-        >
-          戻る
-        </BackButton>
+        <BackButton onClick={() => dispatch({ type: 'toBaseForm', message: '' })}>戻る</BackButton>
       </ControlWeapper>
       <ControlWeapper>
         {idolList.map(idol => {

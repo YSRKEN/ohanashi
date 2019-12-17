@@ -1,30 +1,17 @@
 import { createContext, useState } from 'react';
 import { useLocalStorageState } from 'service/utility';
-import {
-  OhanashiData,
-  ApplicationStore,
-  Action,
-  MessageMode,
-  SceneType
-} from 'constant/type';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
   // 現在入力している「おはなし」の一覧
-  const [ohanashiDataList, setOhanashiDataList] = useLocalStorageState<
-    OhanashiData[]
-  >('ohanashiDataList', SAMPLE_OHANASHI_LIST);
+  const [ohanashiDataList, setOhanashiDataList] = useLocalStorageState<OhanashiData[]>('ohanashiDataList', SAMPLE_OHANASHI_LIST);
   // プレビュー用の「おはなし」
-  const [nowOhanashiData, setNowOhanashiData] = useLocalStorageState<
-    OhanashiData
-  >('nowOhanashiData', SAMPLE_OHANASHI);
+  const [nowOhanashiData, setNowOhanashiData] = useLocalStorageState<OhanashiData>('nowOhanashiData', SAMPLE_OHANASHI);
   // 入力フォームでどのアイコンを選択しているか
   const [selectedIconIndex, setSelectedIconIndex] = useState(-1);
   // 現在の表示シーン
-  const [scene, setScene] = useLocalStorageState<SceneType>(
-    'scene',
-    'Ohanashi'
-  );
+  const [scene, setScene] = useLocalStorageState<SceneType>('scene', 'Ohanashi');
   // ダウンロードリンク
   const [downloadLink, setDownloadLink] = useState('#');
   // 「おはなし」におけるどの位置で区切るか
@@ -48,21 +35,13 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       }
       case 'addOhanashi': {
-        const temp = JSON.parse(
-          JSON.stringify(nowOhanashiData)
-        ) as OhanashiData;
+        const temp = JSON.parse(JSON.stringify(nowOhanashiData)) as OhanashiData;
         setOhanashiDataList([...ohanashiDataList, temp]);
         break;
       }
       case 'insertOhanashi': {
-        const temp = JSON.parse(
-          JSON.stringify(nowOhanashiData)
-        ) as OhanashiData;
-        setOhanashiDataList([
-          ...ohanashiDataList.slice(0, messageSplitIndex + 1),
-          temp,
-          ...ohanashiDataList.slice(messageSplitIndex + 1)
-        ]);
+        const temp = JSON.parse(JSON.stringify(nowOhanashiData)) as OhanashiData;
+        setOhanashiDataList([...ohanashiDataList.slice(0, messageSplitIndex + 1), temp, ...ohanashiDataList.slice(messageSplitIndex + 1)]);
         setMessageSplitIndex(messageSplitIndex + 1);
         break;
       }
@@ -89,19 +68,11 @@ export const useApplicationStore = (): ApplicationStore => {
         }
         break;
       case 'editOhanashi':
-        setNowOhanashiData(
-          JSON.parse(JSON.stringify(ohanashiDataList[messageSplitIndex]))
-        );
+        setNowOhanashiData(JSON.parse(JSON.stringify(ohanashiDataList[messageSplitIndex])));
         break;
       case 'overWriteOhanashi': {
-        const temp = JSON.parse(
-          JSON.stringify(nowOhanashiData)
-        ) as OhanashiData;
-        setOhanashiDataList([
-          ...ohanashiDataList.slice(0, messageSplitIndex),
-          temp,
-          ...ohanashiDataList.slice(messageSplitIndex + 1)
-        ]);
+        const temp = JSON.parse(JSON.stringify(nowOhanashiData)) as OhanashiData;
+        setOhanashiDataList([...ohanashiDataList.slice(0, messageSplitIndex), temp, ...ohanashiDataList.slice(messageSplitIndex + 1)]);
         break;
       }
       case 'deleteAllOhanashi': {
@@ -111,10 +82,7 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       }
       case 'deleteOhanashi':
-        setOhanashiDataList([
-          ...ohanashiDataList.slice(0, messageSplitIndex),
-          ...ohanashiDataList.slice(messageSplitIndex + 1)
-        ]);
+        setOhanashiDataList([...ohanashiDataList.slice(0, messageSplitIndex), ...ohanashiDataList.slice(messageSplitIndex + 1)]);
         setMessageSplitIndex(-1);
         break;
       case 'selectIcon': {
@@ -190,6 +158,4 @@ export const useApplicationStore = (): ApplicationStore => {
   };
 };
 
-export const ApplicationContext = createContext<ApplicationStore>(
-  {} as ApplicationStore
-);
+export const ApplicationContext = createContext<ApplicationStore>({} as ApplicationStore);

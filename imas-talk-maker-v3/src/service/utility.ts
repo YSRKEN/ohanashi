@@ -50,14 +50,7 @@ export const loadImage = (imagePath: string): Promise<HTMLImageElement> => {
  * @param lineHeight 行間(pixel単位)
  * @param maxWidth 描画範囲の最大横幅
  */
-export const fillTextEx = (
-  canvas: CanvasRenderingContext2D,
-  text: string,
-  x: number,
-  y: number,
-  lineHeight: number,
-  maxWidth: number | undefined
-) => {
+export const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: number, y: number, lineHeight: number, maxWidth: number | undefined) => {
   // 改行ごとに切り出す
   const splitedText = text.split('\n');
 
@@ -121,9 +114,7 @@ export const findIdolByIconUrl = (url: string): Idol | null => {
  * @param list アイドル一覧
  */
 export const sortIdolList = (list: Idol[]) => {
-  return list.sort((a: Idol, b: Idol) =>
-    a.kana > b.kana ? 1 : a.kana < b.kana ? -1 : 0
-  );
+  return list.sort((a: Idol, b: Idol) => (a.kana > b.kana ? 1 : a.kana < b.kana ? -1 : 0));
 };
 
 /**
@@ -131,10 +122,7 @@ export const sortIdolList = (list: Idol[]) => {
  * @param key 保存キー
  * @param defaultValue 初期値
  */
-export const useLocalStorageState = <T>(
-  key: string,
-  defaultValue: T
-): [T, (t: T) => void] => {
+export const useLocalStorageState = <T>(key: string, defaultValue: T): [T, (t: T) => void] => {
   const [val, setVal] = useState<T>(loadSetting(key, defaultValue));
 
   useEffect(() => {

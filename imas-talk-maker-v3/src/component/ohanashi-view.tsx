@@ -13,22 +13,8 @@ const ICON_SIZE = 76;
 const OHANASHI_LOGO_HEIGHT = 16;
 
 // 背景を描画する
-const drawBgImage = (
-  canvas: CanvasRenderingContext2D,
-  image: HTMLImageElement,
-  di: number
-) => {
-  canvas.drawImage(
-    image,
-    0,
-    0,
-    OHANASHI_WIDTH,
-    OHANASHI_HEIGHT,
-    0,
-    OHANASHI_HEIGHT * di,
-    OHANASHI_WIDTH,
-    OHANASHI_HEIGHT
-  );
+const drawBgImage = (canvas: CanvasRenderingContext2D, image: HTMLImageElement, di: number) => {
+  canvas.drawImage(image, 0, 0, OHANASHI_WIDTH, OHANASHI_HEIGHT, 0, OHANASHI_HEIGHT * di, OHANASHI_WIDTH, OHANASHI_HEIGHT);
 };
 
 // 文字を描画する
@@ -48,22 +34,11 @@ const drawText = (
 
   // メッセージ部分を描画
   canvas.fillStyle = 'black';
-  fillTextEx(
-    canvas,
-    message,
-    messageX,
-    OHANASHI_HEIGHT * di + 23,
-    17.5,
-    messageWidth
-  );
+  fillTextEx(canvas, message, messageX, OHANASHI_HEIGHT * di + 23, 17.5, messageWidth);
 };
 
 // 描画メソッド
-const drawMethodImpl = async (
-  canvas: CanvasRenderingContext2D,
-  dataList: OhanashiData[],
-  showLogoFlg: boolean
-) => {
+const drawMethodImpl = async (canvas: CanvasRenderingContext2D, dataList: OhanashiData[], showLogoFlg: boolean) => {
   // 描画用の画像を読み込む
   const bgImage = await loadImage('./asset/background.png');
   const balloon1 = await loadImage('./asset/balloon1.png');
@@ -98,86 +73,26 @@ const drawMethodImpl = async (
     // アイコンの描画
     switch (dataList[di].messageMode) {
       case 'normal': {
-        const iconImage = await loadImage(
-          `./asset/${dataList[di].iconUrls[0]}`
-        );
-        canvas.drawImage(
-          iconImage,
-          0,
-          0,
-          iconImage.width,
-          iconImage.height,
-          5,
-          OHANASHI_HEIGHT * di + 4,
-          ICON_SIZE,
-          ICON_SIZE
-        );
+        const iconImage = await loadImage(`./asset/${dataList[di].iconUrls[0]}`);
+        canvas.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, 5, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
         break;
       }
       case 'reverse': {
-        const iconImage = await loadImage(
-          `./asset/${dataList[di].iconUrls[0]}`
-        );
-        canvas.drawImage(
-          iconImage,
-          0,
-          0,
-          iconImage.width,
-          iconImage.height,
-          OHANASHI_WIDTH - 5 - ICON_SIZE,
-          OHANASHI_HEIGHT * di + 4,
-          ICON_SIZE,
-          ICON_SIZE
-        );
+        const iconImage = await loadImage(`./asset/${dataList[di].iconUrls[0]}`);
+        canvas.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, OHANASHI_WIDTH - 5 - ICON_SIZE, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
         break;
       }
       case 'double': {
-        const iconImage1 = await loadImage(
-          `./asset/${dataList[di].iconUrls[0]}`
-        );
-        const iconImage2 = await loadImage(
-          `./asset/${dataList[di].iconUrls[1]}`
-        );
-        canvas.drawImage(
-          iconImage1,
-          0,
-          0,
-          iconImage1.width,
-          iconImage1.height,
-          5,
-          OHANASHI_HEIGHT * di + 4,
-          ICON_SIZE,
-          ICON_SIZE
-        );
-        canvas.drawImage(
-          iconImage2,
-          0,
-          0,
-          iconImage2.width,
-          iconImage2.height,
-          OHANASHI_WIDTH - 5 - ICON_SIZE,
-          OHANASHI_HEIGHT * di + 4,
-          ICON_SIZE,
-          ICON_SIZE
-        );
+        const iconImage1 = await loadImage(`./asset/${dataList[di].iconUrls[0]}`);
+        const iconImage2 = await loadImage(`./asset/${dataList[di].iconUrls[1]}`);
+        canvas.drawImage(iconImage1, 0, 0, iconImage1.width, iconImage1.height, 5, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
+        canvas.drawImage(iconImage2, 0, 0, iconImage2.width, iconImage2.height, OHANASHI_WIDTH - 5 - ICON_SIZE, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
         break;
       }
       case 'quartet': {
         for (let ii = 0; ii < 4; ii += 1) {
-          const iconImage = await loadImage(
-            `./asset/${dataList[di].iconUrls[ii]}`
-          );
-          canvas.drawImage(
-            iconImage,
-            0,
-            0,
-            iconImage.width,
-            iconImage.height,
-            3 + ICON_SIZE * ii + 3 * ii,
-            OHANASHI_HEIGHT * di + 4,
-            ICON_SIZE,
-            ICON_SIZE
-          );
+          const iconImage = await loadImage(`./asset/${dataList[di].iconUrls[ii]}`);
+          canvas.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, 3 + ICON_SIZE * ii + 3 * ii, OHANASHI_HEIGHT * di + 4, ICON_SIZE, ICON_SIZE);
         }
         break;
       }
@@ -189,38 +104,17 @@ const drawMethodImpl = async (
     // テキストの描画
     canvas.font = `14px Noto Sans JP`;
     canvas.textBaseline = 'top';
-    const name =
-      dataList[di].name === ''
-        ? getOhanashiNameAuto(dataList[di])
-        : dataList[di].name;
+    const name = dataList[di].name === '' ? getOhanashiNameAuto(dataList[di]) : dataList[di].name;
     const message = dataList[di].message;
     switch (dataList[di].messageMode) {
       case 'normal':
-        drawText(
-          canvas,
-          name,
-          message,
-          di,
-          ICON_SIZE + 16,
-          214,
-          ICON_SIZE + 16,
-          214
-        );
+        drawText(canvas, name, message, di, ICON_SIZE + 16, 214, ICON_SIZE + 16, 214);
         break;
       case 'reverse':
         drawText(canvas, name, message, di, 14, 214, 14, 214);
         break;
       case 'double':
-        drawText(
-          canvas,
-          name,
-          message,
-          di,
-          ICON_SIZE + 16,
-          140,
-          ICON_SIZE + 16,
-          140
-        );
+        drawText(canvas, name, message, di, ICON_SIZE + 16, 140, ICON_SIZE + 16, 140);
         break;
       case 'message-only':
         drawText(canvas, name, message, di, 14, 292, 14, 292);
@@ -232,20 +126,10 @@ const drawMethodImpl = async (
   }
   if (showLogoFlg) {
     canvas.fillStyle = 'black';
-    canvas.fillRect(
-      0,
-      OHANASHI_HEIGHT * dataList.length,
-      OHANASHI_WIDTH,
-      OHANASHI_LOGO_HEIGHT + 2
-    );
+    canvas.fillRect(0, OHANASHI_HEIGHT * dataList.length, OHANASHI_WIDTH, OHANASHI_LOGO_HEIGHT + 2);
     canvas.fillStyle = 'white';
     canvas.font = `${OHANASHI_LOGO_HEIGHT}px Noto Sans JP`;
-    canvas.fillText(
-      'アイマス会話メーカーv3',
-      OHANASHI_WIDTH - OHANASHI_LOGO_HEIGHT * 12,
-      OHANASHI_HEIGHT * dataList.length,
-      OHANASHI_WIDTH
-    );
+    canvas.fillText('アイマス会話メーカーv3', OHANASHI_WIDTH - OHANASHI_LOGO_HEIGHT * 12, OHANASHI_HEIGHT * dataList.length, OHANASHI_WIDTH);
   }
   canvas.save();
 };
@@ -255,12 +139,7 @@ const OhanashiView: React.FC<{
   setDownloadLink?: (val: string) => void;
   showLogoFlg?: boolean;
   onClick?: (val: number) => void;
-}> = ({
-  dataList,
-  setDownloadLink = () => {},
-  showLogoFlg = false,
-  onClick = () => {}
-}) => {
+}> = ({ dataList, setDownloadLink = () => {}, showLogoFlg = false, onClick = () => {} }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // 描画に必要なコンテキストが得られたなら描画を行う
@@ -307,10 +186,7 @@ const OhanashiView: React.FC<{
     <canvas
       ref={canvasRef}
       width={OHANASHI_WIDTH}
-      height={
-        OHANASHI_HEIGHT * dataList.length +
-        (showLogoFlg ? OHANASHI_LOGO_HEIGHT + 2 : 0)
-      }
+      height={OHANASHI_HEIGHT * dataList.length + (showLogoFlg ? OHANASHI_LOGO_HEIGHT + 2 : 0)}
       onClick={onClickCanvas}
     />
   );

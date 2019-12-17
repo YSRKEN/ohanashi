@@ -9,9 +9,7 @@ const ICON_SIZE_1 = 50;
 const ICON_SIZE_2 = 35;
 
 const IconForm: React.FC<{}> = () => {
-  const { nowOhanashiData, selectedIconIndex, dispatch } = useContext(
-    ApplicationContext
-  );
+  const { nowOhanashiData, selectedIconIndex, dispatch } = useContext(ApplicationContext);
   const [iconList, setIconList] = useState<string[]>([]);
   const [faceIconList, setFaceIconList] = useState<string[]>([]);
 
@@ -74,43 +72,16 @@ const IconForm: React.FC<{}> = () => {
       <br />
       {iconList.map((url, index) => {
         if (selectedIconIndex !== index) {
-          return (
-            <IconView
-              key={index}
-              alt={url}
-              src={`./asset/${url}`}
-              onClick={() => onClickIcon(index)}
-            />
-          );
+          return <IconView key={index} alt={url} src={`./asset/${url}`} onClick={() => onClickIcon(index)} />;
         } else {
-          return (
-            <SelectedIconView
-              key={index}
-              alt={url}
-              src={`./asset/${url}`}
-              onClick={() => onClickIcon(index)}
-            />
-          );
+          return <SelectedIconView key={index} alt={url} src={`./asset/${url}`} onClick={() => onClickIcon(index)} />;
         }
       })}
       <br />
       {faceIconList.map((url, index) => (
-        <FaceView
-          key={index}
-          alt={url}
-          src={`./asset/${url}`}
-          onClick={() => onClickFaceIcon(index)}
-        />
+        <FaceView key={index} alt={url} src={`./asset/${url}`} onClick={() => onClickFaceIcon(index)} />
       ))}
-      {selectedIconIndex >= 0 ? (
-        <FaceView
-          alt="change Idol"
-          src="./asset/more.png"
-          onClick={() => onClickChangeIcon()}
-        />
-      ) : (
-        <></>
-      )}
+      {selectedIconIndex >= 0 ? <FaceView alt="change Idol" src="./asset/more.png" onClick={() => onClickChangeIcon()} /> : <></>}
     </Wrapper>
   );
 };
