@@ -21,12 +21,20 @@ export type ActionType =
   | 'changeMessageMode'
   | 'addOhanashi'
   | 'deleteAllOhanashi'
+  | 'upOhanashi'
+  | 'insertOhanashi'
+  | 'downOhanashi'
+  | 'editOhanashi'
+  | 'overWriteOhanashi'
+  | 'deleteOhanashi'
   | 'selectIcon'
   | 'selectFaceIcon'
   | 'toSelectIdolForm'
   | 'toBaseForm'
   | 'selectIdolIcon'
-  | 'setDownloadLink';
+  | 'setDownloadLink'
+  | 'clickUpperOhanashiView'
+  | 'clickLowerOhanashiView';
 
 // Action本体
 export interface Action {
@@ -41,6 +49,7 @@ export interface ApplicationStore {
   selectedIconIndex: number;
   scene: SceneType;
   downloadLink: string;
+  messageSplitIndex: number;
   dispatch: (action: Action) => void;
 }
 

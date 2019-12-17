@@ -27,6 +27,8 @@ export const useApplicationStore = (): ApplicationStore => {
   );
   // ダウンロードリンク
   const [downloadLink, setDownloadLink] = useState('#');
+  // 「おはなし」におけるどの位置で区切るか
+  const [messageSplitIndex, setMessageSplitIndex] = useState(-1);
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -52,12 +54,69 @@ export const useApplicationStore = (): ApplicationStore => {
         setOhanashiDataList([...ohanashiDataList, temp]);
         break;
       }
+      case 'insertOhanashi': {
+        const temp = JSON.parse(
+          JSON.stringify(nowOhanashiData)
+        ) as OhanashiData;
+        setOhanashiDataList([
+          ...ohanashiDataList.slice(0, messageSplitIndex + 1),
+          temp,
+          ...ohanashiDataList.slice(messageSplitIndex + 1)
+        ]);
+        setMessageSplitIndex(messageSplitIndex + 1);
+        break;
+      }
+      case 'upOhanashi':
+        if (messageSplitIndex > 0) {
+          setOhanashiDataList([
+            ...ohanashiDataList.slice(0, messageSplitIndex - 1),
+            ohanashiDataList[messageSplitIndex],
+            ohanashiDataList[messageSplitIndex - 1],
+            ...ohanashiDataList.slice(messageSplitIndex + 1)
+          ]);
+          setMessageSplitIndex(messageSplitIndex - 1);
+        }
+        break;
+      case 'downOhanashi':
+        if (messageSplitIndex < ohanashiDataList.length - 1) {
+          setOhanashiDataList([
+            ...ohanashiDataList.slice(0, messageSplitIndex),
+            ohanashiDataList[messageSplitIndex + 1],
+            ohanashiDataList[messageSplitIndex],
+            ...ohanashiDataList.slice(messageSplitIndex + 2)
+          ]);
+          setMessageSplitIndex(messageSplitIndex + 1);
+        }
+        break;
+      case 'editOhanashi':
+        setNowOhanashiData(
+          JSON.parse(JSON.stringify(ohanashiDataList[messageSplitIndex]))
+        );
+        break;
+      case 'overWriteOhanashi': {
+        const temp = JSON.parse(
+          JSON.stringify(nowOhanashiData)
+        ) as OhanashiData;
+        setOhanashiDataList([
+          ...ohanashiDataList.slice(0, messageSplitIndex),
+          temp,
+          ...ohanashiDataList.slice(messageSplitIndex + 1)
+        ]);
+        break;
+      }
       case 'deleteAllOhanashi': {
         if (window.confirm('全ての「おはなし」を削除しますか？')) {
           setOhanashiDataList([]);
         }
         break;
       }
+      case 'deleteOhanashi':
+        setOhanashiDataList([
+          ...ohanashiDataList.slice(0, messageSplitIndex),
+          ...ohanashiDataList.slice(messageSplitIndex + 1)
+        ]);
+        setMessageSplitIndex(-1);
+        break;
       case 'selectIcon': {
         const index = parseInt(action.message, 10);
         if (selectedIconIndex === index) {
@@ -95,6 +154,26 @@ export const useApplicationStore = (): ApplicationStore => {
       case 'setDownloadLink':
         setDownloadLink(action.message);
         break;
+      case 'clickUpperOhanashiView': {
+        const index = parseInt(action.message, 10);
+        const newMessageSplitIndex = index;
+        if (messageSplitIndex === newMessageSplitIndex) {
+          setMessageSplitIndex(-1);
+        } else {
+          setMessageSplitIndex(newMessageSplitIndex);
+        }
+        break;
+      }
+      case 'clickLowerOhanashiView': {
+        const index = parseInt(action.message, 10);
+        if (index < 0) {
+          setMessageSplitIndex(-1);
+        } else {
+          const newMessageSplitIndex = index + messageSplitIndex + 1;
+          setMessageSplitIndex(newMessageSplitIndex);
+        }
+        break;
+      }
       default:
         break;
     }
@@ -106,6 +185,7 @@ export const useApplicationStore = (): ApplicationStore => {
     selectedIconIndex,
     scene,
     downloadLink,
+    messageSplitIndex,
     dispatch
   };
 };

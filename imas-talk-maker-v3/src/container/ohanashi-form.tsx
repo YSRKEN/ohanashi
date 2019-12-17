@@ -9,6 +9,7 @@ const OhanashiForm: React.FC = () => {
     nowOhanashiData,
     ohanashiDataList,
     downloadLink,
+    messageSplitIndex,
     dispatch
   } = useContext(ApplicationContext);
 
@@ -93,7 +94,7 @@ const OhanashiForm: React.FC = () => {
         </ControlWrapper>
       </Form>
       <PreviewForm>
-        {ohanashiDataList.length > 0 ? (
+        {ohanashiDataList.length > 0 && messageSplitIndex < 0 ? (
           <ControlWrapper>
             <SaveButton href={downloadLink} download="ohanashi.png">
               保存
@@ -106,13 +107,81 @@ const OhanashiForm: React.FC = () => {
           <></>
         )}
         <ControlWrapper>
-          <OhanashiView
-            dataList={ohanashiDataList}
-            setDownloadLink={url =>
-              dispatch({ type: 'setDownloadLink', message: url })
-            }
-            showLogoFlg={true}
-          />
+          {messageSplitIndex < 0 ? (
+            <OhanashiView
+              dataList={ohanashiDataList}
+              setDownloadLink={url =>
+                dispatch({ type: 'setDownloadLink', message: url })
+              }
+              showLogoFlg={true}
+              onClick={n =>
+                dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
+              }
+            />
+          ) : (
+            <>
+              <OhanashiView
+                dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
+                onClick={n =>
+                  dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })
+                }
+              />
+              <MessageActionWrapper>
+                <InsertButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'insertOhanashi', message: '' })
+                  }
+                >
+                  挿入
+                </InsertButton>
+                <ShiftButton
+                  type="button"
+                  onClick={() => dispatch({ type: 'upOhanashi', message: '' })}
+                >
+                  ↑
+                </ShiftButton>
+                <ShiftButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'downOhanashi', message: '' })
+                  }
+                >
+                  ↓
+                </ShiftButton>
+                <SendButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'editOhanashi', message: '' })
+                  }
+                >
+                  転送
+                </SendButton>
+                <UpdateButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'overWriteOhanashi', message: '' })
+                  }
+                >
+                  上書
+                </UpdateButton>
+                <DeleteButton
+                  type="button"
+                  onClick={() =>
+                    dispatch({ type: 'deleteOhanashi', message: '' })
+                  }
+                >
+                  削除
+                </DeleteButton>
+              </MessageActionWrapper>
+              <OhanashiView
+                dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
+                onClick={n =>
+                  dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })
+                }
+              />
+            </>
+          )}
         </ControlWrapper>
       </PreviewForm>
     </>
@@ -194,6 +263,45 @@ const AllDeleteButton = styled.button`
   padding: 0.25rem 1rem;
   color: white;
   margin: 0 0.5rem;
+`;
+
+const MessageActionWrapper = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const InsertButton = styled.button`
+  font-size: 1rem;
+  background-color: skyblue;
+  border: 1px solid black;
+  color: black;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  height: 2rem;
+`;
+
+const ShiftButton = InsertButton;
+
+const UpdateButton = styled.button`
+  font-size: 1rem;
+  background-color: yellow;
+  border: 1px solid black;
+  padding: 0rem 0.5rem;
+  color: black;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  height: 2rem;
+`;
+
+const SendButton = UpdateButton;
+
+const DeleteButton = styled.button`
+  font-size: 1rem;
+  background-color: red;
+  border: 1px solid black;
+  color: white;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  height: 2rem;
 `;
 
 const Wrapper = styled.div`
