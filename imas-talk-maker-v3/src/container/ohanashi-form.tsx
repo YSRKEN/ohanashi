@@ -44,6 +44,9 @@ const OhanashiForm: React.FC = () => {
 
   return (
     <>
+      <TitleWrapper>
+        <Title>アイマス会話メーカー</Title>
+      </TitleWrapper>
       <Form>
         <ControlWrapper>
           <Name placeholder="(未入力時は自動設定)" value={nowOhanashiData.name} onChange={changeName} />
@@ -133,6 +136,17 @@ const OhanashiForm: React.FC = () => {
     </>
   );
 };
+
+const TitleWrapper = styled.div`
+  text-align: center;
+`;
+
+const Title = styled.span`
+  font-size: 2rem;
+  @media screen and (min-width: 768px) {
+    font-size: 3rem;
+  }
+`;
 
 const Form = styled.form`
   margin: 1rem auto;

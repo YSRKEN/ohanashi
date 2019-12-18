@@ -29,7 +29,10 @@ export type ActionType =
   | 'selectIdolIcon'
   | 'setDownloadLink'
   | 'clickUpperOhanashiView'
-  | 'clickLowerOhanashiView';
+  | 'clickLowerOhanashiView'
+  | 'changeCategory'
+  | 'changeKeyword'
+  | 'changeShowType';
 
 // Action本体
 export interface Action {
@@ -45,11 +48,12 @@ export interface ApplicationStore {
   scene: SceneType;
   downloadLink: string;
   messageSplitIndex: number;
+  selectOption: SelectOption;
   dispatch: (action: Action) => void;
 }
 
 // アイドルの種類
-export type IdolType = 'million' | 'cinderella' | 'other';
+export type IdolType = 'million' | 'cinderella' | 'other' | 'all';
 
 // アイドルデータ
 export interface Idol {
@@ -62,3 +66,13 @@ export interface Idol {
 
 // 表示シーン
 export type SceneType = 'Ohanashi' | 'IdolSelect';
+
+// 絞り込み時の表示タイプ
+export type ShowType = 'text' | 'icon' | 'all';
+
+// 絞り込みのオプション
+export interface SelectOption {
+  keyword: string;
+  category: IdolType;
+  showType: ShowType;
+}
