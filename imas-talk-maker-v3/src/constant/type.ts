@@ -30,7 +30,8 @@ export type ActionType =
   | 'setDownloadLink'
   | 'clickUpperOhanashiView'
   | 'clickLowerOhanashiView'
-  | 'changeCategory';
+  | 'changeCategory'
+  | 'changeKeyword';
 
 // Action本体
 export interface Action {

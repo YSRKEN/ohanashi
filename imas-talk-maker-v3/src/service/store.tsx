@@ -151,6 +151,9 @@ export const useApplicationStore = (): ApplicationStore => {
       case 'changeCategory':
         setSelectOption({ ...selectOption, category: action.message as IdolType });
         break;
+      case 'changeKeyword':
+        setSelectOption({ ...selectOption, keyword: action.message });
+        break;
       default:
         break;
     }

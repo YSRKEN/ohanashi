@@ -9,7 +9,13 @@ const ICON_SIZE = 76;
 const IdolSelectForm: React.FC = () => {
   const { selectOption, dispatch } = useContext(ApplicationContext);
 
-  const idolList = sortIdolList([...IDOL_LIST]).filter(idol => (selectOption.category === 'all' ? true : selectOption.category === idol.category));
+  const idolList = sortIdolList([...IDOL_LIST])
+    .filter(idol => (selectOption.category === 'all' ? true : selectOption.category === idol.category))
+    .filter(idol => (selectOption.keyword === '' ? true : (idol.name + idol.kana).includes(selectOption.keyword)));
+
+  const changeKeyword = (e: FormEvent<HTMLInputElement>) => {
+    dispatch({ type: 'changeKeyword', message: e.currentTarget.value });
+  };
 
   const changeCategory = (e: FormEvent<HTMLSelectElement>) => {
     dispatch({ type: 'changeCategory', message: e.currentTarget.value });
@@ -21,6 +27,9 @@ const IdolSelectForm: React.FC = () => {
         <Title>アイドル選択画面</Title>
       </TitleWrapper>
       <Form>
+        <ControlWrapper>
+          <Keyword placeholder="キーワード" value={selectOption.keyword} onChange={changeKeyword} />
+        </ControlWrapper>
         <ControlWrapper>
           <FormLabel>種別：</FormLabel>
           <TypeSelect value={selectOption.category} onChange={changeCategory}>
@@ -75,6 +84,15 @@ const Form = styled.form`
 
 const ControlWrapper = styled.div`
   margin: 1rem auto;
+`;
+
+const Keyword = styled.input`
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  width: 90%;
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const FormLabel = styled.span`
