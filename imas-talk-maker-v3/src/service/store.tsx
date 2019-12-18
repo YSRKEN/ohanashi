@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from 'react';
-import { useLocalStorageState, saveSetting } from 'service/utility';
+import { createContext, useState } from 'react';
+import { useLocalStorageState } from 'service/utility';
 import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
@@ -157,6 +157,10 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       case 'changeShowType':
         setSelectOption({ ...selectOption, showType: action.message as ShowType });
+        break;
+      case 'clearLocalStrage':
+        window.localStorage.clear();
+        window.location.href = '/';
         break;
       default:
         break;

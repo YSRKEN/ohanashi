@@ -42,10 +42,19 @@ const OhanashiForm: React.FC = () => {
     });
   };
 
+  const clearLocalStrage = () => {
+    if (window.confirm('データを初期化しますか？')) {
+      dispatch({
+        type: 'clearLocalStrage',
+        message: ''
+      });
+    }
+  };
+
   return (
     <>
       <TitleWrapper>
-        <Title>アイマス会話メーカー</Title>
+        <Title onClick={clearLocalStrage}>アイマス会話メーカー</Title>
       </TitleWrapper>
       <Form>
         <ControlWrapper>

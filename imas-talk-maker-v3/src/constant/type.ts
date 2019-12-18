@@ -32,7 +32,8 @@ export type ActionType =
   | 'clickLowerOhanashiView'
   | 'changeCategory'
   | 'changeKeyword'
-  | 'changeShowType';
+  | 'changeShowType'
+  | 'clearLocalStrage';
 
 // Action本体
 export interface Action {
