@@ -29,7 +29,8 @@ export type ActionType =
   | 'selectIdolIcon'
   | 'setDownloadLink'
   | 'clickUpperOhanashiView'
-  | 'clickLowerOhanashiView';
+  | 'clickLowerOhanashiView'
+  | 'changeCategory';
 
 // Action本体
 export interface Action {

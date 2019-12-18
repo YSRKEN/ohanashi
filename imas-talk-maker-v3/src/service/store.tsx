@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { useLocalStorageState } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption } from 'constant/type';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
@@ -17,7 +17,7 @@ export const useApplicationStore = (): ApplicationStore => {
   // 「おはなし」におけるどの位置で区切るか
   const [messageSplitIndex, setMessageSplitIndex] = useState(-1);
   // 選択画面での絞り込み状態
-  const [selectOption] = useLocalStorageState<SelectOption>('selectOption', {
+  const [selectOption, setSelectOption] = useLocalStorageState<SelectOption>('selectOption', {
     keyword: '',
     category: 'all',
     showType: 'icon'
@@ -148,6 +148,9 @@ export const useApplicationStore = (): ApplicationStore => {
         }
         break;
       }
+      case 'changeCategory':
+        setSelectOption({ ...selectOption, category: action.message as IdolType });
+        break;
       default:
         break;
     }

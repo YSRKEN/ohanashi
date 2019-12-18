@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, FormEvent } from 'react';
 import { IDOL_LIST } from 'constant/idol';
 import { sortIdolList } from 'service/utility';
 import { ApplicationContext } from 'service/store';
@@ -7,19 +7,33 @@ import styled from 'styled-components';
 const ICON_SIZE = 76;
 
 const IdolSelectForm: React.FC = () => {
-  const { dispatch } = useContext(ApplicationContext);
+  const { selectOption, dispatch } = useContext(ApplicationContext);
 
-  const idolList = sortIdolList([...IDOL_LIST]);
+  const idolList = sortIdolList([...IDOL_LIST]).filter(idol => (selectOption.category === 'all' ? true : selectOption.category === idol.category));
+
+  const changeCategory = (e: FormEvent<HTMLSelectElement>) => {
+    dispatch({ type: 'changeCategory', message: e.currentTarget.value });
+  };
+
   return (
     <>
       <TitleWrapper>
         <Title>アイドル選択画面</Title>
       </TitleWrapper>
       <Form>
-        <ControlWeapper>
+        <ControlWrapper>
+          <FormLabel>種別：</FormLabel>
+          <TypeSelect value={selectOption.category} onChange={changeCategory}>
+            <TypeOption value="all">全部</TypeOption>
+            <TypeOption value="million">ミリ</TypeOption>
+            <TypeOption value="cinderella">デレ</TypeOption>
+            <TypeOption value="other">その他</TypeOption>
+          </TypeSelect>
+        </ControlWrapper>
+        <ControlWrapper>
           <BackButton onClick={() => dispatch({ type: 'toBaseForm', message: '' })}>戻る</BackButton>
-        </ControlWeapper>
-        <ControlWeapper>
+        </ControlWrapper>
+        <ControlWrapper>
           {idolList.map(idol => {
             return (
               <IdolTile
@@ -34,7 +48,7 @@ const IdolSelectForm: React.FC = () => {
               />
             );
           })}
-        </ControlWeapper>
+        </ControlWrapper>
       </Form>
     </>
   );
@@ -59,9 +73,22 @@ const Form = styled.form`
   }
 `;
 
-const ControlWeapper = styled.div`
+const ControlWrapper = styled.div`
   margin: 1rem auto;
 `;
+
+const FormLabel = styled.span`
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-right: 1rem;
+`;
+
+const TypeSelect = styled.select`
+  font-size: 1.5rem;
+  padding: 0.25rem;
+`;
+
+const TypeOption = styled.option``;
 
 const BackButton = styled.button`
   font-size: 1.5rem;
