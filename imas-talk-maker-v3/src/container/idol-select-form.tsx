@@ -37,20 +37,22 @@ const IdolListView: React.FC<{
       return (
         <>
           <IdolTable>
-            {idolList.map(idol => {
-              return (
-                <IdolTableRow key={idol.name}>
-                  <td>
-                    <IdolTile2 key={idol.name} src={`./asset/${idol.category}/${idol.iconList[0]}`} onClick={() => selectIdolIcon(idol)} />
-                  </td>
-                  <td>
-                    <IdolNameTile2 type="button" key={idol.name} onClick={() => selectIdolIcon(idol)}>
-                      {idol.name}
-                    </IdolNameTile2>
-                  </td>
-                </IdolTableRow>
-              );
-            })}
+            <tbody>
+              {idolList.map(idol => {
+                return (
+                  <IdolTableRow key={idol.name}>
+                    <td>
+                      <IdolTile2 key={idol.name} src={`./asset/${idol.category}/${idol.iconList[0]}`} onClick={() => selectIdolIcon(idol)} />
+                    </td>
+                    <td>
+                      <IdolNameTile2 type="button" key={idol.name} onClick={() => selectIdolIcon(idol)}>
+                        {idol.name}
+                      </IdolNameTile2>
+                    </td>
+                  </IdolTableRow>
+                );
+              })}
+            </tbody>
           </IdolTable>
         </>
       );
