@@ -1,4 +1,4 @@
-import { IDOL_MILLION_LIST } from 'constant/idol-million';
+import { IDOL_LIST } from 'constant/idol';
 import { Idol, OhanashiData } from 'constant/type';
 import { useState, useEffect } from 'react';
 
@@ -98,14 +98,14 @@ export const fillTextEx = (canvas: CanvasRenderingContext2D, text: string, x: nu
  * 指定したURLのアイコンに対するIdol型を検索する
  */
 export const findIdolByIconUrl = (url: string): Idol | null => {
-  const index = IDOL_MILLION_LIST.findIndex(idol => {
+  const index = IDOL_LIST.findIndex(idol => {
     const temp = idol.iconList.map(url => `${idol.category}/${url}`);
     return temp.includes(url);
   });
   if (index < 0) {
     return null;
   } else {
-    return IDOL_MILLION_LIST[index];
+    return IDOL_LIST[index];
   }
 };
 

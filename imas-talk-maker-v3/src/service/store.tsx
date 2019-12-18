@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { useLocalStorageState } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType } from 'constant/type';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
@@ -16,9 +16,16 @@ export const useApplicationStore = (): ApplicationStore => {
   const [downloadLink, setDownloadLink] = useState('#');
   // 「おはなし」におけるどの位置で区切るか
   const [messageSplitIndex, setMessageSplitIndex] = useState(-1);
+  // 選択画面での絞り込み状態
+  const [selectOption, setSelectOption] = useLocalStorageState<SelectOption>('selectOption', {
+    keyword: '',
+    category: 'all',
+    showType: 'text'
+  });
 
   // dispatch関数
   const dispatch = (action: Action) => {
+    console.log(action);
     switch (action.type) {
       case 'changeName':
         setNowOhanashiData({ ...nowOhanashiData, name: action.message });
@@ -142,6 +149,19 @@ export const useApplicationStore = (): ApplicationStore => {
         }
         break;
       }
+      case 'changeCategory':
+        setSelectOption({ ...selectOption, category: action.message as IdolType });
+        break;
+      case 'changeKeyword':
+        setSelectOption({ ...selectOption, keyword: action.message });
+        break;
+      case 'changeShowType':
+        setSelectOption({ ...selectOption, showType: action.message as ShowType });
+        break;
+      case 'clearLocalStrage':
+        window.localStorage.clear();
+        window.location.href = '/';
+        break;
       default:
         break;
     }
@@ -154,6 +174,7 @@ export const useApplicationStore = (): ApplicationStore => {
     scene,
     downloadLink,
     messageSplitIndex,
+    selectOption,
     dispatch
   };
 };

@@ -33,7 +33,11 @@ export type ActionType =
   | 'selectIdolIcon'
   | 'setDownloadLink'
   | 'clickUpperOhanashiView'
-  | 'clickLowerOhanashiView';
+  | 'clickLowerOhanashiView'
+  | 'changeCategory'
+  | 'changeKeyword'
+  | 'changeShowType'
+  | 'clearLocalStrage';
 
 // Action本体
 export interface Action {
@@ -57,12 +61,14 @@ export interface ApplicationStore {
   downloadLink: string;
   // 「おはなし」やデレぽで選択しているインデックス
   messageSplitIndex: number;
+  // アイコン選択時のオプション
+  selectOption: SelectOption;
   // dispatch関数
   dispatch: (action: Action) => void;
 }
 
 // アイドルの種類
-export type IdolType = 'million' | 'cinderella' | 'other';
+export type IdolType = 'million' | 'cinderella' | 'other' | 'all';
 
 // アイドルデータ
 export interface Idol {
@@ -103,4 +109,14 @@ export interface DerepoData {
   minute: number;
   // ハッシュタグ
   hashTags: string[];
+}
+
+// 絞り込み時の表示タイプ
+export type ShowType = 'text' | 'icon' | 'all';
+
+// 絞り込みのオプション
+export interface SelectOption {
+  keyword: string;
+  category: IdolType;
+  showType: ShowType;
 }
