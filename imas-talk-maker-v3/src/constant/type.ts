@@ -31,7 +31,8 @@ export type ActionType =
   | 'clickUpperOhanashiView'
   | 'clickLowerOhanashiView'
   | 'changeCategory'
-  | 'changeKeyword';
+  | 'changeKeyword'
+  | 'changeShowType';
 
 // Action本体
 export interface Action {

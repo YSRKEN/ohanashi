@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react';
-import { useLocalStorageState } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType } from 'constant/type';
+import { createContext, useState, useEffect } from 'react';
+import { useLocalStorageState, saveSetting } from 'service/utility';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
@@ -20,11 +20,12 @@ export const useApplicationStore = (): ApplicationStore => {
   const [selectOption, setSelectOption] = useLocalStorageState<SelectOption>('selectOption', {
     keyword: '',
     category: 'all',
-    showType: 'icon'
+    showType: 'text'
   });
 
   // dispatch関数
   const dispatch = (action: Action) => {
+    console.log(action);
     switch (action.type) {
       case 'changeName':
         setNowOhanashiData({ ...nowOhanashiData, name: action.message });
@@ -153,6 +154,9 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       case 'changeKeyword':
         setSelectOption({ ...selectOption, keyword: action.message });
+        break;
+      case 'changeShowType':
+        setSelectOption({ ...selectOption, showType: action.message as ShowType });
         break;
       default:
         break;
