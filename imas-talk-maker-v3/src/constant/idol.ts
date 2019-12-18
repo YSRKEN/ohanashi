@@ -419,7 +419,7 @@ export const IDOL_LIST: Idol[] = [
   },
   {
     "name": "エミリー",
-    "shortName": "リー",
+    "shortName": "エミリー",
     "kana": "えみりーすちゅあーと",
     "iconList": [
       "emiriisuchuaato_1.png",

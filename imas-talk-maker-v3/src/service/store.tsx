@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { useLocalStorageState } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType } from 'constant/type';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption } from 'constant/type';
 import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
@@ -16,6 +16,12 @@ export const useApplicationStore = (): ApplicationStore => {
   const [downloadLink, setDownloadLink] = useState('#');
   // 「おはなし」におけるどの位置で区切るか
   const [messageSplitIndex, setMessageSplitIndex] = useState(-1);
+  // 選択画面での絞り込み状態
+  const [selectOption] = useLocalStorageState<SelectOption>('selectOption', {
+    keyword: '',
+    category: 'all',
+    showType: 'icon'
+  });
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -154,6 +160,7 @@ export const useApplicationStore = (): ApplicationStore => {
     scene,
     downloadLink,
     messageSplitIndex,
+    selectOption,
     dispatch
   };
 };

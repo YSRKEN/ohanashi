@@ -11,29 +11,45 @@ const IdolSelectForm: React.FC = () => {
 
   const idolList = sortIdolList([...IDOL_LIST]);
   return (
-    <Form>
-      <ControlWeapper>
-        <BackButton onClick={() => dispatch({ type: 'toBaseForm', message: '' })}>戻る</BackButton>
-      </ControlWeapper>
-      <ControlWeapper>
-        {idolList.map(idol => {
-          return (
-            <IdolTile
-              key={idol.name}
-              src={`./asset/${idol.category}/${idol.iconList[0]}`}
-              onClick={() =>
-                dispatch({
-                  type: 'selectIdolIcon',
-                  message: `${idol.category}/${idol.iconList[0]}`
-                })
-              }
-            />
-          );
-        })}
-      </ControlWeapper>
-    </Form>
+    <>
+      <TitleWrapper>
+        <Title>アイドル選択画面</Title>
+      </TitleWrapper>
+      <Form>
+        <ControlWeapper>
+          <BackButton onClick={() => dispatch({ type: 'toBaseForm', message: '' })}>戻る</BackButton>
+        </ControlWeapper>
+        <ControlWeapper>
+          {idolList.map(idol => {
+            return (
+              <IdolTile
+                key={idol.name}
+                src={`./asset/${idol.category}/${idol.iconList[0]}`}
+                onClick={() =>
+                  dispatch({
+                    type: 'selectIdolIcon',
+                    message: `${idol.category}/${idol.iconList[0]}`
+                  })
+                }
+              />
+            );
+          })}
+        </ControlWeapper>
+      </Form>
+    </>
   );
 };
+
+const TitleWrapper = styled.div`
+  text-align: center;
+`;
+
+const Title = styled.span`
+  font-size: 2rem;
+  @media screen and (min-width: 768px) {
+    font-size: 3rem;
+  }
+`;
 
 const Form = styled.form`
   margin: 1rem auto;
