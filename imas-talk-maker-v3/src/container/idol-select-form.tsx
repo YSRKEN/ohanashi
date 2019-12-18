@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { IDOL_MILLION_LIST } from 'constant/idol-million';
+import { IDOL_LIST } from 'constant/idol';
 import { sortIdolList } from 'service/utility';
 import { ApplicationContext } from 'service/store';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ const ICON_SIZE = 76;
 const IdolSelectForm: React.FC = () => {
   const { dispatch } = useContext(ApplicationContext);
 
-  const idolList = sortIdolList([...IDOL_MILLION_LIST]);
+  const idolList = sortIdolList([...IDOL_LIST]);
   return (
     <Form>
       <ControlWeapper>
