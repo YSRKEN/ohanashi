@@ -43,7 +43,7 @@ const DerepoView: React.FC<{
       if (context !== null && offscreenCanvasContext !== null) {
         await drawMethodImpl(offscreenCanvasContext, offscreenCanvas.width, offscreenCanvas.height, dataList, showLogoFlg);
         context.drawImage(offscreenCanvas, 0, 0);
-        setDownloadLink(canvas.toDataURL('image/png'));
+        setDownloadLink(canvas.toDataURL());
       }
     };
     drawMethod();
