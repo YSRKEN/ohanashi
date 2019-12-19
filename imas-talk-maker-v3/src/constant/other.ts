@@ -1,4 +1,4 @@
-import { OhanashiData } from 'constant/type';
+import { OhanashiData, DerepoData } from 'constant/type';
 
 // 「おはなし」の初期データ
 export const SAMPLE_OHANASHI: OhanashiData = {
@@ -39,6 +39,46 @@ export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
     iconUrls: ['other/misentaku_2.png', 'other/misentaku_2.png', 'other/misentaku_2.png', 'other/misentaku_2.png'],
     message: '各部位を正確に作るには時間がかかるので、当初の意図とは異なるが、巨大な人体を作ることにした。高さは約 8 フィートで、これに',
     messageMode: 'message-only'
+  }
+];
+
+// デレぽのサンプルデータ
+export const SAMPLE_DEREPO_LIST: DerepoData[] = [
+  {
+    name: '',
+    iconUrl: 'cinderella/matsuyamakumiko_2.png',
+    message: 'この時期は楽器を弾く\nひとには厳しいわね…。',
+    favFlg: true,
+    favCount: 11,
+    month: 12,
+    day: 19,
+    hour: 16,
+    minute: 53,
+    hashTags: []
+  },
+  {
+    name: '',
+    iconUrl: 'cinderella/kimuranatsuki_2.png',
+    message: 'そうですね。\nどうしても指が、ね。',
+    favFlg: true,
+    favCount: 4,
+    month: 12,
+    day: 19,
+    hour: 16,
+    minute: 56,
+    hashTags: []
+  },
+  {
+    name: '',
+    iconUrl: 'cinderella/ariurakanna_1.png',
+    message: 'カイロが手放せないですよね。\n手袋だけじゃ心もとなくて。',
+    favFlg: true,
+    favCount: 1,
+    month: 12,
+    day: 19,
+    hour: 17,
+    minute: 2,
+    hashTags: []
   }
 ];
 
