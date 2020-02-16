@@ -56,6 +56,12 @@ const OhanashiForm: React.FC = () => {
       <TitleWrapper>
         <Title onClick={clearLocalStrage}>アイマス会話メーカー</Title>
       </TitleWrapper>
+      <InfoWrapper>
+          <Info>Ver.3.0.0　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
+      </InfoWrapper>
+      <WarningWrapper>
+          <Warning>※デレステの「デレぽ」は<Link href="https://imas-talk-maker.firebaseapp.com">Ver.2.X</Link>をご利用ください。</Warning>
+      </WarningWrapper>
       <Form>
         <ControlWrapper>
           <Name placeholder="(未入力時は自動設定)" value={nowOhanashiData.name} onChange={changeName} />
@@ -156,6 +162,22 @@ const Title = styled.span`
     font-size: 3rem;
   }
 `;
+
+const InfoWrapper = styled.div`
+  text-align: center;
+`;
+
+const Info = styled.span``;
+
+const WarningWrapper = styled.div`
+  text-align: center;
+`;
+
+const Warning = styled.span`
+  font-weight: bold;
+`;
+
+const Link = styled.a``;
 
 const Form = styled.form`
   margin: 1rem auto;
