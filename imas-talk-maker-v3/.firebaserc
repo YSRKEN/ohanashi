@@ -7,6 +7,9 @@
       "hosting": {
         "test": [
           "imas-talk-maker-test"
+        ],
+        "3rd": [
+          "imas-talk-maker-3rd"
         ]
       }
     }
