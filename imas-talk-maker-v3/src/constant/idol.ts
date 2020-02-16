@@ -954,6 +954,15 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "有浦柑奈",
+    "shortName": "柑奈",
+    "kana": "ありうらかんな",
+    "iconList": [
+      "ariurakanna_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "五十嵐響子",
     "shortName": "響子",
     "kana": "いがらしきょうこ",
@@ -1234,7 +1243,8 @@ export const IDOL_LIST: Idol[] = [
     "shortName": "夏樹",
     "kana": "きむらなつき",
     "iconList": [
-      "kimuranatsuki_1.png"
+      "kimuranatsuki_1.png",
+      "kimuranatsuki_2.png"
     ],
     "category": "cinderella"
   },
@@ -2069,7 +2079,8 @@ export const IDOL_LIST: Idol[] = [
     "shortName": "久美子",
     "kana": "まつやまくみこ",
     "iconList": [
-      "matsuyamakumiko_1.png"
+      "matsuyamakumiko_1.png",
+      "matsuyamakumiko_2.png"
     ],
     "category": "cinderella"
   },
