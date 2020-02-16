@@ -102,6 +102,13 @@ const InputTalkFormImpl: React.FC<{ className?: string; config: IConfig }> = ({
           </a>
         </span>
       </p>
+      <p className="text-center">
+        <span>
+          <strong>
+            ※グリマスの「おはなし」は<a href="https://imas-talk-maker-3rd.firebaseapp.com">Ver.3.X</a>を推奨します。
+          </strong>
+        </span>
+      </p>
       <Form className={`border p-3 ${className}`}>
         <FormGroup>
           <SelectButtonGroup
