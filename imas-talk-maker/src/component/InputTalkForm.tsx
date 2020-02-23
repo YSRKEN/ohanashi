@@ -93,7 +93,7 @@ const InputTalkFormImpl: React.FC<{ className?: string; config: IConfig }> = ({
         アイマス会話メーカー
       </h2>
       <p className="text-center">
-        <span className="mr-3">Ver.2.1.1</span>
+        <span className="mr-3">Ver.2.1.2</span>
         <a href="https://github.com/YSRKEN/ohanashi">GitHub</a>
         <span className="ml-3">
           作者：
