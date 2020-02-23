@@ -851,6 +851,18 @@ export const IDOL_LIST: Idol[] = [
     "category": "other"
   },
   {
+    "name": "相川千夏",
+    "shortName": "千夏",
+    "kana": "あいかわちなつ",
+    "iconList": [
+      "aikawachinatu_1.png",
+      "aikawachinatu_2.png",
+      "aikawachinatu_3.png",
+      "aikawachinatu_4.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "愛野渚",
     "shortName": "渚",
     "kana": "あいのなぎさ",
@@ -963,6 +975,19 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "安斎都",
+    "shortName": "都",
+    "kana": "あんざいみやこ",
+    "iconList": [
+      "annzaimiyako_1.png",
+      "annzaimiyako_2.png",
+      "annzaimiyako_3.png",
+      "annzaimiyako_4.png",
+      "annzaimiyako_5.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "五十嵐響子",
     "shortName": "響子",
     "kana": "いがらしきょうこ",
@@ -1054,6 +1079,16 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "梅木音葉",
+    "shortName": "音葉",
+    "kana": "うめきおとは",
+    "iconList": [
+      "umekiotoha_1.png",
+      "umekiotoha_2.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "江上椿",
     "shortName": "椿",
     "kana": "えがみつばき",
@@ -1068,6 +1103,17 @@ export const IDOL_LIST: Idol[] = [
     "kana": "えびはらなほ",
     "iconList": [
       "ebiharanaho_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "及川雫",
+    "shortName": "雫",
+    "kana": "おいかわしずく",
+    "iconList": [
+      "oikawashizuku_1.png",
+      "oikawashizuku_2.png",
+      "oikawashizuku_3.png"
     ],
     "category": "cinderella"
   },
@@ -1239,6 +1285,16 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "木場真奈美",
+    "shortName": "真奈美",
+    "kana": "きばまなみ",
+    "iconList": [
+      "kibamanani_1.png",
+      "kibamanani_2.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "木村夏樹",
     "shortName": "夏樹",
     "kana": "きむらなつき",
@@ -1291,6 +1347,17 @@ export const IDOL_LIST: Idol[] = [
     "iconList": [
       "kudoushinobu_1.png",
       "kudoushinobu_2.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "クラリス",
+    "shortName": "クラリス",
+    "kana": "くらりす",
+    "iconList": [
+      "claris_1.png",
+      "claris_2.png",
+      "claris_3.png"
     ],
     "category": "cinderella"
   },
@@ -1626,6 +1693,15 @@ export const IDOL_LIST: Idol[] = [
     "kana": "たかがきかえで",
     "iconList": [
       "takagakikaede_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "高橋礼子",
+    "shortName": "礼子",
+    "kana": "たかはしれいこ",
+    "iconList": [
+      "takahashireiko_1.png"
     ],
     "category": "cinderella"
   },
@@ -2207,6 +2283,18 @@ export const IDOL_LIST: Idol[] = [
     "kana": "むらまつさくら",
     "iconList": [
       "muramatsusakura_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "メアリー・コクラン",
+    "shortName": "メアリー",
+    "kana": "めありーこくらん",
+    "iconList": [
+      "marycochrane_1.png",
+      "marycochrane_2.png",
+      "marycochrane_3.png",
+      "marycochrane_4.png"
     ],
     "category": "cinderella"
   },
