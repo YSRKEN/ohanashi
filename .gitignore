@@ -1,5 +1,7 @@
-misc/
 OhanashiGen/.firebase/
-imas-talk-maker/node_modules/
 imas-talk-maker/.firebase/
-Utility/.idea/workspace.xml
+imas-talk-maker-v3/.firebase/
+database/.idea/
+database/venv/
+database/old_code/
+database/old_data/

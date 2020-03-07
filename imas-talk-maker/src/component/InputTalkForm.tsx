@@ -93,13 +93,20 @@ const InputTalkFormImpl: React.FC<{ className?: string; config: IConfig }> = ({
         アイマス会話メーカー
       </h2>
       <p className="text-center">
-        <span className="mr-3">Ver.2.1.1</span>
+        <span className="mr-3">Ver.2.1.2</span>
         <a href="https://github.com/YSRKEN/ohanashi">GitHub</a>
         <span className="ml-3">
           作者：
           <a href="https://twitter.com/YSRKEN" className="mr-3">
             @YSRKEN
           </a>
+        </span>
+      </p>
+      <p className="text-center">
+        <span>
+          <strong>
+            ※グリマスの「おはなし」は<a href="https://imas-talk-maker-3rd.firebaseapp.com">Ver.3.X</a>を推奨します。
+          </strong>
         </span>
       </p>
       <Form className={`border p-3 ${className}`}>
