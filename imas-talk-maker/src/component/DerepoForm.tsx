@@ -62,7 +62,7 @@ const DerepoForm: React.FC<{ talkType: TalkType }> = ({ talkType }) => {
   const config = React.useContext(ConfigContext);
 
   // ファボ数が変更した際の処理
-  const onChangeFavs = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChangeFavs = (event: React.FormEvent<any>) => {
     if (config === null) {
       return;
     }
@@ -73,7 +73,7 @@ const DerepoForm: React.FC<{ talkType: TalkType }> = ({ talkType }) => {
   };
 
   // 時刻が変更した際の処理
-  const onChangeDatetime = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChangeDatetime = (event: React.FormEvent<any>) => {
     if (config === null) {
       return;
     }

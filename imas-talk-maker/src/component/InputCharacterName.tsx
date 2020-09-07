@@ -16,7 +16,7 @@ const InputCharacterName: React.FC = () => {
   }
 
   // キャラ名が変更した際の処理
-  const onChangeCharaName = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChangeCharaName = (event: React.FormEvent<any>) => {
     const value = event.currentTarget.value;
     if (typeof value === 'string') {
       config.setCharaName(value);
