@@ -1056,7 +1056,8 @@ export const IDOL_LIST: Idol[] = [
     "shortName": "雪菜",
     "kana": "いむらせつな",
     "iconList": [
-      "imurasetsuna_1.png"
+      "imurasetsuna_1.png",
+      "imurasetsuna_2.png"
     ],
     "category": "cinderella"
   },
@@ -1094,6 +1095,15 @@ export const IDOL_LIST: Idol[] = [
     "kana": "えがみつばき",
     "iconList": [
       "egamitsubaki_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "衛藤美紗希",
+    "shortName": "美紗希",
+    "kana": "えとうみさき",
+    "iconList": [
+      "etoumisaki_1.png"
     ],
     "category": "cinderella"
   },
@@ -1255,6 +1265,15 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "岸部彩華",
+    "shortName": "彩華",
+    "kana": "きしべあやか",
+    "iconList": [
+      "kishibeayaka_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "北川真尋",
     "shortName": "真尋",
     "kana": "きたがわまひろ",
@@ -1389,6 +1408,15 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "ケイト",
+    "shortName": "ケイト",
+    "kana": "けいと",
+    "iconList": [
+      "kate_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "古賀小春",
     "shortName": "小春",
     "kana": "こがこはる",
@@ -1439,6 +1467,27 @@ export const IDOL_LIST: Idol[] = [
     "kana": "こまついぶき",
     "iconList": [
       "komatsuibuki_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "小室千奈美",
+    "shortName": "千奈美",
+    "kana": "こむろちなみ",
+    "iconList": [
+      "komurochinami_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "西園寺琴歌",
+    "shortName": "琴歌",
+    "kana": "さいおんじことか",
+    "iconList": [
+      "saionjikotoka_1.png",
+      "saionjikotoka_2.png",
+      "saionjikotoka_3.png",
+      "saionjikotoka_4.png"
     ],
     "category": "cinderella"
   },
@@ -1679,6 +1728,17 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "仙崎恵磨",
+    "shortName": "恵磨",
+    "kana": "せんざきえま",
+    "iconList": [
+      "senzakiema_1.png",
+      "senzakiema_2.png",
+      "senzakiema_3.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "相馬夏美",
     "shortName": "夏美",
     "kana": "そうまなつみ",
@@ -1752,6 +1812,17 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "月宮雅",
+    "shortName": "雅",
+    "kana": "つきみやみやび",
+    "iconList": [
+      "tsukimiyamiyabi_1.png",
+      "tsukimiyamiyabi_2.png",
+      "tsukimiyamiyabi_3.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "辻野あかり",
     "shortName": "あかり",
     "kana": "つじのあかり",
@@ -1766,6 +1837,15 @@ export const IDOL_LIST: Idol[] = [
     "kana": "つちやあこ",
     "iconList": [
       "tsuchiyaako_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "東郷あい",
+    "shortName": "あい",
+    "kana": "とうごうあい",
+    "iconList": [
+      "tougouai_1.png"
     ],
     "category": "cinderella"
   },
@@ -1861,6 +1941,16 @@ export const IDOL_LIST: Idol[] = [
     "category": "cinderella"
   },
   {
+    "name": "西島櫂",
+    "shortName": "櫂",
+    "kana": "にしじまかい",
+    "iconList": [
+      "nishizimakai_1.png",
+      "nishizimakai_2.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "新田美波",
     "shortName": "美波",
     "kana": "にったみなみ",
@@ -1901,7 +1991,17 @@ export const IDOL_LIST: Idol[] = [
     "shortName": "瞳子",
     "kana": "はっとりとうこ",
     "iconList": [
-      "hattoritouko_1.png"
+      "hattoritouko_1.png",
+      "hattoritouko_2.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "浜川愛結奈",
+    "shortName": "愛結奈",
+    "kana": "はまかわあゆな",
+    "iconList": [
+      "hamakawaayuna_1.png"
     ],
     "category": "cinderella"
   },
@@ -2137,7 +2237,8 @@ export const IDOL_LIST: Idol[] = [
     "shortName": "早耶",
     "kana": "まつばらさや",
     "iconList": [
-      "matsubarasaya_1.png"
+      "matsubarasaya_1.png",
+      "matsubarasaya_2.png"
     ],
     "category": "cinderella"
   },
@@ -2156,7 +2257,8 @@ export const IDOL_LIST: Idol[] = [
     "kana": "まつやまくみこ",
     "iconList": [
       "matsuyamakumiko_1.png",
-      "matsuyamakumiko_2.png"
+      "matsuyamakumiko_2.png",
+      "matsuyamakumiko_3.png"
     ],
     "category": "cinderella"
   },
