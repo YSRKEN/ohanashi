@@ -57,7 +57,7 @@ const OhanashiForm: React.FC = () => {
         <Title onClick={clearLocalStrage}>アイマス会話メーカー</Title>
       </TitleWrapper>
       <InfoWrapper>
-          <Info>Ver.3.0.0　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
+          <Info>Ver.3.0.1　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
       </InfoWrapper>
       <WarningWrapper>
           <Warning>※デレステの「デレぽ」は<Link href="https://imas-talk-maker.firebaseapp.com">Ver.2.X</Link>をご利用ください。</Warning>
