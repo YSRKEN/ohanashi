@@ -1,27 +1,45 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { DerepoData } from 'constant/type';
+import { loadImage, fillTextEx } from 'service/utility';
 
 // デレぽの大きさ
 const DEREPO_WIDTH = 624;             // 全体の横幅
 const DEREPO_HEIGHT = 128;            // n～n+1件目(n≧2)の縦間隔
 const DEREPO_SEPARATOR_HEIGHT = 11;   // 1～2軒件目の間にある仕切りの高さ(仕切りは下線)
 const DEREPO_HEADER_SPACE = 7;        // 上側のスペース
+const DEREPO_DASH_SPACE = 10;         // 罫線上側のスペース
 const DEREPO_HOOTER_SPACE = 26;       // 下側のスペース
 const DEREPO_ARC_SIZE = 8;            // 角丸の大きさ
 // ロゴの縦幅
 const DEREPO_LOGO_HEIGHT = 24;
+// アイコンサイズ
+const ICON_SIZE = 64;
 
 // 描画メソッド
-const drawMethodImpl = (data: DerepoData) => {
+const drawMethodImpl = async (data: DerepoData) => {
   const canvas = document.createElement('canvas');
   canvas.width = DEREPO_WIDTH;
   canvas.height = DEREPO_HEIGHT;
   const context = canvas.getContext('2d');
   if (context !== null) {
-    context.fillStyle = 'white';
-    context.fillRect(0, 0, canvas.width, canvas.height);
     context.strokeStyle = 'gray';
     context.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+
+    // アイコンの描画
+    const iconImage = await loadImage(`./asset/${data.iconUrl}`);
+    context.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, 25, 18, ICON_SIZE, ICON_SIZE); 
+
+    // アイドル名の描画
+    context.font = `bold 20px Noto Sans JP`;
+    context.textBaseline = 'top';
+    context.fillStyle = 'black';
+    context.fillText(data.name, 25 + ICON_SIZE + 9, 16);
+
+    // テキストの描画
+    context.font = `20px Noto Sans JP`;
+    const xPos = 25 + ICON_SIZE + 9;
+    fillTextEx(context, data.message, xPos, 46, 25, DEREPO_WIDTH - xPos);
+
     context.save();
   }
   return canvas;
@@ -50,7 +68,11 @@ const DerepoView: React.FC<{
       }
 
       // 各要素を描画する
-      const messageCanvasList = dataList.map(record => drawMethodImpl(record));
+      const messageCanvasList: HTMLCanvasElement[] = [];
+      for (const record of dataList) {
+        messageCanvasList.push(await drawMethodImpl(record));
+      }
+      await Promise.all(messageCanvasList);
 
       // 各要素を統合して1つの大きな要素とする
       // widthは最大値、heightは総和となることに注意
@@ -86,8 +108,8 @@ const DerepoView: React.FC<{
           context.strokeStyle = 'black';
           context.beginPath();
           context.setLineDash([2, 2]);
-          context.moveTo(25, DEREPO_HEADER_SPACE + messageCanvasList[0].height);
-          context.lineTo(canvas.width - 25, DEREPO_HEADER_SPACE + messageCanvasList[0].height);
+          context.moveTo(25, DEREPO_HEADER_SPACE + messageCanvasList[0].height + DEREPO_DASH_SPACE);
+          context.lineTo(canvas.width - 25, DEREPO_HEADER_SPACE + messageCanvasList[0].height + DEREPO_DASH_SPACE);
           context.stroke();
           context.setLineDash([]);
         }
