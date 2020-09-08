@@ -21,7 +21,7 @@ const InputTalkFormImpl: React.FC<{ className?: string; config: IConfig }> = ({
   config
 }) => {
   // 本文が変更した際の処理
-  const onChangeMessage = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChangeMessage = (event: React.FormEvent<any>) => {
     const value = event.currentTarget.value;
     if (typeof value === 'string') {
       config.setMessage(value);
@@ -151,7 +151,7 @@ const InputTalkFormImpl: React.FC<{ className?: string; config: IConfig }> = ({
             as="textarea"
             value={config.message}
             onChange={onChangeMessage}
-            rows="3"
+            rows={3}
           />
         </FormGroup>
         <DerepoForm talkType={config.talkType} />

@@ -1021,7 +1021,8 @@
     "kana": "いむらせつな",
     "category": "cinderella",
     "image": [
-      "5f78843cb3bd7aff0668a90cae422260.png"
+      "5f78843cb3bd7aff0668a90cae422260.png",
+      "imurasetsuna_2.png"
     ]
   },
   {
@@ -1050,6 +1051,15 @@
     "image": [
       "84c3cf986f24bc57120b93da32c5ba39.png"
     ]
+  },
+  {
+    "name": "衛藤美紗希",
+    "short_name": "美紗希",
+    "kana": "えとうみさき",
+    "image": [
+      "etoumisaki_1.png"
+    ],
+    "category": "cinderella"
   },
   {
     "name": "海老原菜帆",
@@ -1198,6 +1208,15 @@
     ]
   },
   {
+    "name": "岸部彩華",
+    "short_name": "彩華",
+    "kana": "きしべあやか",
+    "image": [
+      "kishibeayaka_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "北川真尋",
     "short_name": "真尋",
     "kana": "きたがわまひろ",
@@ -1310,6 +1329,15 @@
     ]
   },
   {
+    "name": "ケイト",
+    "short_name": "ケイト",
+    "kana": "けいと",
+    "image": [
+      "kate_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "古賀小春",
     "short_name": "小春",
     "kana": "こがこはる",
@@ -1362,6 +1390,27 @@
     "image": [
       "5a3dd9b14286b7fda6288e28ccde3c09.png"
     ]
+  },
+  {
+    "name": "小室千奈美",
+    "short_name": "千奈美",
+    "kana": "こむろちなみ",
+    "image": [
+      "komurochinami_1.png"
+    ],
+    "category": "cinderella"
+  },
+  {
+    "name": "西園寺琴歌",
+    "short_name": "琴歌",
+    "kana": "さいおんじことか",
+    "image": [
+      "saionjikotoka_1.png",
+      "saionjikotoka_2.png",
+      "saionjikotoka_3.png",
+      "saionjikotoka_4.png"
+    ],
+    "category": "cinderella"
   },
   {
     "name": "斉藤洋子",
@@ -1600,6 +1649,17 @@
     ]
   },
   {
+    "name": "仙崎恵磨",
+    "short_name": "恵磨",
+    "kana": "せんざきえま",
+    "image": [
+      "senzakiema_1.png",
+      "senzakiema_2.png",
+      "senzakiema_3.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "相馬夏美",
     "short_name": "夏美",
     "kana": "そうまなつみ",
@@ -1664,6 +1724,17 @@
     ]
   },
   {
+    "name": "月宮雅",
+    "short_name": "雅",
+    "kana": "つきみやみやび",
+    "image": [
+      "tsukimiyamiyabi_1.png",
+      "tsukimiyamiyabi_2.png",
+      "tsukimiyamiyabi_3.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "辻野あかり",
     "short_name": "あかり",
     "kana": "つじのあかり",
@@ -1680,6 +1751,15 @@
     "image": [
       "ako_tsuchiya.png"
     ]
+  },
+  {
+    "name": "東郷あい",
+    "short_name": "あい",
+    "kana": "とうごうあい",
+    "image": [
+      "tougouai_1.png"
+    ],
+    "category": "cinderella"
   },
   {
     "name": "十時愛梨",
@@ -1773,6 +1853,16 @@
     ]
   },
   {
+    "name": "西島櫂",
+    "short_name": "櫂",
+    "kana": "にしじまかい",
+    "image": [
+      "nishizimakai_1.png",
+      "nishizimakai_2.png"
+    ],
+    "category": "cinderella"
+  },
+  {
     "name": "新田美波",
     "short_name": "美波",
     "kana": "にったみなみ",
@@ -1814,8 +1904,18 @@
     "kana": "はっとりとうこ",
     "category": "cinderella",
     "image": [
-      "touko_hattori.png"
+      "touko_hattori.png",
+      "hattoritouko_2.png"
     ]
+  },
+  {
+    "name": "浜川愛結奈",
+    "short_name": "愛結奈",
+    "kana": "はまかわあゆな",
+    "image": [
+      "hamakawaayuna_1.png"
+    ],
+    "category": "cinderella"
   },
   {
     "name": "浜口あやめ",
@@ -2050,7 +2150,8 @@
     "kana": "まつばらさや",
     "category": "cinderella",
     "image": [
-      "ab5d288ecd8bc478742b17a34b3ad8af.png"
+      "ab5d288ecd8bc478742b17a34b3ad8af.png",
+      "matsubarasaya_2.png"
     ]
   },
   {
@@ -2068,7 +2169,8 @@
     "kana": "まつやまくみこ",
     "category": "cinderella",
     "image": [
-      "b1c2918fca5d857f8b541c3e56e8f50f.png"
+      "b1c2918fca5d857f8b541c3e56e8f50f.png",
+      "matsuyamakumiko_3.png"
     ]
   },
   {

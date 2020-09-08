@@ -29,7 +29,7 @@ const SelectNameForm: React.FC<{ className?: string }> = ({
   };
 
   // 検索ワードが変化した際の処理
-  const onChangeSearchWord = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChangeSearchWord = (event: React.FormEvent<any>) => {
     const value = event.currentTarget.value;
     if (typeof value === 'string') {
       setSearchWord(value);

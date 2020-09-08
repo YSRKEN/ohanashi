@@ -14,9 +14,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "incremental": true,
-    "baseUrl": ".",
-    "tsBuildInfoFile": "./.tsbuildinfo"
+    "baseUrl": "."
   },
   "include": ["src"]
 }
