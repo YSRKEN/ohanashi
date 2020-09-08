@@ -10,6 +10,7 @@ const App: React.FC = () => {
   return (
     <ApplicationContext.Provider value={store}>
       <SelectedScene />
+      <DerepoView dataList={SAMPLE_DEREPO_LIST} showLogoFlg={true}/>
     </ApplicationContext.Provider>
   );
 };

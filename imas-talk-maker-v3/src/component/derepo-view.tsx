@@ -2,11 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { DerepoData } from 'constant/type';
 
 // デレぽの大きさ
-const DEREPO_WIDTH = 624;  // 全体の横幅
-const DEREPO_HEIGHT = 128;  // n～n+1件目(n≧2)の縦間隔
-const DEREPO_SEPARATOR_HEIGHT = 11;  // 1～2軒件目の間にある仕切りの高さ(仕切りは下線)
-const DEREPO_HEADER_SPACE = 7;  // 上側のスペース
-const DEREPO_HOOTER_SPACE = 26;  // 下側のスペース
+const DEREPO_WIDTH = 624;             // 全体の横幅
+const DEREPO_HEIGHT = 128;            // n～n+1件目(n≧2)の縦間隔
+const DEREPO_SEPARATOR_HEIGHT = 11;   // 1～2軒件目の間にある仕切りの高さ(仕切りは下線)
+const DEREPO_HEADER_SPACE = 7;        // 上側のスペース
+const DEREPO_HOOTER_SPACE = 26;       // 下側のスペース
+const DEREPO_ARC_SIZE = 8;            // 角丸の大きさ
 // ロゴの縦幅
 const DEREPO_LOGO_HEIGHT = 24;
 
@@ -61,6 +62,10 @@ const DerepoView: React.FC<{
       }
       const context = canvas.getContext('2d');
       if (context !== null) {
+        // 背景の塗り
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
         // 実際の結合処理(左上座標＝yPos)
         // ついでに各要素の高さ情報(heightList)を更新しておく
         let yPos = DEREPO_HEADER_SPACE;
@@ -78,15 +83,30 @@ const DerepoView: React.FC<{
 
         // 罫線を描画する
         if (messageCanvasList.length > 1) {
-          context.strokeStyle = 'blue';
-          context.strokeRect(0, DEREPO_HEADER_SPACE + messageCanvasList[0].height, canvas.width, 1);
+          context.strokeStyle = 'black';
+          context.beginPath();
+          context.setLineDash([2, 2]);
+          context.moveTo(25, DEREPO_HEADER_SPACE + messageCanvasList[0].height);
+          context.lineTo(canvas.width - 25, DEREPO_HEADER_SPACE + messageCanvasList[0].height);
+          context.stroke();
+          context.setLineDash([]);
         }
 
         // 外枠を描画する
-        context.strokeStyle = 'black';
-        context.strokeRect(0, 0, canvas.width, canvas.height - DEREPO_LOGO_HEIGHT);
-        context.strokeStyle = 'red';
-        context.strokeRect(0, canvas.height - DEREPO_LOGO_HEIGHT, canvas.width, DEREPO_LOGO_HEIGHT);
+        context.strokeStyle = 'gray';
+        context.beginPath();
+        context.arc(DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, - Math.PI, - 0.5 * Math.PI, false);
+        context.arc(DEREPO_WIDTH - DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, - 0.5 * Math.PI, 0, false);
+        context.arc(DEREPO_WIDTH - DEREPO_ARC_SIZE, canvas.height - DEREPO_LOGO_HEIGHT - DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, 0, 0.5 * Math.PI, false);
+        context.arc(DEREPO_ARC_SIZE, canvas.height - DEREPO_LOGO_HEIGHT - DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, 0.5 * Math.PI, Math.PI, false);
+        context.stroke();
+
+        // ロゴを描画する
+        if (showLogoFlg) {
+          context.fillStyle = 'black';
+          context.font = `${0.8 * DEREPO_LOGO_HEIGHT}px Noto Sans JP`;
+          context.fillText('アイマス会話メーカーv3', DEREPO_WIDTH - DEREPO_LOGO_HEIGHT * 12 * 0.8, canvas.height - 3, DEREPO_WIDTH);
+        }
         context.save();
 
         // ダウンロードリンクを生成する
