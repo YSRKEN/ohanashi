@@ -164,7 +164,7 @@ const OhanashiView: React.FC<{
       const context = canvas.getContext('2d');
       const offscreenCanvasContext = offscreenCanvas.getContext('2d');
       if (context !== null && offscreenCanvasContext !== null) {
-        context.scale(1.0 / scale, 1.0 / scale);
+        context.setTransform(1.0 / scale, 0, 0, 1.0 / scale, 0, 0);
         await drawMethodImpl(offscreenCanvasContext, dataList, showLogoFlg);
         context.drawImage(offscreenCanvas, 0, 0);
         setDownloadLink(canvas.toDataURL('image/png'));
