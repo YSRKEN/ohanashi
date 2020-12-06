@@ -46,6 +46,11 @@ const drawMethodImpl = async (data: DerepoData) => {
     const xPos = 25 + ICON_SIZE + 9;
     fillTextEx(context, data.message, xPos, 46, 25, DEREPO_WIDTH - xPos);
 
+    // ファボ数の描画
+    context.font = `bold 20px Noto Sans JP`;
+    const favText = data.favCount < 10000 ? `${data.favCount}` : '9999+';
+    context.fillText(favText, 558 - favText.length * 10 / 2, 65);
+
     // 右側の角丸正方形の描画
     context.strokeStyle = 'gray';
     context.beginPath();
