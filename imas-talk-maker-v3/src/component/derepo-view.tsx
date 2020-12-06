@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { DerepoData } from 'constant/type';
-import { loadImage, fillTextEx } from 'service/utility';
+import { loadImage, fillTextEx, fillZero } from 'service/utility';
 
 // デレぽの大きさ
 const DEREPO_WIDTH = 624;             // 全体の横幅
@@ -43,13 +43,21 @@ const drawMethodImpl = async (data: DerepoData) => {
 
     // テキストの描画
     context.font = `20px Noto Sans JP`;
+    context.fillStyle = 'black';
     const xPos = 25 + ICON_SIZE + 9;
     fillTextEx(context, data.message, xPos, 46, 25, DEREPO_WIDTH - xPos);
 
     // ファボ数の描画
     context.font = `bold 20px Noto Sans JP`;
+    context.fillStyle = 'black';
     const favText = data.favCount < 10000 ? `${data.favCount}` : '9999+';
     context.fillText(favText, 558 - favText.length * 10 / 2, 65);
+
+    // 日時数の描画
+    context.font = `bold 17px Noto Sans JP`;
+    context.fillStyle = 'gray';
+    const dateText = `${fillZero(data.month, 2)}:${fillZero(data.day, 2)} ${fillZero(data.hour, 2)}:${fillZero(data.minute, 2)}`;
+    context.fillText(dateText, 488, 100);
 
     // 右側の角丸正方形の描画
     context.strokeStyle = 'gray';

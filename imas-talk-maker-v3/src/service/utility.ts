@@ -158,3 +158,12 @@ export const getOhanashiNameAuto = (ohanashi: OhanashiData) => {
     }
   }
 };
+
+/**
+ * ゼロ埋めした文字列を返す
+ * @param s 文字
+ * @param length 文字長
+ */
+export const fillZero = (s: number, length: number) => {
+  return ('00000000' + s).slice(-length);
+};
