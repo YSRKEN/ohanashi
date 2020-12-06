@@ -14,6 +14,12 @@ const DEREPO_ARC_SIZE = 8;            // 角丸の大きさ
 const DEREPO_LOGO_HEIGHT = 24;
 // アイコンサイズ
 const ICON_SIZE = 64;
+// いいねボタン
+const FAV_X = 527;
+const FAV_Y = 25;
+const FAV_SIZE = 65;
+const FAV_ARC_SIZE = 8;
+const FAV_STAR_POS_LIST = [[560, 33], [554, 43], [542, 45], [550, 55], [549, 67], [560, 61], [571, 67], [569, 55], [577, 45], [566, 43]];
 
 // 描画メソッド
 const drawMethodImpl = async (data: DerepoData) => {
@@ -27,7 +33,7 @@ const drawMethodImpl = async (data: DerepoData) => {
 
     // アイコンの描画
     const iconImage = await loadImage(`./asset/${data.iconUrl}`);
-    context.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, 25, 18, ICON_SIZE, ICON_SIZE); 
+    context.drawImage(iconImage, 0, 0, iconImage.width, iconImage.height, 25, 18, ICON_SIZE, ICON_SIZE);
 
     // アイドル名の描画
     context.font = `bold 20px Noto Sans JP`;
@@ -40,18 +46,50 @@ const drawMethodImpl = async (data: DerepoData) => {
     const xPos = 25 + ICON_SIZE + 9;
     fillTextEx(context, data.message, xPos, 46, 25, DEREPO_WIDTH - xPos);
 
+    // 右側の角丸正方形の描画
+    context.strokeStyle = 'gray';
+    context.beginPath();
+    context.arc(FAV_X + FAV_ARC_SIZE, FAV_Y + FAV_ARC_SIZE, FAV_ARC_SIZE, - Math.PI, - 0.5 * Math.PI, false);
+    context.arc(FAV_X + FAV_SIZE - FAV_ARC_SIZE, FAV_Y + FAV_ARC_SIZE, FAV_ARC_SIZE, - 0.5 * Math.PI, 0, false);
+    context.arc(FAV_X + FAV_SIZE - FAV_ARC_SIZE, FAV_Y + FAV_SIZE - FAV_ARC_SIZE, FAV_ARC_SIZE, 0, 0.5 * Math.PI, false);
+    context.arc(FAV_X + FAV_ARC_SIZE, FAV_Y + FAV_SIZE - FAV_ARC_SIZE, FAV_ARC_SIZE, 0.5 * Math.PI, Math.PI, false);
+    context.closePath();
+    context.stroke();
+
+    // 星の描画
+    if (data.favFlg) {
+      context.strokeStyle = '#FFCB11';
+      context.beginPath();
+      context.moveTo(FAV_STAR_POS_LIST[0][0], FAV_STAR_POS_LIST[0][1]);
+      for (let i = 1; i < FAV_STAR_POS_LIST.length; i += 1) {
+        context.lineTo(FAV_STAR_POS_LIST[i][0], FAV_STAR_POS_LIST[i][1]);
+      }
+      context.closePath();
+      context.fillStyle = '#FFCB11';
+      context.fill();
+    } else {
+      context.strokeStyle = 'gray';
+      context.beginPath();
+      context.moveTo(FAV_STAR_POS_LIST[0][0], FAV_STAR_POS_LIST[0][1]);
+      for (let i = 1; i < FAV_STAR_POS_LIST.length; i += 1) {
+        context.lineTo(FAV_STAR_POS_LIST[i][0], FAV_STAR_POS_LIST[i][1]);
+      }
+      context.closePath();
+      context.stroke();
+    }
+
     context.save();
   }
   return canvas;
 };
 
 const DerepoView: React.FC<{
-	dataList: DerepoData[];
-	setDownloadLink?: (val: string) => void;
-	showLogoFlg?: boolean;
-	onClick?: (val: number) => void;
+  dataList: DerepoData[];
+  setDownloadLink?: (val: string) => void;
+  showLogoFlg?: boolean;
+  onClick?: (val: number) => void;
 }> = ({ dataList, setDownloadLink = () => { }, showLogoFlg = false, onClick = () => { } }) => {
-	const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [heightList, setHeightList] = useState<number[]>([]);
 
@@ -121,6 +159,7 @@ const DerepoView: React.FC<{
         context.arc(DEREPO_WIDTH - DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, - 0.5 * Math.PI, 0, false);
         context.arc(DEREPO_WIDTH - DEREPO_ARC_SIZE, canvas.height - DEREPO_LOGO_HEIGHT - DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, 0, 0.5 * Math.PI, false);
         context.arc(DEREPO_ARC_SIZE, canvas.height - DEREPO_LOGO_HEIGHT - DEREPO_ARC_SIZE, DEREPO_ARC_SIZE, 0.5 * Math.PI, Math.PI, false);
+        context.closePath();
         context.stroke();
 
         // ロゴを描画する
@@ -139,11 +178,11 @@ const DerepoView: React.FC<{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvasRef, dataList]);
 
-	// クリック時の処理
-	const onClickCanvas = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  // クリック時の処理
+  const onClickCanvas = (e: React.MouseEvent<HTMLCanvasElement>) => {
     // Canvasに対する縦のクリック位置をyとする
-		const rect = e.currentTarget.getBoundingClientRect();
-		const y = e.clientY - rect.top;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const y = e.clientY - rect.top;
     let yPos = dataList.length;
 
     // 指定したデレぽ枠において、yのY座標がsum～sum + messageHeight - 1の間なら、
@@ -159,19 +198,19 @@ const DerepoView: React.FC<{
       sum += messageHeight;
     }
 
-		if (yPos >= dataList.length) {
-			onClick(-1);
-		} else {
-			onClick(yPos);
-		}
-	};
+    if (yPos >= dataList.length) {
+      onClick(-1);
+    } else {
+      onClick(yPos);
+    }
+  };
 
-	return (
-		<canvas
-			ref={canvasRef}
-			onClick={onClickCanvas}
-		/>
-	);
+  return (
+    <canvas
+      ref={canvasRef}
+      onClick={onClickCanvas}
+    />
+  );
 };
 
 export default DerepoView;

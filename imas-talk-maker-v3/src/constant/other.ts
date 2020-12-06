@@ -60,7 +60,7 @@ export const SAMPLE_DEREPO_LIST: DerepoData[] = [
     name: '木村夏樹',
     iconUrl: 'cinderella/kimuranatsuki_2.png',
     message: 'そうですね。\nどうしても指が、ね。',
-    favFlg: true,
+    favFlg: false,
     favCount: 4,
     month: 12,
     day: 19,
