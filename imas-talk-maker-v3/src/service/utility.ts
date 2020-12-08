@@ -1,5 +1,5 @@
 import { IDOL_LIST } from 'constant/idol';
-import { Idol, OhanashiData } from 'constant/type';
+import { DerepoData, Idol, OhanashiData } from 'constant/type';
 import { useState, useEffect } from 'react';
 
 /**
@@ -157,6 +157,15 @@ export const getOhanashiNameAuto = (ohanashi: OhanashiData) => {
       return idol !== null ? idol.shortName : '';
     }
   }
+};
+
+/**
+ * 「デレぽ」から、名前欄を自動生成する
+ * @param derepo 「デレぽ」
+ */
+export const getDerepoNameAuto = (derepo: DerepoData) => {
+  const idol = findIdolByIconUrl(derepo.iconUrl);
+  return idol !== null ? idol.name : '';
 };
 
 /**
