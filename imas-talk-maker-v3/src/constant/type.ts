@@ -85,7 +85,7 @@ export interface Idol {
 }
 
 // 表示シーン
-export type SceneType = 'Ohanashi' | 'IdolSelect';
+export type SceneType = 'Ohanashi' | 'IdolSelect' | 'Derepo';
 
 // デレぽの1データ
 export interface DerepoData {

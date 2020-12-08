@@ -11,7 +11,7 @@ export const useApplicationStore = (): ApplicationStore => {
   // 入力フォームでどのアイコンを選択しているか
   const [selectedIconIndex, setSelectedIconIndex] = useState(-1);
   // 現在の表示シーン
-  const [scene, setScene] = useLocalStorageState<SceneType>('scene', 'Ohanashi');
+  const [scene, setScene] = useLocalStorageState<SceneType>('scene', 'Derepo');
   // ダウンロードリンク
   const [downloadLink, setDownloadLink] = useState('#');
   // 「おはなし」におけるどの位置で区切るか
