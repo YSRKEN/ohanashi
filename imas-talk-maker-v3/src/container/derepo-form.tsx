@@ -44,6 +44,11 @@ const DerepoForm: React.FC = () => {
     });
   };
 
+  const changeMonth = (e: FormEvent<any>) => dispatch({ type: 'changeMonthD', message: e.currentTarget.value });
+  const changeDay = (e: FormEvent<any>) => dispatch({ type: 'changeDayD', message: e.currentTarget.value });
+  const changeHour = (e: FormEvent<any>) => dispatch({ type: 'changeHourD', message: e.currentTarget.value });
+  const changeMinute = (e: FormEvent<any>) => dispatch({ type: 'changeMinuteD', message: e.currentTarget.value });
+
   const addMessage = () => {
     /*dispatch({
       type: 'addOhanashi',
@@ -68,6 +73,12 @@ const DerepoForm: React.FC = () => {
       <ControlWrapper>
         <FavFlg type="checkbox" checked={nowDerepoData.favFlg} onClick={changeFavFlg} /><span onClick={changeFavFlg}>ファボする</span>
         <FavCount placeholder="ファボ数" value={`${nowDerepoData.favCount}`} onChange={changeFavCount} />
+      </ControlWrapper>
+      <ControlWrapper>
+        <DateTimeInput placeholder="月" value={`${nowDerepoData.month}`} onChange={changeMonth} />
+        <DateTimeInput placeholder="日" value={`${nowDerepoData.day}`} onChange={changeDay} />
+        <DateTimeInput placeholder="時" value={`${nowDerepoData.hour}`} onChange={changeHour} />
+        <DateTimeInput placeholder="分" value={`${nowDerepoData.minute}`} onChange={changeMinute} />
       </ControlWrapper>
       <Wrapper>
         <Preview>
@@ -139,6 +150,13 @@ const FavCount = styled.input`
   @media screen and (min-width: 768px) {
     width: 40%;
   }
+`;
+
+const DateTimeInput = styled.input`
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  margin-left: 1rem;
+  width: 10%;
 `;
 
 const Wrapper = styled.div`

@@ -180,6 +180,34 @@ export const useApplicationStore = (): ApplicationStore => {
         }
         break;
       }
+      case 'changeMonthD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, month: f });
+        }
+        break;
+      }
+      case 'changeDayD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, day: f });
+        }
+        break;
+      }
+      case 'changeHourD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, hour: f });
+        }
+        break;
+      }
+      case 'changeMinuteD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, minute: f });
+        }
+        break;
+      }
       default:
         break;
     }

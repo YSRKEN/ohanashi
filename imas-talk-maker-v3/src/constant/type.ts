@@ -41,7 +41,11 @@ export type ActionType =
   | 'changeNameD'
   | 'changeMessageD'
   | 'changeFavFlgD'
-  | 'changeFavCountD';
+  | 'changeFavCountD'
+  | 'changeMonthD'
+  | 'changeDayD'
+  | 'changeHourD'
+  | 'changeMinuteD';
 
 // Action本体
 export interface Action {
