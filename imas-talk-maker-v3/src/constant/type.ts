@@ -37,7 +37,8 @@ export type ActionType =
   | 'changeCategory'
   | 'changeKeyword'
   | 'changeShowType'
-  | 'clearLocalStrage';
+  | 'clearLocalStrage'
+  | 'changeNameD';
 
 // Action本体
 export interface Action {
@@ -63,6 +64,8 @@ export interface ApplicationStore {
   messageSplitIndex: number;
   // アイコン選択時のオプション
   selectOption: SelectOption;
+  // 現在入力中の「デレぽ」のデータ
+  nowDerepoData: DerepoData;
   // dispatch関数
   dispatch: (action: Action) => void;
 }

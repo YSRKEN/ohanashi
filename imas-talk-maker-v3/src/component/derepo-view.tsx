@@ -28,8 +28,8 @@ const drawMethodImpl = async (data: DerepoData) => {
   canvas.height = DEREPO_HEIGHT;
   const context = canvas.getContext('2d');
   if (context !== null) {
-    context.strokeStyle = 'gray';
-    context.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+    // context.strokeStyle = 'gray';
+    // context.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
 
     // アイコンの描画
     const iconImage = await loadImage(`./asset/${data.iconUrl}`);
@@ -54,10 +54,10 @@ const drawMethodImpl = async (data: DerepoData) => {
     context.fillText(favText, 558 - favText.length * 10 / 2, 65);
 
     // 日時数の描画
-    context.font = `bold 17px Noto Sans JP`;
+    context.font = `bold 18px Noto Sans JP`;
     context.fillStyle = 'gray';
     const dateText = `${fillZero(data.month, 2)}:${fillZero(data.day, 2)} ${fillZero(data.hour, 2)}:${fillZero(data.minute, 2)}`;
-    context.fillText(dateText, 488, 100);
+    context.fillText(dateText, 503, 100);
 
     // 右側の角丸正方形の描画
     context.strokeStyle = 'gray';

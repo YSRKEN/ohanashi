@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import { useLocalStorageState } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType } from 'constant/type';
-import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType, DerepoData } from 'constant/type';
+import { SAMPLE_DEREPO, SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
   // 現在入力している「おはなし」の一覧
@@ -22,6 +22,8 @@ export const useApplicationStore = (): ApplicationStore => {
     category: 'all',
     showType: 'text'
   });
+  // プレビュー用の「おはなし」
+  const [nowDerepoData, setNowDerepoData] = useLocalStorageState<DerepoData>('nowDerepoData', SAMPLE_DEREPO);
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -162,6 +164,9 @@ export const useApplicationStore = (): ApplicationStore => {
         window.localStorage.clear();
         window.location.href = '/';
         break;
+      case 'changeNameD':
+        setNowDerepoData({ ...nowDerepoData, name: action.message });
+        break;
       default:
         break;
     }
@@ -175,6 +180,7 @@ export const useApplicationStore = (): ApplicationStore => {
     downloadLink,
     messageSplitIndex,
     selectOption,
+    nowDerepoData,
     dispatch
   };
 };

@@ -1,5 +1,8 @@
 import { OhanashiData, DerepoData } from 'constant/type';
 
+// バージョン
+export const APP_VERSION = '4.0.0';
+
 // 「おはなし」の初期データ
 export const SAMPLE_OHANASHI: OhanashiData = {
   name: '',
@@ -41,6 +44,20 @@ export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
     messageMode: 'message-only'
   }
 ];
+
+// 「デレぽ」の初期データ
+export const SAMPLE_DEREPO: DerepoData = {
+  name: '',
+  iconUrl: 'cinderella/abenana_1.png',
+  message: '',
+  favFlg: true,
+  favCount: 0,
+  month: 1,
+  day: 1,
+  hour: 0,
+  minute: 0,
+  hashTags: []
+};
 
 // デレぽのサンプルデータ
 export const SAMPLE_DEREPO_LIST: DerepoData[] = [
