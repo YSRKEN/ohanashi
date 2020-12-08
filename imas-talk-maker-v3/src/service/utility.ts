@@ -176,3 +176,17 @@ export const getDerepoNameAuto = (derepo: DerepoData) => {
 export const fillZero = (s: number, length: number) => {
   return ('00000000' + s).slice(-length);
 };
+
+export const tryParseInt = (s: string | undefined) => {
+  if (typeof s === 'undefined') {
+    return undefined;
+  }
+  if (s === '') {
+    return 0;
+  }
+  try {
+    return parseInt(s, 10);
+  } catch {
+    return undefined;
+  }
+};

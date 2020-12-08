@@ -30,6 +30,20 @@ const DerepoForm: React.FC = () => {
     });
   };
 
+  const changeFavFlg = () => {
+    dispatch({
+      type: 'changeFavFlgD',
+      message: ''
+    });
+  };
+
+  const changeFavCount = (e: FormEvent<any>) => {
+    dispatch({
+      type: 'changeFavCountD',
+      message: e.currentTarget.value
+    });
+  };
+
   const addMessage = () => {
     /*dispatch({
       type: 'addOhanashi',
@@ -50,6 +64,10 @@ const DerepoForm: React.FC = () => {
       </ControlWrapper>
       <ControlWrapper>
         <Message placeholder="メッセージを入力" rows={3} value={nowDerepoData.message} onChange={changeMessage} />
+      </ControlWrapper>
+      <ControlWrapper>
+        <FavFlg type="checkbox" checked={nowDerepoData.favFlg} onClick={changeFavFlg} /><span onClick={changeFavFlg}>ファボする</span>
+        <FavCount placeholder="ファボ数" value={`${nowDerepoData.favCount}`} onChange={changeFavCount} />
       </ControlWrapper>
       <Wrapper>
         <Preview>
@@ -107,6 +125,19 @@ const Name = styled.input`
   width: 90%;
   @media screen and (min-width: 768px) {
     width: 50%;
+  }
+`;
+
+const FavFlg = styled.input`
+`;
+
+const FavCount = styled.input`
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  margin-left: 1rem;
+  width: 50%;
+  @media screen and (min-width: 768px) {
+    width: 40%;
   }
 `;
 

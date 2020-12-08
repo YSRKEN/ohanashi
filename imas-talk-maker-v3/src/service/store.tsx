@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { useLocalStorageState } from 'service/utility';
+import { tryParseInt, useLocalStorageState } from 'service/utility';
 import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType, DerepoData } from 'constant/type';
 import { SAMPLE_DEREPO, SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
@@ -170,6 +170,16 @@ export const useApplicationStore = (): ApplicationStore => {
       case 'changeMessageD':
         setNowDerepoData({ ...nowDerepoData, message: action.message });
         break;
+      case 'changeFavFlgD':
+        setNowDerepoData({ ...nowDerepoData, favFlg: !nowDerepoData.favFlg });
+        break;
+      case 'changeFavCountD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, favCount: f });
+        }
+        break;
+      }
       default:
         break;
     }

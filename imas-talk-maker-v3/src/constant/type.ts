@@ -39,7 +39,9 @@ export type ActionType =
   | 'changeShowType'
   | 'clearLocalStrage'
   | 'changeNameD'
-  | 'changeMessageD';
+  | 'changeMessageD'
+  | 'changeFavFlgD'
+  | 'changeFavCountD';
 
 // Action本体
 export interface Action {
