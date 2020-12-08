@@ -167,6 +167,9 @@ export const useApplicationStore = (): ApplicationStore => {
       case 'changeNameD':
         setNowDerepoData({ ...nowDerepoData, name: action.message });
         break;
+      case 'changeMessageD':
+        setNowDerepoData({ ...nowDerepoData, message: action.message });
+        break;
       default:
         break;
     }

@@ -38,7 +38,8 @@ export type ActionType =
   | 'changeKeyword'
   | 'changeShowType'
   | 'clearLocalStrage'
-  | 'changeNameD';
+  | 'changeNameD'
+  | 'changeMessageD';
 
 // Action本体
 export interface Action {

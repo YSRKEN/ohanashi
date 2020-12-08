@@ -23,6 +23,13 @@ const DerepoForm: React.FC = () => {
     });
   };
 
+  const changeMessage = (e: FormEvent<any>) => {
+    dispatch({
+      type: 'changeMessageD',
+      message: e.currentTarget.value
+    });
+  };
+
   const addMessage = () => {
     /*dispatch({
       type: 'addOhanashi',
@@ -40,6 +47,9 @@ const DerepoForm: React.FC = () => {
     <Form>
       <ControlWrapper>
         <Name placeholder="(未入力時は自動設定)" value={nowDerepoData.name} onChange={changeName} />
+      </ControlWrapper>
+      <ControlWrapper>
+        <Message placeholder="メッセージを入力" rows={3} value={nowDerepoData.message} onChange={changeMessage} />
       </ControlWrapper>
       <Wrapper>
         <Preview>
@@ -122,4 +132,14 @@ const AddButton = styled.button`
   border-radius: 1rem;
   padding: 0.25rem 1rem;
   color: black;
+`;
+
+const Message = styled.textarea`
+  font-size: 1rem;
+  padding: 0.5rem 0.5rem;
+  line-height: 1.25;
+  width: 90%;
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 `;
