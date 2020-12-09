@@ -5,7 +5,7 @@ import { ApplicationContext } from 'service/store';
 import styled from 'styled-components';
 
 const DerepoForm: React.FC = () => {
-  const { nowDerepoData, dispatch } = useContext(ApplicationContext);
+  const { nowDerepoData, derepoDataList, messageSplitIndexD, downloadLinkD, dispatch } = useContext(ApplicationContext);
 
   const clearLocalStrage = () => {
     if (window.confirm('データを初期化しますか？')) {
@@ -50,10 +50,17 @@ const DerepoForm: React.FC = () => {
   const changeMinute = (e: FormEvent<any>) => dispatch({ type: 'changeMinuteD', message: e.currentTarget.value });
 
   const addMessage = () => {
-    /*dispatch({
-      type: 'addOhanashi',
+    dispatch({
+      type: 'addDerepo',
       message: ''
-    });*/
+    });
+  };
+
+  const deleteAllMessage = () => {
+    dispatch({
+      type: 'deleteAllDerepo',
+      message: ''
+    });
   };
 
   return <>
@@ -93,6 +100,61 @@ const DerepoForm: React.FC = () => {
       </AddButton>
       </ControlWrapper>
     </Form>
+    <PreviewForm>
+      {derepoDataList.length > 0 && messageSplitIndexD < 0 ? (
+        <ControlWrapper>
+          <SaveButton href={downloadLinkD} download="derepo.png">
+            保存
+            </SaveButton>
+          <AllDeleteButton type="button" onClick={deleteAllMessage}>
+            全削除
+            </AllDeleteButton>
+        </ControlWrapper>
+      ) : (
+          <></>
+        )}
+      <ControlWrapper>
+        {messageSplitIndexD < 0 ? (
+          <DerepoView
+            dataList={derepoDataList}
+            setDownloadLink={(url) => dispatch({ type: 'setDownloadLinkD', message: url })}
+            showLogoFlg={true}
+            onClick={(n) => dispatch({ type: 'clickUpperDerepoView', message: `${n}` })}
+          />
+        ) : (
+            <>
+              <DerepoView
+                dataList={derepoDataList.slice(0, messageSplitIndexD + 1)}
+                onClick={n => dispatch({ type: 'clickUpperDerepoView', message: `${n}` })}
+              />
+              <MessageActionWrapper>
+                <InsertButton type="button" onClick={() => dispatch({ type: 'insertDerepo', message: '' })}>
+                  挿入
+                </InsertButton>
+                <ShiftButton type="button" onClick={() => dispatch({ type: 'upDerepo', message: '' })}>
+                  ↑
+                </ShiftButton>
+                <ShiftButton type="button" onClick={() => dispatch({ type: 'downDerepo', message: '' })}>
+                  ↓
+                </ShiftButton>
+                <SendButton type="button" onClick={() => dispatch({ type: 'editDerepo', message: '' })}>
+                  転送
+                </SendButton>
+                <UpdateButton type="button" onClick={() => dispatch({ type: 'overWriteDerepo', message: '' })}>
+                  上書
+                </UpdateButton>
+                <DeleteButton type="button" onClick={() => dispatch({ type: 'deleteDerepo', message: '' })}>
+                  削除
+                </DeleteButton>
+              </MessageActionWrapper>
+              <DerepoView
+                dataList={derepoDataList.slice(messageSplitIndexD + 1)}
+                onClick={n => dispatch({ type: 'clickLowerDerepoView', message: `${n}` })}
+              />
+            </>
+          )}
+      </ControlWrapper>
+    </PreviewForm>
   </>;
 };
 
@@ -191,4 +253,72 @@ const Message = styled.textarea`
   @media screen and (min-width: 768px) {
     width: 50%;
   }
+`;
+
+const PreviewForm = styled.form`
+  margin: 1rem auto;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+`;
+
+const SaveButton = styled.a`
+  font-size: 1rem;
+  background-color: green;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  margin: 0 0.5rem;
+  text-decoration: none;
+`;
+
+const AllDeleteButton = styled.button`
+  font-size: 1rem;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: white;
+  margin: 0 0.5rem;
+`;
+
+const MessageActionWrapper = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const InsertButton = styled.button`
+  font-size: 1rem;
+  background-color: skyblue;
+  border: 1px solid black;
+  color: black;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  height: 2rem;
+`;
+
+const ShiftButton = InsertButton;
+
+const UpdateButton = styled.button`
+  font-size: 1rem;
+  background-color: yellow;
+  border: 1px solid black;
+  padding: 0rem 0.5rem;
+  color: black;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  height: 2rem;
+`;
+
+const SendButton = UpdateButton;
+
+const DeleteButton = styled.button`
+  font-size: 1rem;
+  background-color: red;
+  border: 1px solid black;
+  color: white;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  height: 2rem;
 `;

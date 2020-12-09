@@ -22,8 +22,16 @@ export const useApplicationStore = (): ApplicationStore => {
     category: 'all',
     showType: 'text'
   });
-  // プレビュー用の「おはなし」
+  // プレビュー用の「デレぽ」
   const [nowDerepoData, setNowDerepoData] = useLocalStorageState<DerepoData>('nowDerepoData', SAMPLE_DEREPO);
+  // 現在入力している「デレぽ」の一覧
+  const [derepoDataList, setDerepoDataList] = useLocalStorageState<DerepoData[]>('derepoDataList', []);
+  // 入力フォームでどのアイコンを選択しているか
+  const [selectedIconIndexD, setSelectedIconIndexD] = useState(-1);
+  // ダウンロードリンク
+  const [downloadLinkD, setDownloadLinkD] = useState('#');
+  // 「デレぽ」におけるどの位置で区切るか
+  const [messageSplitIndexD, setMessageSplitIndexD] = useState(-1);
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -208,6 +216,80 @@ export const useApplicationStore = (): ApplicationStore => {
         }
         break;
       }
+      case 'addDerepo': {
+        const temp = JSON.parse(JSON.stringify(nowDerepoData)) as DerepoData;
+        setDerepoDataList([...derepoDataList, temp]);
+        break;
+      }
+      case 'deleteAllDerepo': {
+        if (window.confirm('全ての「デレぽ」を削除しますか？')) {
+          setDerepoDataList([]);
+        }
+        break;
+      }
+      case 'setDownloadLinkD':
+        setDownloadLinkD(action.message);
+        break;
+      case 'clickUpperDerepoView': {
+        const index = parseInt(action.message, 10);
+        const newMessageSplitIndex = index;
+        if (messageSplitIndexD === newMessageSplitIndex) {
+          setMessageSplitIndexD(-1);
+        } else {
+          setMessageSplitIndexD(newMessageSplitIndex);
+        }
+        break;
+      }
+      case 'clickLowerDerepoView': {
+        const index = parseInt(action.message, 10);
+        if (index < 0) {
+          setMessageSplitIndexD(-1);
+        } else {
+          const newMessageSplitIndex = index + messageSplitIndexD + 1;
+          setMessageSplitIndexD(newMessageSplitIndex);
+        }
+        break;
+      }
+      case 'insertDerepo': {
+        const temp = JSON.parse(JSON.stringify(nowDerepoData)) as DerepoData;
+        setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD + 1), temp, ...derepoDataList.slice(messageSplitIndexD + 1)]);
+        setMessageSplitIndexD(messageSplitIndexD + 1);
+        break;
+      }
+      case 'upDerepo':
+        if (messageSplitIndexD > 0) {
+          setDerepoDataList([
+            ...derepoDataList.slice(0, messageSplitIndexD - 1),
+            derepoDataList[messageSplitIndexD],
+            derepoDataList[messageSplitIndexD - 1],
+            ...derepoDataList.slice(messageSplitIndexD + 1)
+          ]);
+          setMessageSplitIndexD(messageSplitIndexD - 1);
+        }
+        break;
+      case 'downDerepo':
+        if (messageSplitIndexD < derepoDataList.length - 1) {
+          setDerepoDataList([
+            ...derepoDataList.slice(0, messageSplitIndexD),
+            derepoDataList[messageSplitIndexD + 1],
+            derepoDataList[messageSplitIndexD],
+            ...derepoDataList.slice(messageSplitIndexD + 2)
+          ]);
+          setMessageSplitIndexD(messageSplitIndexD + 1);
+        }
+        break;
+      case 'editDerepo':
+        setNowDerepoData(JSON.parse(JSON.stringify(derepoDataList[messageSplitIndexD])));
+        break;
+      case 'overWriteDerepo': {
+        const temp = JSON.parse(JSON.stringify(nowDerepoData)) as DerepoData;
+        setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD), temp, ...derepoDataList.slice(messageSplitIndexD + 1)]);
+        break;
+      }
+      case 'deleteDerepo':
+        setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD), ...derepoDataList.slice(messageSplitIndexD + 1)]);
+        setMessageSplitIndexD(-1);
+        break;
       default:
         break;
     }
@@ -222,6 +304,10 @@ export const useApplicationStore = (): ApplicationStore => {
     messageSplitIndex,
     selectOption,
     nowDerepoData,
+    derepoDataList,
+    selectedIconIndexD,
+    messageSplitIndexD,
+    downloadLinkD,
     dispatch
   };
 };
