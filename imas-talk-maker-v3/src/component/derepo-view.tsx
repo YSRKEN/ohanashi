@@ -218,9 +218,18 @@ const DerepoView: React.FC<{
     }
   };
 
+  let canvasHeight = 0;
+  if (dataList.length === 1) {
+    canvasHeight = dataList.length * DEREPO_HEIGHT + DEREPO_HEADER_SPACE + DEREPO_HOOTER_SPACE + DEREPO_LOGO_HEIGHT;
+  } else {
+    canvasHeight = dataList.length * DEREPO_HEIGHT + DEREPO_HEADER_SPACE + DEREPO_SEPARATOR_HEIGHT + DEREPO_HOOTER_SPACE + DEREPO_LOGO_HEIGHT;
+  }
+
   return (
     <canvas
       ref={canvasRef}
+      width={DEREPO_WIDTH}
+      height={canvasHeight}
       onClick={onClickCanvas}
     />
   );
