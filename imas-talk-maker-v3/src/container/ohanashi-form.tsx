@@ -3,6 +3,7 @@ import { ApplicationContext } from 'service/store';
 import OhanashiView from 'component/ohanashi-view';
 import styled from 'styled-components';
 import IconForm from 'container/icon-form';
+import { APP_VERSION } from 'constant/other';
 
 const OhanashiForm: React.FC = () => {
   const { nowOhanashiData, ohanashiDataList, downloadLink, messageSplitIndex, dispatch } = useContext(ApplicationContext);
@@ -57,11 +58,13 @@ const OhanashiForm: React.FC = () => {
         <Title onClick={clearLocalStrage}>アイマス会話メーカー</Title>
       </TitleWrapper>
       <InfoWrapper>
-          <Info>Ver.3.0.1　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
+        <Info>Ver.{APP_VERSION}　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
       </InfoWrapper>
-      <WarningWrapper>
-          <Warning>※デレステの「デレぽ」は<Link href="https://imas-talk-maker.firebaseapp.com">Ver.2.X</Link>をご利用ください。</Warning>
-      </WarningWrapper>
+      <form style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+        <ControlWrapper>
+          <SwitchButton onClick={() => dispatch({ type: 'toDerepoMode', message: '' })}>デレぽモードに変更</SwitchButton>
+        </ControlWrapper>
+      </form>
       <Form>
         <ControlWrapper>
           <Name placeholder="(未入力時は自動設定)" value={nowOhanashiData.name} onChange={changeName} />
@@ -104,8 +107,8 @@ const OhanashiForm: React.FC = () => {
             </AllDeleteButton>
           </ControlWrapper>
         ) : (
-          <></>
-        )}
+            <></>
+          )}
         <ControlWrapper>
           {messageSplitIndex < 0 ? (
             <OhanashiView
@@ -115,37 +118,37 @@ const OhanashiForm: React.FC = () => {
               onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
             />
           ) : (
-            <>
-              <OhanashiView
-                dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
-                onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
-              />
-              <MessageActionWrapper>
-                <InsertButton type="button" onClick={() => dispatch({ type: 'insertOhanashi', message: '' })}>
-                  挿入
+              <>
+                <OhanashiView
+                  dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
+                  onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
+                />
+                <MessageActionWrapper>
+                  <InsertButton type="button" onClick={() => dispatch({ type: 'insertOhanashi', message: '' })}>
+                    挿入
                 </InsertButton>
-                <ShiftButton type="button" onClick={() => dispatch({ type: 'upOhanashi', message: '' })}>
-                  ↑
+                  <ShiftButton type="button" onClick={() => dispatch({ type: 'upOhanashi', message: '' })}>
+                    ↑
                 </ShiftButton>
-                <ShiftButton type="button" onClick={() => dispatch({ type: 'downOhanashi', message: '' })}>
-                  ↓
+                  <ShiftButton type="button" onClick={() => dispatch({ type: 'downOhanashi', message: '' })}>
+                    ↓
                 </ShiftButton>
-                <SendButton type="button" onClick={() => dispatch({ type: 'editOhanashi', message: '' })}>
-                  転送
+                  <SendButton type="button" onClick={() => dispatch({ type: 'editOhanashi', message: '' })}>
+                    転送
                 </SendButton>
-                <UpdateButton type="button" onClick={() => dispatch({ type: 'overWriteOhanashi', message: '' })}>
-                  上書
+                  <UpdateButton type="button" onClick={() => dispatch({ type: 'overWriteOhanashi', message: '' })}>
+                    上書
                 </UpdateButton>
-                <DeleteButton type="button" onClick={() => dispatch({ type: 'deleteOhanashi', message: '' })}>
-                  削除
+                  <DeleteButton type="button" onClick={() => dispatch({ type: 'deleteOhanashi', message: '' })}>
+                    削除
                 </DeleteButton>
-              </MessageActionWrapper>
-              <OhanashiView
-                dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
-                onClick={n => dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })}
-              />
-            </>
-          )}
+                </MessageActionWrapper>
+                <OhanashiView
+                  dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
+                  onClick={n => dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })}
+                />
+              </>
+            )}
         </ControlWrapper>
       </PreviewForm>
     </>
@@ -168,14 +171,6 @@ const InfoWrapper = styled.div`
 `;
 
 const Info = styled.span``;
-
-const WarningWrapper = styled.div`
-  text-align: center;
-`;
-
-const Warning = styled.span`
-  font-weight: bold;
-`;
 
 const Link = styled.a``;
 
@@ -227,6 +222,15 @@ const TypeSelect = styled.select`
 const TypeOption = styled.option``;
 
 const AddButton = styled.button`
+  font-size: 1.5rem;
+  background-color: skyblue;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: black;
+`;
+
+const SwitchButton = styled.a`
   font-size: 1.5rem;
   background-color: skyblue;
   border: 1px solid black;

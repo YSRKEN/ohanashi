@@ -37,7 +37,30 @@ export type ActionType =
   | 'changeCategory'
   | 'changeKeyword'
   | 'changeShowType'
-  | 'clearLocalStrage';
+  | 'clearLocalStrage'
+  | 'changeNameD'
+  | 'changeMessageD'
+  | 'changeFavFlgD'
+  | 'changeFavCountD'
+  | 'changeMonthD'
+  | 'changeDayD'
+  | 'changeHourD'
+  | 'changeMinuteD'
+  | 'setDownloadLinkD'
+  | 'addDerepo'
+  | 'deleteAllDerepo'
+  | 'clickUpperDerepoView'
+  | 'clickLowerDerepoView'
+  | 'insertDerepo'
+  | 'upDerepo'
+  | 'downDerepo'
+  | 'editDerepo'
+  | 'overWriteDerepo'
+  | 'deleteDerepo'
+  | 'selectIconD'
+  | 'selectFaceIconD'
+  | 'toDerepoMode'
+  | 'toOhanashiMode';
 
 // Action本体
 export interface Action {
@@ -59,10 +82,20 @@ export interface ApplicationStore {
   scene: SceneType;
   // 画像のダウンロードリンク
   downloadLink: string;
-  // 「おはなし」やデレぽで選択しているインデックス
+  // 「おはなし」で選択しているインデックス
   messageSplitIndex: number;
   // アイコン選択時のオプション
   selectOption: SelectOption;
+  // 現在入力中の「デレぽ」のデータ
+  nowDerepoData: DerepoData;
+  // 登録している「デレぽ」の一覧
+  derepoDataList: DerepoData[];
+  // 表情選択のインデックス
+  selectedIconIndexD: number;
+  // 画像のダウンロードリンク
+  downloadLinkD: string;
+  // デレぽで選択しているインデックス
+  messageSplitIndexD: number;
   // dispatch関数
   dispatch: (action: Action) => void;
 }
@@ -85,7 +118,7 @@ export interface Idol {
 }
 
 // 表示シーン
-export type SceneType = 'Ohanashi' | 'IdolSelect';
+export type SceneType = 'Ohanashi' | 'IdolSelect' | 'Derepo';
 
 // デレぽの1データ
 export interface DerepoData {

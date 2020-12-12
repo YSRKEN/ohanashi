@@ -1,5 +1,8 @@
 import { OhanashiData, DerepoData } from 'constant/type';
 
+// バージョン
+export const APP_VERSION = '3.2.0';
+
 // 「おはなし」の初期データ
 export const SAMPLE_OHANASHI: OhanashiData = {
   name: '',
@@ -42,10 +45,24 @@ export const SAMPLE_OHANASHI_LIST: OhanashiData[] = [
   }
 ];
 
+// 「デレぽ」の初期データ
+export const SAMPLE_DEREPO: DerepoData = {
+  name: '',
+  iconUrl: 'cinderella/abenana_1.png',
+  message: '',
+  favFlg: true,
+  favCount: 10,
+  month: 1,
+  day: 2,
+  hour: 3,
+  minute: 4,
+  hashTags: []
+};
+
 // デレぽのサンプルデータ
 export const SAMPLE_DEREPO_LIST: DerepoData[] = [
   {
-    name: '',
+    name: '松山久美子',
     iconUrl: 'cinderella/matsuyamakumiko_2.png',
     message: 'この時期は楽器を弾く\nひとには厳しいわね…。',
     favFlg: true,
@@ -57,10 +74,10 @@ export const SAMPLE_DEREPO_LIST: DerepoData[] = [
     hashTags: []
   },
   {
-    name: '',
+    name: '木村夏樹',
     iconUrl: 'cinderella/kimuranatsuki_2.png',
     message: 'そうですね。\nどうしても指が、ね。',
-    favFlg: true,
+    favFlg: false,
     favCount: 4,
     month: 12,
     day: 19,
@@ -69,7 +86,7 @@ export const SAMPLE_DEREPO_LIST: DerepoData[] = [
     hashTags: []
   },
   {
-    name: '',
+    name: '有浦柑奈',
     iconUrl: 'cinderella/ariurakanna_1.png',
     message: 'カイロが手放せないですよね。\n手袋だけじゃ心もとなくて。',
     favFlg: true,

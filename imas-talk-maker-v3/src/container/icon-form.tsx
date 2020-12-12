@@ -9,7 +9,8 @@ const ICON_SIZE_1 = 50;
 const ICON_SIZE_2 = 35;
 
 const IconForm: React.FC<{}> = () => {
-  const { nowOhanashiData, selectedIconIndex, dispatch } = useContext(ApplicationContext);
+  const { scene, nowOhanashiData, selectedIconIndex,
+    nowDerepoData, selectedIconIndexD, dispatch } = useContext(ApplicationContext);
   const [iconList, setIconList] = useState<string[]>([]);
   const [faceIconList, setFaceIconList] = useState<string[]>([]);
 
@@ -18,38 +19,64 @@ const IconForm: React.FC<{}> = () => {
    */
   useEffect(() => {
     // 表示するべきアイコンの数
-    const iconCount = OHANASHI_ICON_COUNT[nowOhanashiData.messageMode];
+    const iconCount = scene === 'Ohanashi' ? OHANASHI_ICON_COUNT[nowOhanashiData.messageMode] : 1;
 
     // 表示されるアイコンの一覧
-    setIconList(nowOhanashiData.iconUrls.slice(0, iconCount));
-  }, [nowOhanashiData]);
+    setIconList(scene === 'Ohanashi' ? nowOhanashiData.iconUrls.slice(0, iconCount) : [nowDerepoData.iconUrl]);
+  }, [nowOhanashiData, nowDerepoData, scene]);
 
   /**
    * 現在選択中のアイドルのアイコン一覧を取得する
    */
   useEffect(() => {
-    // 未選択の場合は無視する
-    if (selectedIconIndex < 0) {
-      setFaceIconList([]);
-      return;
-    }
+    switch (scene) {
+      case 'Ohanashi': {
+        // 未選択の場合は無視する
+        if (selectedIconIndex < 0) {
+          setFaceIconList([]);
+          return;
+        }
 
-    // 検索で引っかからなかった場合も無視する
-    console.log(nowOhanashiData.iconUrls[selectedIconIndex]);
-    const idol = findIdolByIconUrl(nowOhanashiData.iconUrls[selectedIconIndex]);
-    if (idol === null) {
-      setFaceIconList([]);
-      return;
+        // 検索で引っかからなかった場合も無視する
+        const idol = findIdolByIconUrl(nowOhanashiData.iconUrls[selectedIconIndex]);
+        if (idol === null) {
+          setFaceIconList([]);
+          return;
+        }
+        setFaceIconList(idol.iconList.map(url => `${idol.category}/${url}`));
+        break;
+      }
+      case 'Derepo': {
+        // 未選択の場合は無視する
+        if (selectedIconIndexD < 0) {
+          setFaceIconList([]);
+          return;
+        }
+
+        // 検索で引っかからなかった場合も無視する
+        const idol = findIdolByIconUrl(nowDerepoData.iconUrl);
+        if (idol === null) {
+          setFaceIconList([]);
+          return;
+        }
+        setFaceIconList(idol.iconList.map(url => `${idol.category}/${url}`));
+        break;
+      }
+      default:
+        break;
     }
-    setFaceIconList(idol.iconList.map(url => `${idol.category}/${url}`));
-  }, [nowOhanashiData, selectedIconIndex]);
+  }, [nowOhanashiData, selectedIconIndex, nowDerepoData, selectedIconIndexD, scene]);
 
   /**
    * アイコンクリック時は、表情アイコンの表示を切り替える
    * @param index インデックス
    */
   const onClickIcon = (index: number) => {
-    dispatch({ type: 'selectIcon', message: `${index}` });
+    if (scene === 'Ohanashi') {
+      dispatch({ type: 'selectIcon', message: `${index}` });
+    } else {
+      dispatch({ type: 'selectIconD', message: `${index}` });
+    }
   };
 
   /**
@@ -57,7 +84,11 @@ const IconForm: React.FC<{}> = () => {
    * @param index インデックス
    */
   const onClickFaceIcon = (index: number) => {
-    dispatch({ type: 'selectFaceIcon', message: `${faceIconList[index]}` });
+    if (scene === 'Ohanashi') {
+      dispatch({ type: 'selectFaceIcon', message: `${faceIconList[index]}` });
+    } else {
+      dispatch({ type: 'selectFaceIconD', message: `${faceIconList[index]}` });
+    }
   };
 
   /**
@@ -71,7 +102,7 @@ const IconForm: React.FC<{}> = () => {
     <Wrapper>
       <br />
       {iconList.map((url, index) => {
-        if (selectedIconIndex !== index) {
+        if ((scene === 'Ohanashi' && selectedIconIndex !== index) || (scene === 'Derepo' && selectedIconIndexD !== index)) {
           return <IconView key={index} alt={url} src={`./asset/${url}`} onClick={() => onClickIcon(index)} />;
         } else {
           return <SelectedIconView key={index} alt={url} src={`./asset/${url}`} onClick={() => onClickIcon(index)} />;
@@ -81,7 +112,8 @@ const IconForm: React.FC<{}> = () => {
       {faceIconList.map((url, index) => (
         <FaceView key={index} alt={url} src={`./asset/${url}`} onClick={() => onClickFaceIcon(index)} />
       ))}
-      {selectedIconIndex >= 0 ? <FaceView alt="change Idol" src="./asset/more.png" onClick={() => onClickChangeIcon()} /> : <></>}
+      {((scene === 'Ohanashi' && selectedIconIndex >= 0) || (scene === 'Derepo' && selectedIconIndexD >= 0))
+        ? <FaceView alt="change Idol" src="./asset/more.png" onClick={() => onClickChangeIcon()} /> : <></>}
     </Wrapper>
   );
 };
