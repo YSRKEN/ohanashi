@@ -60,6 +60,11 @@ const OhanashiForm: React.FC = () => {
       <InfoWrapper>
         <Info>Ver.{APP_VERSION}　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
       </InfoWrapper>
+      <form style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+        <ControlWrapper>
+          <SwitchButton onClick={() => dispatch({ type: 'toDerepoMode', message: '' })}>デレぽモードに変更</SwitchButton>
+        </ControlWrapper>
+      </form>
       <Form>
         <ControlWrapper>
           <Name placeholder="(未入力時は自動設定)" value={nowOhanashiData.name} onChange={changeName} />
@@ -217,6 +222,15 @@ const TypeSelect = styled.select`
 const TypeOption = styled.option``;
 
 const AddButton = styled.button`
+  font-size: 1.5rem;
+  background-color: skyblue;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: black;
+`;
+
+const SwitchButton = styled.a`
   font-size: 1.5rem;
   background-color: skyblue;
   border: 1px solid black;

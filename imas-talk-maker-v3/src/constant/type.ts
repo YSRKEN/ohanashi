@@ -56,7 +56,11 @@ export type ActionType =
   | 'downDerepo'
   | 'editDerepo'
   | 'overWriteDerepo'
-  | 'deleteDerepo';
+  | 'deleteDerepo'
+  | 'selectIconD'
+  | 'selectFaceIconD'
+  | 'toDerepoMode'
+  | 'toOhanashiMode';
 
 // Action本体
 export interface Action {

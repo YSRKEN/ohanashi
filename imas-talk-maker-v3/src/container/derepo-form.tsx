@@ -3,6 +3,7 @@ import { APP_VERSION } from 'constant/other';
 import React, { FormEvent, useContext } from 'react';
 import { ApplicationContext } from 'service/store';
 import styled from 'styled-components';
+import IconForm from './icon-form';
 
 const DerepoForm: React.FC = () => {
   const { nowDerepoData, derepoDataList, messageSplitIndexD, downloadLinkD, dispatch } = useContext(ApplicationContext);
@@ -70,6 +71,11 @@ const DerepoForm: React.FC = () => {
     <InfoWrapper>
       <Info>Ver.{APP_VERSION}　<Link href="https://github.com/YSRKEN/ohanashi">GitHub</Link>　作者：<Link href="https://twitter.com/YSRKEN">@YSRKEN</Link></Info>
     </InfoWrapper>
+    <form style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+      <ControlWrapper>
+        <SwitchButton onClick={() => dispatch({ type: 'toOhanashiMode', message: '' })}>おはなしモードに変更</SwitchButton>
+      </ControlWrapper>
+    </form>
     <Form>
       <ControlWrapper>
         <Name placeholder="(未入力時は自動設定)" value={nowDerepoData.name} onChange={changeName} />
@@ -87,6 +93,7 @@ const DerepoForm: React.FC = () => {
         <DateTimeInput placeholder="時" value={`${nowDerepoData.hour}`} onChange={changeHour} />
         <DateTimeInput placeholder="分" value={`${nowDerepoData.minute}`} onChange={changeMinute} />
       </ControlWrapper>
+      <ControlWrapper>{<IconForm />}</ControlWrapper>
       <Wrapper>
         <Preview>
           <FormLabel>プレビュー：</FormLabel>
@@ -237,6 +244,15 @@ const FormLabel = styled.span`
 `;
 
 const AddButton = styled.button`
+  font-size: 1.5rem;
+  background-color: skyblue;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  color: black;
+`;
+
+const SwitchButton = styled.a`
   font-size: 1.5rem;
   background-color: skyblue;
   border: 1px solid black;

@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { tryParseInt, useLocalStorageState } from 'service/utility';
+import { loadSetting, saveSetting, tryParseInt, useLocalStorageState } from 'service/utility';
 import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType, DerepoData } from 'constant/type';
 import { SAMPLE_DEREPO, SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
@@ -11,7 +11,7 @@ export const useApplicationStore = (): ApplicationStore => {
   // 入力フォームでどのアイコンを選択しているか
   const [selectedIconIndex, setSelectedIconIndex] = useState(-1);
   // 現在の表示シーン
-  const [scene, setScene] = useLocalStorageState<SceneType>('scene', 'Derepo');
+  const [scene, setScene] = useLocalStorageState<SceneType>('scene', 'Ohanashi');
   // ダウンロードリンク
   const [downloadLink, setDownloadLink] = useState('#');
   // 「おはなし」におけるどの位置で区切るか
@@ -32,6 +32,8 @@ export const useApplicationStore = (): ApplicationStore => {
   const [downloadLinkD, setDownloadLinkD] = useState('#');
   // 「デレぽ」におけるどの位置で区切るか
   const [messageSplitIndexD, setMessageSplitIndexD] = useState(-1);
+
+  saveSetting<SceneType>('scene2', loadSetting<SceneType>('scene', 'Ohanashi'));
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -124,16 +126,24 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       }
       case 'toBaseForm': {
-        setScene('Ohanashi');
+        setScene(loadSetting<SceneType>('scene', 'Ohanashi'));
         break;
       }
       case 'selectIdolIcon': {
         const iconUrl = action.message;
-        const temp = { ...nowOhanashiData };
-        temp.iconUrls[selectedIconIndex] = iconUrl;
-        setNowOhanashiData(temp);
-        setSelectedIconIndex(-1);
-        setScene('Ohanashi');
+        if (loadSetting<SceneType>('scene2', 'Ohanashi') === 'Ohanashi') {
+          const temp = { ...nowOhanashiData };
+          temp.iconUrls[selectedIconIndex] = iconUrl;
+          setNowOhanashiData(temp);
+          setSelectedIconIndex(-1);
+          setScene('Ohanashi');
+        } else {
+          const temp = { ...nowDerepoData };
+          temp.iconUrl = iconUrl;
+          setNowDerepoData(temp);
+          setSelectedIconIndexD(-1);
+          setScene('Derepo');
+        }
         break;
       }
       case 'setDownloadLink':
@@ -289,6 +299,31 @@ export const useApplicationStore = (): ApplicationStore => {
       case 'deleteDerepo':
         setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD), ...derepoDataList.slice(messageSplitIndexD + 1)]);
         setMessageSplitIndexD(-1);
+        break;
+      case 'selectIconD': {
+        const index = parseInt(action.message, 10);
+        if (selectedIconIndexD === index) {
+          setSelectedIconIndexD(-1);
+        } else {
+          setSelectedIconIndexD(index);
+        }
+        break;
+      }
+      case 'selectFaceIconD': {
+        const url = action.message;
+        const temp = { ...nowDerepoData };
+        temp.iconUrl = url;
+        setNowDerepoData(temp);
+        setSelectedIconIndexD(-1);
+        break;
+      }
+      case 'toDerepoMode':
+        saveSetting<SceneType>('scene2', 'Derepo');
+        setScene('Derepo');
+        break;
+      case 'toOhanashiMode':
+        saveSetting<SceneType>('scene2', 'Ohanashi');
+        setScene('Ohanashi');
         break;
       default:
         break;
