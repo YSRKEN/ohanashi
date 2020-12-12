@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
-import { useLocalStorageState } from 'service/utility';
-import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType } from 'constant/type';
-import { SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
+import { loadSetting, saveSetting, tryParseInt, useLocalStorageState } from 'service/utility';
+import { OhanashiData, ApplicationStore, Action, MessageMode, SceneType, SelectOption, IdolType, ShowType, DerepoData } from 'constant/type';
+import { SAMPLE_DEREPO, SAMPLE_OHANASHI, SAMPLE_OHANASHI_LIST } from 'constant/other';
 
 export const useApplicationStore = (): ApplicationStore => {
   // 現在入力している「おはなし」の一覧
@@ -22,6 +22,18 @@ export const useApplicationStore = (): ApplicationStore => {
     category: 'all',
     showType: 'text'
   });
+  // プレビュー用の「デレぽ」
+  const [nowDerepoData, setNowDerepoData] = useLocalStorageState<DerepoData>('nowDerepoData', SAMPLE_DEREPO);
+  // 現在入力している「デレぽ」の一覧
+  const [derepoDataList, setDerepoDataList] = useLocalStorageState<DerepoData[]>('derepoDataList', []);
+  // 入力フォームでどのアイコンを選択しているか
+  const [selectedIconIndexD, setSelectedIconIndexD] = useState(-1);
+  // ダウンロードリンク
+  const [downloadLinkD, setDownloadLinkD] = useState('#');
+  // 「デレぽ」におけるどの位置で区切るか
+  const [messageSplitIndexD, setMessageSplitIndexD] = useState(-1);
+
+  saveSetting<SceneType>('scene2', loadSetting<SceneType>('scene', 'Ohanashi'));
 
   // dispatch関数
   const dispatch = (action: Action) => {
@@ -114,16 +126,24 @@ export const useApplicationStore = (): ApplicationStore => {
         break;
       }
       case 'toBaseForm': {
-        setScene('Ohanashi');
+        setScene(loadSetting<SceneType>('scene', 'Ohanashi'));
         break;
       }
       case 'selectIdolIcon': {
         const iconUrl = action.message;
-        const temp = { ...nowOhanashiData };
-        temp.iconUrls[selectedIconIndex] = iconUrl;
-        setNowOhanashiData(temp);
-        setSelectedIconIndex(-1);
-        setScene('Ohanashi');
+        if (loadSetting<SceneType>('scene2', 'Ohanashi') === 'Ohanashi') {
+          const temp = { ...nowOhanashiData };
+          temp.iconUrls[selectedIconIndex] = iconUrl;
+          setNowOhanashiData(temp);
+          setSelectedIconIndex(-1);
+          setScene('Ohanashi');
+        } else {
+          const temp = { ...nowDerepoData };
+          temp.iconUrl = iconUrl;
+          setNowDerepoData(temp);
+          setSelectedIconIndexD(-1);
+          setScene('Derepo');
+        }
         break;
       }
       case 'setDownloadLink':
@@ -162,6 +182,149 @@ export const useApplicationStore = (): ApplicationStore => {
         window.localStorage.clear();
         window.location.href = '/';
         break;
+      case 'changeNameD':
+        setNowDerepoData({ ...nowDerepoData, name: action.message });
+        break;
+      case 'changeMessageD':
+        setNowDerepoData({ ...nowDerepoData, message: action.message });
+        break;
+      case 'changeFavFlgD':
+        setNowDerepoData({ ...nowDerepoData, favFlg: !nowDerepoData.favFlg });
+        break;
+      case 'changeFavCountD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, favCount: f });
+        }
+        break;
+      }
+      case 'changeMonthD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, month: f });
+        }
+        break;
+      }
+      case 'changeDayD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, day: f });
+        }
+        break;
+      }
+      case 'changeHourD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, hour: f });
+        }
+        break;
+      }
+      case 'changeMinuteD': {
+        const f = tryParseInt(action.message);
+        if (typeof f !== 'undefined') {
+          setNowDerepoData({ ...nowDerepoData, minute: f });
+        }
+        break;
+      }
+      case 'addDerepo': {
+        const temp = JSON.parse(JSON.stringify(nowDerepoData)) as DerepoData;
+        setDerepoDataList([...derepoDataList, temp]);
+        break;
+      }
+      case 'deleteAllDerepo': {
+        if (window.confirm('全ての「デレぽ」を削除しますか？')) {
+          setDerepoDataList([]);
+        }
+        break;
+      }
+      case 'setDownloadLinkD':
+        setDownloadLinkD(action.message);
+        break;
+      case 'clickUpperDerepoView': {
+        const index = parseInt(action.message, 10);
+        const newMessageSplitIndex = index;
+        if (messageSplitIndexD === newMessageSplitIndex) {
+          setMessageSplitIndexD(-1);
+        } else {
+          setMessageSplitIndexD(newMessageSplitIndex);
+        }
+        break;
+      }
+      case 'clickLowerDerepoView': {
+        const index = parseInt(action.message, 10);
+        if (index < 0) {
+          setMessageSplitIndexD(-1);
+        } else {
+          const newMessageSplitIndex = index + messageSplitIndexD + 1;
+          setMessageSplitIndexD(newMessageSplitIndex);
+        }
+        break;
+      }
+      case 'insertDerepo': {
+        const temp = JSON.parse(JSON.stringify(nowDerepoData)) as DerepoData;
+        setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD + 1), temp, ...derepoDataList.slice(messageSplitIndexD + 1)]);
+        setMessageSplitIndexD(messageSplitIndexD + 1);
+        break;
+      }
+      case 'upDerepo':
+        if (messageSplitIndexD > 0) {
+          setDerepoDataList([
+            ...derepoDataList.slice(0, messageSplitIndexD - 1),
+            derepoDataList[messageSplitIndexD],
+            derepoDataList[messageSplitIndexD - 1],
+            ...derepoDataList.slice(messageSplitIndexD + 1)
+          ]);
+          setMessageSplitIndexD(messageSplitIndexD - 1);
+        }
+        break;
+      case 'downDerepo':
+        if (messageSplitIndexD < derepoDataList.length - 1) {
+          setDerepoDataList([
+            ...derepoDataList.slice(0, messageSplitIndexD),
+            derepoDataList[messageSplitIndexD + 1],
+            derepoDataList[messageSplitIndexD],
+            ...derepoDataList.slice(messageSplitIndexD + 2)
+          ]);
+          setMessageSplitIndexD(messageSplitIndexD + 1);
+        }
+        break;
+      case 'editDerepo':
+        setNowDerepoData(JSON.parse(JSON.stringify(derepoDataList[messageSplitIndexD])));
+        break;
+      case 'overWriteDerepo': {
+        const temp = JSON.parse(JSON.stringify(nowDerepoData)) as DerepoData;
+        setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD), temp, ...derepoDataList.slice(messageSplitIndexD + 1)]);
+        break;
+      }
+      case 'deleteDerepo':
+        setDerepoDataList([...derepoDataList.slice(0, messageSplitIndexD), ...derepoDataList.slice(messageSplitIndexD + 1)]);
+        setMessageSplitIndexD(-1);
+        break;
+      case 'selectIconD': {
+        const index = parseInt(action.message, 10);
+        if (selectedIconIndexD === index) {
+          setSelectedIconIndexD(-1);
+        } else {
+          setSelectedIconIndexD(index);
+        }
+        break;
+      }
+      case 'selectFaceIconD': {
+        const url = action.message;
+        const temp = { ...nowDerepoData };
+        temp.iconUrl = url;
+        setNowDerepoData(temp);
+        setSelectedIconIndexD(-1);
+        break;
+      }
+      case 'toDerepoMode':
+        saveSetting<SceneType>('scene2', 'Derepo');
+        setScene('Derepo');
+        break;
+      case 'toOhanashiMode':
+        saveSetting<SceneType>('scene2', 'Ohanashi');
+        setScene('Ohanashi');
+        break;
       default:
         break;
     }
@@ -175,6 +338,11 @@ export const useApplicationStore = (): ApplicationStore => {
     downloadLink,
     messageSplitIndex,
     selectOption,
+    nowDerepoData,
+    derepoDataList,
+    selectedIconIndexD,
+    messageSplitIndexD,
+    downloadLinkD,
     dispatch
   };
 };
