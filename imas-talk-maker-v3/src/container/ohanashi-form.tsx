@@ -152,6 +152,47 @@ const OhanashiForm: React.FC = () => {
               </>
             )}
         </ControlWrapper>
+        <ControlWrapper>
+          {messageSplitIndex < 0 ? (
+            <OhanashiView2
+              dataList={ohanashiDataList}
+              setDownloadLink={url => dispatch({ type: 'setDownloadLink', message: url })}
+              showLogoFlg={true}
+              onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
+            />
+          ) : (
+              <>
+                <OhanashiView2
+                  dataList={ohanashiDataList.slice(0, messageSplitIndex + 1)}
+                  onClick={n => dispatch({ type: 'clickUpperOhanashiView', message: `${n}` })}
+                />
+                <MessageActionWrapper>
+                  <InsertButton type="button" onClick={() => dispatch({ type: 'insertOhanashi', message: '' })}>
+                    挿入
+                </InsertButton>
+                  <ShiftButton type="button" onClick={() => dispatch({ type: 'upOhanashi', message: '' })}>
+                    ↑
+                </ShiftButton>
+                  <ShiftButton type="button" onClick={() => dispatch({ type: 'downOhanashi', message: '' })}>
+                    ↓
+                </ShiftButton>
+                  <SendButton type="button" onClick={() => dispatch({ type: 'editOhanashi', message: '' })}>
+                    転送
+                </SendButton>
+                  <UpdateButton type="button" onClick={() => dispatch({ type: 'overWriteOhanashi', message: '' })}>
+                    上書
+                </UpdateButton>
+                  <DeleteButton type="button" onClick={() => dispatch({ type: 'deleteOhanashi', message: '' })}>
+                    削除
+                </DeleteButton>
+                </MessageActionWrapper>
+                <OhanashiView2
+                  dataList={ohanashiDataList.slice(messageSplitIndex + 1)}
+                  onClick={n => dispatch({ type: 'clickLowerOhanashiView', message: `${n}` })}
+                />
+              </>
+            )}
+        </ControlWrapper>
       </PreviewForm>
     </>
   );
