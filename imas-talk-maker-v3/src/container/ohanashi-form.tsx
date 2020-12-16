@@ -4,6 +4,7 @@ import OhanashiView from 'component/ohanashi-view';
 import styled from 'styled-components';
 import IconForm from 'container/icon-form';
 import { APP_VERSION } from 'constant/other';
+import OhanashiView2 from 'component/ohanashi-view-2';
 
 const OhanashiForm: React.FC = () => {
   const { nowOhanashiData, ohanashiDataList, downloadLink, messageSplitIndex, dispatch } = useContext(ApplicationContext);
@@ -88,6 +89,7 @@ const OhanashiForm: React.FC = () => {
             <FormLabel>プレビュー：</FormLabel>
             <br />
             <OhanashiView dataList={[nowOhanashiData]} />
+            <OhanashiView2 dataList={[nowOhanashiData]} />
           </Preview>
         </Wrapper>
         <ControlWrapper>
