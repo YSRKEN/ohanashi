@@ -30,11 +30,14 @@ export const saveSetting = <T>(key: string, value: T) => {
  * @param imagePath 画像のパス
  */
 export const loadImage = (imagePath: string): Promise<HTMLImageElement> => {
-  return new Promise<HTMLImageElement>(resolve => {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image();
     image.src = imagePath;
     image.onload = () => {
       resolve(image);
+    };
+    image.onerror = () => {
+      reject();
     };
   });
 };
