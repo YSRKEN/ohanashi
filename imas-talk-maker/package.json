@@ -27,6 +27,9 @@
     "tslint-react": "^4.1.0",
     "typescript": "^3.7.3"
   },
+  "resolutions": {
+    "yaml": "1.10.3"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
