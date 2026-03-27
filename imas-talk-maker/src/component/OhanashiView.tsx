@@ -3,6 +3,7 @@ import { ITalkData } from 'src/constant';
 import '../css/OhanashiView.css';
 
 const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
+  const assetBaseUrl = `${process.env.PUBLIC_URL}/asset`;
   const divRef = React.useRef<HTMLDivElement>(null);
   const [overallCss, setOverallCss] = React.useState<{}>({});
   const [fontCss, setFontCss] = React.useState<{}>({});
@@ -30,14 +31,20 @@ const OhanashiView: React.FC<{ talkData: ITalkData }> = ({ talkData }) => {
 
   return (
     <div ref={divRef} style={overallCss}>
-      <div className="bg-default position-relative">
+      <div
+        className="bg-default position-relative"
+        style={{ backgroundImage: `url(${assetBaseUrl}/background.png)` }}
+      >
         <img
           className="talk-face position-absolute"
           alt=""
           src={talkData.url}
           crossOrigin="anonymous"
         />
-        <div className="talk-balloon position-absolute" />
+        <div
+          className="talk-balloon position-absolute"
+          style={{ backgroundImage: `url(${assetBaseUrl}/balloon.png)` }}
+        />
         <p className="talk-name position-absolute" style={fontCss}>
           {talkData.name}
         </p>
