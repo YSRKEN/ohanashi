@@ -15,6 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postinstall": "patch-package",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -23,6 +24,7 @@
     "@types/node": "^12.12.14",
     "@types/react": "^16.9.15",
     "@types/react-dom": "^16.9.4",
+    "patch-package": "^8.0.1",
     "tslint": "^5.20.1",
     "tslint-react": "^4.1.0",
     "typescript": "^4.9.5"
@@ -64,6 +66,7 @@
     "tmpl": "1.0.5",
     "underscore": "1.13.8",
     "word-wrap": "1.2.5",
+    "webpack-dev-server": "5.2.3",
     "y18n": "4.0.1",
     "yaml": "1.10.3"
   },

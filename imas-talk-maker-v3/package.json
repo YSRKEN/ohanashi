@@ -21,8 +21,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postinstall": "patch-package",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,6 +67,7 @@
     "url-parse": "1.5.10",
     "ws": "7.5.10",
     "word-wrap": "1.2.5",
+    "webpack-dev-server": "5.2.3",
     "yaml": "1.10.3"
   },
   "browserslist": {
