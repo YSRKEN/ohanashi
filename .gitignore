@@ -6,3 +6,7 @@ database/venv/
 database/old_code/
 database/old_data/
 imas-talk-maker-v3/.eslintcache
+docs/
+.gh-config/
+.uv-cache/
+.uv-python/
