@@ -13,7 +13,7 @@ import { SettingService } from './setting.service';
 import { TalkBoxComponent } from './talk-box/talk-box.component';
 import { PresetComponent } from './preset/preset.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { LazyLoadImageModule } from 'ng-lazyload-image/dist';
 import { CanvasComponent } from './canvas/canvas.component';
 import { TalkBoxDoubleComponent } from './talk-box-double/talk-box-double.component';
 

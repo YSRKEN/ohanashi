@@ -290,11 +290,7 @@ export class MainComponent implements OnInit {
   savePreview() {
     html2canvas(document.querySelector("#capture"), {
       allowTaint: true,
-      useCORS: true,
-      proxy: true,
-      onrendered: function (canvas) {
-        canvas.toDataURL();
-      }
+      useCORS: true
     }).then(canvas => {
       // Base64データに変換
       const base64 = canvas.toDataURL();
@@ -313,8 +309,7 @@ export class MainComponent implements OnInit {
   writeCanvas(){
     html2canvas(document.querySelector("#capture"), {
       allowTaint: true,
-      useCORS: true,
-      proxy: true
+      useCORS: true
     }).then(canvas => {
       this.setting.canvas = canvas;
     }).then(async () => {
