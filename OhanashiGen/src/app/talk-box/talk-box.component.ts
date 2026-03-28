@@ -47,10 +47,10 @@ export class TalkBoxComponent implements OnInit {
    */
   @Input() firstFlg: string;
 
-  get setNgClass(): string{
-    let temp = "";
-    temp += (this.selected == "true" ? 'bg-skyblue ' : 'bg-white ');
-    temp += (this.firstFlg == 'true' ? 'derepo-block-first' : 'derepo-block');
+  get setNgClass(): string {
+    let temp = '';
+    temp += (this.selected === 'true' ? 'bg-skyblue ' : 'bg-white ');
+    temp += (this.firstFlg === 'true' ? 'derepo-block-first' : 'derepo-block');
     return temp;
   }
 
@@ -59,9 +59,9 @@ export class TalkBoxComponent implements OnInit {
   ngOnInit() {
   }
 
-  get favLeft(){
+  get favLeft() {
     return {
       left: `${350 - this.favs.length * 7 / 2}px`
-    }
+    };
   }
 }

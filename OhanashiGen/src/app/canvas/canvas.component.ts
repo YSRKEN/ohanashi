@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { SettingService } from '../setting.service';
 
 @Component({
@@ -6,16 +6,16 @@ import { SettingService } from '../setting.service';
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
-export class CanvasComponent implements OnInit {
+export class CanvasComponent implements OnInit, AfterContentInit {
 
   constructor(private setting: SettingService) { }
 
   ngOnInit() {
   }
-  
-  ngAfterContentInit(){
-    if(this.setting.canvas != null){
-      var div = document.getElementById("canvas");
+
+  ngAfterContentInit() {
+    if (this.setting.canvas != null) {
+      const div = document.getElementById('canvas');
       div.appendChild(this.setting.canvas);
     }
   }

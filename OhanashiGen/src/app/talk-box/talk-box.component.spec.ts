@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TalkBoxComponent } from './talk-box.component';
 
@@ -6,7 +6,7 @@ describe('TalkBoxComponent', () => {
   let component: TalkBoxComponent;
   let fixture: ComponentFixture<TalkBoxComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TalkBoxComponent ]
     })
@@ -16,6 +16,7 @@ describe('TalkBoxComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TalkBoxComponent);
     component = fixture.componentInstance;
+    component.favs = '1234';
     fixture.detectChanges();
   });
 

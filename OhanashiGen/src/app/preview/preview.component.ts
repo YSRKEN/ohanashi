@@ -9,6 +9,15 @@ import { SettingService } from '../setting.service';
 })
 export class PreviewComponent implements OnInit {
 
+  constructor(private setting: SettingService) { }
+
+  @Input() set refreshFlg(flg: string) {
+    if (flg === 'true') {
+      this.refreshSelectDraw();
+      this.refreshDraw.emit(null);
+    }
+  }
+
   /**
    * タップ時の処理
    */
@@ -25,38 +34,29 @@ export class PreviewComponent implements OnInit {
    */
   talkList: {firstFlg: string, talk: TalkData, doubleflg: string}[] = [];
 
-  constructor(private setting: SettingService) { }
+  /**
+   * デレぽモードの場合はtrue
+   */
+  @Input() derepoFlg: string;
 
   ngOnInit() {
     this.refreshSelectDraw();
   }
 
   /**
-   * デレぽモードの場合はtrue
-   */
-  @Input() derepoFlg: string;
-
-  @Input() set refreshFlg(flg: string){
-    if(flg == "true"){
-      this.refreshSelectDraw();
-      this.refreshDraw.emit(null);
-    }
-  }
-
-  /**
    * 画面の内容を更新
    */
-  refreshSelectDraw(){
+  refreshSelectDraw() {
     const list = [];
-    for(let i = 0; i < this.setting.talkList.length; ++i){
-      const temp = {firstFlg: "false", talk: this.setting.talkList[i], doubleflg: "false"};
-      if(i == 0){
-        temp.firstFlg = "true";
+    for (let i = 0; i < this.setting.talkList.length; ++i) {
+      const temp = {firstFlg: 'false', talk: this.setting.talkList[i], doubleflg: 'false'};
+      if (i === 0) {
+        temp.firstFlg = 'true';
       }
-      if(typeof this.setting.talkList[i].url2 != "undefined" && this.setting.talkList[i].url2 != ""){
-        temp.doubleflg = "true";
+      if (typeof this.setting.talkList[i].url2 !== 'undefined' && this.setting.talkList[i].url2 !== '') {
+        temp.doubleflg = 'true';
       }
-      temp.talk.selected = (this.setting.selectTalkId == this.setting.talkList[i].id);
+      temp.talk.selected = (this.setting.selectTalkId === this.setting.talkList[i].id);
       list.push(temp);
     }
     this.talkList = list;
@@ -66,11 +66,11 @@ export class PreviewComponent implements OnInit {
    * 選択を切り替え
    * @param id 選択された会話のID
    */
-  select(id: number){
-    if(this.setting.selectTalkId != id){
+  select(id: number) {
+    if (this.setting.selectTalkId !== id) {
       this.setting.selectTalkId = id;
       const talk = new TalkData();
-      const nowTalk = this.setting.talkList.filter(t => t.id == id)[0];
+      const nowTalk = this.setting.talkList.filter(t => t.id === id)[0];
       talk.id = nowTalk.id;
       talk.message = nowTalk.message;
       talk.name = nowTalk.name;
@@ -79,7 +79,7 @@ export class PreviewComponent implements OnInit {
       talk.favs = nowTalk.favs;
       talk.date = nowTalk.date;
       this.changeForm.emit(talk);
-    }else{
+    } else {
       this.setting.selectTalkId = -1;
       const talk = new TalkData();
       this.changeForm.emit(talk);

@@ -57,16 +57,16 @@ export class TalkBoxDoubleComponent implements OnInit {
   ngOnInit() {
   }
 
-  get setNgClass(): string{
-    let temp = "";
-    temp += (this.selected == "true" ? 'bg-skyblue ' : 'bg-white ');
-    temp += (this.firstFlg == 'true' ? 'derepo-block-first' : 'derepo-block');
+  get setNgClass(): string {
+    let temp = '';
+    temp += (this.selected === 'true' ? 'bg-skyblue ' : 'bg-white ');
+    temp += (this.firstFlg === 'true' ? 'derepo-block-first' : 'derepo-block');
     return temp;
   }
 
-  get favLeft(){
+  get favLeft() {
     return {
       left: `${350 - this.favs.length * 7 / 2}px`
-    }
+    };
   }
 }
