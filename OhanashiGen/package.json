@@ -24,7 +24,6 @@
     "@angular/service-worker": "^9.1.13",
     "core-js": "^3.6.5",
     "html2canvas": "^1.0.0-alpha.12",
-    "ng-lazyload-image": "^4.0.0",
     "rxjs": "^6.6.7",
     "tslib": "^1.14.1",
     "zone.js": "^0.10.3"
@@ -36,7 +35,7 @@
     "@angular/language-service": "^9.1.13",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~10.5.4",
+    "@types/node": "^12.12.54",
     "bootstrap": "^4.1.1",
     "codelyzer": "~5.2.2",
     "jasmine-core": "~3.1.0",

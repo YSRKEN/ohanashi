@@ -13,7 +13,6 @@ import { SettingService } from './setting.service';
 import { TalkBoxComponent } from './talk-box/talk-box.component';
 import { PresetComponent } from './preset/preset.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LazyLoadImageModule } from 'ng-lazyload-image/dist';
 import { CanvasComponent } from './canvas/canvas.component';
 import { TalkBoxDoubleComponent } from './talk-box-double/talk-box-double.component';
 
@@ -33,8 +32,7 @@ import { TalkBoxDoubleComponent } from './talk-box-double/talk-box-double.compon
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     RouterModule,
     FormsModule,
-    HttpClientModule,
-    LazyLoadImageModule
+    HttpClientModule
   ],
   providers: [SettingService],
   bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SettingService } from '../setting.service';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-preset',
@@ -14,10 +13,6 @@ export class PresetComponent implements OnInit {
   dataList: ShowPresetData[] = [];
 
   searchWord: string = "";
-
-  scrollObservable = new Subject();
-
-  notLazyLoadFlg: boolean = false;
 
   setUrl = "";
   setUrl2 = "";
@@ -75,24 +70,11 @@ export class PresetComponent implements OnInit {
   }
 
   /**
-   * https://github.com/tjoskar/ng-lazyload-image/issues/197
-   */
-  workaround(){
-    window.scrollTo(window.scrollX, window.scrollY - 1);
-    window.scrollTo(window.scrollX, window.scrollY + 1);
-    this.scrollObservable.next();
-  }
-
-  /**
    * 入力した検索ワードを記録する
    * @param event 検索ワード
    */
   changeSearchWord(event: string){
     this.setting.searchWord = this.searchWord = event;
-  }
-
-  get lazyLoadFlg() {
-    return !this.notLazyLoadFlg;
   }
 }
 
