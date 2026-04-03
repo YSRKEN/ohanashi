@@ -12,7 +12,7 @@ const routes: Routes = [ { path: 'shell', component: AppShellComponent }];
   imports: [
     AppModule,
     ServerModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
   ],
   bootstrap: [AppComponent],
   declarations: [AppShellComponent],
