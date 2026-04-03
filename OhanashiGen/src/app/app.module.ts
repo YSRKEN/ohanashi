@@ -12,29 +12,22 @@ import { PreviewComponent } from './preview/preview.component';
 import { SettingService } from './setting.service';
 import { TalkBoxComponent } from './talk-box/talk-box.component';
 import { PresetComponent } from './preset/preset.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CanvasComponent } from './canvas/canvas.component';
 import { TalkBoxDoubleComponent } from './talk-box-double/talk-box-double.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    PreviewComponent,
-    TalkBoxComponent,
-    PresetComponent,
-    CanvasComponent,
-    TalkBoxDoubleComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    RouterModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [SettingService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MainComponent,
+        PreviewComponent,
+        TalkBoxComponent,
+        PresetComponent,
+        CanvasComponent,
+        TalkBoxDoubleComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        AppRoutingModule,
+        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+        RouterModule,
+        FormsModule], providers: [SettingService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
