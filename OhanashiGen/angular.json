@@ -139,6 +139,15 @@
               "serverTarget": "OhanashiGen:server:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -161,5 +170,8 @@
       }
     }
   },
-  "defaultProject": "OhanashiGen"
+  "defaultProject": "OhanashiGen",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
