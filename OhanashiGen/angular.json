@@ -36,6 +36,9 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
+            "allowedCommonJsDependencies": [
+              "html2canvas"
+            ],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,

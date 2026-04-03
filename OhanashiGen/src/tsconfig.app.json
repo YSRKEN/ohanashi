@@ -8,8 +8,16 @@
   "angularCompilerOptions": {
     "enableIvy": false
   },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "**/*.d.ts"
+  ],
   "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
+    "test.ts",
+    "**/*.spec.ts",
+    "main.server.ts"
   ]
 }

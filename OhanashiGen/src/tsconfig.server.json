@@ -5,5 +5,11 @@
     "baseUrl": ".",
     "module": "es2022",
     "moduleResolution": "bundler"
-  }
+  },
+  "files": [
+    "main.server.ts"
+  ],
+  "include": [
+    "**/*.d.ts"
+  ]
 }
