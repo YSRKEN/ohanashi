@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-talk-box',
-  templateUrl: './talk-box.component.html',
-  styleUrls: ['./talk-box.component.scss']
+    selector: 'app-talk-box',
+    templateUrl: './talk-box.component.html',
+    styleUrls: ['./talk-box.component.scss'],
+    standalone: false
 })
 export class TalkBoxComponent implements OnInit {
 

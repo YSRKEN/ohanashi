@@ -3,9 +3,10 @@ import { TalkData } from '../model/TalkData';
 import { SettingService } from '../setting.service';
 
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss']
+    selector: 'app-preview',
+    templateUrl: './preview.component.html',
+    styleUrls: ['./preview.component.scss'],
+    standalone: false
 })
 export class PreviewComponent implements OnInit {
 

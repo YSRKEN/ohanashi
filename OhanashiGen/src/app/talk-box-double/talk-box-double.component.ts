@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-talk-box-double',
-  templateUrl: './talk-box-double.component.html',
-  styleUrls: ['./talk-box-double.component.scss']
+    selector: 'app-talk-box-double',
+    templateUrl: './talk-box-double.component.html',
+    styleUrls: ['./talk-box-double.component.scss'],
+    standalone: false
 })
 export class TalkBoxDoubleComponent implements OnInit {
 

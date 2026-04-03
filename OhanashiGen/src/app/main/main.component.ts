@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+    selector: 'app-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.scss'],
+    standalone: false
 })
 export class MainComponent implements OnInit, AfterViewInit {
   /**

@@ -19,9 +19,10 @@ interface ShowPresetData {
 }
 
 @Component({
-  selector: 'app-preset',
-  templateUrl: './preset.component.html',
-  styleUrls: ['./preset.component.scss']
+    selector: 'app-preset',
+    templateUrl: './preset.component.html',
+    styleUrls: ['./preset.component.scss'],
+    standalone: false
 })
 export class PresetComponent implements OnInit {
 

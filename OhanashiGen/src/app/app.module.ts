@@ -25,7 +25,7 @@ import { TalkBoxDoubleComponent } from './talk-box-double/talk-box-double.compon
         CanvasComponent,
         TalkBoxDoubleComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
         RouterModule,
